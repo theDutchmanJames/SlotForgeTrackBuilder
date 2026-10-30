@@ -1,7 +1,10 @@
-SlotForge Track Builder — editor iteration (v0.2.6)
+SlotForge Track Builder — editor iteration (v0.3.0)
 29 October 2026
 
 OPEN THE APP
+Recommended: run your platform installer; see START-HERE.txt. The installed
+launcher enables automatic disk storage. The historical notes below describe
+previous browser-only versions where relevant.
 Double-click SlotForge Track Builder.html in a current desktop browser.
 The SlotForge Track Builder shortcut uses the custom icon on this Windows PC.
 Keep the supporting app, designs and track-packs folders alongside the launcher.
@@ -280,3 +283,30 @@ lengths unknown and records nominal/measurement and lane-changer limitations.
 PDF generation is local and offline. jsPDF 4.2.1 (MIT) and Noto Sans (OFL 1.1)
 are bundled in app/vendor/ with their licenses and source hashes; see
 THIRD-PARTY-NOTICES.txt. No new timing contract or layout envelope version.
+
+PERSISTENT FILES AND PER-USER INSTALLERS — v0.3.0 (30 October 2026)
+The app remains browser-based. A file-copy installer creates a safe per-user
+folder containing versioned app files, a private Node runtime and separate data/.
+The launcher opens the browser and starts a loopback-only storage helper. It
+recognizes the installation's data directory; HTML alone does not get arbitrary
+filesystem access. No cloud, account, global Node installation or npm is needed.
+
+Disk mode stores autosave, the Track Library and custom packs in workspace.json.
+Writes are checked, flushed and atomically replaced, guarded by a process lock
+and per-record revisions. Conflicting windows cannot silently overwrite work.
+20 previous workspace versions are kept. Failed/unreadable files are retained.
+Updates switch a versioned app pointer and do not replace data/. Old app versions
+remain available. Browser-data clearing and port/browser changes do not erase
+the disk workspace. Normal disk loss still requires an independent backup.
+
+Storage shows the data location and exports/imports complete workspace transfers.
+It can copy old browser saves when that origin can still read them. Transfers
+merge without replacing current work, deduplicate repeated imports and keep
+piece definitions with custom packs. Individual JSON exports remain supported.
+Direct HTML opening is still browser-only mode and clearly labelled.
+
+The first installer download is a pinned, checksum-verified official Node.js
+runtime. Install Windows.cmd, Install macOS.command and Install Linux.sh select
+x64/arm64. Windows setup is tested here; native macOS/Linux checks are pending.
+See START-HERE.txt and installer/README.txt for installation, data and recovery.
+Physical layout envelope v1 and Timing contract draft.2 are unchanged.

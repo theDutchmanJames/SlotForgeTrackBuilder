@@ -1,2 +1,7 @@
 # Preserve upstream bytes and formatting in bundled third-party files.
 app/vendor/* -text -whitespace
+
+*.sh text eol=lf
+*.command text eol=lf
+
+installer/NODE-LICENSE.txt -text -whitespace

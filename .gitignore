@@ -23,3 +23,5 @@ desktop.ini
 # Generated document checks
 /tmp/
 /output/
+
+/installer/runtime-archives/

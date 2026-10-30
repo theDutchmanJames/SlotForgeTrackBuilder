@@ -12,3 +12,9 @@ from file:// as well as localhost. No font modifications or name changes.
 app/vendor/SOURCES.json records source URLs and SHA-256 hashes.
 These libraries are bundled; users do not need npm or Internet access to export.
 The notices above apply to those dependencies, not a new license for the app.
+
+Private installer runtime: Node.js v24.22.2
+Official release URLs and SHA-256 hashes: installer/node-runtimes.json.
+Full upstream license notices: installer/NODE-LICENSE.txt, also retained with
+manual private runtime copies. Bootstrap downloads the official archive and
+checks the pinned digest before execution. Node is not installed globally.

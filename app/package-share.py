@@ -9,8 +9,8 @@ root = Path(__file__).resolve().parents[1]
 version = re.search(r"VERSION='([^']+)'", (root / 'app/integration.js').read_text(encoding='utf-8')).group(1)
 files = [root / name for name in (
     'SlotForge Track Builder.html', 'index.html', 'START-HERE.txt',
-    'Create Windows shortcut.vbs', 'README.txt', 'PROJECT-PLAN.txt', 'THIRD-PARTY-NOTICES.txt')]
-for folder in ('app', 'designs', 'track-packs', 'integration'):
+    'Create Windows shortcut.vbs', 'README.txt', 'PROJECT-PLAN.txt', 'THIRD-PARTY-NOTICES.txt', 'Install Windows.cmd', 'Install macOS.command', 'Install Linux.sh')]
+for folder in ('app', 'designs', 'track-packs', 'integration', 'installer'):
     for file in (root / folder).rglob('*'):
         if not file.is_file() or any(p.startswith('.') or p == '__pycache__' for p in file.relative_to(root).parts):
             continue
@@ -32,7 +32,10 @@ prefix = 'SlotForge Track Builder/'
 manifest = {file.relative_to(root).as_posix(): hashlib.sha256(file.read_bytes()).hexdigest() for file in files}
 with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
     for file in files:
-        archive.write(file, prefix + file.relative_to(root).as_posix())
+        info=zipfile.ZipInfo.from_file(file, prefix + file.relative_to(root).as_posix())
+        if file.suffix.lower() in ('.sh', '.command'): info.create_system=3; info.external_attr=(0o100755 << 16)
+        info.compress_type=zipfile.ZIP_DEFLATED
+        archive.writestr(info,file.read_bytes())
     archive.writestr(prefix + 'PACKAGE-MANIFEST.json', json.dumps({'version': version, 'sha256': manifest}, indent=2) + '\n')
 with zipfile.ZipFile(output) as archive:
     assert archive.testzip() is None

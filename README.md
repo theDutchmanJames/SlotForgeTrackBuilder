@@ -8,9 +8,9 @@ Turn the space you have into the circuit you want. **SlotForge Track Builder** i
 
 Go beyond the supplied catalogues: create custom pieces using your own dimensions, lane spacing and colours, with matching icons and track artwork generated automatically from their geometry. Organise them into your own track packs to reuse and share. Built for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming), the Builder exports your track design, slot routes, timing-line settings and tuned car-animation profile in a single `.slotforge.json` file.
 
-**Current version: 0.2.6 · Runs in your browser · No account required**
+**Current version: 0.3.0 · Runs in your browser · No account required**
 
-[Download the complete app](downloads/SlotForge-Track-Builder-v0.2.6-complete.zip) · [Getting started](START-HERE.txt) · [Detailed notes](README.txt) · [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming)
+[Download the complete app](downloads/SlotForge-Track-Builder-v0.3.0-complete.zip) · [Getting started](START-HERE.txt) · [Detailed notes](README.txt) · [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming)
 
 ## Screenshots
 
@@ -50,21 +50,29 @@ Each pack has matching artwork and source notes. Support varies by piece: suppor
 
 ## Get started
 
-1. [Download the complete ZIP](downloads/SlotForge-Track-Builder-v0.2.6-complete.zip) and extract it fully.
-2. Open **SlotForge Track Builder.html** in a current desktop browser.
-3. Choose a track pack and start placing pieces, or load the example circuit.
+1. [Download the complete ZIP](downloads/SlotForge-Track-Builder-v0.3.0-complete.zip) and extract it fully.
+2. Run **Install Windows.cmd**, **Install macOS.command**, or `sh "Install Linux.sh"`.
+3. Use the installed **Start SlotForge** launcher to open the app in your browser.
 
-Keep the supporting folders together. There is no build step or npm installation. On Windows, the included **Create Windows shortcut.vbs** can create a shortcut with the app icon for your extraction location.
+Setup copies the app into your own application-data folder and supplies a private local runtime. Its first download is verified against the official Node.js release checksum. There is no account, npm installation, administrator requirement or global Node setup. After installation, the app works offline.
 
-For a consistent local browser-storage address, run the optional server with a current Node.js runtime:
+The installer places files; a small local helper lets the browser read and write the known data folder. The interface stays browser-based. Windows setup and the browser storage flow are tested; **native macOS and Linux installation testing is still pending**. The scripts select x64 or arm64 runtimes for all three systems. See [setup details](START-HERE.txt).
 
-```sh
-node app/serve.cjs
-```
+## Your files stay on your disk
 
-Then open **http://127.0.0.1:8173/app/**. The server listens only on your own computer. If another copy is already using that port, stop it before starting this one.
+Installed copies save the current drawing, Track Library and custom packs to **`data/workspace.json`**, with up to 20 previous workspace versions in `data/backups/`. The data folder sits beside the versioned application files, so an update can replace the app while keeping your work.
 
-Your Track Library and custom packs live in your browser on that device. Use JSON exports as portable backups. Switching browser, folder or between `file://` and `localhost` can show a different workspace. The downloadable package does not include anyone's personal saved library.
+| System | Default installation folder |
+| --- | --- |
+| Windows | `%LOCALAPPDATA%\SlotForgeTrackBuilder` |
+| macOS | `~/Library/Application Support/SlotForgeTrackBuilder` |
+| Linux | `~/.local/share/SlotForgeTrackBuilder` (or `$XDG_DATA_HOME`) |
+
+The footer's **Storage** button shows the exact data folder and provides a complete workspace backup/transfer. Clearing browser data or using another browser does not clear the installed disk workspace. Back up the data folder to another disk for protection against device or disk loss.
+
+To move older browser saves, open **Storage → Download workspace backup** in the original tab, then **Storage → Import workspace transfer** in the installed app. Older versions without Storage can export individual track and custom-pack JSON files. Imported work is merged, with the old current drawing added to the library rather than replacing the new current drawing.
+
+Opening **SlotForge Track Builder.html** directly still works as a browser-only fallback; it uses browser storage and is labelled accordingly. Use the installed launcher for automatic file saving. Developers with Node.js can run `node app/serve.cjs`; the local server uses the same default disk data location. Details and environment overrides are in [the installer notes](installer/README.txt).
 
 ## SlotForge Timing integration
 
@@ -91,15 +99,16 @@ The app uses plain HTML, CSS and JavaScript. PDF generation uses bundled jsPDF a
 | `track-packs/` | Track catalogues, SVG artwork, source notes and generators |
 | `designs/` | Shared visual style and early design studies |
 | `integration/slotforge-timing/` | Integration specifications and example fixtures |
+| `installer/` | Per-user file-copy setup and local launcher |
 | `downloads/` | Ready-to-share complete app ZIP |
 
 Run the source tests with a current Node.js runtime:
 
 ```sh
-node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/server.test.cjs
+node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs
 node integration/slotforge-timing/check-fixtures.cjs
 ```
 
-The v0.2.6 package was checked with **91 passing source tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
+The v0.3.0 package was checked with **105 passing source tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
 
 Found a rough edge or have an idea for a new piece? [Open an issue](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) with the track system, piece details and a small example layout where possible.

@@ -111,3 +111,13 @@ EXPORT TYPES
 PDF: printable planning and assembly reference.
 Track Layout: complete editable circuit, prepared geometry and driving profiles.
 Track Pack: reusable catalogue pieces and their definitions.
+
+0.3.0 — per-user file-copy installation and browser/disk bridge
+The installer places versioned app files and a private verified Node runtime
+beside a stable data folder. The launcher starts a loopback storage helper and
+opens the browser. Disk autosave, custom packs and the Track Library persist in
+workspace.json with checked atomic writes, per-record conflict detection and
+20 previous versions. Storage exposes the path and workspace transfer tools.
+Updates retain data. Direct HTML remains explicitly labelled browser mode.
+Windows install/start/reinstall tested in an isolated folder; native macOS/Linux
+validation remains outstanding. No native desktop rewrite or cloud account.
