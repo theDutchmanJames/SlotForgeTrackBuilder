@@ -131,3 +131,8 @@ Vintage Aurora connectors remain outside the modern AFX pack.
 0.3.2 — Windows desktop shortcut / browser launch repair
 Hidden script-host startup, awaited native default-browser handoff, durable
 startup logs and visible failure messages. Saved workspace files stay intact.
+
+0.3.3 — magnetic road-side alignment
+Parallel straights and concentric matching curve edges use the Snap toggle,
+with a cyan alignment guide and Shift bypass. Rigid group dragging works even
+without open connectors. Side adjacency never becomes an electrical link.

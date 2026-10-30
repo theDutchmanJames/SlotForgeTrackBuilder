@@ -8,9 +8,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.2 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.3 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.2/SlotForge-Track-Builder-v0.3.2-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.2)
+**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.3/SlotForge-Track-Builder-v0.3.3-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.3)
 
 ## Install and start
 
@@ -56,7 +56,7 @@ Your imported tracks and packs are added to the library. Existing work is kept. 
 
 ## What can I do with it?
 
-- **Build a layout:** drag, snap, rotate, mirror, duplicate and select groups of pieces.
+- **Build a layout:** drag, snap, rotate, mirror, duplicate and select groups of pieces. Side magnets align parallel straights and matching nested curves for wider layouts; hold Shift while dragging to bypass snapping.
 - **Check your available space:** create a rectangle with exact dimensions, then move, resize or lock it.
 - **Plan the physical build:** see piece counts, borders, footprint and calculated lane lengths for supported closed circuits.
 - **Create your own packs:** add custom straights, matching curves, borders and lane changers with generated artwork.
@@ -135,11 +135,11 @@ The app uses plain HTML, CSS and JavaScript. PDF generation uses bundled jsPDF a
 Run the source tests with a current Node.js runtime:
 
 ```sh
-node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs
+node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs installer/launcher.test.cjs
 node integration/slotforge-timing/check-fixtures.cjs
 ```
 
-The v0.3.0 package was checked with **105 passing source tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
+The current source was checked with **133 passing automated tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
 
 Found a rough edge or have an idea for a new piece? [Open an issue](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) with the track system, piece details and a small example layout where possible.
 

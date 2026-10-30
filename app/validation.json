@@ -1,9 +1,9 @@
 {
-  "version": "0.3.2",
+  "version": "0.3.3",
   "date": "2026-10-30",
   "automated": {
-    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs installer/launcher.test.cjs",
-    "passed": 121,
+    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs installer/launcher.test.cjs",
+    "passed": 133,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -309,5 +309,26 @@
       "Native macOS GUI launch",
       "Native Linux desktop/GUI launch"
     ]
+  },
+  "sideSnapping": {
+    "version": "0.3.3",
+    "tests": 12,
+    "browserVerified": [
+      "Real drag nests R1 against matching R2 at the same centre",
+      "Real drag aligns parallel straights and their nearby end seams",
+      "Snap off permits unsnapped free positioning",
+      "Undo restores the previous snapped pose"
+    ],
+    "geometryChecks": [
+      "Compatible connector family only",
+      "Parallel straight edge overlap and start/end seam alignment",
+      "Concentric published inner/outer road radius equality",
+      "Rotated, reversed and reflected poses",
+      "Different segment lengths and angular spans",
+      "Rigid selected groups, including closed circuits with no free ports",
+      "Reference drawings, borders and incompatible radii excluded",
+      "Side adjacency creates no electrical connection or dimensional change"
+    ],
+    "screenshot": "../dist/side-snapping-preview.png"
   }
 }

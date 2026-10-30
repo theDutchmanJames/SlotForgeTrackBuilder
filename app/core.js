@@ -25,7 +25,54 @@ function connections(items,defs,tolerance=.15){
  for(const[k,b]of [...links])if(!links.has(key(b))||key(links.get(key(b)))!==k)links.delete(k);
  return{all,links,ambiguous,open:all.filter(p=>!links.has(key(p)))};
 }
-function snap(moving,items,defs,threshold=60,portIndices=null,openTargets=null){const remaining=items.filter(p=>p.id!==moving.id),targets=openTargets||connections(remaining,defs).open;let best=null;for(const a of ports(moving,defs).filter(p=>!portIndices||portIndices.includes(p.index)))for(const b of targets){if(!compatible(a,b))continue;const distance=dist(a.position,b.position),turn=Math.abs(wrap(b.angle+180-a.angle));if(distance<=threshold&&turn<=65){const joined=join(moving,defs[moving.definitionId],a.index,b),jp=ports(joined,defs)[a.index];if(!slotsMatch(jp,b,.1))continue;const score=distance+turn*.3;if(!best||score<best.score)best={pose:join(moving,defs[moving.definitionId],a.index,b),score,target:b};}}return best;}
+// Road-side magnets align surfaces only. They never create electrical ports,
+// stretch a radius, or join different connector families.
+function sideSnap(moving,items,defs,threshold=60){
+ const def=defs[moving.definitionId],p=def.parameters;if(!['straight','curve'].includes(p.type)||def.geometry.connectors.length!==2)return null;
+ const dot=(a,b)=>a[0]*b[0]+a[1]*b[1],sub=(a,b)=>[a[0]-b[0],a[1]-b[1]];
+ const probes=p.type==='straight'?[[0,0],[p.lengthMm,0],[p.lengthMm,p.widthMm],[0,p.widthMm]]:[0,.5,1].flatMap(t=>[p.innerRadiusMm,p.innerRadiusMm+p.widthMm].map(r=>G.pt(r,rad(p.angleDeg*t))));
+ const original=probes.map(q=>point(q,moving)),motion=pose=>Math.max(...probes.map((q,i)=>dist(original[i],point(q,pose))));
+ const edge=(params,side)=>params.type==='straight'?`M 0 ${side*params.widthMm} H ${params.lengthMm}`:`M 0 ${-(params.innerRadiusMm+side*params.widthMm)} A ${params.innerRadiusMm+side*params.widthMm} ${params.innerRadiusMm+side*params.widthMm} 0 0 1 ${G.pt(params.innerRadiusMm+side*params.widthMm,rad(params.angleDeg))}`;
+ let best=null;
+ function accept(pose,target,targetDef,side,anchored){const distance=motion(pose);if(distance>threshold+1e-6)return null;return{kind:'side',pose,score:distance+Math.abs(wrap(pose.angle-moving.angle))*.3+2,target:{pieceId:target.id,position:point(targetDef.parameters.type==='straight'?[targetDef.parameters.lengthMm/2,side*targetDef.parameters.widthMm]:G.pt(targetDef.parameters.innerRadiusMm+side*targetDef.parameters.widthMm,rad(targetDef.parameters.angleDeg/2)),target)},guide:{d:edge(targetDef.parameters,side),pose:target},anchored};}
+ function choose(fits){const anchored=fits.filter(f=>f?.anchored),usable=anchored.length?anchored:fits.filter(Boolean);for(const fit of usable)if(!best||fit.score<best.score)best=fit;}
+ function overlap(a,b){const aa=direction(-90,a),bb=direction(-90,b),as=(a.flip?-1:1)*p.angleDeg,bs=(b.flip?-1:1)*defs[b.definitionId].parameters.angleDeg,lo=aa+Math.min(0,as),hi=lo+Math.abs(as),bl=bb+Math.min(0,bs);return Math.max(...[-360,0,360].map(k=>Math.min(hi,bl+Math.abs(bs)+k)-Math.max(lo,bl+k)));}
+ for(const target of items){
+  if(target.id===moving.id)continue;const td=defs[target.definitionId],q=td.parameters;if(td.family!==def.family||q.type!==p.type||td.geometry.connectors.length!==2)continue;
+  if(p.type==='curve'){
+   if(dist([moving.x,moving.y],[target.x,target.y])>threshold+1e-6)continue;
+   for(const ms of[0,1])for(const ts of[0,1]){
+    if(ms===ts||Math.abs(p.innerRadiusMm+ms*p.widthMm-q.innerRadiusMm-ts*q.widthMm)>.01)continue;
+    const centered={...moving,x:target.x,y:target.y},fits=[];
+    if(overlap(centered,target)>Math.min(p.angleDeg,q.angleDeg)*.05)fits.push(accept(centered,target,td,ts,false));
+    for(const mi of[0,1])for(const ti of[0,1]){
+     const turn=wrap(direction(-90+ti*q.angleDeg,target)-direction(-90+mi*p.angleDeg,moving));if(Math.abs(turn)>15)continue;
+     const aligned={...centered,angle:wrap(moving.angle+turn)},rotationMotion=Math.max(...probes.map(v=>dist(point(v,centered),point(v,aligned))));
+     if(rotationMotion>threshold/2||overlap(aligned,target)<=Math.min(p.angleDeg,q.angleDeg)*.05)continue;
+     fits.push(accept(aligned,target,td,ts,true));
+    }
+    choose(fits);
+   }
+  }else{
+   const turn=[wrap(target.angle-moving.angle),wrap(target.angle+180-moving.angle)].sort((a,b)=>Math.abs(a)-Math.abs(b))[0];if(Math.abs(turn)>15)continue;
+   const pivot=[p.lengthMm/2,p.widthMm/2],center=point(pivot,moving),u=[Math.cos(rad(target.angle)),Math.sin(rad(target.angle))],delta=sub(center,point([q.lengthMm/2,q.widthMm/2],target));
+   if(Math.abs(dot(delta,u))>(p.lengthMm+q.lengthMm)/2+threshold||Math.abs(dot(delta,[-u[1],u[0]]))>(p.widthMm+q.widthMm)/2+threshold)continue;
+   const rotated={...moving,x:0,y:0,angle:wrap(moving.angle+turn)},rc=point(pivot,rotated);rotated.x=center[0]-rc[0];rotated.y=center[1]-rc[1];
+   const forward=dot([Math.cos(rad(rotated.angle)),Math.sin(rad(rotated.angle))],u);
+   for(const ms of[0,1])for(const ts of[0,1]){
+    const mn=point([0,ms?1:-1],{...rotated,x:0,y:0}),tn=point([0,ts?1:-1],{...target,x:0,y:0});if(dot(mn,tn)>-.999999)continue;
+    const ma=point([0,ms*p.widthMm],rotated),ta=point([0,ts*q.widthMm],target),normal=dot(sub(ta,ma),tn);if(Math.abs(normal)>threshold)continue;
+    const projected={...rotated,x:rotated.x+normal*tn[0],y:rotated.y+normal*tn[1]},start=dot(sub(point([0,ms*p.widthMm],projected),ta),u),end=start+forward*p.lengthMm;
+    const hasOverlap=shift=>Math.min(Math.max(start,end)+shift,q.lengthMm)-Math.max(Math.min(start,end)+shift,0)>Math.min(p.lengthMm,q.lengthMm)*.05;
+    const fits=[];if(hasOverlap(0))fits.push(accept(projected,target,td,ts,false));
+    for(const a of[start,end])for(const b of[0,q.lengthMm]){const shift=b-a;if(Math.abs(shift)>threshold/2||!hasOverlap(shift))continue;fits.push(accept({...projected,x:projected.x+shift*u[0],y:projected.y+shift*u[1]},target,td,ts,true));}
+    choose(fits);
+   }
+  }
+ }
+ return best;
+}
+function snap(moving,items,defs,threshold=60,portIndices=null,openTargets=null){const remaining=items.filter(p=>p.id!==moving.id),targets=openTargets||connections(remaining,defs).open;let best=sideSnap(moving,remaining,defs,threshold);for(const a of ports(moving,defs).filter(p=>!portIndices||portIndices.includes(p.index)))for(const b of targets){if(!compatible(a,b))continue;const distance=dist(a.position,b.position),turn=Math.abs(wrap(b.angle+180-a.angle));if(distance<=threshold&&turn<=65){const joined=join(moving,defs[moving.definitionId],a.index,b),jp=ports(joined,defs)[a.index];if(!slotsMatch(jp,b,.1))continue;const score=distance+turn*.3;if(!best||score<best.score)best={kind:'end',pose:joined,score,target:b};}}return best;}
 function outline(def){const p=def.parameters;if(p.type==='reference'||p.type.startsWith('straight'))return[[0,0],[p.lengthMm,0],[p.lengthMm,p.widthMm],[0,p.widthMm]];const n=Math.max(2,Math.ceil(p.angleDeg/1));return Array.from({length:n+1},(_,i)=>G.pt(p.innerRadiusMm+p.widthMm,rad(p.angleDeg*i/n))).concat(Array.from({length:n+1},(_,i)=>G.pt(p.innerRadiusMm,rad(p.angleDeg*(1-i/n)))));}
 function bounds(items,defs){if(!items.length)return[0,0,1000,700];const ps=items.flatMap(p=>outline(defs[p.definitionId]).map(v=>point(v,p)));let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;for(const[x,y]of ps){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}return[minX,minY,maxX-minX,maxY-minY];}
 // Apply the same rigid motion (including reflection) to an entire selection.
@@ -195,5 +242,5 @@ function worldSegments(route,items,defs){
  });
 }
 
-return{validateSpaceGuide,resizeSpaceGuide,moveSpaceGuide,surfaceMarkings,arrange,alternateRoutes,planBorders,mergeDefinitions,shortcut,animationLoop,worldSegments,slotsMatch,G,rad,deg,dist,wrap,uid,point,direction,pose,ports,compatible,join,connections,snap,outline,bounds,repositionGroup,inSelectionBox,routes,at,presets,speedPlan,validateDefinition,validateLayout};
+return{validateSpaceGuide,resizeSpaceGuide,moveSpaceGuide,surfaceMarkings,arrange,alternateRoutes,planBorders,mergeDefinitions,shortcut,animationLoop,worldSegments,slotsMatch,G,rad,deg,dist,wrap,uid,point,direction,pose,ports,compatible,join,connections,sideSnap,snap,outline,bounds,repositionGroup,inSelectionBox,routes,at,presets,speedPlan,validateDefinition,validateLayout};
 });

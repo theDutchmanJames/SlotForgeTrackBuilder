@@ -1,4 +1,4 @@
-SlotForge Track Builder — editor iteration (v0.3.2)
+SlotForge Track Builder — editor iteration (v0.3.3)
 29 October 2026
 
 OPEN THE APP
@@ -329,3 +329,13 @@ awaited even when reusing a running app. Startup errors are written to
 data/launcher.log and shown in a Windows error dialog. If the browser cannot
 open, the helper stays available and the dialog gives its local address.
 Reinstalling updates the desktop shortcut and keeps data/ unchanged.
+
+MAGNETIC ROAD SIDES — v0.3.3
+With Snap on, drag a straight beside another compatible straight or nest
+matching curve radii. A cyan dashed edge shows side alignment during dragging.
+Nearby seams align too; shorter pieces can also share part of a longer edge.
+Groups move as a unit, including closed circuits without free end connectors.
+Hold Shift while dragging to bypass snapping. Curves must share the same road
+edge radius; the app never stretches a piece to force it to fit. Reference
+pictures and borders do not act as magnetic road sides. Side alignment does
+not create electrical connections or change the calculated lane geometry.
