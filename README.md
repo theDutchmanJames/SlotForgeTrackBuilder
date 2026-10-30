@@ -44,7 +44,7 @@ Windows installation has been tested. **The macOS and Linux installers are avail
 
 If another window has updated a saved track, the app asks you to reopen it or save your edits as a new copy. It also warns before closing when changes have not been saved. Use **Storage → Download workspace backup** if saving fails.
 
-Click **Storage** at the bottom of the app to see where your files live or download a complete workspace backup. Keep a backup on another disk or computer for protection against device loss.
+The **Storage** button is in the **bottom-right corner of the app**, in the footer. It reads **Storage: disk** or **Storage: browser**. Click it to see where your files live or choose **Download workspace backup**. Keep a backup on another disk or computer for protection against device loss.
 
 **Use the installed launcher for these disk saves.** Opening the `.html` file directly uses browser storage instead. The footer tells you which mode is active: **Storage: disk** or **Storage: browser**.
 
@@ -112,7 +112,12 @@ Click any screenshot to view it at full size.
 
 ## Help and updates
 
-To update, choose **Storage → Stop local app** in the old copy and close that tab. Download the latest release and run its installer again. Your saved data folder is kept.
+To update an installed copy:
+
+1. In the old app, click **Storage: disk** in the **bottom-right corner**, then choose **Stop local app** and close that tab.
+2. Download the latest release and run its installer again. Your saved data folder is kept.
+
+If the button reads **Storage: browser**, you opened the HTML directly. There is no local helper to stop, so skip that step. If saving has failed, choose **Download workspace backup** in the Storage panel before reloading or updating.
 
 [Report a problem or suggest a feature](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) · [More setup details](START-HERE.txt)
 
