@@ -10,6 +10,19 @@ Turn the space you have into the circuit you want. **SlotForge Track Builder** i
 
 [Download the complete app](downloads/SlotForge-Track-Builder-v0.2.5-complete.zip) · [Getting started](START-HERE.txt) · [Detailed notes](README.txt) · [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming)
 
+## Screenshots
+
+**Track Builder** — plan a circuit with a locked space guide, lane lengths and a start/finish line.
+
+[![Track Builder showing a complete circuit inside a locked available-space guide](docs/screenshots/track-builder.png)](docs/screenshots/track-builder.png)
+
+| Track packs | Custom-piece editor | Export |
+| --- | --- | --- |
+| [![Built-in track packs and the custom pack editor](docs/screenshots/track-packs.png)](docs/screenshots/track-packs.png) | [![Custom curve editor with dimensions and matching radius families](docs/screenshots/custom-piece.png)](docs/screenshots/custom-piece.png) | [![Export page with track selection and PDF, SlotForge Timing, PNG and CSV options](docs/screenshots/export.png)](docs/screenshots/export.png) |
+| Browse branded packs or create your own. | Define dimensions, lane spacing and matching curves. | Choose a track and the format you need. |
+
+Click any screenshot to view it at full size.
+
 ## From an idea to a physical layout
 
 - **Build by feel.** Drag, snap, rotate, reflect and duplicate pieces. Select several at once, arrange their drawing order and undo changes.
