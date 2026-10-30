@@ -11,7 +11,9 @@ from file:// as well as localhost. No font modifications or name changes.
 
 app/vendor/SOURCES.json records source URLs and SHA-256 hashes.
 These libraries are bundled; users do not need npm or Internet access to export.
-The notices above apply to those dependencies, not a new license for the app.
+Those dependency licenses remain unchanged. The first-party application uses
+the SlotForge Source-Available License 1.0 in LICENSE. Its no-sales/paid-access
+restriction does not relicense or restrict the third-party components themselves.
 
 Private installer runtime: Node.js v24.22.2
 Official release URLs and SHA-256 hashes: installer/node-runtimes.json.

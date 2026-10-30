@@ -9,7 +9,7 @@ root = Path(__file__).resolve().parents[1]
 version = re.search(r"VERSION='([^']+)'", (root / 'app/integration.js').read_text(encoding='utf-8')).group(1)
 files = [root / name for name in (
     'SlotForge Track Builder.html', 'index.html', 'START-HERE.txt',
-    'Create Windows shortcut.vbs', 'README.txt', 'PROJECT-PLAN.txt', 'THIRD-PARTY-NOTICES.txt', 'Install Windows.cmd', 'Install macOS.command', 'Install Linux.sh')]
+    'Create Windows shortcut.vbs', 'README.txt', 'PROJECT-PLAN.txt', 'LICENSE', 'THIRD-PARTY-NOTICES.txt', 'Install Windows.cmd', 'Install macOS.command', 'Install Linux.sh')]
 for folder in ('app', 'designs', 'track-packs', 'integration', 'installer'):
     for file in (root / folder).rglob('*'):
         if not file.is_file() or any(p.startswith('.') or p == '__pycache__' for p in file.relative_to(root).parts):

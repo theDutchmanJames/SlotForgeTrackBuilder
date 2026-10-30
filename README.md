@@ -122,6 +122,17 @@ If the button reads **Storage: browser**, you opened the HTML directly. There is
 
 [Report a problem or suggest a feature](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) · [More setup details](START-HERE.txt)
 
+## License
+
+SlotForge Track Builder uses the [SlotForge Source-Available License 1.0](LICENSE).
+
+- **Free to use**, including personal, club and internal business use.
+- **Free to study, modify and share**, with the license and notices retained.
+- **Selling copies or charging for access is prohibited**, including modified or hosted versions, unless the relevant copyright holders give separate written permission.
+- **Your own track designs, custom packs and exports remain yours to use commercially.**
+
+These are custom **source-available** terms, rather than an OSI-approved open-source license. GitHub may display the license as **Other**. Bundled libraries, fonts and the Node.js runtime keep their [own licenses](THIRD-PARTY-NOTICES.txt). The full license controls over this summary.
+
 <details>
 <summary>For developers and technical details</summary>
 

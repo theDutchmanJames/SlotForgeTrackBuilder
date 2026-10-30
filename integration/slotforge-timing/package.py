@@ -5,7 +5,7 @@ import zipfile
 root = Path(__file__).resolve().parents[2]
 dist = root / 'dist'
 dist.mkdir(exist_ok=True)
-source = [root / name for name in ('index.html', 'README.txt', 'PROJECT-PLAN.txt')]
+source = [root / name for name in ('index.html', 'README.txt', 'PROJECT-PLAN.txt', 'LICENSE', 'THIRD-PARTY-NOTICES.txt')]
 for folder in ('app', 'designs', 'track-packs', 'integration'):
     for file in (root / folder).rglob('*'):
         if not file.is_file() or file.suffix.lower() in ('.zip', '.pdf', '.pyc'):
@@ -14,6 +14,7 @@ for folder in ('app', 'designs', 'track-packs', 'integration'):
             continue
         source.append(file)
 handoff = [root / name for name in (
+    'LICENSE', 'THIRD-PARTY-NOTICES.txt',
     'app/integration.js', 'app/core.js', 'app/geometry.js',
     'app/integration.test.cjs', 'app/integration-fixtures.cjs',
     'app/catalogue.js', 'app/custom-packs.js', 'app/editor-features.test.cjs',

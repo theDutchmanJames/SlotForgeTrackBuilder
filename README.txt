@@ -1,5 +1,14 @@
 SlotForge Track Builder — editor iteration (v0.3.6)
 
+LICENSE
+See LICENSE for the SlotForge Source-Available License 1.0. Personal, club and
+internal business use are free. You may study, modify and share the app with
+its license and notices. Selling copies or charging for access, including
+modified or hosted versions, needs separate written permission. Your own
+track designs, custom packs and normal exports may be used commercially.
+These are source-available terms, not an OSI-approved open-source license.
+Bundled third-party components retain their own licenses and notices.
+
 REFERENCE EDITOR REPAIRS - v0.3.6
 Changing a reference road's planning shape reshapes its artwork so the pictured
 ends stay aligned with the magnets. Cancelling an image load cannot place a
