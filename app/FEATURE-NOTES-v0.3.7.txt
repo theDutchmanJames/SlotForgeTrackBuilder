@@ -1,0 +1,28 @@
+SlotForge Track Builder v0.3.7 - Light and dark themes
+30 October 2026
+
+The top-right header contains a labelled Light / Dark switch on the editor,
+Track Pack Library and all ten manufacturer galleries. Light mode matches the
+SlotForge Timing palette: warm grey backgrounds, white panels, dark text and
+red accents. Fields, dialogs, thumbnails, status badges, grid and space-guide
+colours adapt to the theme. Physical piece artwork keeps its original colours.
+
+Theme selection applies before drawing the page, is remembered in browser
+storage and follows storage changes from other windows on the same origin.
+Direct HTML links carry the preference between package pages because browsers
+may separate file:// storage by file. External links and downloads are unchanged.
+Theme controls still work when browser storage is unavailable.
+
+The generated catalogue header and page generators retain the controls and
+theme assets when rebuilt. The complete distribution includes the project
+LICENSE introduced after v0.3.6; third-party licenses remain unchanged.
+
+Verification: all 170 existing automated tests and 15 Timing fixtures pass.
+Browser checks through localhost verified switching both ways, persistence on
+reload, navigation through the pack library and Carrera gallery, and custom
+piece editing. All 12 editor/catalogue pages have valid shared asset paths
+and exactly one pair of header controls. Direct file navigation was not
+visually tested because the review browser allows only HTTP and HTTPS URLs.
+
+Layout envelope v1 and Timing contract 1.0.0-draft.2 are unchanged.
+Native macOS/Linux installation remains to be tested on those operating systems.

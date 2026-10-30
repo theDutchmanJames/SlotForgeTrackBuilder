@@ -1,4 +1,10 @@
-SlotForge Track Builder — editor iteration (v0.3.6)
+SlotForge Track Builder — editor iteration (v0.3.7)
+
+APPEARANCE
+Use the Light / Dark switch in the top-right corner of the header.
+Light matches SlotForge Timing's warm grey backgrounds, white panels and red
+accent. Your choice is remembered in this browser, including when browsing
+Track Pack galleries. Track artwork keeps its original physical colours.
 
 LICENSE
 See LICENSE for the SlotForge Source-Available License 1.0. Personal, club and

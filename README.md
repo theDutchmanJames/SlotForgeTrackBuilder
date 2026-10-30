@@ -8,9 +8,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.6 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.7 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.6/SlotForge-Track-Builder-v0.3.6-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.6)
+**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.7/SlotForge-Track-Builder-v0.3.7-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.7)
 
 ## Install and start
 
@@ -28,6 +28,8 @@ Create your own pieces with custom dimensions and **automatically generated matc
 Setup needs an internet connection the first time. It installs the small local helper automatically—you do not need to install Node.js or other developer tools yourself. After setup, the app works offline.
 
 **Next time:** use the **SlotForge Track Builder** desktop shortcut on Windows. On macOS/Linux, use **Start SlotForge** in the installed folder; the installer tells you where that folder is.
+
+**Appearance:** use the **Light / Dark** switch in the top-right corner. Light matches SlotForge Timing's warm grey and white style. Your choice is remembered in this browser and applies to the builder, library, piece editor and Track Pack galleries.
 
 If the browser does not open, Windows shows an error dialog with the local address. Launch details are saved in `data/launcher.log` inside your installed folder. macOS/Linux launchers print that location in the terminal. Run the latest installer again to repair an older shortcut; your saved data is kept.
 

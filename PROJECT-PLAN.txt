@@ -160,3 +160,11 @@ markings and aligned ends. Cancel stale image requests before any placement or
 save. Keep image-free references selectable and editable with a solid fallback.
 Guard old requests from changing a newer dialog's state. Added 15 regressions;
 layout v1 and Timing draft.2 are unchanged.
+
+0.3.7 - light and dark themes
+Prominent header switch on the builder and every Track Pack gallery. Match
+SlotForge Timing's light palette throughout controls, dialogs, canvas and
+status labels while keeping manufacturer artwork intact. Remember the browser
+preference before the page is drawn; carry it across direct HTML page links.
+All 170 existing tests and 15 Timing fixtures pass. Layout and Timing versions
+are unchanged. The complete package now includes the project LICENSE.

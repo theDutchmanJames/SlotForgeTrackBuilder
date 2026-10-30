@@ -1,5 +1,5 @@
 {
-  "version": "0.3.6",
+  "version": "0.3.7",
   "date": "2026-10-30",
   "automated": {
     "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
@@ -40,7 +40,7 @@
       "Strict original units and integration-contract metadata validation; both public entry points and explicit-state bypass regression",
       "Circuit inside/outside border placement on straights, mirrored and reversed pieces, open chains and separate loops",
       "Named custom pack migration, ownership, selected export, atomic import and library limits",
-      "R1\u2013R8 adjacent curve edge radii and persistent family settings",
+      "R1–R8 adjacent curve edge radii and persistent family settings",
       "All four buildable starting-grid variants retain artwork in regenerated pictures",
       "Reference picture serialization, transforms, image validation, inventory isolation, missing connectors and stable road route IDs",
       "Alphabetical catalogue folders, natural radius ordering and descending straight lengths, without modifying catalogue definitions",
@@ -400,5 +400,24 @@
     ],
     "screenshot": "reference-repairs-preview.png",
     "contractUnchanged": true
+  },
+  "themes": {
+    "version": "0.3.7",
+    "notes": "FEATURE-NOTES-v0.3.7.txt",
+    "timingStyleCommit": "3719f61b8918491c58e385b4c19778df68b2c71f",
+    "browserVerified": [
+      "Light and Dark switch changes the builder appearance",
+      "Selected theme survives reload",
+      "Theme retained in Track Pack Library and Carrera gallery",
+      "Custom-piece dialog uses readable light-theme fields and preview"
+    ],
+    "staticVerified": [
+      "All 12 editor/catalogue pages include shared header controls and valid theme assets",
+      "Theme injection is repeatable without duplicates"
+    ],
+    "limitations": [
+      "Visual checks used localhost; direct file navigation was not visually tested",
+      "Native macOS/Linux installation remains untested"
+    ]
   }
 }
