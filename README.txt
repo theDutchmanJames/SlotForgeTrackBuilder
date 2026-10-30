@@ -1,4 +1,4 @@
-SlotForge Track Builder — editor iteration (v0.2.5)
+SlotForge Track Builder — editor iteration (v0.2.6)
 29 October 2026
 
 OPEN THE APP
@@ -45,9 +45,9 @@ FIRST ITERATION
   top speed, acceleration, braking, corner preference and visual drift.
   Playback rate is independent of the saved profile. Up to 8 lanes can be
   modelled, but only the first two closed routes are animated.
-- Print / PDF shows a white report with track name, layout, dimensions,
-  per-lane totals and inventory. Choose Print / Save as PDF in that preview,
-  then your browser's Save as PDF destination. No external PDF service.
+- Export to PDF generates a white report with track name, layout, dimensions,
+  per-lane totals and inventory. Choose Portrait or Landscape, then Download PDF.
+  It works offline without the browser print dialog or an external PDF service.
 
 KEYBOARD
 R / Shift+R     Rotate selected by +/-15 degrees
@@ -82,8 +82,8 @@ primitives, not shop multipacks. Unverified assemblies cannot be placed.
 Preview is illustrative, not a vehicle physics model or lap-time prediction.
 Layout limit: 500 placed pieces. Custom catalogue limit: 500 definitions.
 Import size limit: 5 MB. Unknown/out-of-range parameters are rejected.
-Print and file-download support depend on the browser. Use a normal desktop
-browser if an embedded browser does not expose its print/download dialogs.
+File-download support depends on the browser. Use a normal desktop browser if
+an embedded browser does not expose downloaded files.
 
 SLOTFORGE TIMING
 Layout exports include a draft preparedGeometry section: transformed surface
@@ -265,3 +265,18 @@ Optional JSON metadata: workspace.spaceGuide has x, y, lengthMm, widthMm and
 locked. This is separate from physical design geometry and does not change the
 integration contract (1.0.0-draft.2), layout envelope (v1), design revision or
 lane mapping. Older readers may ignore it; updated Builder preserves it.
+
+DIRECT PDF EXPORT — v0.2.6 (30 October 2026)
+Export to PDF now generates the document inside the app. Choose A4 portrait
+(default) or landscape, then Download PDF. The browser print dialog is no
+longer involved; its scaling, margins and remembered printer settings cannot
+alter the PDF. Both the Builder button and the Export page use this flow.
+The report has a clear title, counts, footprint, high-resolution pale track
+picture, per-lane lengths when available, and a readable parts inventory.
+Tables paginate with repeating headings; footers show page numbers. A short
+example circuit fits on one portrait page. Noto Sans fonts are embedded for
+common accented, Greek and Cyrillic text. The report keeps reference-only
+lengths unknown and records nominal/measurement and lane-changer limitations.
+PDF generation is local and offline. jsPDF 4.2.1 (MIT) and Noto Sans (OFL 1.1)
+are bundled in app/vendor/ with their licenses and source hashes; see
+THIRD-PARTY-NOTICES.txt. No new timing contract or layout envelope version.

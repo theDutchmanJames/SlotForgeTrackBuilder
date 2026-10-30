@@ -1,0 +1,2 @@
+# Preserve upstream bytes and formatting in bundled third-party files.
+app/vendor/* -text -whitespace

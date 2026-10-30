@@ -1,4 +1,4 @@
-SLOTFORGE TRACK BUILDER — COMPLETE SHARE PACKAGE v0.2.5
+SLOTFORGE TRACK BUILDER — COMPLETE SHARE PACKAGE v0.2.6
 30 October 2026
 
 GET STARTED
@@ -33,6 +33,10 @@ The server is local to this computer. Stop it with Ctrl+C.
 If port 8173 is already running an older copy, stop that server first or continue
 using it deliberately; do not assume it serves this extracted folder.
 
+PDF REPORTS
+Export to PDF generates the file directly in the app. Choose portrait or
+landscape, then Download PDF. There is no browser print dialog or online service.
+
 WHAT'S INCLUDED
 - Complete editable application source and local server.
 - Six supplied track packs and their matching artwork/reference material.
@@ -42,12 +46,12 @@ WHAT'S INCLUDED
 - README.txt for detailed features and limits; app/validation.json for checks.
 
 SOURCE CHECKS (CURRENT NODE.JS; NO NPM INSTALL)
-  node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/server.test.cjs
+  node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs
   node integration/slotforge-timing/check-fixtures.cjs
-Expected: 86 source tests and 15 integration fixtures pass.
+Expected: 91 source tests and 15 integration fixtures pass.
 
 REBUILD THIS COMPLETE ZIP (OPTIONAL; PYTHON 3)
   python app/package-share.py
-Creates dist/SlotForge-Track-Builder-v0.2.5-complete.zip and its SHA-256 checksum.
+Creates dist/SlotForge-Track-Builder-v0.2.6-complete.zip and its SHA-256 checksum.
 Older integration handoff notes describe their original releases. The current
-Builder is v0.2.5; the layout envelope is v1 and integration contract is draft.2.
+Builder is v0.2.6; the layout envelope is v1 and integration contract is draft.2.

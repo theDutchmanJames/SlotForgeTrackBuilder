@@ -1,0 +1,20 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),P=require('./pdf-report.js'),D=require('./track-drawing.js'),I=require('./integration.js');
+const fixture=()=>JSON.parse(fs.readFileSync(path.join(__dirname,'../integration/slotforge-timing/v2-examples/closed-with-reference.slotforge.json'),'utf8'));
+const diagram={width:2,height:2,data:'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAACAAIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigD//2Q=='};
+function media(result){const text=Buffer.from(result.bytes).toString('latin1'),m=text.match(/\/MediaBox \[0 0 ([\d.]+) ([\d.]+)\]/);assert.ok(m);return[Number(m[1]),Number(m[2])];}
+test('PDF export defaults to portrait A4, with an explicit landscape option',()=>{
+ const raw=fixture(),before=structuredClone(raw),portrait=P.create(raw,diagram),landscape=P.create(raw,diagram,{orientation:'landscape'});const a=media(portrait),b=media(landscape);assert.ok(a[0]<a[1]);assert.ok(b[0]>b[1]);assert.ok(Math.abs(a[0]-595.28)<.1);assert.ok(Math.abs(a[1]-841.89)<.1);assert.equal(portrait.orientation,'portrait');assert.deepEqual(raw,before);assert.equal(Buffer.from(portrait.bytes).subarray(0,5).toString(),'%PDF-');
+});
+test('Long parts lists paginate instead of shrinking to unreadable text',()=>{
+ const raw=fixture(),source=raw.definitions.find(d=>d.parameters.type==='straight');raw.definitions=[];raw.pieces=[];for(let i=0;i<100;i++){const id='pdf-'+i;raw.definitions.push({...structuredClone(source),id,name:'Measured custom section '+i+' with a long descriptive name and a matching track pack',pack:'A club track system with longer names'});raw.pieces.push({id:'placed-'+i,definitionId:id,x:i*400,y:0,angle:0,flip:false});}
+ const out=P.create(raw,diagram);assert.ok(out.pages>=3);assert.ok(out.pages<20);assert.equal((Buffer.from(out.bytes).toString('latin1').match(/\/Type \/Page\b/g)||[]).length,out.pages);
+});
+test('Report accepts accented names and retains source identity without modifying it',()=>{
+ const raw=fixture();raw.title='Circuit José – Nürburgring Ω';raw.definitions[0].name='Courbe extérieure · 45°';const before=structuredClone(raw),out=P.create(raw,diagram);assert.equal(out.title,raw.title);assert.ok(out.bytes.byteLength>10000);assert.deepEqual(raw,before);
+});
+test('PDF boundaries reject missing drawings, empty tracks and unsupported imported units',()=>{
+ const raw=fixture();assert.throws(()=>P.create(raw,diagram,{orientation:'auto'}),/portrait or landscape/);assert.throws(()=>P.create(raw,null),/picture/);assert.throws(()=>P.create(raw,{...diagram,width:NaN}),/picture/);assert.throws(()=>P.create({...raw,pieces:[]},diagram),/Add pieces/);assert.throws(()=>P.create({...raw,units:'inches'},diagram));
+});
+test('Print drawing uses regenerated geometry and ignores the editor-only space guide',()=>{
+ const raw=fixture(),a=D.pdfDiagram(raw);raw.workspace={spaceGuide:{x:-999,y:100,lengthMm:10000,widthMm:10000,locked:true}};assert.deepEqual(D.pdfDiagram(raw),a);assert.ok(Math.max(a.width,a.height)<=2401);assert.match(a.svg,/#f0f0ed/);assert.match(a.svg,/scale\(1/);assert.match(a.svg,/REFERENCE/);assert.doesNotMatch(a.svg,/onload=/);assert.deepEqual(I.prepare(raw).track.lanes,I.prepare(fixture()).track.lanes);
+});

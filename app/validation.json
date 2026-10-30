@@ -1,9 +1,9 @@
 {
-  "version": "0.2.5",
+  "version": "0.2.6",
   "date": "2026-10-30",
   "automated": {
-    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/server.test.cjs",
-    "passed": 86,
+    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs",
+    "passed": 91,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -47,7 +47,8 @@
       "Every catalogue item retained in exactly one folder",
       "Independent design snapshots preserve profile, timing and references; updates preserve IDs and copies create new IDs",
       "Selected export snapshot isolation, independent totals and inventory, missing/incompatible library rejection, reference and empty exports",
-      "Space guide validation, movement and proportional resizing limits, locked no-ops, layout/library/export persistence, isolation from timing and track metrics"
+      "Space guide validation, movement and proportional resizing limits, locked no-ops, layout/library/export persistence, isolation from timing and track metrics",
+      "Direct PDF A4 orientation, immutable selected source, Unicode embedding, paginated parts tables and printable drawing"
     ]
   },
   "browser": {
@@ -214,5 +215,26 @@
       "Native default-browser launch through Windows shortcut",
       "Shift-drag end to end (proportional maths covered by tests)"
     ]
+  },
+  "editor026": {
+    "browser": "Isolated localhost:8176; user file:// and port8173 workspaces untouched",
+    "verified": [
+      "Builder Export to PDF opens orientation dialog defaulting to Portrait",
+      "Direct PDF generation reports one page for sample circuit without print dialog",
+      "No browser warnings/errors during PDF generation",
+      "Export page selected saved snapshot PDF sample saved while builder retained Working layout",
+      "Saved snapshot landscape PDF generated with its own title"
+    ],
+    "documentChecks": [
+      "Rendered portrait report inspected: title, pale drawing, lane lengths, inventory and footer on one A4 page",
+      "100-item long-name inventory spans nine pages with repeating headings and readable whole rows",
+      "A4 media boxes verified in portrait and landscape",
+      "Accented title and Omega character extracted correctly with pypdf"
+    ],
+    "notVerified": [
+      "CJK/emoji font coverage; bundled font is Noto Sans Latin/Greek/Cyrillic",
+      "Native download destination"
+    ],
+    "sample": "../output/pdf/SlotForge-track-report-example.pdf"
   }
 }

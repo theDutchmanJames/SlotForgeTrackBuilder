@@ -1,0 +1,14 @@
+SlotForge Track Builder — bundled PDF dependencies
+
+jsPDF 4.2.1: https://github.com/parallax/jsPDF/tree/v4.2.1
+License: MIT. Full notice: app/vendor/jspdf-LICENSE.txt.
+Distributed file: app/vendor/jspdf.umd.min.js (unmodified official UMD bundle).
+
+Noto Sans Regular and Bold: https://github.com/notofonts/noto-fonts
+License: SIL Open Font License 1.1. Full notice: app/vendor/NotoSans-OFL.txt.
+The unmodified TTF files are encoded in app/vendor/pdf-fonts.js for offline use
+from file:// as well as localhost. No font modifications or name changes.
+
+app/vendor/SOURCES.json records source URLs and SHA-256 hashes.
+These libraries are bundled; users do not need npm or Internet access to export.
+The notices above apply to those dependencies, not a new license for the app.

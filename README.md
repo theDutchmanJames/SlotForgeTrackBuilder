@@ -8,9 +8,9 @@ Turn the space you have into the circuit you want. **SlotForge Track Builder** i
 
 Go beyond the supplied catalogues: create custom pieces using your own dimensions, lane spacing and colours, with matching icons and track artwork generated automatically from their geometry. Organise them into your own track packs to reuse and share. Built for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming), the Builder exports your track design, slot routes, timing-line settings and tuned car-animation profile in a single `.slotforge.json` file.
 
-**Current version: 0.2.5 · Runs in your browser · No account required**
+**Current version: 0.2.6 · Runs in your browser · No account required**
 
-[Download the complete app](downloads/SlotForge-Track-Builder-v0.2.5-complete.zip) · [Getting started](START-HERE.txt) · [Detailed notes](README.txt) · [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming)
+[Download the complete app](downloads/SlotForge-Track-Builder-v0.2.6-complete.zip) · [Getting started](START-HERE.txt) · [Detailed notes](README.txt) · [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming)
 
 ## Screenshots
 
@@ -50,7 +50,7 @@ Each pack has matching artwork and source notes. Support varies by piece: suppor
 
 ## Get started
 
-1. [Download the complete ZIP](downloads/SlotForge-Track-Builder-v0.2.5-complete.zip) and extract it fully.
+1. [Download the complete ZIP](downloads/SlotForge-Track-Builder-v0.2.6-complete.zip) and extract it fully.
 2. Open **SlotForge Track Builder.html** in a current desktop browser.
 3. Choose a track pack and start placing pieces, or load the example circuit.
 
@@ -79,11 +79,11 @@ Receiving-side support is coordinated with [SlotForge Timing](https://github.com
 
 ## Current boundaries
 
-This is an early desktop-browser iteration. Dimensions are nominal or user-entered planning values. The editor does not certify physical fit or detect collisions, bridges or vertical clearance. The space guide is a visual aid. Preview and lane calculations follow a single supported closed circuit using straight-through lane-changer routes; digital switching and pit-route simulation are outside the current scope. PDF export uses the report preview followed by the browser's **Print / Save as PDF** command.
+This is an early desktop-browser iteration. Dimensions are nominal or user-entered planning values. The editor does not certify physical fit or detect collisions, bridges or vertical clearance. The space guide is a visual aid. Preview and lane calculations follow a single supported closed circuit using straight-through lane-changer routes; digital switching and pit-route simulation are outside the current scope. PDF export generates the file directly in the app, with portrait A4 as the default and an optional landscape layout.
 
 ## Work on the project
 
-The app uses plain HTML, CSS and JavaScript, with no external runtime package dependency.
+The app uses plain HTML, CSS and JavaScript. PDF generation uses bundled jsPDF and Noto Sans fonts, so it works offline without an npm installation or online PDF service. See [third-party notices](THIRD-PARTY-NOTICES.txt).
 
 | Folder | Contents |
 | --- | --- |
@@ -100,6 +100,6 @@ node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs
 node integration/slotforge-timing/check-fixtures.cjs
 ```
 
-The v0.2.5 package was checked with **86 passing source tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
+The v0.2.6 package was checked with **91 passing source tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
 
 Found a rough edge or have an idea for a new piece? [Open an issue](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) with the track system, piece details and a small example layout where possible.

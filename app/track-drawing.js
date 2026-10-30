@@ -1,0 +1,12 @@
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./core.js'),require('./track-exports.js'));else root.TrackDrawing=factory(root.Forge,root.TrackExports);})(typeof globalThis!=='undefined'?globalThis:this,function(F,XM){
+'use strict';
+const G=F.G,NS='http://www.w3.org/2000/svg';
+function transform(p){return`translate(${p.x} ${p.y}) rotate(${p.angle}) scale(1 ${p.flip?-1:1})`;}
+function drawBody(d,print=false){const g=d.geometry,p=d.parameters;if(p.type==='reference')return F.surfaceMarkings(d,print);const border=p.type.endsWith('border');let body=G.path(g.outlineSvgPath,print?'#f0f0ed':border?(d.family.includes('scalextric')?'#b69d70':d.family.includes('scaleauto')?'#868d90':'#373d43'):d.color,print?'#444':'#858d97',.8);if(border){if(d.family.includes('carrera')){const curb=Math.min(24,p.widthMm),half=curb/2,kr=p.type.startsWith('curve')?(p.side==='outer'?p.innerRadiusMm+half:p.innerRadiusMm+p.widthMm-half):0;const line=p.type.startsWith('straight')?`M 0 ${p.side==='outer'?half:p.widthMm-half} H ${p.lengthMm}`:`M 0 ${-kr} A ${kr} ${kr} 0 0 1 ${G.pt(kr,F.rad(p.angleDeg))}`;body+=G.path(line,'none',print?'#ccc':'#ebe7db',curb)+G.path(line,'none',print?'#888':'#d63a40',curb,'stroke-dasharray="24 24"');}return body;}
+ body+=F.surfaceMarkings(d,print);
+ if(d.family.includes('carrera')&&p.laneCount===2){const r=p.innerRadiusMm+p.widthMm/2,line=p.type==='straight'?`M 0 ${p.widthMm/2} H ${p.lengthMm}`:`M 0 ${-r} A ${r} ${r} 0 0 1 ${G.pt(r,F.rad(p.angleDeg))}`;body+=G.path(line,'none',print?'#888':'#dadbd3',2,'stroke-dasharray="20 18"');}
+ for(const l of [...g.lanePaths,...(g.alternateLanePaths||[]).map(route=>({d:route.switchSvgPath}))])body+=G.path(l.d,'none',print?'#bbb':'#aeb5b7',8)+G.path(l.d,'none',print?'#333':'#14181d',2.8);return body;
+}
+function pdfDiagram(raw){const model=XM.build(raw),b=model.summary.bounds,limit=2400,pad=30,scale=(limit-pad*2)/Math.max(b[2],b[3],1),width=Math.max(1,Math.ceil(b[2]*scale+pad*2)),height=Math.max(1,Math.ceil(b[3]*scale+pad*2));const scene=model.pieces.map(p=>`<g transform="${transform(p)}">${drawBody(model.definitions[p.definitionId],true)}</g>`).join('');return{width,height,svg:`<svg xmlns="${NS}" width="${width}" height="${height}" viewBox="${b[0]-pad/scale} ${b[1]-pad/scale} ${width/scale} ${height/scale}">${scene}</svg>`};}
+return{body:drawBody,pdfDiagram};
+});

@@ -19,3 +19,7 @@ desktop.ini
 /app/*.png
 !/app/icon.png
 /app/package-files.json
+
+# Generated document checks
+/tmp/
+/output/
