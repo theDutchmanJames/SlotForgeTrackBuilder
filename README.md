@@ -6,6 +6,8 @@
 
 Turn the space you have into the circuit you want. **SlotForge Track Builder** is a visual slot-car track planner that combines physical piece geometry with a flexible drag-and-snap editor. Plan your next layout, explore a live preview, and take a clear parts list to the real build.
 
+Go beyond the supplied catalogues: create custom pieces using your own dimensions, lane spacing and colours, with matching icons and track artwork generated automatically from their geometry. Organise them into your own track packs to reuse and share. Built for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming), the Builder exports your track design, slot routes, timing-line settings and tuned car-animation profile in a single `.slotforge.json` file.
+
 **Current version: 0.2.5 · Runs in your browser · No account required**
 
 [Download the complete app](downloads/SlotForge-Track-Builder-v0.2.5-complete.zip) · [Getting started](START-HERE.txt) · [Detailed notes](README.txt) · [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming)
