@@ -1,0 +1,436 @@
+{
+  "status": "research-and-visual-draft",
+  "date": "2026-10-29",
+  "notInstallable": true,
+  "units": "mm",
+  "sourceUrls": {
+    "style": "https://github.com/theDutchmanJames/SlotForgeTiming/blob/main/renderer/styles.css",
+    "tabs": "https://github.com/theDutchmanJames/SlotForgeTiming/blob/main/renderer/tabstyle.css",
+    "straight": "https://carrera-toys.com/en-eu/products/20020509-standard-straights-4",
+    "curve": "https://carrera-toys.com/en-eu/products/20020571-curve-1-60-3",
+    "catalogue": "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf",
+    "endcaps": "https://cataloguejouets.com/carrera-france-2022/catalogue-carrera-france-2022.pdf",
+    "digital": "https://cataloguejouets.com/carrera-france-2020/catalogue-carrera-france-2020.pdf"
+  },
+  "style": {
+    "bg": "#171b21",
+    "panel": "#222831",
+    "ink": "#e8e6e1",
+    "muted": "#98a0ab",
+    "line": "#343b47",
+    "accent": "#e5484d",
+    "font": "Segoe UI",
+    "cardRadiusPx": 8,
+    "buttonRadiusPx": 6,
+    "depth": 0.35,
+    "sourceStylesBlob": "704356ee7bd1da91b7cc3c877dfe3e574dae1bad"
+  },
+  "geometryWarning": "198 mm width, 99 mm spacing/shoulders, 198 mm radius increments, rail and kerb dimensions are provisional drawing parameters; not manufacturer-certified. Catalogue straight lengths may be rounded. No connector detail is certified.",
+  "pieces": [
+    {
+      "id": "carrera-draft-20509",
+      "sku": "20020509",
+      "name": "Standard straight",
+      "type": "straight",
+      "geometry": {
+        "lengthMm": 345,
+        "widthMm": 198,
+        "laneOffsetsMm": [
+          49.5,
+          148.5
+        ]
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "345 mm is a published catalogue length; exact width and lane positions pending verification. Quarter straight must not silently become 86.25 mm.",
+      "asset": "pieces/20509.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20560",
+      "sku": "20020560",
+      "name": "Standard straight border",
+      "type": "straight-border",
+      "geometry": {
+        "lengthMm": 345,
+        "widthMm": 99,
+        "trackSku": "20020509"
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Border width and kerb decoration are provisional. Counts as a separate physical piece.",
+      "asset": "pieces/20560.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20611",
+      "sku": "20020611",
+      "name": "One-third straight",
+      "type": "straight",
+      "geometry": {
+        "lengthMm": 115,
+        "widthMm": 198,
+        "laneOffsetsMm": [
+          49.5,
+          148.5
+        ]
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "115 mm is a published catalogue length; exact width and lane positions pending verification. Quarter straight must not silently become 86.25 mm.",
+      "asset": "pieces/20611.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20588",
+      "sku": "20020588",
+      "name": "One-third straight border",
+      "type": "straight-border",
+      "geometry": {
+        "lengthMm": 115,
+        "widthMm": 99,
+        "trackSku": "20020611"
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Border width and kerb decoration are provisional. Counts as a separate physical piece.",
+      "asset": "pieces/20588.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20612",
+      "sku": "20020612",
+      "name": "Quarter straight",
+      "type": "straight",
+      "geometry": {
+        "lengthMm": 86,
+        "widthMm": 198,
+        "laneOffsetsMm": [
+          49.5,
+          148.5
+        ]
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "86 mm is a published catalogue length; exact width and lane positions pending verification. Quarter straight must not silently become 86.25 mm.",
+      "asset": "pieces/20612.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20589",
+      "sku": "20020589",
+      "name": "Quarter straight border",
+      "type": "straight-border",
+      "geometry": {
+        "lengthMm": 86,
+        "widthMm": 99,
+        "trackSku": "20020612"
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Border width and kerb decoration are provisional. Counts as a separate physical piece.",
+      "asset": "pieces/20589.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20577",
+      "sku": "20020577",
+      "name": "R1 / 30° curve",
+      "type": "curve",
+      "geometry": {
+        "innerRadiusMm": 198,
+        "outerRadiusMm": 396,
+        "angleDeg": 30,
+        "laneRadiiMm": [
+          247.5,
+          346.5
+        ]
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "SKU and angle documented; all radii and lane positions are draft assumptions.",
+      "asset": "pieces/20577.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20590",
+      "sku": "20020590",
+      "name": "R1 / 30° inner border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020577",
+        "side": "inner",
+        "widthMm": 99,
+        "angleDeg": 30
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20590.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20567",
+      "sku": "20020567",
+      "name": "R1 / 30° outer border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020577",
+        "side": "outer",
+        "widthMm": 99,
+        "angleDeg": 30
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20567.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20571",
+      "sku": "20020571",
+      "name": "R1 / 60° curve",
+      "type": "curve",
+      "geometry": {
+        "innerRadiusMm": 198,
+        "outerRadiusMm": 396,
+        "angleDeg": 60,
+        "laneRadiiMm": [
+          247.5,
+          346.5
+        ]
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "SKU and angle documented; all radii and lane positions are draft assumptions.",
+      "asset": "pieces/20571.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20551",
+      "sku": "20020551",
+      "name": "R1 / 60° inner border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020571",
+        "side": "inner",
+        "widthMm": 99,
+        "angleDeg": 60
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20551.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20561",
+      "sku": "20020561",
+      "name": "R1 / 60° outer border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020571",
+        "side": "outer",
+        "widthMm": 99,
+        "angleDeg": 60
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20561.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20572",
+      "sku": "20020572",
+      "name": "R2 / 30° curve",
+      "type": "curve",
+      "geometry": {
+        "innerRadiusMm": 396,
+        "outerRadiusMm": 594,
+        "angleDeg": 30,
+        "laneRadiiMm": [
+          445.5,
+          544.5
+        ]
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "SKU and angle documented; all radii and lane positions are draft assumptions.",
+      "asset": "pieces/20572.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20591",
+      "sku": "20020591",
+      "name": "R2 / 30° inner border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020572",
+        "side": "inner",
+        "widthMm": 99,
+        "angleDeg": 30
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20591.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20562",
+      "sku": "20020562",
+      "name": "R2 / 30° outer border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020572",
+        "side": "outer",
+        "widthMm": 99,
+        "angleDeg": 30
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20562.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20573",
+      "sku": "20020573",
+      "name": "R3 / 30° curve",
+      "type": "curve",
+      "geometry": {
+        "innerRadiusMm": 594,
+        "outerRadiusMm": 792,
+        "angleDeg": 30,
+        "laneRadiiMm": [
+          643.5,
+          742.5
+        ]
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "SKU and angle documented; all radii and lane positions are draft assumptions.",
+      "asset": "pieces/20573.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20592",
+      "sku": "20020592",
+      "name": "R3 / 30° inner border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020573",
+        "side": "inner",
+        "widthMm": 99,
+        "angleDeg": 30
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20592.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20563",
+      "sku": "20020563",
+      "name": "R3 / 30° outer border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020573",
+        "side": "outer",
+        "widthMm": 99,
+        "angleDeg": 30
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20563.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20578",
+      "sku": "20020578",
+      "name": "R4 / 15° curve",
+      "type": "curve",
+      "geometry": {
+        "innerRadiusMm": 792,
+        "outerRadiusMm": 990,
+        "angleDeg": 15,
+        "laneRadiiMm": [
+          841.5,
+          940.5
+        ]
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "SKU and angle documented; all radii and lane positions are draft assumptions.",
+      "asset": "pieces/20578.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20593",
+      "sku": "20020593",
+      "name": "R4 / 15° inner border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020578",
+        "side": "inner",
+        "widthMm": 99,
+        "angleDeg": 15
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20593.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    },
+    {
+      "id": "carrera-draft-20568",
+      "sku": "20020568",
+      "name": "R4 / 15° outer border",
+      "type": "curve-border",
+      "geometry": {
+        "trackSku": "20020578",
+        "side": "outer",
+        "widthMm": 99,
+        "angleDeg": 15
+      },
+      "geometryStatus": "provisional-not-for-build-validation",
+      "notes": "Compatible SKU documented. Exact outline, width, kerb pattern and retaining features require verification.",
+      "asset": "pieces/20568.svg",
+      "sources": [
+        "https://cataloguejouets.com/carrera-france-2021/catalogue-carrera-france-2021.pdf"
+      ]
+    }
+  ],
+  "pending": [
+    "20598 left/right end caps: exact outlines and which sides accept them",
+    "30352 control unit: full enclosure footprint and ports",
+    "30343/30345/30347 digital lane changers: internal routes and assembly counts",
+    "30362–30365 directional lane-changing curves",
+    "30356 pit lane and 20602 shoulders; 30341 single-lane straight",
+    "20517 crossover, start/power pieces, banked curves and bridges",
+    "Exact slot/rail spacing, mating connector geometry and dimensional tolerances"
+  ]
+}

@@ -1,0 +1,4343 @@
+{
+  "format": "slotforge.track-pack",
+  "formatVersion": "0.1-draft",
+  "id": "slotforge.scalextric-sport-digital",
+  "version": "0.1.0-design",
+  "title": "Scalextric Sport / Digital",
+  "manufacturer": "Hornby Scalextric",
+  "date": "2026-10-29",
+  "units": "mm",
+  "status": "first-design-pack-nominal-and-illustrative",
+  "runtime": {
+    "containsExecutableCode": false,
+    "importerImplemented": false
+  },
+  "scope": {
+    "basis": "Core 1:32 Sport/Digital track and borders on 2016 catalogue pages 60–61, checked against available current manufacturer product pages.",
+    "excluded": [
+      "Micro / My First Scalextric",
+      "Full Classic track catalogue beyond C8222 adapter",
+      "SCX / Spanish Scalextric systems",
+      "Set-only and cosmetic-print variations",
+      "Powerbases, lap counters and newer long-straight / double-curve variants pending a separate expansion",
+      "Loose supports, scenery and separately sold guardrail hardware"
+    ],
+    "availability": "Historical catalogue inclusion is not a current stock claim."
+  },
+  "defaults": {
+    "trackWidthMm": 156,
+    "laneSpacingMm": 78,
+    "borderIllustrationWidthMm": 60,
+    "status": "nominal-inferred",
+    "evidence": "Published nested outer radii 214, 370, 526, 682 mm imply a 156 mm increment. Using that as surface width and half as lane spacing is an explicit model assumption, not independent dimensional verification."
+  },
+  "visualStyle": {
+    "road": "Fine charcoal surface, no centre dashes on ordinary track",
+    "slots": "Paired silver rails around dark slots",
+    "borders": "Tan shoulders with small red/white kerbs and grey barrier edge",
+    "connectors": "Illustrative protruding tabs; not manufacturing geometry",
+    "basis": "Manufacturer catalogue drawings and current straight, border and pit product images inspected"
+  },
+  "sources": [
+    {
+      "id": "catalogue-2016",
+      "title": "Scalextric manufacturer catalogue 2016, pages 60–61",
+      "url": "https://www.ruedislotracing.ch/Scalextric%202016.pdf",
+      "pages": [
+        60,
+        61
+      ],
+      "note": "Visually inspected. Small radius labels contain a factor-of-ten unit error; larger embedded drawing and 2025 listing give 214/370/526/682 mm."
+    },
+    {
+      "id": "catalogue-2025-index",
+      "title": "Scalextric manufacturer catalogue 2025, indexed track diagram",
+      "url": "https://arwico.ch/media/mageworx/downloads/attachment/file/s/c/scalextric_2025_catalogue.pdf",
+      "note": "Search-index text only; download blocked. Used to cross-check radius progression, not visual inspection."
+    },
+    {
+      "id": "style",
+      "title": "SlotForge Timing interface reference",
+      "url": "https://github.com/theDutchmanJames/SlotForgeTiming/blob/main/renderer/styles.css"
+    },
+    {
+      "id": "C8205",
+      "title": "Scalextric C8205 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/standard-straight-350mm-x-2-c8205"
+    },
+    {
+      "id": "C8207",
+      "title": "Scalextric C8207 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/half-straight-175mm-x-2-c8207"
+    },
+    {
+      "id": "C8200",
+      "title": "Scalextric C8200 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/quarter-straight-87-mm-x-2-c8200"
+    },
+    {
+      "id": "C8236",
+      "title": "Scalextric C8236 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/short-straight-78-mm-x-2-c8236"
+    },
+    {
+      "id": "C7018",
+      "title": "Scalextric C7018 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/starter-grid-175mm-x-2-c7018"
+    },
+    {
+      "id": "C7016",
+      "title": "Scalextric C7016 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/single-lane-half-straight-175mm-x-4-c7016"
+    },
+    {
+      "id": "C8202",
+      "title": "Scalextric C8202 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-1-curve-45a-x-2-c8202"
+    },
+    {
+      "id": "C8278",
+      "title": "Scalextric C8278 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-1-curve-225a-x-2-c8278"
+    },
+    {
+      "id": "C8206",
+      "title": "Scalextric C8206 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-2-curve-45a-x-2-c8206"
+    },
+    {
+      "id": "C8234",
+      "title": "Scalextric C8234 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-2-curve-225a-x-2-c8234"
+    },
+    {
+      "id": "C8204",
+      "title": "Scalextric C8204 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-3-curve-225a-x-2-c8204"
+    },
+    {
+      "id": "C8235",
+      "title": "Scalextric C8235 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-4-curve-225a-x-2-c8235"
+    },
+    {
+      "id": "C8223",
+      "title": "Scalextric C8223 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/half-straight-borders-175mm-x-4-c8223"
+    },
+    {
+      "id": "C8233",
+      "title": "Scalextric C8233 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/lead-lead-out-borders-x-2-c8233"
+    },
+    {
+      "id": "C8240",
+      "title": "Scalextric C8240 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-1-curve-outer-borders-45a-x-4-c8240"
+    },
+    {
+      "id": "C8225",
+      "title": "Scalextric C8225 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-2-curve-inner-borders-45a-x-4-c8225"
+    },
+    {
+      "id": "C8228",
+      "title": "Scalextric C8228 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-2-curve-outer-borders-45-x-4-c8228"
+    },
+    {
+      "id": "C8280",
+      "title": "Scalextric C8280 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-2-curve-inner-borders-225a-x-4-c8280"
+    },
+    {
+      "id": "C8239",
+      "title": "Scalextric C8239 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-2-curve-outer-borders-225a-x-4-c8239"
+    },
+    {
+      "id": "C8224",
+      "title": "Scalextric C8224 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-3-curve-outer-borders-225a-x-4-c8224"
+    },
+    {
+      "id": "C8282",
+      "title": "Scalextric C8282 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-4-curve-inner-borders-225a-x-4-c8282"
+    },
+    {
+      "id": "C8238",
+      "title": "Scalextric C8238 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-4-curve-outer-borders-225a-x-4-c8238"
+    },
+    {
+      "id": "C8279",
+      "title": "Scalextric C8279 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-1-curve-inner-borders-180a-x-2-c8279"
+    },
+    {
+      "id": "C8201",
+      "title": "Scalextric C8201 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/radius-1-hairpin-curve-90a-x-2-c8201"
+    },
+    {
+      "id": "C7017",
+      "title": "Scalextric C7017 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/single-lane-radius-3-curve-225-x-4-c7017"
+    },
+    {
+      "id": "C7036",
+      "title": "Scalextric C7036 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/straight-lane-change-track-c7036"
+    },
+    {
+      "id": "C7014",
+      "title": "Scalextric C7014 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/pit-lane-track-left-hand-includes-sensor-c7014"
+    },
+    {
+      "id": "C7015",
+      "title": "Scalextric C7015 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/pit-lane-track-right-hand-includes-sensor-c7015"
+    },
+    {
+      "id": "C8295",
+      "title": "Scalextric C8295 — manufacturer product page",
+      "url": "https://uk.scalextric.com/products/elevated-cross-over-c8295"
+    }
+  ],
+  "pieces": [
+    {
+      "id": "scalextric:C8205",
+      "revision": 1,
+      "name": "Standard straight",
+      "manufacturerSku": "C8205",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8205.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 350,
+          "widthMm": 156,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 350 V 156 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            350,
+            156
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                39
+              ],
+              "end": [
+                350,
+                39
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    39
+                  ],
+                  "to": [
+                    350,
+                    39
+                  ]
+                }
+              ],
+              "lengthMm": 350,
+              "d": "M 0 39 H 350"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                117
+              ],
+              "end": [
+                350,
+                117
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    117
+                  ],
+                  "to": [
+                    350,
+                    117
+                  ]
+                }
+              ],
+              "lengthMm": 350,
+              "d": "M 0 117 H 350"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                78
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    117
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                350,
+                78
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    350,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    350,
+                    117
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 350
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          350,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8205"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C8207",
+      "revision": 1,
+      "name": "Half straight",
+      "manufacturerSku": "C8207",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8207.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 175,
+          "widthMm": 156,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 175 V 156 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            175,
+            156
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                39
+              ],
+              "end": [
+                175,
+                39
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    39
+                  ],
+                  "to": [
+                    175,
+                    39
+                  ]
+                }
+              ],
+              "lengthMm": 175,
+              "d": "M 0 39 H 175"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                117
+              ],
+              "end": [
+                175,
+                117
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    117
+                  ],
+                  "to": [
+                    175,
+                    117
+                  ]
+                }
+              ],
+              "lengthMm": 175,
+              "d": "M 0 117 H 175"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                78
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    117
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                175,
+                78
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    175,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    175,
+                    117
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 175
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          175,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8207"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C8200",
+      "revision": 1,
+      "name": "Quarter straight",
+      "manufacturerSku": "C8200",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 87,
+          "widthMm": 156,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 87 V 156 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            87,
+            156
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                39
+              ],
+              "end": [
+                87,
+                39
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    39
+                  ],
+                  "to": [
+                    87,
+                    39
+                  ]
+                }
+              ],
+              "lengthMm": 87,
+              "d": "M 0 39 H 87"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                117
+              ],
+              "end": [
+                87,
+                117
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    117
+                  ],
+                  "to": [
+                    87,
+                    117
+                  ]
+                }
+              ],
+              "lengthMm": 87,
+              "d": "M 0 117 H 87"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                78
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    117
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                87,
+                78
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    87,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    87,
+                    117
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 87
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          87,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8200"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained.",
+        "Published length 87 mm; not silently changed to 87.5 mm."
+      ]
+    },
+    {
+      "id": "scalextric:C8236",
+      "revision": 1,
+      "name": "Short straight",
+      "manufacturerSku": "C8236",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8236.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 78,
+          "widthMm": 156,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 78 V 156 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            78,
+            156
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                39
+              ],
+              "end": [
+                78,
+                39
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    39
+                  ],
+                  "to": [
+                    78,
+                    39
+                  ]
+                }
+              ],
+              "lengthMm": 78,
+              "d": "M 0 39 H 78"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                117
+              ],
+              "end": [
+                78,
+                117
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    117
+                  ],
+                  "to": [
+                    78,
+                    117
+                  ]
+                }
+              ],
+              "lengthMm": 78,
+              "d": "M 0 117 H 78"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                78
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    117
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                78,
+                78
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    78,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    78,
+                    117
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 78
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          78,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8236"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C7018",
+      "revision": 1,
+      "name": "Starter grid",
+      "manufacturerSku": "C7018",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C7018.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 175,
+          "widthMm": 156,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 175 V 156 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            175,
+            156
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                39
+              ],
+              "end": [
+                175,
+                39
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    39
+                  ],
+                  "to": [
+                    175,
+                    39
+                  ]
+                }
+              ],
+              "lengthMm": 175,
+              "d": "M 0 39 H 175"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                117
+              ],
+              "end": [
+                175,
+                117
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    117
+                  ],
+                  "to": [
+                    175,
+                    117
+                  ]
+                }
+              ],
+              "lengthMm": 175,
+              "d": "M 0 117 H 175"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                78
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    117
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                175,
+                78
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    175,
+                    39
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    175,
+                    117
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 175
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          175,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C7018"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C7016",
+      "revision": 1,
+      "name": "Single-lane half straight",
+      "manufacturerSku": "C7016",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C7016.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 175,
+          "widthMm": 78,
+          "laneCount": 1,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 175 V 78 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            175,
+            78
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                39
+              ],
+              "end": [
+                175,
+                39
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    39
+                  ],
+                  "to": [
+                    175,
+                    39
+                  ]
+                }
+              ],
+              "lengthMm": 175,
+              "d": "M 0 39 H 175"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                39
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    39
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                175,
+                39
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    175,
+                    39
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 175
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          175,
+          78
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C7016"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C8202",
+      "revision": 1,
+      "name": "R1 / 45° curve",
+      "manufacturerSku": "C8202",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8202.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 58,
+          "widthMm": 156,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -214 A 214 214 0 0 1 151.320851 -151.320851 L 41.012193 -41.012193 A 58 58 0 0 0 0 -58 Z",
+          "boundsMm": [
+            0,
+            -214,
+            151.320851,
+            172.987807
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -97
+              ],
+              "end": [
+                68.589358,
+                -68.589358
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 97,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 76.18362184955248,
+              "d": "M 0 -97 A 97 97 0 0 1 68.589358,-68.589358"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -175
+              ],
+              "end": [
+                123.743687,
+                -123.743687
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 175,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 137.44467859455344,
+              "d": "M 0 -175 A 175 175 0 0 1 123.743687,-123.743687"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -136
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -97
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -175
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                96.166522,
+                -96.166522
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    68.589358,
+                    -68.589358
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    123.743687,
+                    -123.743687
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 106.81415022205296
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -214,
+          151.320851,
+          172.987807
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8202"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C8278",
+      "revision": 1,
+      "name": "R1 / 22.5° curve",
+      "manufacturerSku": "C8278",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8278.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 58,
+          "widthMm": 156,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -214 A 214 214 0 0 1 81.894255 -197.71022 L 22.195639 -53.585013 A 58 58 0 0 0 0 -58 Z",
+          "boundsMm": [
+            0,
+            -214,
+            81.894255,
+            160.414987
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -97
+              ],
+              "end": [
+                37.120293,
+                -89.616315
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 97,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 38.09181092477624,
+              "d": "M 0 -97 A 97 97 0 0 1 37.120293,-89.616315"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -175
+              ],
+              "end": [
+                66.969601,
+                -161.678918
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 175,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 68.72233929727672,
+              "d": "M 0 -175 A 175 175 0 0 1 66.969601,-161.678918"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -136
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -97
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -175
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                52.044947,
+                -125.647616
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    37.120293,
+                    -89.616315
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    66.969601,
+                    -161.678918
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 53.40707511102648
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -214,
+          81.894255,
+          160.414987
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8278"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C8206",
+      "revision": 1,
+      "name": "R2 / 45° curve",
+      "manufacturerSku": "C8206",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8206.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 214,
+          "widthMm": 156,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -370 A 370 370 0 0 1 261.629509 -261.629509 L 151.320851 -151.320851 A 214 214 0 0 0 0 -214 Z",
+          "boundsMm": [
+            0,
+            -370,
+            261.629509,
+            218.679149
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -253
+              ],
+              "end": [
+                178.898016,
+                -178.898016
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 253,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 198.70573533955442,
+              "d": "M 0 -253 A 253 253 0 0 1 178.898016,-178.898016"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -331
+              ],
+              "end": [
+                234.052345,
+                -234.052345
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 331,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 259.9667920845554,
+              "d": "M 0 -331 A 331 331 0 0 1 234.052345,-234.052345"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -292
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -253
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -331
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                206.47518,
+                -206.47518
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    178.898016,
+                    -178.898016
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    234.052345,
+                    -234.052345
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 229.3362637120549
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -370,
+          261.629509,
+          218.679149
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8206"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C8234",
+      "revision": 1,
+      "name": "R2 / 22.5° curve",
+      "manufacturerSku": "C8234",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8234.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 214,
+          "widthMm": 156,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -370 A 370 370 0 0 1 141.59287 -341.835427 L 81.894255 -197.71022 A 214 214 0 0 0 0 -214 Z",
+          "boundsMm": [
+            0,
+            -370,
+            141.59287,
+            172.28978
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -253
+              ],
+              "end": [
+                96.818908,
+                -233.741522
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 253,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 99.35286766977721,
+              "d": "M 0 -253 A 253 253 0 0 1 96.818908,-233.741522"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -331
+              ],
+              "end": [
+                126.668216,
+                -305.804125
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 331,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 129.9833960422777,
+              "d": "M 0 -331 A 331 331 0 0 1 126.668216,-305.804125"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -292
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -253
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -331
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                111.743562,
+                -269.772823
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    96.818908,
+                    -233.741522
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    126.668216,
+                    -305.804125
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 114.66813185602744
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -370,
+          141.59287,
+          172.28978
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8234"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C8204",
+      "revision": 1,
+      "name": "R3 / 22.5° curve",
+      "manufacturerSku": "C8204",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8204.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 370,
+          "widthMm": 156,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -526 A 526 526 0 0 1 201.291485 -485.960634 L 141.59287 -341.835427 A 370 370 0 0 0 0 -370 Z",
+          "boundsMm": [
+            0,
+            -526,
+            201.291485,
+            184.16457300000002
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -409
+              ],
+              "end": [
+                156.517524,
+                -377.866729
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 409,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 160.61392441477818,
+              "d": "M 0 -409 A 409 409 0 0 1 156.517524,-377.866729"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -487
+              ],
+              "end": [
+                186.366832,
+                -449.929332
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 487,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 191.24445278727865,
+              "d": "M 0 -487 A 487 487 0 0 1 186.366832,-449.929332"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -448
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -409
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -487
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                171.442178,
+                -413.898031
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    156.517524,
+                    -377.866729
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    186.366832,
+                    -449.929332
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 175.92918860102841
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -526,
+          201.291485,
+          184.16457300000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8204"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C8235",
+      "revision": 1,
+      "name": "R4 / 22.5° curve",
+      "manufacturerSku": "C8235",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8235.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 526,
+          "widthMm": 156,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 78
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -682 A 682 682 0 0 1 260.990101 -630.085841 L 201.291485 -485.960634 A 526 526 0 0 0 0 -526 Z",
+          "boundsMm": [
+            0,
+            -682,
+            260.990101,
+            196.03936599999997
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -565
+              ],
+              "end": [
+                216.216139,
+                -521.991936
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 565,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 221.87498115977914,
+              "d": "M 0 -565 A 565 565 0 0 1 216.216139,-521.991936"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -643
+              ],
+              "end": [
+                246.065447,
+                -594.054539
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 643,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 252.50550953227963,
+              "d": "M 0 -643 A 643 643 0 0 1 246.065447,-594.054539"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -604
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -565
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -643
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                231.140793,
+                -558.023238
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    216.216139,
+                    -521.991936
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    246.065447,
+                    -594.054539
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 237.19024534602937
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -682,
+          260.990101,
+          196.03936599999997
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8235"
+        ],
+        "identity": "published",
+        "geometry": "nominal-derived",
+        "missing": [
+          "Exact connector geometry and tolerances",
+          "Independent confirmation of road width and slot offsets"
+        ]
+      },
+      "notes": [
+        "156 mm road width and 78 mm slot spacing are nominal assumptions; published lengths and angles retained."
+      ]
+    },
+    {
+      "id": "scalextric:C8223",
+      "revision": 1,
+      "name": "Half-straight border and barrier",
+      "manufacturerSku": "C8223",
+      "category": "Straight borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8223.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          175,
+          60
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8223"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "175 mm length published. Width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8207"
+      ]
+    },
+    {
+      "id": "scalextric:C8233-lead-in",
+      "revision": 1,
+      "name": "Tapered border · lead-in",
+      "manufacturerSku": "C8233",
+      "category": "Straight borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8233-lead-in.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          350,
+          63
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scalextric:C8233-lead-out"
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8233"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Current manufacturer page: 2 × 350 mm. Older catalogue: 4 × 345 mm. Current length used for illustration; taper and handed quantity unresolved."
+      ]
+    },
+    {
+      "id": "scalextric:C8233-lead-out",
+      "revision": 1,
+      "name": "Tapered border · lead-out",
+      "manufacturerSku": "C8233",
+      "category": "Straight borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8233-lead-out.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          350,
+          63
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scalextric:C8233-lead-in"
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8233"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Current manufacturer page: 2 × 350 mm. Older catalogue: 4 × 345 mm. Current length used for illustration; taper and handed quantity unresolved."
+      ]
+    },
+    {
+      "id": "scalextric:C8240",
+      "revision": 1,
+      "name": "R1 / 45° outer border and barrier",
+      "manufacturerSku": "C8240",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8240.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -274,
+          193.747258,
+          122.679149
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8240"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Angle and product pairing published. Border width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8202"
+      ]
+    },
+    {
+      "id": "scalextric:C8225",
+      "revision": 1,
+      "name": "R2 / 45° inner border and barrier",
+      "manufacturerSku": "C8225",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8225.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -214,
+          151.320851,
+          105.105556
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8225"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Angle and product pairing published. Border width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8206"
+      ]
+    },
+    {
+      "id": "scalextric:C8228",
+      "revision": 1,
+      "name": "R2 / 45° outer border and barrier",
+      "manufacturerSku": "C8228",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8228.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -430,
+          304.055916,
+          168.37049100000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8228"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Angle and product pairing published. Border width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8206"
+      ]
+    },
+    {
+      "id": "scalextric:C8280",
+      "revision": 1,
+      "name": "R2 / 22.5° inner border and barrier",
+      "manufacturerSku": "C8280",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8280.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -214,
+          81.894255,
+          71.72255200000001
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8280"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Angle and product pairing published. Border width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8234"
+      ]
+    },
+    {
+      "id": "scalextric:C8239",
+      "revision": 1,
+      "name": "R2 / 22.5° outer border and barrier",
+      "manufacturerSku": "C8239",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8239.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -430,
+          164.553876,
+          88.16457300000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8239"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Angle and product pairing published. Border width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8234"
+      ]
+    },
+    {
+      "id": "scalextric:C8281",
+      "revision": 1,
+      "name": "R3 / 22.5° inner border and barrier",
+      "manufacturerSku": "C8281",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8281.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -370,
+          141.59287,
+          83.59734500000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Angle and product pairing published. Border width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8204"
+      ]
+    },
+    {
+      "id": "scalextric:C8224",
+      "revision": 1,
+      "name": "R3 / 22.5° outer border and barrier",
+      "manufacturerSku": "C8224",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8224.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -586,
+          224.252491,
+          100.03936599999997
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8224"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Angle and product pairing published. Border width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8204"
+      ]
+    },
+    {
+      "id": "scalextric:C8282",
+      "revision": 1,
+      "name": "R4 / 22.5° inner border and barrier",
+      "manufacturerSku": "C8282",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8282.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -526,
+          201.291485,
+          95.47213799999997
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8282"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Angle and product pairing published. Border width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8235"
+      ]
+    },
+    {
+      "id": "scalextric:C8238",
+      "revision": 1,
+      "name": "R4 / 22.5° outer border and barrier",
+      "manufacturerSku": "C8238",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8238.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -742,
+          283.951107,
+          111.91415900000004
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8238"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Angle and product pairing published. Border width and barrier projection are illustrative."
+      ],
+      "attachesTo": [
+        "scalextric:C8235"
+      ]
+    },
+    {
+      "id": "scalextric:C8279",
+      "revision": 1,
+      "name": "R1 inner half-disc · 180°",
+      "manufacturerSku": "C8279",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8279.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -58,
+          58,
+          116
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8279"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Solid half-disc form from catalogue, not an ordinary annular border. Radius is illustrative; no fit claim."
+      ]
+    },
+    {
+      "id": "scalextric:C7017",
+      "revision": 1,
+      "name": "R3 single-lane curve · 22.5°",
+      "manufacturerSku": "C7017",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C7017.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -448,
+          171.442178,
+          106.16457300000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C7017"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Catalogue identifies the inner single lane. Preview radius is inferred, not a measured specification."
+      ]
+    },
+    {
+      "id": "scalextric:C8201",
+      "revision": 1,
+      "name": "R1 squeeze hairpin · 90°",
+      "manufacturerSku": "C8201",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8201.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -214,
+          214,
+          214
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8201"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Narrowed slots match the side-swipe connection concept; ordinary R1 lane spacing does not apply. Route shape illustrative."
+      ],
+      "connectionProfile": "scalextric-squeeze-unresolved"
+    },
+    {
+      "id": "scalextric:C8246-in",
+      "revision": 1,
+      "name": "Side-swipe transition · in",
+      "manufacturerSku": "C8246",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8246-in.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          350,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scalextric:C8246-out"
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "350 mm length published. One slot transitions toward the other; narrows to a squeeze profile."
+      ],
+      "connectionProfile": "sport-to-squeeze-unresolved"
+    },
+    {
+      "id": "scalextric:C8246-out",
+      "revision": 1,
+      "name": "Side-swipe transition · out",
+      "manufacturerSku": "C8246",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8246-out.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          350,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scalextric:C8246-in"
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "350 mm length published. One slot transitions toward the other; narrows to a squeeze profile."
+      ],
+      "connectionProfile": "sport-to-squeeze-unresolved"
+    },
+    {
+      "id": "scalextric:C8203",
+      "revision": 1,
+      "name": "R2 racing crossover · 90°",
+      "manufacturerSku": "C8203",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue"
+      ],
+      "asset": "assets/C8203.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -370,
+          370,
+          370
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Passive lane crossover. Slot transitions are illustrative; compatible-system operation requires electrical review."
+      ]
+    },
+    {
+      "id": "scalextric:C8222",
+      "revision": 1,
+      "name": "Classic-to-Sport converter",
+      "manufacturerSku": "C8222",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8222.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          175,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "175 mm length published. Classic and Sport endpoints must remain distinct; connector drawings are illustrative."
+      ],
+      "endpointSystems": [
+        "scalextric-sport",
+        "scalextric-classic"
+      ]
+    },
+    {
+      "id": "scalextric:C7036",
+      "revision": 1,
+      "name": "Digital double lane changer",
+      "manufacturerSku": "C7036",
+      "category": "Digital track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-digital"
+      ],
+      "asset": "assets/C7036.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          525,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Sensors and flippers have a travel direction."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C7036"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Published length 525 mm. Crossover shape, sensors and flipper positions are illustrative."
+      ]
+    },
+    {
+      "id": "scalextric:C7014",
+      "revision": 1,
+      "name": "Left pit entry / exit kit",
+      "manufacturerSku": "C7014",
+      "category": "Digital track",
+      "kind": "assembly",
+      "systems": [
+        "scalextric-digital"
+      ],
+      "asset": "assets/C7014.svg",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 7,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          730,
+          282
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scalextric:C7015"
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C7014"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Two road components, four borders and three barriers per manufacturer contents. Diagram groups accessories schematically; individual border splits and road length are unresolved. Product tech table inconsistently says one track piece."
+      ],
+      "assemblyInventory": [
+        {
+          "description": "Left entry track",
+          "quantity": 1
+        },
+        {
+          "description": "Left exit track",
+          "quantity": 1
+        },
+        {
+          "description": "Borders",
+          "quantity": 4
+        },
+        {
+          "description": "Barriers",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "scalextric:C7015",
+      "revision": 1,
+      "name": "Right pit entry / exit kit",
+      "manufacturerSku": "C7015",
+      "category": "Digital track",
+      "kind": "assembly",
+      "systems": [
+        "scalextric-digital"
+      ],
+      "asset": "assets/C7015.svg",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 7,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          730,
+          282
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scalextric:C7014"
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C7015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Two road components, four borders and three barriers per manufacturer contents. Diagram groups accessories schematically; individual border splits and road length are unresolved. Product tech table inconsistently says one track piece."
+      ],
+      "assemblyInventory": [
+        {
+          "description": "Right entry track",
+          "quantity": 1
+        },
+        {
+          "description": "Right exit track",
+          "quantity": 1
+        },
+        {
+          "description": "Borders",
+          "quantity": 4
+        },
+        {
+          "description": "Barriers",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "scalextric:C8296",
+      "revision": 1,
+      "name": "R2 banked curve · 45°",
+      "manufacturerSku": "C8296",
+      "category": "Elevated track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8296.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -370,
+          261.629509,
+          218.679149
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Legacy catalogue identity. Projected shape, banking and elevation unresolved; this is a catalogue symbol."
+      ]
+    },
+    {
+      "id": "scalextric:C8297",
+      "revision": 1,
+      "name": "R3 banked curve · 45°",
+      "manufacturerSku": "C8297",
+      "category": "Elevated track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8297.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -526,
+          371.938167,
+          264.370491
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Legacy catalogue identity. Projected shape, banking and elevation unresolved; this is a catalogue symbol."
+      ]
+    },
+    {
+      "id": "scalextric:C8295",
+      "revision": 1,
+      "name": "Elevated crossover section",
+      "manufacturerSku": "C8295",
+      "category": "Elevated track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue",
+        "scalextric-digital"
+      ],
+      "asset": "assets/C8295.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          233,
+          180
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016",
+          "C8295"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "2016 catalogue: 2 × 233 mm. Current product contents: 1 × 262 mm but tech table says 2 pieces. Preview uses the legacy illustration length only. Exact revision and projected footprint unresolved."
+      ]
+    },
+    {
+      "id": "scalextric:C8210",
+      "revision": 1,
+      "name": "90° crossroads",
+      "manufacturerSku": "C8210",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue"
+      ],
+      "asset": "assets/C8210.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          408,
+          408
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Four-port crossing shown with yellow hazard markings. Envelope dimension and internal slot interruptions are illustrative."
+      ],
+      "portsRequired": 4
+    },
+    {
+      "id": "scalextric:C8211",
+      "revision": 1,
+      "name": "Flying leap ramp",
+      "manufacturerSku": "C8211",
+      "category": "Elevated track",
+      "kind": "piece",
+      "systems": [
+        "scalextric-sport-analogue"
+      ],
+      "asset": "assets/C8211.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          175,
+          156
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative only; mating teeth excluded from usable-length measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reversing an ordinary piece changes endpoint and lane ordering; no invented directional variant."
+      },
+      "evidence": {
+        "sources": [
+          "catalogue-2016"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Measured outline and full occupied footprint",
+          "Lane paths and connector coordinates"
+        ]
+      },
+      "notes": [
+        "Legacy ramp identification icon. Length, launch profile and landing gap unverified; cannot form an ordinary continuous lane route."
+      ]
+    }
+  ],
+  "products": [
+    {
+      "sku": "C8205",
+      "name": "Standard straight",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8205",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8205"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8207",
+      "name": "Half straight",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8207",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8207"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8200",
+      "name": "Quarter straight",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8200",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8200"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8236",
+      "name": "Short straight",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8236",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8236"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C7018",
+      "name": "Starter grid",
+      "contents": [
+        {
+          "pieceId": "scalextric:C7018",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C7018"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C7016",
+      "name": "Single-lane half straight",
+      "contents": [
+        {
+          "pieceId": "scalextric:C7016",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C7016"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8202",
+      "name": "R1 / 45° curve",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8202",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8202"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8278",
+      "name": "R1 / 22.5° curve",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8278",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8278"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8206",
+      "name": "R2 / 45° curve",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8206",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8206"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8234",
+      "name": "R2 / 22.5° curve",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8234",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8234"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8204",
+      "name": "R3 / 22.5° curve",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8204",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8204"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8235",
+      "name": "R4 / 22.5° curve",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8235",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8235"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8223",
+      "name": "Half-straight borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8223",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8223"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8233",
+      "name": "Lead-in / lead-out borders",
+      "contents": [
+        {
+          "description": "Tapered borders; handed allocation not established",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8233"
+      ],
+      "notes": [
+        "350 mm from current product page overrides the conflicting 2016 345 mm listing."
+      ]
+    },
+    {
+      "sku": "C8240",
+      "name": "R1 outer borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8240",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8240"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8225",
+      "name": "R2 inner borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8225",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8225"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8228",
+      "name": "R2 outer borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8228",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8228"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8280",
+      "name": "R2 inner borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8280",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8280"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8239",
+      "name": "R2 outer borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8239",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8239"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8281",
+      "name": "R3 inner borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8281",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8224",
+      "name": "R3 outer borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8224",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8224"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8282",
+      "name": "R4 inner borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8282",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8282"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8238",
+      "name": "R4 outer borders",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8238",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8238"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8279",
+      "name": "R1 inner half-discs",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8279",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8279"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C7017",
+      "name": "Single-lane curves",
+      "contents": [
+        {
+          "pieceId": "scalextric:C7017",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C7017"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8201",
+      "name": "Squeeze hairpins",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8201",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8201"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8246",
+      "name": "Side-swipe pair",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8246-in",
+          "quantity": 1
+        },
+        {
+          "pieceId": "scalextric:C8246-out",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8203",
+      "name": "Racing crossover curves",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8203",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8222",
+      "name": "Converter straights",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8222",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C7036",
+      "name": "Digital straight lane changer",
+      "contents": [
+        {
+          "pieceId": "scalextric:C7036",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C7036"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C7014",
+      "name": "Left pit kit",
+      "contents": [
+        {
+          "description": "Left entry track",
+          "quantity": 1
+        },
+        {
+          "description": "Left exit track",
+          "quantity": 1
+        },
+        {
+          "description": "Borders",
+          "quantity": 4
+        },
+        {
+          "description": "Barriers",
+          "quantity": 3
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C7014"
+      ],
+      "notes": [
+        "Use explicit contents (two roads), not the conflicting one-piece tech field."
+      ]
+    },
+    {
+      "sku": "C7015",
+      "name": "Right pit kit",
+      "contents": [
+        {
+          "description": "Right entry track",
+          "quantity": 1
+        },
+        {
+          "description": "Right exit track",
+          "quantity": 1
+        },
+        {
+          "description": "Borders",
+          "quantity": 4
+        },
+        {
+          "description": "Barriers",
+          "quantity": 3
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C7015"
+      ],
+      "notes": [
+        "Use explicit contents (two roads), not the conflicting one-piece tech field."
+      ]
+    },
+    {
+      "sku": "C8296",
+      "name": "R2 banked curves",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8296",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016"
+      ],
+      "notes": [
+        "Retail quantity not established. Supports are not represented as track pieces."
+      ]
+    },
+    {
+      "sku": "C8297",
+      "name": "R3 banked curves",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8297",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016"
+      ],
+      "notes": [
+        "Retail quantity not established. Supports are not represented as track pieces."
+      ]
+    },
+    {
+      "sku": "C8295",
+      "name": "Elevated crossover",
+      "contents": [
+        {
+          "description": "Elevated track components; conflicting manufacturer counts",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016",
+        "C8295"
+      ],
+      "notes": [
+        "Do not derive a shopping quantity or fit from this unresolved product revision."
+      ]
+    },
+    {
+      "sku": "C8210",
+      "name": "Crossroads",
+      "contents": [
+        {
+          "pieceId": "scalextric:C8210",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "C8211",
+      "name": "Flying leap",
+      "contents": [
+        {
+          "description": "Ramp components; package count unverified",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "catalogue-2016"
+      ],
+      "notes": []
+    }
+  ],
+  "precisionPolicy": {
+    "illustrationsAreNotGeometry": true,
+    "exactFitAllowed": false,
+    "unknownLength": null,
+    "nominalLengthsMustBeLabelled": true
+  },
+  "outstanding": [
+    "Confirm exact width, slot spacing and mating geometry",
+    "Resolve border widths and barrier envelopes",
+    "Measure/document special routes, bank angles and bridge profiles",
+    "Resolve C8295 revision conflict",
+    "Expand current powerbase and set-only catalogue"
+  ]
+}

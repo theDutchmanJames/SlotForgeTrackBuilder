@@ -1,0 +1,9 @@
+{
+  "name": "Custom curve — 100 mm lane spacing",
+  "type": "curve",
+  "innerRadiusMm": 200,
+  "angleDeg": 60,
+  "widthMm": 198,
+  "laneCount": 2,
+  "laneSpacingMm": 100
+}

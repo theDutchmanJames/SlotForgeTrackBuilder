@@ -1,0 +1,111 @@
+/* All colours are variables. A theme sets them on the page (the Custom theme does it from themeui.js) and on its own tile in App Settings > App Theme, which is why these rules do not say :root. */
+[data-theme="dark"]{--bg:#171b21;--panel:#222831;--ink:#e8e6e1;--muted:#98a0ab;--line:#343b47;--accent:#e5484d;--on-accent:#fff}
+[data-theme="midnight"]{--bg:#0e1624;--panel:#16233a;--ink:#e6edf7;--muted:#8fa3bf;--line:#2a3b57;--accent:#4c9aff;--on-accent:#06101f}
+[data-theme="forest"]{--bg:#121a16;--panel:#1b2721;--ink:#e5efe8;--muted:#93a89b;--line:#2f4137;--accent:#3ecf8e;--on-accent:#06150e}
+[data-theme="sunset"]{--bg:#1c1512;--panel:#2a1f1a;--ink:#f3e8e0;--muted:#b49a8a;--line:#46352c;--accent:#ff7a3d;--on-accent:#1f0d03}
+[data-theme="violet"]{--bg:#17131f;--panel:#221c2e;--ink:#ece6f5;--muted:#a094b5;--line:#3a3150;--accent:#a46bff;--on-accent:#12061f}
+[data-theme="carbon"]{--bg:#121212;--panel:#1e1e1e;--ink:#eaeaea;--muted:#9a9a9a;--line:#333333;--accent:#ffd400;--on-accent:#000000}
+[data-theme="ocean"]{--bg:#e8f1f6;--panel:#ffffff;--ink:#12232e;--muted:#5a7080;--line:#c9d9e3;--accent:#0f7ac0;--on-accent:#ffffff}
+[data-theme="light"]{--bg:#f1efea;--panel:#ffffff;--ink:#1d2229;--muted:#656c76;--line:#d9d6cf;--accent:#d62828;--on-accent:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Segoe UI",system-ui,sans-serif}
+header{display:flex;align-items:center;gap:24px;padding:12px 20px;border-bottom:1px solid var(--line);background:var(--panel)}
+h1{margin:0;font-size:20px;font-weight:700;letter-spacing:.02em}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+.tab{font:inherit;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;padding:8px 14px;cursor:pointer}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+.tab:focus-visible,select:focus-visible{outline:3px solid #4c9aff;outline-offset:2px}
+/* ---- Soft lift (1.46.0): a slight depth for the whole app. Design: docs/ui-reference/depth ----
+   Cards, folders, bars, dialogs and the widgets of a layout stand up a little like thick cards, buttons look a little shallow, and what is meant to be pressed in (the canvas of a race screen, the lane cards,
+   the entry fields) is pressed in a little. The light comes from above: a thin light edge on top, a lip (the thickness) underneath, a short soft shadow. A pressed or switched on button moves down and sits in.
+   It is only box-shadow (nothing is added to a part and no colour is changed), so it works on any colour: the Custom theme, and the colours a widget has been given. --depth is the Depth setting
+   (App Settings > General > Display, themeui.js): 0 is flat and draws nothing at all. --k softens the shadows on a light page, --hl and --sh are the colour of the light and of the shadow, --lipa how dark the lip is.
+   A widget has its own --d: the depth fades with the transparency of its background (--wf, from frame.js), so a see-through widget stays flat. */
+html{--depth:.35;--d:var(--depth);--k:1;--hl:255,255,255;--sh:0,0,0;--lipa:.5}
+[data-theme="light"],[data-theme="ocean"],[data-tone="light"]{--k:.6;--sh:29,34,41;--lipa:.18}
+.lw{--d:calc(var(--depth)*var(--wf,1))}
+/* standing up: cards, folders, bars, dialogs, tiles and the widgets of a layout (a cell of a row design, in a leaderboard, stays flat) */
+.card,.bar,.ed-bar,.ed-pal,.ed-side,.gcard,.viewbar,.fgroup,.audgroup,.dbfolder,.audhelp,.lv-tile,.lv-board,.lv-stat,.tkchip,.helpwelcome,dialog,.lw:not(.rcell):not(.flat):not(.btnw){
+  box-shadow:inset 0 1px 0 rgba(var(--hl),calc(.16*var(--d))),inset 0 12px 14px -10px rgba(var(--hl),calc(.10*var(--d))),inset 0 -12px 14px -10px rgba(var(--sh),calc(.16*var(--d)*var(--k))),
+    0 calc(4px*var(--d)) 0 rgba(var(--sh),var(--lipa)),0 calc(3px + 10px*var(--d)) calc(6px + 16px*var(--d)) -4px rgba(var(--sh),calc(.6*var(--d)*var(--k)))}
+/* shallow buttons */
+.btn:not(:disabled),.roplan,.sstab:not([aria-selected="true"]),.ssbig:not([aria-selected="true"]){
+  box-shadow:inset 0 1px 0 rgba(var(--hl),calc(.20*var(--d))),inset 0 7px 8px -6px rgba(var(--hl),calc(.10*var(--d))),inset 0 -2px 0 rgba(var(--sh),calc(.20*var(--d)*var(--k))),
+    0 calc(2px*var(--d)) 0 rgba(var(--sh),var(--lipa)),0 calc(2px + 4px*var(--d)) calc(3px + 5px*var(--d)) -2px rgba(var(--sh),calc(.5*var(--d)*var(--k)))}
+/* the big buttons: the lane buttons of the race screen (Lap, Pit, Call), and a button widget in a layout */
+.trk-btn:not(:disabled),.lw.btnw{
+  box-shadow:inset 0 1px 0 rgba(var(--hl),calc(.26*var(--d))),inset 0 8px 10px -8px rgba(var(--hl),calc(.16*var(--d))),inset 0 -2px 0 rgba(var(--sh),calc(.22*var(--d)*var(--k))),
+    0 calc(3px*var(--d)) 0 rgba(var(--sh),var(--lipa)),0 calc(3px + 6px*var(--d)) calc(4px + 8px*var(--d)) -2px rgba(var(--sh),calc(.55*var(--d)*var(--k)))}
+/* pressed in: being pressed, or switched on */
+.btn:not(:disabled):active,.btn[aria-pressed="true"]:not(:disabled),.lw.btnw:active{transform:translateY(calc(2px*var(--d)));
+  box-shadow:inset 0 calc(2px + 2px*var(--d)) calc(4px + 4px*var(--d)) rgba(var(--sh),calc(.5*var(--d)*var(--k)))}
+.trk-btn:not(:disabled):active{transform:translateY(max(1px,calc(3px*var(--d)))) scale(.99);box-shadow:inset 0 calc(2px + 2px*var(--d)) calc(4px + 4px*var(--d)) rgba(var(--sh),calc(.5*var(--d)*var(--k)))}
+.trk-btn[aria-pressed="true"],.trk-btn[data-active="true"]{transform:translateY(calc(3px*var(--d)));
+  box-shadow:inset 0 calc(2px + 2px*var(--d)) calc(4px + 4px*var(--d)) rgba(var(--sh),calc(.5*var(--d)*var(--k))),0 0 0 3px color-mix(in srgb,var(--tc) 45%,transparent)}
+/* pressed in: the canvas of the race screen, the lane cards, the tiles of Home, the entry fields */
+.canvas.live{box-shadow:0 0 0 1px var(--line),inset 0 calc(2px + 3px*var(--d)) calc(6px + 8px*var(--d)) rgba(var(--sh),calc(.5*var(--d)*var(--k))),inset 0 -1px 0 rgba(var(--hl),calc(.06*var(--d)))}
+.trk-card,.hm-tile,.hm-ctile{box-shadow:inset 0 calc(2px + 3px*var(--d)) calc(6px + 8px*var(--d)) rgba(var(--sh),calc(.5*var(--d)*var(--k))),inset 0 -1px 0 rgba(var(--hl),calc(.06*var(--d)))}
+input[type=text],input[type=number],input[type=date],input:not([type]),textarea,select{box-shadow:inset 0 1px 2px rgba(var(--sh),calc(.35*var(--d)*var(--k)))}
+header{box-shadow:0 calc(1px + 3px*var(--d)) calc(4px + 8px*var(--d)) -3px rgba(var(--sh),calc(.55*var(--d)*var(--k)))}
+
+
+/* Approved subtab design: a quiet tint, colour edge and selected underline.
+   Explicitly scoped to navigation and settings choices, never live race actions.
+   Race System controls inherit --c / --accent from their existing system palette. */
+:is(.sub[role="tablist"] .tab,.sstab,.seg > .btn,.fu-seg > .fu-b,.twseg > .btn,.audio-tabs > .btn,.audio-choices > .btn,.parallel-setup .pp-seg > button){
+  --tab-tone:var(--tab-colour,var(--c,var(--accent)));
+  color:var(--ink);background:color-mix(in srgb,var(--tab-tone) 8%,var(--panel));
+  border:1px solid color-mix(in srgb,var(--tab-tone) 30%,var(--line));
+  border-left:3px solid var(--tab-tone);border-radius:8px;
+  box-shadow:none;outline:none;transform:none;max-width:100%;white-space:normal;
+}
+:is(.sub[role="tablist"] .tab,.sstab,.seg > .btn,.fu-seg > .fu-b,.twseg > .btn,.audio-tabs > .btn,.audio-choices > .btn,.parallel-setup .pp-seg > button):hover:where(:not(:disabled)){
+  color:var(--ink);background:color-mix(in srgb,var(--tab-tone) 13%,var(--panel));
+}
+:is(.sub[role="tablist"] .tab,.sstab,.seg > .btn,.fu-seg > .fu-b,.twseg > .btn,.audio-tabs > .btn,.audio-choices > .btn,.parallel-setup .pp-seg > button):is([aria-selected="true"],[aria-pressed="true"],.on){
+  color:var(--ink);background:color-mix(in srgb,var(--tab-tone) 18%,var(--panel));
+  border-color:var(--tab-tone);box-shadow:inset 0 -3px 0 var(--tab-tone);font-weight:700;transform:none;
+}
+:is(.sub[role="tablist"] .tab,.sstab,.seg > .btn,.fu-seg > .fu-b,.twseg > .btn,.audio-tabs > .btn,.audio-choices > .btn,.parallel-setup .pp-seg > button):focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+:is(.sub[role="tablist"] .tab,.sstab,.seg > .btn,.fu-seg > .fu-b,.twseg > .btn,.audio-tabs > .btn,.audio-choices > .btn,.parallel-setup .pp-seg > button):disabled{opacity:.5;cursor:not-allowed}
+/* Separate choices can wrap without clipping their focus ring. */
+.seg,.fu-seg,.rsform .twseg,.parallel-setup .pp-seg{display:inline-flex;flex-wrap:wrap;gap:6px;border:0;background:none;overflow:visible;max-width:100%}
+.sub .tab .tabico{color:var(--tab-tone)}
+
+/* Stable semantic colours, independent of position or selection. */
+#customtabs [data-id="layouts"]{--tab-colour:#66a9d7}
+#customtabs [data-id="rows"]{--tab-colour:#63b5a9}
+#customtabs [data-id="charts"]{--tab-colour:#91b867}
+#customtabs [data-id="results"]{--tab-colour:#d2af63}
+#customtabs [data-id="audio"]{--tab-colour:#cd8e9f}
+#customtabs [data-id="images"]{--tab-colour:#999cda}
+#customtabs [data-id="widgets"]{--tab-colour:#b896ec}
+#settingstabs [data-id="general"]{--tab-colour:#93a9be}
+#settingstabs [data-id="theme"]{--tab-colour:#a68ccd}
+#settingstabs [data-id="director"]{--tab-colour:#d4838c}
+#settingstabs [data-id="calculations"]{--tab-colour:#70a9d1}
+#settingstabs [data-id="network"]{--tab-colour:#63b4a0}
+#settingstabs [data-id="hardware"]{--tab-colour:#cfaa6e}
+#settingstabs [data-id="transfer"]{--tab-colour:#6baebc}
+#settingstabs [data-id="help"]{--tab-colour:#9bbd7d}
+#subtabs [data-id="tracks"]{--tab-colour:#91b867}
+#subtabs [data-id="drivers"],#chs-which [data-id="drivers"]{--tab-colour:#66a9d7}
+#subtabs [data-id="teams"],#chs-which [data-id="teams"]{--tab-colour:#b896ec}
+#subtabs [data-id="slotcars"]{--tab-colour:#cd8e9f}
+#subtabs [data-id="results"]{--tab-colour:#d2af63}
+#chs-which [data-id="rounds"]{--tab-colour:var(--c-ch,#ec5f9a)}
+#respool [data-id="racing"]{--tab-colour:var(--accent)}
+#respool [data-id="tokens"]{--tab-colour:#1fb5ad}
+#respool [data-id="champs"]{--tab-colour:#ec5f9a}
+#hwtabs [data-id="trackmate"]{--tab-colour:#70a9d1}
+#hwtabs [data-id="arduino"]{--tab-colour:#63b5a9}
+#hwtabs [data-id="parallel"]{--tab-colour:#cfaa6e}
+#hwtabs [data-id="phidget"]{--tab-colour:#91b867}
+#hwtabs [data-id="ds"]{--tab-colour:#b896ec}
+#hwtabs [data-id="oxigen"]{--tab-colour:#cd8e9f}
+#hwtabs [data-id="other"]{--tab-colour:#93a9be}
+[data-audio-tab="calls"]{--tab-colour:#cd8e9f}
+[data-audio-tab="mix"]{--tab-colour:#999cda}
+[data-audio-tab="ambient"]{--tab-colour:#63b5a9}
+.parallel-setup .pp-seg{--tab-colour:var(--pp-accent)}

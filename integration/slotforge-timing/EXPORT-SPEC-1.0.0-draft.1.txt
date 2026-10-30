@@ -1,0 +1,249 @@
+SlotForge Timing integration contract 1.0.0-draft.1
+Producer: SlotForge Track Builder 0.2.1 | 29 October 2026
+Status: proposed for coordination with Timing; not a jointly ratified schema.
+
+FILE AND SOURCE MODEL
+UTF-8 JSON, normally <name>.slotforge.json. No executable plugins, external
+references, installed packs, network services or Builder server are required.
+Main envelope remains format="slotforge.layout", version=1. Old v1 files work.
+All used parametric definitions are embedded. Definitions + placements are the
+source model. Every import regenerates geometry, lengths and compatibility;
+preparedGeometry, track, derived timing offsets and compatibility are caches,
+not trusted input. Never inject imported SVG/HTML or execute imported scripts.
+JSON input limit: 5 MiB, at most 500 definitions and 500 placements.
+
+Top-level fields:
+ format, version             Existing v1 discriminator.
+ title                      Display string, maximum 100 characters.
+ pieces                     [{id,definitionId,x,y,angle,flip}].
+ definitions                [{id,name,sku,pack,family,parameters,color,status,mirror}].
+ profile                    {speed,acceleration,brake,corner,drift}.
+ units                      "mm".
+ precision                  "Nominal or user-entered dimensions; not verified mould measurements."
+ design                     {id,revision}; persistent identity + content SHA-256.
+ producer                   {name:"SlotForge Track Builder",version:"0.2.1"}.
+ integration                {target:"SlotForge Timing",contractVersion:"1.0.0-draft.1",
+                             status:"draft-for-coordination",
+                             profilePurpose:"illustrative-animation",
+                             image:"optional-separate-png"}.
+ timing                     Described below. Editable source fields + derived offsets.
+ track                      Database summary described below; derived.
+ compatibility              Capabilities/issues described below; derived.
+ preparedGeometry           Optional regenerated drawing and route cache.
+No PNG is embedded. Unknown additive top-level fields can be ignored. Reject an
+unsupported main version. Unknown timing.version must not silently reuse timing
+configuration: Builder rejects it, including prepare(raw, explicitState).
+
+VALIDATE DECLARATIONS BEFORE NORMALIZATION (clarified in Builder 0.2.1)
+importLayout(raw) and prepare(raw,state?) first inspect the original declarations:
+- Explicit units must be exactly "mm". Missing units remains compatible with
+  legacy millimetre layouts. Any other explicit value (including null, a number,
+  object, array, blank string or different capitalization) rejects the file.
+  No conversion is performed. Never discard an unsupported unit declaration.
+- An omitted integration field is valid legacy input. When present it must be
+  a non-null object, not an array or primitive. An absent contractVersion is
+  accepted for unversioned legacy exports, including Builder 0.1.3's
+  {target:"SlotForge Timing",status:"export-contract-draft-importer-not-implemented"}.
+- An explicit contractVersion must be the string "1.0.0-draft.1". Other versions
+  reject with an unsupported-contract error; null, blank and non-string values
+  reject as malformed. This check precedes timing metadata normalization.
+- Known integration fields target, status, profilePurpose and image, if present,
+  must be non-empty strings of at most 200 characters. Unknown additive fields
+  remain ignorable; they do not grant additional capabilities.
+readState() and picture() also enforce the units/contract declaration checks.
+An explicit prepare() state argument cannot bypass incoming timing.version checks.
+No implicit downgrade or drawing-only recovery is offered. Such recovery would
+need a separate explicit workflow discarding unrecognized timing configuration.
+The envelope remains v1 and contract remains 1.0.0-draft.1: 0.2.1 is a producer
+patch enforcing these validation rules, not a new schema or unit-conversion mode.
+
+IDENTITY AND REVISION
+design.id is 1–100 ASCII letters, digits, underscores or hyphens. New designs and
+"Duplicate as new design" use a new UUID. Save, autosave and reopen preserve it.
+Legacy files receive an ID on first import; save the migrated file to preserve it.
+design.revision is 64 lowercase hex SHA-256 characters. It hashes canonical JSON
+of designId, normalized source model, units/precision and timing metadata, using
+app/integration.js prepare()/canonical(). Object keys sort lexicographically;
+definition arrays sort by ID; placement order remains because it controls paint
+order. Same normalized content produces the same revision, including after a
+round trip. Changing title, profile, direction, timing line, placement or label
+changes it. Reverting to identical content restores its previous revision. No
+timestamp is used. Derived image/cache and producer metadata are not hashed.
+
+ROUTE IDENTITY AND CANONICAL ORDER
+network() sorts placements by ASCII ID before traversal. The smallest road ID is
+the anchor; travel starts at that piece's port 0, then follows connected through
+slots. Local start lanes enumerate in that port's stored lane order. Border
+placements do not participate. Each route ID is "route-" + SHA-256 of its ordered
+section tuples [pieceId,laneIndex,reverse]. Label and length are NOT identifiers.
+timing.routeMappingRevision is the SHA-256 of the ordered route ID array.
+Reordering placements, global rotation/reflection, changing driving direction,
+renaming lanes and changing dimensions without changing the through topology
+preserve route IDs. Global reflection can change visual left/right, so Timing
+must still let users inspect physical hardware mappings.
+Adding/removing/replacing a road section or changing local slot traversal creates
+new IDs conservatively. We do not guess how old lanes relate to a new circuit.
+Open edits retain the last closed mapping revision; closing a different topology
+sets timing.requiresLaneRemap=true. This flag latches in that design's state.
+Timing must compare the current mapping revision with its last confirmed one;
+do not prompt repeatedly if that revision is already confirmed. Imports with no
+prior mapping always need initial mapping. Design IDs namespace route IDs.
+Changing direction or timing-line position needs review of timing setup, even
+when route identities survive. Hardware-channel IDs are never exported here.
+
+TIMING LINE AND DIRECTION
+timing = {
+ version: 1,
+ direction: 1 | -1,
+ directionConvention: "canonical-route-distance",
+ startFinish: null | {pieceId, fraction},
+ routeLabels: { [stableRouteId]: "Friendly name" },
+ routeMappingRevision: null | <64 hex>,
+ requiresLaneRemap: boolean,
+ startFinishOffsets: [{routeId, offsetMm}]
+}
+fraction is finite, 0..1, measured from the chosen piece's LOCAL port 0 to port 1.
+It is a fraction of that section, NOT of the full lap. For a straight it locates
+a transverse line; for a curve it locates a radial line. It follows the piece
+when moved, rotated or reflected. Missing/deleted section references remain
+visible as unset; they never silently migrate to another piece.
+For each route section on this piece:
+ offset = (section.startMm + (section.reverse ? 1-fraction : fraction)
+           * section.lengthMm) modulo route.lengthMm.
+Each route gets its own offset. fraction=1 is allowed and wraps at route end.
+No offsets are emitted when there are no usable closed routes.
+Travel distance d>=0 maps to canonical distance:
+ s = positiveModulo(offsetMm + direction*d, route.lengthMm).
+Reverse travel adds 180 degrees to heading and negates signed curvature. It
+does not reverse/rewrite the stored canonical segments or section ordering.
+Friendly labels are <=100 characters; keys match /^route-[a-f0-9]{64}$/.
+At most 64 label entries are accepted; Builder retains labels for current routes.
+
+DATABASE SUMMARY
+track = {
+ laneCount: integer | null,
+ slotCountsInDrawing: [distinct positive slot counts, numerically sorted],
+ validClosedRouteCount: integer,
+ lanes: [{id, label, lengthMm}]
+}
+laneCount and lanes describe one supported closed circuit only. Open,
+disconnected or unsupported layouts have laneCount=null, validClosedRouteCount=0
+and lanes=[]. No incomplete length is presented as a usable lap length.
+slotCountsInDrawing describes the slot counts on road primitives in the drawing,
+not a sum or a claim that these form race lanes. Several separate closed loops
+are conservatively unsupported, with zero usable exported lap routes.
+Timing converts lengthMm / 1000 to metres and offers nominal imported lengths
+separately from measured lengths. Do not overwrite records, historical results,
+existing database IDs or measured values merely because a design was imported.
+
+GEOMETRY AND TRANSFORMS
+Coordinates and lengths: mm. +X right, +Y down. Angles: degrees. Rigid transform
+order for local points: reflect local Y if flip=true, then rotate clockwise by
+angle, then translate by (x,y). SVG equivalent: translate rotate scale(1,-1).
+Curve source parameters use inner EDGE radius, road width and positive sweep
+angle. Local curve starts at (0,-radius), tangent toward +X. Lane offsets are
+measured across the road width; use the module to resolve exact lane radii.
+
+preparedGeometry = {
+ closed: boolean,
+ boundsMm: [minX,minY,width,height],
+ surfaces: [{pieceId,outline,transform:{x,y,angleDeg,reflectY},kind}],
+ routes: [{id,lengthMm,segments,sections}],
+ alternateRoutes: [{pieceId,id,fromLaneIndex,toLaneIndex,lengthMm,segments}]
+}
+Surface outline is LOCAL generated SVG path data; transforms apply once.
+kind is straight, curve, straight-border or curve-border. Borders participate
+in bounds/drawing/parts counts, not route lengths. Preserve placement paint order.
+Route segments and alternate branches are already in WORLD coordinates.
+Through segment types:
+ line: {type:"line",from:[x,y],to:[x,y],lengthMm}
+ arc: {type:"arc",center:[x,y],radiusMm,startAngleDeg,sweepDeg,lengthMm}
+Arc angle zero points +X. Positive sweep is clockwise on screen; negative sweep
+is valid after reflection/reversal. Line length is Euclidean; arc length is
+radiusMm * abs(sweepDeg) * PI/180. Route length is the sum of section lengths.
+sections: [{pieceId,laneIndex,reverse,startMm,lengthMm}]. laneIndex is a zero-based
+LOCAL slot index, not a hardware channel. startMm accumulates canonical length.
+Each currently supported section has exactly one through line/arc segment.
+Alternate branches may also have:
+ cubic: {type:"cubic",from,control1,control2,to,lengthMm}.
+Branch endpoints and controls are world [x,y]. Cubic length uses the geometry
+module's numerical integration, not control-polygon length. fromLaneIndex and
+toLaneIndex are local slot indices. Branches are not part of usable lap totals.
+
+TOLERANCES AND SCOPE
+Connector centers and matched slot endpoints must be strictly within 0.15 mm.
+Opposing outward connector headings must differ from 180 degrees by <0.1 degree.
+Road width and sorted slot-distance compatibility use <0.1 mm. Route traversal
+uses <0.2 mm to locate the already connection-validated next slot. Reported
+endpoint discontinuity is therefore bounded by the 0.15 mm connection test.
+Derived paths round some local coordinates to 6 decimal places. Fixture length
+comparison tolerance: 1e-6 mm; exact fixture endpoints join within 1e-4 mm.
+Those tighter fixture checks are NOT the acceptance threshold for user layouts.
+Bounds use road outlines sampled at <=1 degree increments, so are approximate.
+No collision, nesting clearance, mould tolerance, elevation or bridge ordering
+is certified. Nominal closure does not prove a physical layout can be built.
+
+PARAMETRIC VALIDATION
+Reuse Forge.validateDefinition/validateLayout rather than maintaining a second
+approximate validator. IDs: definition /^[-\w:.]{1,100}$/, placement /^[\w-]{1,100}$/;
+no duplicate IDs; every placement must reference an embedded definition.
+Names 1–100 characters. x/y/angle finite within +/-1,000,000; angles normalized.
+flip is boolean; reject flip when the definition forbids mirroring.
+widthMm/lengthMm/innerRadiusMm are finite 0.01..10000; curves 0<angleDeg<=180.
+Roads support 1..8 slots. Use laneCount + laneSpacingMm, or explicit
+laneOffsetsMm strictly inside the road, strictly increasing, without conflicting
+spacing/count. Borders require side="inner" or "outer".
+Lane changers are type="straight", exactly two lanes, laneChange="left"|"right"|
+"both", 0<=switchStartMm<switchEndMm<=lengthMm, span >=0.01 mm.
+Left is local lane 1→0, right 0→1.
+Only numeric parametric templates are supported. No arbitrary SVG or HTML input.
+Unknown parameter keys are stripped by the normalizer. Nonfinite, contradictory
+or unsupported dimensions reject the file. Status is nominal or user-defined.
+
+PROFILE (SHARED, ILLUSTRATIVE ONLY)
+             Unit        Range       Balanced default
+ speed       mm/s        200..3000    1200
+ acceleration mm/s²      100..4000    1300
+ brake       mm/s²       100..5000    2200
+ corner      multiplier  0.20..0.95   0.57
+ drift       degrees     0..30        10
+Existing v1 normalization clamps finite out-of-range profile values. Missing or
+nonfinite values use Balanced defaults. All emitted values are normalized.
+Relaxed: 800,700,1300,0.48,5; Aggressive: 1800,2200,3200,0.68,16.
+No playback multiplier is exported. This is not measured car performance,
+hardware control, or a predicted race pace. Per-car overrides are out of scope.
+travelPlan(route,profile,offset,direction) returns speed at travel distance and
+replans braking/acceleration for reverse travel. atTravel() supplies world pose.
+Timing can integrate 1/speed over travel distance, normalize that travel-time
+distribution to the driver's selected benchmark lap, then invert it for position.
+Actual timing events remain authoritative. Lap-only positions are estimates.
+Visual drift rotates the car body around its guide point; forward body axis +X,
+rear -X. Add sign(curvature)*drift*min(1,abs(curvature)*350) degrees to the body
+rotation. Keep the guide on the slot. This swings the rear OUTWARD in both travel
+directions and reflected layouts. Do not translate the guide for a drift effect.
+
+COMPATIBILITY
+compatibility = {liveTracker:"through-routes"|"unavailable",components,
+ openEnds,ambiguousEnds,issues:[{code,severity:"error"|"warning",message}]}
+Codes: empty-layout, open-circuit, disconnected-circuits, ambiguous-connections,
+unsupported-route-geometry, lane-changing-branches, elevation-order-unavailable,
+start-finish-unset. Errors disable circuit animation; warnings need presentation.
+Elevation warning is always emitted because this format has no elevation model.
+Through-routes describes geometry capability, not hardware calibration readiness.
+Missing start/finish must be resolved by user review before Timing playback.
+No digital switching or pit-route tracking is implied by branch artwork.
+
+PNG AND REUSABLE MODULE
+Export PNG uses regenerated geometry only, alpha background, optional borders,
+24 px padding, no grid/UI/selection/cars/timing marker. Default largest side is
+1600 px; picture() caps requests at 2048 px. Browser download rejects >5 MiB.
+Use the optional PNG for cards only. Timing must also regenerate thumbnails.
+app/integration.js is UMD: Node require('./app/integration.js'), or browser global
+SlotForgeIntegration after geometry.js and core.js. Functions: importLayout(raw),
+prepare(raw,state?,withGeometry?), network(pieces,defs), readState(raw),
+newState(), reconcile(state,network), offsets(network,startFinish), atTravel(),
+travelPlan(), picture(raw,options), canonical(), hash(). See implementation/tests.
+Node dependency chain: integration.js -> core.js -> track-packs/tools/geometry.cjs.
+No npm packages or DOM required for geometry/validation. TextEncoder,
+structuredClone and modern JavaScript required. Browser PNG encoding uses Canvas.
+The accompanying dependency/license note describes reuse scope.

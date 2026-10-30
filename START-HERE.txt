@@ -1,0 +1,53 @@
+SLOTFORGE TRACK BUILDER — COMPLETE SHARE PACKAGE v0.2.5
+30 October 2026
+
+GET STARTED
+1. Extract the entire ZIP. Do not open the app from inside the ZIP viewer.
+2. Open the extracted SlotForge Track Builder folder.
+3. Double-click SlotForge Track Builder.html to open the app in your browser.
+   Keep the app, designs, track-packs and integration folders together.
+   No install, account or build step is needed for the browser app.
+
+WINDOWS ICON SHORTCUT (OPTIONAL)
+Double-click Create Windows shortcut.vbs in the extracted folder to create
+a SlotForge Track Builder shortcut beside it, using the supplied app icon.
+This makes a shortcut for your own extraction location; no original-PC paths
+are required. If Windows Script Host is unavailable, open the HTML directly.
+Browser tabs also use the SlotForge icon.
+
+LOCAL SAVING
+Tracks and custom packs are saved in your browser, not written into this ZIP.
+This package does not carry over the sender's personal Track Library.
+To share a track, use Export to SlotForge to download its .slotforge.json file;
+the recipient can use Open in the Builder. Export custom packs separately.
+Use JSON backups for portability and before clearing browser data or moving
+the app. Changing browser, folder, or file:// versus localhost can show a
+different local workspace. File-based storage support varies by browser.
+
+OPTIONAL LOCAL SERVER
+For a consistent browser-storage address, install/use a current Node.js runtime,
+open a terminal in this extracted folder and run:
+  node app/serve.cjs
+Then visit http://127.0.0.1:8173/app/ . Keep that terminal running while using it.
+The server is local to this computer. Stop it with Ctrl+C.
+If port 8173 is already running an older copy, stop that server first or continue
+using it deliberately; do not assume it serves this extracted folder.
+
+WHAT'S INCLUDED
+- Complete editable application source and local server.
+- Six supplied track packs and their matching artwork/reference material.
+- Track Library, custom packs/plugins, PDF/JSON/PNG/CSV exports and tune profiles.
+- Available-space guide with dimensions, dragging, resizing, scaling and locking.
+- Integration specifications, example layouts and automated tests.
+- README.txt for detailed features and limits; app/validation.json for checks.
+
+SOURCE CHECKS (CURRENT NODE.JS; NO NPM INSTALL)
+  node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/server.test.cjs
+  node integration/slotforge-timing/check-fixtures.cjs
+Expected: 86 source tests and 15 integration fixtures pass.
+
+REBUILD THIS COMPLETE ZIP (OPTIONAL; PYTHON 3)
+  python app/package-share.py
+Creates dist/SlotForge-Track-Builder-v0.2.5-complete.zip and its SHA-256 checksum.
+Older integration handoff notes describe their original releases. The current
+Builder is v0.2.5; the layout envelope is v1 and integration contract is draft.2.

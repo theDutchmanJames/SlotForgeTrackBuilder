@@ -1,0 +1,218 @@
+{
+  "version": "0.2.5",
+  "date": "2026-10-30",
+  "automated": {
+    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/server.test.cjs",
+    "passed": 86,
+    "failed": 0,
+    "scope": [
+      "Closed circuit and per-lane lengths",
+      "Broken and separate circuits",
+      "Connector family and slot spacing",
+      "Reflected and rotated layouts",
+      "Ambiguous duplicate connections",
+      "Custom dimension validation",
+      "Border bounds",
+      "Preview speed planning",
+      "Layout import validation and geometry regeneration",
+      "Continuous guide interpolation",
+      "Rigid group transformations preserve connections",
+      "Marquee intersects road surfaces, excluding empty curve interiors",
+      "New reflected corners retain their handedness when attached",
+      "Asymmetric slot endpoints",
+      "Immutable imported definitions",
+      "Browser shortcut modifiers",
+      "Animation callback cleanup",
+      "World-coordinate route export",
+      "Malformed imports",
+      "All 102 built-in definitions round-trip",
+      "Exact arc interpolation",
+      "500-piece connection chain",
+      "Local server request validation",
+      "Automatic border tiling under reflection and rotation",
+      "Border deduplication, compatible families and layout limit",
+      "Policar and ScaleAuto border tiling",
+      "Left/right/double lane-changer routing and geometry",
+      "Invalid switch spans and lane counts",
+      "Reflected cubic export and import round-trip",
+      "Through-route circuit lengths with lane changers",
+      "Versioned Timing contract: stable design/route identities, independent timing offsets, reverse speed planning, 2/4/8 lanes and transparent picture",
+      "Strict original units and integration-contract metadata validation; both public entry points and explicit-state bypass regression",
+      "Circuit inside/outside border placement on straights, mirrored and reversed pieces, open chains and separate loops",
+      "Named custom pack migration, ownership, selected export, atomic import and library limits",
+      "R1\u2013R8 adjacent curve edge radii and persistent family settings",
+      "All four buildable starting-grid variants retain artwork in regenerated pictures",
+      "Reference picture serialization, transforms, image validation, inventory isolation, missing connectors and stable road route IDs",
+      "Alphabetical catalogue folders, natural radius ordering and descending straight lengths, without modifying catalogue definitions",
+      "Every catalogue item retained in exactly one folder",
+      "Independent design snapshots preserve profile, timing and references; updates preserve IDs and copies create new IDs",
+      "Selected export snapshot isolation, independent totals and inventory, missing/incompatible library rejection, reference and empty exports",
+      "Space guide validation, movement and proportional resizing limits, locked no-ops, layout/library/export persistence, isolation from timing and track metrics"
+    ]
+  },
+  "browser": {
+    "url": "http://127.0.0.1:8173/app/",
+    "verified": [
+      "Example circuit loads with correct counts and lengths",
+      "Custom dimensions rejected when slots do not fit",
+      "Custom curve creation",
+      "Mirror, rotate, duplicate and undo",
+      "Drag away and snap back to close the circuit",
+      "Two-car preview and tuning presets",
+      "Autosave restored after reload",
+      "White report preview with layout, lane lengths and inventory",
+      "Report Back button restores editor",
+      "No captured browser console errors in final check",
+      "Box-select three pieces without panning",
+      "Group drag away and snap back restores closed circuit",
+      "Group duplicate and delete with undo",
+      "Select all, rotate and mirror preserve circuit closure",
+      "Shift-click adds a fourth piece to a selection",
+      "New corner inherits Mirror action",
+      "Mirror new pieces remains checked after reload",
+      "Title edit enables undo and restores original name",
+      "Rapid start/pause/start preview after callback cleanup",
+      "Printable report after export refactor",
+      "Original 31-piece user layout restored after checks",
+      "Track Packs custom entry opens the custom library",
+      "Shared header returns to builder in the same tab",
+      "Export page exposes report, layout, CSV and custom pack actions",
+      "Add borders preview for 18 mirrored road pieces",
+      "36 borders expand footprint while retaining circuit closure and lane lengths",
+      "Custom lane-changer shape options and switch-position fields",
+      "Double lane-changer live SVG and alternate-route lengths",
+      "Invalid switch endpoint disables creation"
+    ],
+    "screenshot": "custom-lane-changer-preview.png"
+  },
+  "notVerified": [
+    "Native print dialog and final PDF file",
+    "Browser download reaching the filesystem",
+    "Offline file:// execution",
+    "Mobile layout",
+    "SlotForge Timing import, which is not implemented"
+  ],
+  "limitations": [
+    "Nominal geometry is not physical fit certification",
+    "SCX is reference-only",
+    "No collision or elevation checking",
+    "No digital branching",
+    "Preview uses one closed circuit and a shared tune profile",
+    "Lane-changer preview and circuit totals use straight-through slots; alternate routes are exported but not simulated"
+  ],
+  "packChecks": {
+    "passed": 51,
+    "failed": 0,
+    "packs": 6
+  },
+  "integration": {
+    "contractVersion": "1.0.0-draft.2",
+    "fixturesPassed": 15,
+    "fixturesFailed": 0,
+    "browser": "Isolated localhost:8175: timing line at 37%, reverse direction, label persistence after reload, JSON/PNG actions, no console errors",
+    "samplePng": {
+      "width": 1600,
+      "height": 937,
+      "alpha": true,
+      "bytes": 144731
+    },
+    "results": "../integration/slotforge-timing/TEST-RESULTS-AND-LIMITS.txt",
+    "standaloneTestsPassed": 21,
+    "followUp": "../integration/slotforge-timing/FOLLOW-UP-v0.2.1.txt"
+  },
+  "layerOrder": {
+    "automated": "47 regression tests pass; group order, no-op, save/reopen and stable lane identity checked",
+    "browser": "Isolated localhost:8175: Bring to front, Send to back and Undo verified; no console warnings/errors",
+    "screenshot": "layer-order-preview.png"
+  },
+  "borderFix": {
+    "browser": "Isolated localhost:8175 Carrera oval: 18 outside borders form continuous outer boundary; closure and lane lengths retained; no console warnings/errors",
+    "screenshot": "border-circuit-preview.png"
+  },
+  "editor022": {
+    "browser": "Isolated localhost:8175; original port8173 workspace untouched",
+    "verified": [
+      "Named pack with multiple pieces saved to library and reopened",
+      "R2 computed from R1 and saved in the pack across reload",
+      "Reference catalogue picture placed, rotated, mirrored, resized and restored after reload",
+      "Reference excluded from road totals and reported as Unknown in print inventory",
+      "Transparent PNG export succeeded",
+      "Shared header, Plugins page and pack export selector",
+      "ScaleAuto C/D grid artwork visible on canvas",
+      "No captured browser console errors"
+    ],
+    "screenshots": [
+      "named-packs-preview.png",
+      "curve-family-preview.png",
+      "reference-placement-preview.png",
+      "scaleauto-grid-preview.png"
+    ]
+  },
+  "editor023": {
+    "browser": "Isolated localhost:8175; user port8173 workspace untouched",
+    "verified": [
+      "Corners R1/R2/R3/R4 ordering and longest-first straights",
+      "Search reveals closed folders and clearing search restores expansion state",
+      "Saved reference-containing layout as a named library snapshot",
+      "Saved separate copy; both designs persisted across reload",
+      "Opened original snapshot back in builder",
+      "Updated original name; library still contains two designs and alternative remains unchanged",
+      "Initial save-dialog ID mismatch found and fixed; no further errors in final library flows"
+    ],
+    "screenshots": [
+      "catalogue-folders-preview.png",
+      "design-library-preview.png"
+    ],
+    "notVerified": [
+      "Native file download destination",
+      "Browser storage quota exhaustion",
+      "Delete button end-to-end"
+    ]
+  },
+  "editor024": {
+    "browser": "Isolated localhost:8175; user port8173 workspace untouched",
+    "verified": [
+      "Prominent labelled name field and adjacent library/PDF/SlotForge buttons",
+      "Keyboard name edit appears on current-track PDF report",
+      "Saved-track selector regenerates preview and exports its own name, counts and parts",
+      "Saved report has 0.80 m while current builder remains 1.15 m",
+      "Builder and saved-library SlotForge JSON actions report the correct track name",
+      "Saved-track PNG generation and CSV action",
+      "Report Back returns to the launch section",
+      "Track Library heading and existing snapshots preserved",
+      "Library card Export action preselects the correct saved track",
+      "No captured browser warnings or errors"
+    ],
+    "screenshots": [
+      "export-builder-preview.png",
+      "export-selector-preview.png"
+    ],
+    "notVerified": [
+      "Native print destination and final PDF file",
+      "Downloaded file destination"
+    ]
+  },
+  "editor025": {
+    "browser": "Isolated localhost:8175; user port8173 workspace untouched",
+    "verified": [
+      "Named HTML launcher redirects to app",
+      "Guide added with exact dimensions",
+      "Tinted-area drag moves guide while road geometry stays in place",
+      "Bottom-right resize updates dimensions",
+      "120 percent scale changes 3000 x 1500 to 3600 x 1800 mm",
+      "Locked guide and dimensions survive reload",
+      "Marquee selects four track pieces through locked guide",
+      "Undo restores removed guide including lock and dimensions",
+      "No captured browser warnings or errors",
+      "Windows shortcut target and custom icon path read back correctly"
+    ],
+    "screenshots": [
+      "space-guide-preview.png"
+    ],
+    "notVerified": [
+      "Windows Explorer icon cache appearance",
+      "Native default-browser launch through Windows shortcut",
+      "Shift-drag end to end (proportional maths covered by tests)"
+    ]
+  }
+}

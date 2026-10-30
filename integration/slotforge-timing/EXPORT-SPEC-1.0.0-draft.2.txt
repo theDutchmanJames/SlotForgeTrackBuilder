@@ -1,0 +1,65 @@
+SlotForge Timing integration contract 1.0.0-draft.2 — Builder 0.2.2
+29 October 2026
+
+This revision extends EXPORT-SPEC-1.0.0-draft.1.txt. All its route, timing,
+identity, units, validation and profile rules remain in force except the
+allowlist of supported integration contract versions and surface templates.
+The main slotforge.layout envelope remains version 1.
+
+VERSION NEGOTIATION
+Builder emits 1.0.0-draft.2 and explicitly accepts draft.1, draft.2 and the
+previously documented legacy/unversioned files. Every other explicit version
+is rejected before normalization. Units remain mm only, with legacy omission.
+A draft.1-only Timing importer should reject draft.2 with its normal clear
+unsupported-version error until its shared runtime is updated deliberately.
+Do not simply change a draft.2 declaration to draft.1 or strip its metadata.
+No changes to the SlotForge Timing repository were made.
+
+REFERENCE TEMPLATE
+A definition may have parameters:
+ {"type":"reference", "lengthMm":350, "widthMm":200}
+lengthMm is horizontal picture-box size; widthMm is vertical picture-box size.
+Both are finite in [0.01, 10000] mm and are approximate display dimensions,
+not verified footprints, road dimensions or lengths. The regenerated geometry
+is a rectangle with no lanePaths, no connectors and centrelineLengthMm: 0.
+status is forced to reference-only. It must never establish circuit closure,
+receive a timing line, add route length or change otherwise unchanged lane IDs.
+Placement transforms and array paint order apply just as for other pieces.
+Bounds include the displayed rectangle. Inventory counts the reference item;
+kit pictures do not imply an inventory of constituent track components.
+
+Optional definition.referenceImage is an embedded data:image/png;base64 image.
+The validator rejects other MIME types, external URLs, invalid base64 alphabet
+and values longer than 500000 characters. No arbitrary SVG/HTML is accepted.
+The Builder captures only its local catalogue artwork, at up to 512 px, and
+embeds the PNG for portable save/reopen and offline picture generation.
+Absent artwork renders a labelled dashed rectangle. Treat decode failures as
+missing artwork; retain the reference identity and do not infer geometry.
+Apply the existing 5 MiB external JSON file limit before parsing.
+F.surfaceMarkings draws artwork and the REFERENCE label; I.picture includes it
+in its transparent output. Buildable starting-grid markings also use this
+shared renderer, now covering ScaleAuto, Scalextric and Ninco variants.
+
+Compatibility adds reference-artwork (warning) when references are present.
+An otherwise valid closed circuit remains eligible for through-route animation;
+references never substitute for missing road pieces. Real crossings remain
+solely authoritative. No digital branching or pit tracking has been added.
+
+VALIDATION
+Run the full app test set including editor-features.test.cjs; it covers reference
+round trips, unsafe artwork rejection, transforms, missing connectors, unchanged
+lane identities, and legacy draft.1 imports. The 15 existing fixture assertions
+remain valid, including stable design revisions and route IDs. Old fixture files
+remain draft.1 inputs; prepare() upgrades the output contract declaration.
+
+OPTIONAL BUILDER WORKSPACE METADATA (Builder 0.2.5)
+workspace.spaceGuide optionally describes an editor-only available-space box:
+ {"x":-300,"y":250,"lengthMm":3000,"widthMm":1500,"locked":true}
+Coordinates are in mm, each within +/-1,000,000; dimensions must be finite and
+between 10 and 50,000 mm. locked is boolean. A missing or null spaceGuide means
+no guide. An explicitly supplied workspace must be an object, not null/array.
+Updated Builder validates and retains the guide in JSON and library snapshots.
+It is excluded from design.revision, track bounds, prepared physical geometry,
+route IDs, lane lengths, compatibility, parts lists and generated pictures.
+Timing may ignore workspace metadata. The contract remains 1.0.0-draft.2 and
+the main envelope remains slotforge.layout version 1.

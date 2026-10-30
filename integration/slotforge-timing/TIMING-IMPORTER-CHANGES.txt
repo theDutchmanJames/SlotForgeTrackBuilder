@@ -1,0 +1,38 @@
+SlotForge Timing: review these Builder 0.2.2 changes before coding against them.
+The proposed contract is 1.0.0-draft.2; envelope remains slotforge.layout v1.
+
+1. Read EXPORT-SPEC-1.0.0-draft.1.txt and its draft.2 extension. The earlier CODEX-HANDOFF.txt describes the
+   0.1.3 draft and is superseded for new exports. Per-car overrides are out of
+   scope for this first integration, per the Timing instance's brief.
+2. Use integration.importLayout() and prepare() to regenerate/validate geometry.
+   Never treat incoming preparedGeometry or SVG strings as authoritative.
+3. Link imported designs by design.id, not title. Compare design.revision for
+   content updates. Preserve Timing's own track IDs, records and measured lengths.
+   Ask the user whether a new design revision updates an existing database track.
+4. Replace assumptions about lane-1/lane-2 with stable track.lanes[].id. Compare
+   timing.routeMappingRevision with the last user-confirmed mapping revision.
+   New/changed topology requires lane remapping; labels are only display text.
+5. Respect timing.startFinish section/fraction, regenerated per-route offsets,
+   and direction (+1/-1). Retain canonical route geometry unchanged. Require
+   user review of timing setup after offset/direction changes or missing references.
+6. Treat track.lanes lengths as nominal mm; convert to metres for display. Open
+   or unsupported circuits have no usable lap totals. Distinguish slots in a
+   drawing from usable closed routes. Preserve measured values separately.
+7. Present machine-readable compatibility issues and their explanations. Follow
+   through routes only; preserve/draw changer branches without pretending to
+   track switching. All elevation/bridge ordering remains unsupported.
+8. Accept optional separate PNG for cards; regenerate one if absent. Motion uses
+   world slot geometry, not the PNG. No server or matching track packs required.
+9. Use the shared animation profile. travelPlan replans for direction; normalize
+   its time distribution to the selected benchmark. Race timing remains the
+   source of truth; positions between lap-only events are estimates.
+10. References (parameters.type = reference) are drawing-only objects with
+    approximate picture-box dimensions and optional embedded PNG artwork.
+    Preserve and render them, but never infer slots, lengths or connections.
+    Display reference-artwork warnings and keep physical/measured values separate.
+11. Run included fixtures/checks and adapt UI to existing Timing architecture.
+    Receiving flow: Database > Tracks > Import > Review name/picture/lengths >
+    Map hardware lanes and confirm timing line > Save > race-selected Live Tracker.
+
+No SlotForge Timing repository code was changed by this work. Please report
+contract discrepancies before either side labels this proposed version stable.

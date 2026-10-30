@@ -1,0 +1,22 @@
+const fs=require('node:fs'),path=require('node:path');
+const F=require('../../app/core.js'),I=require('../../app/integration.js'),{oval}=require('../../app/integration-fixtures.cjs');
+const dir=path.join(__dirname,'v1-fixtures');fs.mkdirSync(dir,{recursive:true});
+const expected={contractVersion:I.CONTRACT,files:{}};
+function write(name,raw,invalid=false){fs.writeFileSync(path.join(dir,name+'.slotforge.json'),JSON.stringify(raw,null,2));if(invalid){expected.files[name]={reject:true};return;}const out=I.prepare(raw);expected.files[name]={designId:out.design.id,revision:out.design.revision,routeMappingRevision:out.timing.routeMappingRevision,requiresLaneRemap:out.timing.requiresLaneRemap,closed:out.preparedGeometry.closed,routeIds:out.track.lanes.map(l=>l.id),lengthsMm:out.track.lanes.map(l=>l.lengthMm),timingOffsets:out.timing.startFinishOffsets,compatibilityCodes:out.compatibility.issues.map(i=>i.code)};}
+const base=oval();write('01-two-lane',base);write('02-four-lane',oval(4));write('03-eight-lane',oval(8));
+const model=F.validateLayout(base),from=model.pieces[0],to={...from,x:750,y:-300,angle:37,flip:true};
+const mirrored=I.prepare({...base,pieces:F.repositionGroup(model.pieces,from,to)});write('04-mirrored-rotated',mirrored);
+write('05-reverse-direction',I.prepare({...mirrored,timing:{...mirrored.timing,direction:-1}}));
+write('06-reordered',I.prepare({...base,pieces:[...base.pieces].reverse()}));
+write('07-remap-required',I.prepare({...base,pieces:base.pieces.map(p=>p.id==='piece-00'?{...p,id:'replacement'}:p)}));
+write('08-open',I.prepare({...base,pieces:base.pieces.slice(1)}));
+write('09-disconnected',I.prepare({...base,pieces:[...base.pieces,...base.pieces.map(p=>({...p,id:p.id+'b',x:p.x+5000}))]}));
+const changer=structuredClone(base),params=changer.definitions.find(d=>d.parameters.type==='straight').parameters;Object.assign(params,{laneChange:'both',switchStartMm:69,switchEndMm:276});write('10-lane-changer',I.prepare(changer));
+const invalid=structuredClone(base);invalid.definitions[0].parameters.widthMm=-1;write('11-invalid-dimensions',invalid,true);
+const noGeometry=structuredClone(base);delete noGeometry.preparedGeometry;write('12-without-prepared-or-png',noGeometry);
+const legacy=structuredClone(base);for(const k of ['design','timing','producer','integration','track','compatibility','preparedGeometry'])delete legacy[k];fs.writeFileSync(path.join(dir,'13-legacy-v1.slotforge.json'),JSON.stringify(legacy,null,2));expected.files['13-legacy-v1']={newDesignIdOnImport:true,closed:true,lengthsMm:base.track.lanes.map(l=>l.lengthMm),startFinish:null};
+write('14-ambiguous',I.prepare({...base,pieces:[...base.pieces,{...base.pieces[0],id:'overlap'}]}));
+const bordered=structuredClone(base),border=F.validateDefinition({id:'test:border',name:'Straight border',family:'test',color:'#a69780',parameters:{type:'straight-border',lengthMm:345,widthMm:80,side:'inner'}});bordered.definitions.push(border);bordered.pieces.push({...F.pose(border,0,-80),id:'border-00'});write('15-with-borders',I.prepare(bordered));
+fs.writeFileSync(path.join(dir,'expected-results.json'),JSON.stringify(expected,null,2));
+fs.writeFileSync(path.join(dir,'track-picture.svg'),I.picture(bordered).svg);
+console.log('15 fixtures, expected results and SVG picture generated');

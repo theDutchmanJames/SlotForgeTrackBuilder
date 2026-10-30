@@ -1,0 +1,113 @@
+SlotForge Track Builder — conceptual project plan
+Updated: 29 October 2026
+
+STATUS AND SCOPE
+The user authorised a first app iteration on 29 October 2026.
+A local browser editor now lives in app/; open index.html at the project root.
+Implemented: catalogue placement, dragging, nominal connector snapping, rotate,
+reflect, duplicate, undo/redo, custom straight/curve/border authoring, local
+autosave, layout JSON import/export, custom pack JSON import/export, counts,
+closed-circuit lane lengths, a printable report and two-car preview with a
+shared tune profile. The README records first-iteration limitations.
+Iteration 0.1.1 adds marquee and Shift-click selection, rigid group movement
+and transformations, and a remembered mirror preference for new pieces.
+Empty-canvas drag selects; Space+drag and middle-button drag pan.
+Iteration 0.1.2 addresses import isolation, shortcuts, animation cleanup,
+custom-slot connection matching, performance and local-server validation.
+See app/REVIEW.txt for the code-review findings and remaining test gaps.
+Iteration 0.1.3 adds shared Track Builder / Track Packs / Custom Track / Export
+navigation, a custom-library page and a custom card in the pack catalogue.
+Selected roads can receive matching inner/outer borders, including repeated
+shorter sections. Duplicate footprints are skipped and missing models reported.
+Borders join the selection for group moves; they are not persistent child links.
+Visual drift is corrected so the rear swings outward around the guide point.
+Custom templates now include two-lane left, right and double lane changers.
+User-defined switch spans generate cubic alternate routes with calculated
+lengths, preserved in imports/exports. Preview and circuit totals currently
+follow straight-through lanes; switching-route simulation remains planned.
+Items below remain the overall product plan; not all are implemented yet.
+Follow SlotForge Timing's visual style.
+
+TRACK EDITOR
+- Select catalogue pieces and place, drag, duplicate, rotate and snap them.
+- Support left/right curve orientation and reflection where physically valid.
+  Directional switches and electronics require a supported counterpart.
+- Preserve fixed physical geometry, nested curves and connector compatibility.
+- Include borders in the occupied footprint and layout dimensions.
+- Calculate piece counts, track centreline length and per-lane route lengths.
+  Keep alternative digital/pit routes distinct and flag unknown dimensions.
+
+TRACK PACKS AND CUSTOM PIECES
+- Use versioned, data-only packs with manufacturer-specific vector artwork.
+- Allow community packs to add brands or extend existing catalogues.
+- Offer an empty Custom Track Pack with straight, curve and border templates.
+- Users can set dimensions, lane count and slot-centre spacing independently
+  of road width; derive artwork, slots, connectors and lengths together.
+- More complex switches require explicit paths and connection definitions.
+- Save piece edits as new revisions; existing layouts retain their definitions.
+- Use published information for premade packs. Distinguish documented values,
+  nominal assumptions and unresolved measurements; artwork is not measurement.
+- Carrera, Scalextric, Policar, ScaleAuto, Ninco and SCX design drafts exist.
+  See track-packs/catalogue.json for scope and status. SCX geometry remains
+  unverified; community measurements and catalogue conflicts are documented.
+
+PRINT-FRIENDLY PDF EXPORT
+- Clear track name, optional description and revision details.
+- Large vector layout with start/finish, direction, lane numbers and borders.
+- Overall dimensions including borders, centreline and individual lane lengths.
+- Parts inventory with thumbnails, names, product codes, quantities and totals.
+- Mainly white paper, dark text, restrained accents and an ink-saving track
+  style that remains legible in grayscale. Paginate longer inventories.
+- Label nominal/unknown values and distinguish main circuit from alternative
+  routes. Optional numbered assembly references can match the parts table.
+
+LIVE PREVIEW AND TUNE PROFILE — ACCEPTED
+- A Preview button animates two cars on their actual connected slot routes.
+- Provide pause, restart and playback-speed controls; highlight route gaps.
+- Add a Tune Profile panel with immediate visual feedback:
+    Top speed: maximum driving speed on long enough straights.
+    Acceleration: how quickly the car gains speed.
+    Braking strength: deceleration available before corners.
+    Cornering speed: bend-speed preference, accounting for curvature.
+    Drift amount: visual rear-end rotation in corners.
+- Keep playback speed separate from car tuning: it changes the demonstration
+  clock without changing the saved driving behaviour.
+- Start with Relaxed, Balanced and Aggressive presets. Allow named saved
+  profiles and independent profile assignment to each preview car.
+- Look ahead along the route to brake before bends and accelerate as the route
+  opens up. Speed must remain continuous across connected piece boundaries.
+- Keep the guide point on the slot. Rotate the body around the guide point to
+  depict drift. Initially drift is visual only: it does not alter route length
+  or serve as a real-world grip, clearance or lap-time prediction.
+- Digital branches need a selected route for the simulation.
+- Exact units, slider ranges and preset values remain design decisions.
+
+SHARED LAYOUT AND SLOTFORGE TIMING INTEGRATION
+- Define a versioned, self-contained Track Layout format before implementation.
+- Include identity/revision, piece placements and embedded definitions for
+  editing, plus final transformed geometry for rendering in Timing.
+- Store road/border outlines, bounds in mm, ordered slot paths and lengths,
+  lane identities, start/finish, direction, bridge levels and optional sectors.
+- Preserve digital branches and pit connections; allow named routes.
+- Export driving profiles and car/profile assignments alongside geometry as
+  separate fields. A picture alone is insufficient for the widget.
+- Share the renderer and route-motion calculation between both apps. Given a
+  route, profile and elapsed time, return guide position, heading and drift.
+- Initial Timing integration: import picture and calculated track information
+  into its Track Database. Full integration adds saved geometry and profiles.
+- Widget defaults to the track selected for the race, with explicit lane mapping
+  and display options for borders, colours, sectors, direction and cars.
+- Demo mode runs freely with the saved profile.
+- Race mode uses the profile's speed pattern adjusted to a driver's reference
+  lap time, correcting estimated progress at actual timing crossings.
+- Measured timing events remain authoritative. Animation never generates laps,
+  changes results or claims continuous physical position sensing.
+- Timing may override a profile per driver without editing the imported layout.
+- Updates are explicit; historical races retain the layout/profile revisions
+  needed to reproduce their display. Missing timing data and unsupported routes
+  require defined fallback behaviour before implementation.
+
+EXPORT TYPES
+PDF: printable planning and assembly reference.
+Track Layout: complete editable circuit, prepared geometry and driving profiles.
+Track Pack: reusable catalogue pieces and their definitions.

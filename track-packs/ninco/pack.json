@@ -1,0 +1,5083 @@
+{
+  "format": "slotforge.track-pack",
+  "formatVersion": "0.1-draft",
+  "id": "slotforge.ninco",
+  "version": "0.1.0-design",
+  "title": "Ninco Classic / N-Digital",
+  "manufacturer": "Ninco",
+  "date": "2026-10-29",
+  "units": "mm",
+  "status": "first-historical-design-pack",
+  "runtime": {
+    "containsExecutableCode": false,
+    "importerImplemented": false
+  },
+  "scope": {
+    "basis": "Classic 1:32 track, borders, N-Digital road devices and track-side accessories from manufacturer catalogues 2012 and 2015.",
+    "excluded": [
+      "Raid and Snow surface variants pending dedicated appearance references",
+      "10511–10515 extension kits including roundabout, dune and special curves",
+      "Older powerbase revisions not shown in the selected scope",
+      "Complete circuit sets, cars, controllers, power supplies and loose cables",
+      "Other Ninco track systems and smaller-scale toy ranges",
+      "Unverified plain-black border revisions"
+    ],
+    "availability": "Historical catalogue coverage; no claim of current manufacture or stock."
+  },
+  "defaults": {
+    "trackWidthMm": 180,
+    "laneSpacingMm": 90,
+    "singleLaneWidthMm": 90,
+    "slotOffsetsMm": [
+      45,
+      135
+    ],
+    "status": "nominal-source-based",
+    "borderIllustrationWidthMm": 50,
+    "note": "Ninco radii/lengths from 2012. 180/90 mm cross-section from ScaleAuto’s manufacturer comparison, consistent with the 180 mm radius step. Single-lane width and centred offsets inferred. Border width is illustration-only."
+  },
+  "sources": [
+    {
+      "id": "ninco-2012",
+      "title": "Ninco manufacturer catalogue 2012, pages 6–7",
+      "url": "https://www.slotcar-union.com/img/cms/gallery/catalogues/Anciens/NINCO%20Catalog%202012.pdf",
+      "pages": [
+        6,
+        7
+      ],
+      "note": "Manufacturer publication hosted by retailer. Visually inspected; contains precise outer radii, road dimensions and N-Digital pictures."
+    },
+    {
+      "id": "ninco-2015",
+      "title": "Ninco manufacturer catalogue 2015, pages 10–11 and 14–15",
+      "url": "https://www.slotcar-union.com/img/cms/gallery/catalogues/Anciens/NINCO%20Catalog%202015.pdf",
+      "pages": [
+        10,
+        11,
+        14,
+        15
+      ],
+      "note": "Manufacturer publication hosted by retailer. Visually inspected for identities, quantities, road markings and accessories."
+    },
+    {
+      "id": "width-comparison",
+      "title": "ScaleAuto manufacturer comparison drawing — Ninco width and lane spacing",
+      "url": "https://scaleauto-slot.com/wp-content/uploads/2026/01/Cata%CC%80leg-SC-25-comparativa-pistes-1.jpg",
+      "note": "Secondary-to-Ninco dimensional evidence: another manufacturer explicitly labels Ninco as 180 mm wide / 90 mm spacing. Its rounded radii are not substituted for Ninco’s precise catalogue values."
+    },
+    {
+      "id": "style",
+      "title": "SlotForge Timing style reference",
+      "url": "https://github.com/theDutchmanJames/SlotForgeTiming/blob/main/renderer/styles.css"
+    }
+  ],
+  "pieces": [
+    {
+      "id": "ninco:10102",
+      "revision": 1,
+      "name": "Straight · 400 mm",
+      "manufacturerSku": "10102",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10102.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 400,
+          "widthMm": 180,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 400 V 180 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            400,
+            180
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                45
+              ],
+              "end": [
+                400,
+                45
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    45
+                  ],
+                  "to": [
+                    400,
+                    45
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 45 H 400"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                135
+              ],
+              "end": [
+                400,
+                135
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    135
+                  ],
+                  "to": [
+                    400,
+                    135
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 135 H 400"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                90
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    135
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                400,
+                90
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    400,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    400,
+                    135
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 400
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          180
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 400
+      },
+      "notes": [
+        "Nominal 180 mm road width and 90 mm spacing use the manufacturer comparison drawing; centred slot offsets are derived."
+      ]
+    },
+    {
+      "id": "ninco:10103",
+      "revision": 1,
+      "name": "Straight · 200 mm",
+      "manufacturerSku": "10103",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10103.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 200,
+          "widthMm": 180,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 200 V 180 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            200,
+            180
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                45
+              ],
+              "end": [
+                200,
+                45
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    45
+                  ],
+                  "to": [
+                    200,
+                    45
+                  ]
+                }
+              ],
+              "lengthMm": 200,
+              "d": "M 0 45 H 200"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                135
+              ],
+              "end": [
+                200,
+                135
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    135
+                  ],
+                  "to": [
+                    200,
+                    135
+                  ]
+                }
+              ],
+              "lengthMm": 200,
+              "d": "M 0 135 H 200"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                90
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    135
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                200,
+                90
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    200,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    200,
+                    135
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 200
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          180
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200
+      },
+      "notes": [
+        "Nominal 180 mm road width and 90 mm spacing use the manufacturer comparison drawing; centred slot offsets are derived."
+      ]
+    },
+    {
+      "id": "ninco:10104",
+      "revision": 1,
+      "name": "Straight · 100 mm",
+      "manufacturerSku": "10104",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10104.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 100,
+          "widthMm": 180,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 100 V 180 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            100,
+            180
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                45
+              ],
+              "end": [
+                100,
+                45
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    45
+                  ],
+                  "to": [
+                    100,
+                    45
+                  ]
+                }
+              ],
+              "lengthMm": 100,
+              "d": "M 0 45 H 100"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                135
+              ],
+              "end": [
+                100,
+                135
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    135
+                  ],
+                  "to": [
+                    100,
+                    135
+                  ]
+                }
+              ],
+              "lengthMm": 100,
+              "d": "M 0 135 H 100"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                90
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    135
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                100,
+                90
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    100,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    100,
+                    135
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 100
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          100,
+          180
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 100
+      },
+      "notes": [
+        "Nominal 180 mm road width and 90 mm spacing use the manufacturer comparison drawing; centred slot offsets are derived."
+      ]
+    },
+    {
+      "id": "ninco:10116",
+      "revision": 1,
+      "name": "Straight · 50 mm",
+      "manufacturerSku": "10116",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10116.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 50,
+          "widthMm": 180,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 50 V 180 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            50,
+            180
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                45
+              ],
+              "end": [
+                50,
+                45
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    45
+                  ],
+                  "to": [
+                    50,
+                    45
+                  ]
+                }
+              ],
+              "lengthMm": 50,
+              "d": "M 0 45 H 50"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                135
+              ],
+              "end": [
+                50,
+                135
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    135
+                  ],
+                  "to": [
+                    50,
+                    135
+                  ]
+                }
+              ],
+              "lengthMm": 50,
+              "d": "M 0 135 H 50"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                90
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    135
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                50,
+                90
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    50,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    50,
+                    135
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 50
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          50,
+          180
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 50
+      },
+      "notes": [
+        "Nominal 180 mm road width and 90 mm spacing use the manufacturer comparison drawing; centred slot offsets are derived."
+      ]
+    },
+    {
+      "id": "ninco:10114",
+      "revision": 1,
+      "name": "Starting grid · 200 mm",
+      "manufacturerSku": "10114",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10114.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 200,
+          "widthMm": 180,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 200 V 180 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            200,
+            180
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                45
+              ],
+              "end": [
+                200,
+                45
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    45
+                  ],
+                  "to": [
+                    200,
+                    45
+                  ]
+                }
+              ],
+              "lengthMm": 200,
+              "d": "M 0 45 H 200"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                135
+              ],
+              "end": [
+                200,
+                135
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    135
+                  ],
+                  "to": [
+                    200,
+                    135
+                  ]
+                }
+              ],
+              "lengthMm": 200,
+              "d": "M 0 135 H 200"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                90
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    135
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                200,
+                90
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    200,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    200,
+                    135
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 200
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          180
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200
+      },
+      "notes": [
+        "Nominal 180 mm road width and 90 mm spacing use the manufacturer comparison drawing; centred slot offsets are derived."
+      ]
+    },
+    {
+      "id": "ninco:10117",
+      "revision": 1,
+      "name": "Single-lane straight · 400 mm",
+      "manufacturerSku": "10117",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10117.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 400,
+          "widthMm": 90,
+          "laneCount": 1,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 400 V 90 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            400,
+            90
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                45
+              ],
+              "end": [
+                400,
+                45
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    45
+                  ],
+                  "to": [
+                    400,
+                    45
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 45 H 400"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                45
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    45
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                400,
+                45
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    400,
+                    45
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 400
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          90
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 400
+      },
+      "notes": [
+        "Single-lane width of 90 mm is inferred; published length is 400 mm and catalogue quantity is four."
+      ]
+    },
+    {
+      "id": "ninco:10106",
+      "revision": 1,
+      "name": "R1 curve · 45°",
+      "manufacturerSku": "10106",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10106.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 61.37,
+          "widthMm": 180,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -241.37 A 241.37 241.37 0 0 1 170.674364 -170.674364 L 43.395143 -43.395143 A 61.37 61.37 0 0 0 0 -61.37 Z",
+          "boundsMm": [
+            0,
+            -241.37,
+            170.674364,
+            197.97485700000001
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -106.37
+              ],
+              "end": [
+                75.214948,
+                -75.214948
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 106.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 83.54280264058657,
+              "d": "M 0 -106.37 A 106.37 106.37 0 0 1 75.214948,-75.214948"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -196.37
+              ],
+              "end": [
+                138.854559,
+                -138.854559
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 196.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 154.22863734635692,
+              "d": "M 0 -196.37 A 196.37 196.37 0 0 1 138.854559,-138.854559"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -151.37
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -106.37
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -196.37
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                107.034753,
+                -107.034753
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    75.214948,
+                    -75.214948
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    138.854559,
+                    -138.854559
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 118.88571999347177
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -241.37,
+          170.674364,
+          197.97485700000001
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "outerRadiusMm": 241.37,
+        "angleDeg": 45
+      },
+      "notes": [
+        "Uses Ninco’s 2012 outer radius labels (241.37 / 421.37 / 601.37 / 781.37 / 961.37 mm), retaining their precision instead of rounded comparison values."
+      ]
+    },
+    {
+      "id": "ninco:10113",
+      "revision": 1,
+      "name": "R1 curve · 22.5°",
+      "manufacturerSku": "10113",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10113.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 61.37,
+          "widthMm": 180,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -241.37 A 241.37 241.37 0 0 1 92.3683 -222.996803 L 23.485282 -56.698487 A 61.37 61.37 0 0 0 0 -61.37 Z",
+          "boundsMm": [
+            0,
+            -241.37,
+            92.3683,
+            184.671513
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -106.37
+              ],
+              "end": [
+                40.706037,
+                -98.273066
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 106.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 41.771401320293286,
+              "d": "M 0 -106.37 A 106.37 106.37 0 0 1 40.706037,-98.273066"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -196.37
+              ],
+              "end": [
+                75.147546,
+                -181.422224
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 196.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 77.11431867317846,
+              "d": "M 0 -196.37 A 196.37 196.37 0 0 1 75.147546,-181.422224"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -151.37
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -106.37
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -196.37
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                57.926791,
+                -139.847645
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    40.706037,
+                    -98.273066
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    75.147546,
+                    -181.422224
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 59.44285999673588
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -241.37,
+          92.3683,
+          184.671513
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "outerRadiusMm": 241.37,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Uses Ninco’s 2012 outer radius labels (241.37 / 421.37 / 601.37 / 781.37 / 961.37 mm), retaining their precision instead of rounded comparison values."
+      ]
+    },
+    {
+      "id": "ninco:10105",
+      "revision": 1,
+      "name": "R2 curve · 45°",
+      "manufacturerSku": "10105",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10105.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 241.37,
+          "widthMm": 180,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -421.37 A 421.37 421.37 0 0 1 297.953584 -297.953584 L 170.674364 -170.674364 A 241.37 241.37 0 0 0 0 -241.37 Z",
+          "boundsMm": [
+            0,
+            -421.37,
+            297.953584,
+            250.695636
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -286.37
+              ],
+              "end": [
+                202.494169,
+                -202.494169
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 286.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 224.91447205212728,
+              "d": "M 0 -286.37 A 286.37 286.37 0 0 1 202.494169,-202.494169"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -376.37
+              ],
+              "end": [
+                266.133779,
+                -266.133779
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 376.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 295.6003067578976,
+              "d": "M 0 -376.37 A 376.37 376.37 0 0 1 266.133779,-266.133779"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -331.37
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -286.37
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -376.37
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                234.313974,
+                -234.313974
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    202.494169,
+                    -202.494169
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    266.133779,
+                    -266.133779
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 260.2573894050124
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -421.37,
+          297.953584,
+          250.695636
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "outerRadiusMm": 421.37,
+        "angleDeg": 45
+      },
+      "notes": [
+        "Uses Ninco’s 2012 outer radius labels (241.37 / 421.37 / 601.37 / 781.37 / 961.37 mm), retaining their precision instead of rounded comparison values."
+      ]
+    },
+    {
+      "id": "ninco:10112",
+      "revision": 1,
+      "name": "R2 curve · 22.5°",
+      "manufacturerSku": "10112",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10112.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 241.37,
+          "widthMm": 180,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -421.37 A 421.37 421.37 0 0 1 161.251318 -389.295119 L 92.3683 -222.996803 A 241.37 241.37 0 0 0 0 -241.37 Z",
+          "boundsMm": [
+            0,
+            -421.37,
+            161.251318,
+            198.373197
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -286.37
+              ],
+              "end": [
+                109.589055,
+                -264.571382
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 286.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 112.45723602606364,
+              "d": "M 0 -286.37 A 286.37 286.37 0 0 1 109.589055,-264.571382"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -376.37
+              ],
+              "end": [
+                144.030563,
+                -347.72054
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 376.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 147.8001533789488,
+              "d": "M 0 -376.37 A 376.37 376.37 0 0 1 144.030563,-347.72054"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -331.37
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -286.37
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -376.37
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                126.809809,
+                -306.145961
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    109.589055,
+                    -264.571382
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    144.030563,
+                    -347.72054
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 130.1286947025062
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -421.37,
+          161.251318,
+          198.373197
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "outerRadiusMm": 421.37,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Uses Ninco’s 2012 outer radius labels (241.37 / 421.37 / 601.37 / 781.37 / 961.37 mm), retaining their precision instead of rounded comparison values."
+      ]
+    },
+    {
+      "id": "ninco:10107",
+      "revision": 1,
+      "name": "R3 curve · 22.5°",
+      "manufacturerSku": "10107",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10107.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 421.37,
+          "widthMm": 180,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -601.37 A 601.37 601.37 0 0 1 230.134336 -555.593434 L 161.251318 -389.295119 A 421.37 421.37 0 0 0 0 -421.37 Z",
+          "boundsMm": [
+            0,
+            -601.37,
+            230.134336,
+            212.074881
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -466.37
+              ],
+              "end": [
+                178.472072,
+                -430.869698
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 466.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 183.14307073183397,
+              "d": "M 0 -466.37 A 466.37 466.37 0 0 1 178.472072,-430.869698"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -556.37
+              ],
+              "end": [
+                212.913581,
+                -514.018856
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 556.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 218.48598808471914,
+              "d": "M 0 -556.37 A 556.37 556.37 0 0 1 212.913581,-514.018856"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -511.37
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -466.37
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -556.37
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                195.692827,
+                -472.444277
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    178.472072,
+                    -430.869698
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    212.913581,
+                    -514.018856
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 200.81452940827657
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -601.37,
+          230.134336,
+          212.074881
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "outerRadiusMm": 601.37,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Uses Ninco’s 2012 outer radius labels (241.37 / 421.37 / 601.37 / 781.37 / 961.37 mm), retaining their precision instead of rounded comparison values."
+      ]
+    },
+    {
+      "id": "ninco:10108",
+      "revision": 1,
+      "name": "R4 curve · 22.5°",
+      "manufacturerSku": "10108",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10108.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 601.37,
+          "widthMm": 180,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -781.37 A 781.37 781.37 0 0 1 299.017354 -721.89175 L 230.134336 -555.593434 A 601.37 601.37 0 0 0 0 -601.37 Z",
+          "boundsMm": [
+            0,
+            -781.37,
+            299.017354,
+            225.776566
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -646.37
+              ],
+              "end": [
+                247.35509,
+                -597.168013
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 646.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 253.82890543760433,
+              "d": "M 0 -646.37 A 646.37 646.37 0 0 1 247.35509,-597.168013"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -736.37
+              ],
+              "end": [
+                281.796599,
+                -680.317171
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 736.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 289.1718227904895,
+              "d": "M 0 -736.37 A 736.37 736.37 0 0 1 281.796599,-680.317171"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -691.37
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -646.37
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -736.37
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                264.575845,
+                -638.742592
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    247.35509,
+                    -597.168013
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    281.796599,
+                    -680.317171
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 271.50036411404693
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -781.37,
+          299.017354,
+          225.776566
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "outerRadiusMm": 781.37,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Uses Ninco’s 2012 outer radius labels (241.37 / 421.37 / 601.37 / 781.37 / 961.37 mm), retaining their precision instead of rounded comparison values."
+      ]
+    },
+    {
+      "id": "ninco:10115",
+      "revision": 1,
+      "name": "R5 curve · 11.25°",
+      "manufacturerSku": "10115",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10115.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 781.37,
+          "widthMm": 180,
+          "angleDeg": 11.25,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -961.37 A 961.37 961.37 0 0 1 187.553983 -942.897545 L 152.437725 -766.356195 A 781.37 781.37 0 0 0 0 -781.37 Z",
+          "boundsMm": [
+            0,
+            -961.37,
+            187.553983,
+            195.01380500000005
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -826.37
+              ],
+              "end": [
+                161.216789,
+                -810.491532
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 826.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 11.25
+                }
+              ],
+              "lengthMm": 162.25737007168735,
+              "d": "M 0 -826.37 A 826.37 826.37 0 0 1 161.216789,-810.491532"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -916.37
+              ],
+              "end": [
+                178.774918,
+                -898.762207
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 916.37,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 11.25
+                }
+              ],
+              "lengthMm": 179.92882874812992,
+              "d": "M 0 -916.37 A 916.37 916.37 0 0 1 178.774918,-898.762207"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -871.37
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -826.37
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -916.37
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                169.995854,
+                -854.62687
+              ],
+              "outwardAngleDeg": 11.25,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    161.216789,
+                    -810.491532
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    178.774918,
+                    -898.762207
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 171.09309940990863
+        },
+        "status": "nominal-source-based"
+      },
+      "preview": {
+        "status": "nominal-source-based",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -961.37,
+          187.553983,
+          195.01380500000005
+        ],
+        "units": "mm",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015",
+          "width-comparison"
+        ],
+        "identity": "published",
+        "geometry": "published-lengths-radii-nominal-offsets",
+        "missing": [
+          "Independent Ninco confirmation of slot offsets and surface widths",
+          "Connector outlines and tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "outerRadiusMm": 961.37,
+        "angleDeg": 11.25
+      },
+      "notes": [
+        "Uses Ninco’s 2012 outer radius labels (241.37 / 421.37 / 601.37 / 781.37 / 961.37 mm), retaining their precision instead of rounded comparison values."
+      ]
+    },
+    {
+      "id": "ninco:10203",
+      "revision": 1,
+      "name": "Striped straight border · 200 mm",
+      "manufacturerSku": "10203",
+      "category": "Straight borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10203.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          50
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200
+      },
+      "notes": [
+        "Catalogue red/white artwork. 50 mm preview width is illustrative; no verified border footprint."
+      ]
+    },
+    {
+      "id": "ninco:10204",
+      "revision": 1,
+      "name": "Striped straight border · 100 mm",
+      "manufacturerSku": "10204",
+      "category": "Straight borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10204.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          100,
+          50
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 100
+      },
+      "notes": [
+        "Catalogue red/white artwork. 50 mm preview width is illustrative; no verified border footprint.",
+        "2012 catalogue lists six; 2015 lists two. Retail quantity remains unresolved."
+      ],
+      "conflicts": [
+        {
+          "field": "retailQuantity",
+          "values": [
+            {
+              "sourceId": "ninco-2012",
+              "value": 6
+            },
+            {
+              "sourceId": "ninco-2015",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ninco:10205",
+      "revision": 1,
+      "name": "R1 inner border · 45°",
+      "manufacturerSku": "10205",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10205.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -61.37,
+          43.395143,
+          53.330196
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Radius family and angular coverage follow the catalogue diagram. 50 mm width is an illustration assumption, not a fit specification."
+      ],
+      "attachment": {
+        "radiusFamily": 1,
+        "side": "inner",
+        "nominalAngleDeg": 45,
+        "status": "width-unresolved"
+      }
+    },
+    {
+      "id": "ninco:10206",
+      "revision": 1,
+      "name": "R1 outer border · 45°",
+      "manufacturerSku": "10206",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10206.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -291.37,
+          206.029703,
+          120.69563600000001
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Radius family and angular coverage follow the catalogue diagram. 50 mm width is an illustration assumption, not a fit specification."
+      ],
+      "attachment": {
+        "radiusFamily": 1,
+        "side": "outer",
+        "nominalAngleDeg": 45,
+        "status": "width-unresolved"
+      }
+    },
+    {
+      "id": "ninco:10207",
+      "revision": 1,
+      "name": "R2 inner border · 45°",
+      "manufacturerSku": "10207",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10207.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -241.37,
+          170.674364,
+          106.050975
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Radius family and angular coverage follow the catalogue diagram. 50 mm width is an illustration assumption, not a fit specification."
+      ],
+      "attachment": {
+        "radiusFamily": 2,
+        "side": "inner",
+        "nominalAngleDeg": 45,
+        "status": "width-unresolved"
+      }
+    },
+    {
+      "id": "ninco:10208",
+      "revision": 1,
+      "name": "R2 outer border · 22.5°",
+      "manufacturerSku": "10208",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10208.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -471.37,
+          180.38549,
+          82.074881
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Radius family and angular coverage follow the catalogue diagram. 50 mm width is an illustration assumption, not a fit specification."
+      ],
+      "attachment": {
+        "radiusFamily": 2,
+        "side": "outer",
+        "nominalAngleDeg": 22.5,
+        "status": "width-unresolved"
+      }
+    },
+    {
+      "id": "ninco:10209",
+      "revision": 1,
+      "name": "R3 inner border · 22.5°",
+      "manufacturerSku": "10209",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10209.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -421.37,
+          161.251318,
+          78.26885800000002
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Radius family and angular coverage follow the catalogue diagram. 50 mm width is an illustration assumption, not a fit specification."
+      ],
+      "attachment": {
+        "radiusFamily": 3,
+        "side": "inner",
+        "nominalAngleDeg": 22.5,
+        "status": "width-unresolved"
+      }
+    },
+    {
+      "id": "ninco:10210",
+      "revision": 1,
+      "name": "R3 outer border · 22.5°",
+      "manufacturerSku": "10210",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10210.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -651.37,
+          249.268507,
+          95.776566
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Radius family and angular coverage follow the catalogue diagram. 50 mm width is an illustration assumption, not a fit specification."
+      ],
+      "attachment": {
+        "radiusFamily": 3,
+        "side": "outer",
+        "nominalAngleDeg": 22.5,
+        "status": "width-unresolved"
+      }
+    },
+    {
+      "id": "ninco:10211",
+      "revision": 1,
+      "name": "R4 inner border · 22.5°",
+      "manufacturerSku": "10211",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10211.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -601.37,
+          230.134336,
+          91.97054200000002
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Radius family and angular coverage follow the catalogue diagram. 50 mm width is an illustration assumption, not a fit specification."
+      ],
+      "attachment": {
+        "radiusFamily": 4,
+        "side": "inner",
+        "nominalAngleDeg": 22.5,
+        "status": "width-unresolved"
+      }
+    },
+    {
+      "id": "ninco:10212",
+      "revision": 1,
+      "name": "R4 outer border · 11.25°",
+      "manufacturerSku": "10212",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10212.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -831.37,
+          162.192241,
+          65.01380500000005
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Radius family and angular coverage follow the catalogue diagram. 50 mm width is an illustration assumption, not a fit specification."
+      ],
+      "attachment": {
+        "radiusFamily": 4,
+        "side": "outer",
+        "nominalAngleDeg": 11.25,
+        "status": "width-unresolved"
+      }
+    },
+    {
+      "id": "ninco:10223",
+      "revision": 1,
+      "name": "R5 outer border · 11.25°",
+      "manufacturerSku": "10223",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10223.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -1011.37,
+          197.308499,
+          68.47245499999997
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Radius family and angular coverage follow the catalogue diagram. 50 mm width is an illustration assumption, not a fit specification."
+      ],
+      "attachment": {
+        "radiusFamily": 5,
+        "side": "outer",
+        "nominalAngleDeg": 11.25,
+        "status": "width-unresolved"
+      }
+    },
+    {
+      "id": "ninco:10216-in",
+      "revision": 1,
+      "name": "Tapered border · lead-in",
+      "manufacturerSku": "10216",
+      "category": "End borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10216-in.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          100,
+          50
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "ninco:10216-out"
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Curved tapered profile from catalogue picture. Length, width and attachment details are illustrative."
+      ]
+    },
+    {
+      "id": "ninco:10216-out",
+      "revision": 1,
+      "name": "Tapered border · lead-out",
+      "manufacturerSku": "10216",
+      "category": "End borders",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10216-out.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          100,
+          50
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "ninco:10216-in"
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Curved tapered profile from catalogue picture. Length, width and attachment details are illustrative."
+      ]
+    },
+    {
+      "id": "ninco:10110",
+      "revision": 1,
+      "name": "Chicane adapting section · 200 mm",
+      "manufacturerSku": "10110",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10110.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          180
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200
+      },
+      "notes": [
+        "Slots converge toward the chicane profile. This is not a proven cross-brand adapter; no foreign connector system is assigned. Exact narrowed slot spacing unresolved."
+      ],
+      "endpointSystems": [
+        "ninco-classic-1-32",
+        "ninco-chicane-unresolved"
+      ]
+    },
+    {
+      "id": "ninco:10111",
+      "revision": 1,
+      "name": "Passive changeover · 400 mm",
+      "manufacturerSku": "10111",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "ninco-analogue"
+      ],
+      "asset": "assets/10111.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          180
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 400
+      },
+      "notes": [
+        "Fixed crossed slots and red/white triangular markings follow the catalogue. Slot route lengths are unresolved."
+      ]
+    },
+    {
+      "id": "ninco:10118",
+      "revision": 1,
+      "name": "RJ powerbase",
+      "manufacturerSku": "10118",
+      "category": "Power and timing",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10118.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          215
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "roadLengthMm": 200
+      },
+      "notes": [
+        "200 mm road length follows the catalogue layout column; full device footprint and socket placement remain illustrative."
+      ]
+    },
+    {
+      "id": "ninco:10416",
+      "revision": 1,
+      "name": "Independent powerbase",
+      "manufacturerSku": "10416",
+      "category": "Power and timing",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10416.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          215
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "roadLengthMm": 200
+      },
+      "notes": [
+        "200 mm road length follows the catalogue layout column; full device footprint and socket placement remain illustrative."
+      ]
+    },
+    {
+      "id": "ninco:10413",
+      "revision": 1,
+      "name": "Analogue Wi-Co connection kit",
+      "manufacturerSku": "10413",
+      "category": "Power and timing",
+      "kind": "assembly",
+      "systems": [
+        "ninco-analogue"
+      ],
+      "asset": "assets/10413.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          215
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Keep sensing direction, device position and lane identities."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Road/device illustration only; hand controllers and non-track kit contents are not drawn. Kit inventory and full occupied footprint are unresolved."
+      ]
+    },
+    {
+      "id": "ninco:40210",
+      "revision": 1,
+      "name": "N-Digital Wi-Co kit",
+      "manufacturerSku": "40210",
+      "category": "Power and timing",
+      "kind": "assembly",
+      "systems": [
+        "ninco-n-digital"
+      ],
+      "asset": "assets/40210.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          215
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Keep sensing direction, device position and lane identities."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Road/device illustration only; hand controllers and non-track kit contents are not drawn. Kit inventory and full occupied footprint are unresolved."
+      ]
+    },
+    {
+      "id": "ninco:40207",
+      "revision": 1,
+      "name": "N-Digital double lane changer",
+      "manufacturerSku": "40207",
+      "category": "Digital track",
+      "kind": "piece",
+      "systems": [
+        "ninco-n-digital"
+      ],
+      "asset": "assets/40207.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          180
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Do not invent reversed sensor or flipper operation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Crossed branches plus straight-through lanes and central chevron islands. Envelope and route shapes are illustrative."
+      ]
+    },
+    {
+      "id": "ninco:40208",
+      "revision": 1,
+      "name": "N-Digital curved lane changer",
+      "manufacturerSku": "40208",
+      "category": "Digital track",
+      "kind": "piece",
+      "systems": [
+        "ninco-n-digital"
+      ],
+      "asset": "assets/40208.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -421.37,
+          297.953584,
+          250.695636
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "operation-unresolved",
+        "note": "2012 catalogue says works in both directions; exact port and sensor behaviour still needs documentation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Legacy 2012 catalogue item. Drawing uses an illustrative R2-sized curve; radius, angular coverage and branches are not a verified geometry model."
+      ]
+    },
+    {
+      "id": "ninco:40204",
+      "revision": 1,
+      "name": "N-Digital multilane kit",
+      "manufacturerSku": "40204",
+      "category": "Digital track",
+      "kind": "assembly",
+      "systems": [
+        "ninco-n-digital"
+      ],
+      "asset": "assets/40204.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          360
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Four-lane illustration with branches between adjacent two-lane modules. Exact assembly inventory, envelope and routing unresolved."
+      ]
+    },
+    {
+      "id": "ninco:40203",
+      "revision": 1,
+      "name": "N-Digital pit-lane kit",
+      "manufacturerSku": "40203",
+      "category": "Digital track",
+      "kind": "assembly",
+      "systems": [
+        "ninco-n-digital"
+      ],
+      "asset": "assets/40203.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          281
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "White wall and yellow/black pit-zone markings follow the catalogue. This is a kit identification diagram; entry/exit arrangement, sensors and complete footprint are unresolved."
+      ]
+    },
+    {
+      "id": "ninco:40206",
+      "revision": 1,
+      "name": "N-Digital multilane sensor",
+      "manufacturerSku": "40206",
+      "category": "Power and timing",
+      "kind": "piece",
+      "systems": [
+        "ninco-n-digital"
+      ],
+      "asset": "assets/40206.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          220
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Sensor road and cable identification. Catalogue illustrates sensor and grid pieces together; package road count and full envelope remain unresolved."
+      ]
+    },
+    {
+      "id": "ninco:40205",
+      "revision": 1,
+      "name": "N-Digital control tower",
+      "manufacturerSku": "40205",
+      "category": "Power and timing",
+      "kind": "assembly",
+      "systems": [
+        "ninco-n-digital"
+      ],
+      "asset": "assets/40205.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "mixed-road-and-tower-elevation",
+        "bounds": [
+          0,
+          0,
+          400,
+          307
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates",
+          "Exact slot paths and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Road shown from above, tower shown in elevation for recognition. This composite cannot be used as a physical footprint."
+      ]
+    },
+    {
+      "id": "ninco:barrier-red",
+      "revision": 1,
+      "name": "Double-rail barrier · red",
+      "manufacturerSku": "10201",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/barrier-red.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          220,
+          52
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Two horizontal rails and mounting posts follow catalogue photos. Length, height and mounted envelope unresolved."
+      ]
+    },
+    {
+      "id": "ninco:barrier-white",
+      "revision": 1,
+      "name": "Double-rail barrier · white",
+      "manufacturerSku": "10201",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/barrier-white.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          220,
+          52
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Two horizontal rails and mounting posts follow catalogue photos. Length, height and mounted envelope unresolved."
+      ]
+    },
+    {
+      "id": "ninco:barrier-grey",
+      "revision": 1,
+      "name": "Double-rail barrier · grey",
+      "manufacturerSku": "10219",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/barrier-grey.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          220,
+          52
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Two horizontal rails and mounting posts follow catalogue photos. Length, height and mounted envelope unresolved."
+      ]
+    },
+    {
+      "id": "ninco:10220",
+      "revision": 1,
+      "name": "Mesh safety wall",
+      "manufacturerSku": "10220",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10220.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          252,
+          76
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Wire-mesh appearance above a solid lower panel. Footprint and height are unverified."
+      ]
+    },
+    {
+      "id": "ninco:10252",
+      "revision": 1,
+      "name": "Stone wall",
+      "manufacturerSku": "10252",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10252.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          250,
+          55
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Grey irregular stone texture follows catalogue. Installed dimensions unresolved."
+      ]
+    },
+    {
+      "id": "ninco:10213",
+      "revision": 1,
+      "name": "Track locking clip",
+      "manufacturerSku": "10213",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10213.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "hardware-identification",
+        "bounds": [
+          0,
+          0,
+          45,
+          42
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Metal side-to-side track locking hardware. Symbol dimensions are illustrative."
+      ]
+    },
+    {
+      "id": "ninco:10217",
+      "revision": 1,
+      "name": "Banking support",
+      "manufacturerSku": "10217",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10217.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          76,
+          108
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Stepped red support with five height settings. Exact settings and banked-road projection unresolved. No road included."
+      ]
+    },
+    {
+      "id": "ninco:10221",
+      "revision": 1,
+      "name": "Track elevator set",
+      "manufacturerSku": "10221",
+      "category": "Accessories",
+      "kind": "accessory-set",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10221.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          280,
+          100
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Grey bridge/elevation supports. Drawing does not assert set count, height or span. Adds no road length."
+      ]
+    },
+    {
+      "id": "ninco:10222",
+      "revision": 1,
+      "name": "N-Lifter elevation system",
+      "manufacturerSku": "10222",
+      "category": "Accessories",
+      "kind": "accessory-set",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10222.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          235,
+          158
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Red columns with black adjustable crossbars. Hardware only; dimensions and component quantities unresolved."
+      ]
+    },
+    {
+      "id": "ninco:10409",
+      "revision": 1,
+      "name": "N-Scorer timing gantry",
+      "manufacturerSku": "10409",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "ninco-classic-1-32"
+      ],
+      "asset": "assets/10409.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "front-elevation-identification",
+        "bounds": [
+          0,
+          0,
+          290,
+          110
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Illustrative broad black tabs; excluded from usable road length."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve lane identities and endpoints during reorientation."
+      },
+      "evidence": {
+        "sources": [
+          "ninco-2012",
+          "ninco-2015"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and mounting coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Black and red timing arch. This front view is not an occupied footprint; opening width, height and feet are unresolved."
+      ]
+    }
+  ],
+  "products": [
+    {
+      "sku": "10102",
+      "name": "Straight · 400 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10102",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10103",
+      "name": "Straight · 200 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10103",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10104",
+      "name": "Straight · 100 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10104",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10116",
+      "name": "Straight · 50 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10116",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10114",
+      "name": "Starting grid · 200 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10114",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10117",
+      "name": "Single-lane straight · 400 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10117",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10106",
+      "name": "R1 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "ninco:10106",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10113",
+      "name": "R1 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "ninco:10113",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10105",
+      "name": "R2 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "ninco:10105",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10112",
+      "name": "R2 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "ninco:10112",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10107",
+      "name": "R3 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "ninco:10107",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10108",
+      "name": "R4 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "ninco:10108",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10115",
+      "name": "R5 curve · 11.25°",
+      "contents": [
+        {
+          "pieceId": "ninco:10115",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10203",
+      "name": "Striped straight border · 200 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10203",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10204",
+      "name": "Striped straight border · 100 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10204",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10205",
+      "name": "R1 inner border · 45°",
+      "contents": [
+        {
+          "pieceId": "ninco:10205",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10206",
+      "name": "R1 outer border · 45°",
+      "contents": [
+        {
+          "pieceId": "ninco:10206",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10207",
+      "name": "R2 inner border · 45°",
+      "contents": [
+        {
+          "pieceId": "ninco:10207",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10208",
+      "name": "R2 outer border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "ninco:10208",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10209",
+      "name": "R3 inner border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "ninco:10209",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10210",
+      "name": "R3 outer border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "ninco:10210",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10211",
+      "name": "R4 inner border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "ninco:10211",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10212",
+      "name": "R4 outer border · 11.25°",
+      "contents": [
+        {
+          "pieceId": "ninco:10212",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10223",
+      "name": "R5 outer border · 11.25°",
+      "contents": [
+        {
+          "pieceId": "ninco:10223",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10216",
+      "name": "Tapered border pair types",
+      "contents": [
+        {
+          "pieceId": "ninco:10216-in",
+          "quantity": 3
+        },
+        {
+          "pieceId": "ninco:10216-out",
+          "quantity": 3
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10110",
+      "name": "Chicane adapting section · 200 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10110",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10111",
+      "name": "Passive changeover · 400 mm",
+      "contents": [
+        {
+          "pieceId": "ninco:10111",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10118",
+      "name": "RJ powerbase",
+      "contents": [
+        {
+          "pieceId": "ninco:10118",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10416",
+      "name": "Independent powerbase",
+      "contents": [
+        {
+          "pieceId": "ninco:10416",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10413",
+      "name": "Analogue Wi-Co connection kit",
+      "contents": [
+        {
+          "pieceId": "ninco:10413",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "40210",
+      "name": "N-Digital Wi-Co kit",
+      "contents": [
+        {
+          "pieceId": "ninco:40210",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "40207",
+      "name": "N-Digital double lane changer",
+      "contents": [
+        {
+          "pieceId": "ninco:40207",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "40208",
+      "name": "N-Digital curved lane changer",
+      "contents": [
+        {
+          "pieceId": "ninco:40208",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "40204",
+      "name": "N-Digital multilane kit",
+      "contents": [
+        {
+          "pieceId": "ninco:40204",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "40203",
+      "name": "N-Digital pit-lane kit",
+      "contents": [
+        {
+          "pieceId": "ninco:40203",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "40206",
+      "name": "N-Digital multilane sensor",
+      "contents": [
+        {
+          "pieceId": "ninco:40206",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "40205",
+      "name": "N-Digital control tower",
+      "contents": [
+        {
+          "pieceId": "ninco:40205",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10201",
+      "name": "Red and white barriers",
+      "contents": [
+        {
+          "pieceId": "ninco:barrier-red",
+          "quantity": 6
+        },
+        {
+          "pieceId": "ninco:barrier-white",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10219",
+      "name": "Grey barriers",
+      "contents": [
+        {
+          "pieceId": "ninco:barrier-grey",
+          "quantity": 12
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10220",
+      "name": "Mesh safety wall",
+      "contents": [
+        {
+          "pieceId": "ninco:10220",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10252",
+      "name": "Stone wall",
+      "contents": [
+        {
+          "pieceId": "ninco:10252",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10213",
+      "name": "Track locking clip",
+      "contents": [
+        {
+          "pieceId": "ninco:10213",
+          "quantity": 12
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10217",
+      "name": "Banking support",
+      "contents": [
+        {
+          "pieceId": "ninco:10217",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10221",
+      "name": "Track elevator set",
+      "contents": [
+        {
+          "pieceId": "ninco:10221",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10222",
+      "name": "N-Lifter elevation system",
+      "contents": [
+        {
+          "pieceId": "ninco:10222",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "10409",
+      "name": "N-Scorer timing gantry",
+      "contents": [
+        {
+          "pieceId": "ninco:10409",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "ninco-2012",
+        "ninco-2015"
+      ],
+      "notes": []
+    }
+  ],
+  "visualStyle": {
+    "road": "Rough black plastic, bright paired rails and broad black connector tabs",
+    "markings": "Plain standard track; staggered white grid markings; red/white chevron islands on special sections",
+    "borders": "Full-width red/white stripes following historical catalogue drawings",
+    "accessories": "Red/white/grey double-rail barriers, mesh and stone walls, red banking and elevation hardware"
+  },
+  "sourceIssues": [
+    {
+      "field": "Radius precision",
+      "detail": "Ninco publishes outer radii 241.37–961.37 mm. Comparison charts round to 242–962 mm; this pack retains Ninco’s values."
+    },
+    {
+      "field": "10204 package quantity",
+      "detail": "2012 lists six 100 mm borders; 2015 lists two. Quantity is null until the intended product revision is established."
+    },
+    {
+      "field": "2012 catalogue label errors",
+      "detail": "The 200 mm border is mislabelled 10223 and taper set 10206 in the 2012 layout. The 2015 catalogue resolves them as 10203 and 10216."
+    },
+    {
+      "field": "Border footprints and finishes",
+      "detail": "50 mm is a drawing assumption, so no border has a fit model. Red/white follows the selected historical catalogue; plain-black revisions are not verified here."
+    },
+    {
+      "field": "Digital assemblies",
+      "detail": "Catalogue photographs identify products, but do not fully dimension slot transitions, sensor positions, housing envelopes or kit inventories. These remain illustrations."
+    }
+  ],
+  "precisionPolicy": {
+    "illustrationsAreNotGeometry": true,
+    "exactFitAllowed": false,
+    "unknownLength": null,
+    "unknownCount": null,
+    "nominalLengthsMustBeLabelled": true
+  },
+  "outstanding": [
+    "Confirm Ninco road width, edge offsets and single-lane width directly",
+    "Document border widths and accessory footprints",
+    "Resolve 10204 retail revision",
+    "Document special lane routes and digital assembly inventories",
+    "Expand terrain surfaces and extension kits using dedicated references"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-29",
+  "checks": [
+    {
+      "name": "All identities, artwork, source references and retail contents resolve",
+      "result": "passed"
+    },
+    {
+      "name": "Published 200 mm width and six radius families nest without gaps",
+      "result": "passed"
+    },
+    {
+      "name": "Straight sizes, single-lane width and slot offsets match the published model",
+      "result": "passed"
+    },
+    {
+      "name": "Full-circle lane difference follows 100 mm spacing independently of road width",
+      "result": "passed"
+    },
+    {
+      "name": "Curve borders meet their road edges, with inferred widths explicitly labelled",
+      "result": "passed"
+    },
+    {
+      "name": "Models preserve stored path endpoints and lane ordering",
+      "result": "passed"
+    },
+    {
+      "name": "Special pieces and accessories cannot claim complete route geometry or physical fit",
+      "result": "passed"
+    },
+    {
+      "name": "Mixed retail packs, physical sections and unknown quantities remain distinct",
+      "result": "passed"
+    },
+    {
+      "name": "Grey standard artwork does not inherit coloured kerbs or centre dashes",
+      "result": "passed"
+    }
+  ],
+  "limits": "Catalogue consistency and nominal mathematics only. Curve border widths, special routes and connector/auxiliary footprints remain unverified."
+}

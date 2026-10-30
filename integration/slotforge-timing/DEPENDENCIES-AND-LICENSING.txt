@@ -1,0 +1,23 @@
+Runtime module dependencies (included in the handoff with relative paths intact):
+ app/integration.js
+ app/core.js
+ track-packs/tools/geometry.cjs
+ Browser additionally: app/geometry.js (generated from geometry.cjs).
+
+No external npm dependency is used by these runtime modules. The synchronous
+SHA-256 helper is included in integration.js and checked against Node crypto.
+Modern Node or browser platform APIs provide TextEncoder, structuredClone, Map,
+Set, typed arrays, and (for browser PNG encoding only) Image/Canvas/Blob.
+The editor itself uses its bundled catalogue; the reusable module does not.
+
+Development checks use Node's built-in test runner, assert and crypto. Sample PNG
+generation in this handoff used the environment's preinstalled sharp package;
+sharp is not needed by Builder, Timing, the module, or the normal browser export.
+
+Licensing status: this workspace has no LICENSE file. No new public or third-party
+license grant has been invented. The source is supplied for the owner's requested
+integration between SlotForge Track Builder and SlotForge Timing. Choose an
+explicit project license before distributing the reusable module as a separately
+licensed public package. Manufacturer artwork/catalogue research is not needed
+to import an embedded layout or use the geometry module; no rights in manufacturer
+logos, documentation or trademarks are granted by this handoff.

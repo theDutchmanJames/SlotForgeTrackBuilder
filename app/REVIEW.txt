@@ -1,0 +1,110 @@
+SlotForge Track Builder — code review and fixes
+29 October 2026 · v0.1.2
+
+RESULT
+Reviewed the current browser application, shared geometry, import/export and
+storage paths, selection/transforms, preview lifecycle, report generation,
+catalogue bundling and optional local server. Fixed the issues below.
+All executed checks pass. This is not a guarantee that no defects remain.
+
+FINDINGS AND RESOLUTION
+
+1. High: imported definitions could overwrite definitions still referenced by
+   the built-in catalogue or undo history when only metadata/connector family
+   differed. Loading autosave also overwrote catalogue geometry directly.
+   Imports and restored layouts now isolate conflicting definitions under new
+   IDs. Existing definitions remain immutable. Covered by collision tests and
+   a round-trip check for every one of the 102 buildable catalogue definitions.
+
+2. Medium: Ctrl+R/Cmd+R and modifier combinations could invoke Rotate/Mirror
+   before the browser handled its own shortcut. Shortcut dispatch now separates
+   application commands from browser modifiers. Keyboard mutation is also
+   blocked during a drag, except Escape to cancel it.
+
+3. Medium: stop/start before a pending animation frame executed could leave
+   two callback chains. Preview now owns and cancels its outstanding frame.
+   A deterministic scheduler test checks duplicate start, stop and restart.
+
+4. Medium: connection detection compared distances from the connector centre
+   without checking that uneven/custom slots actually met. It now requires
+   a one-to-one match of world slot endpoints. Mirrored asymmetric roads cannot
+   falsely connect. Coarse compatibility permits reversed offset ordering.
+
+5. Medium: permissive imports accepted conflicting explicit offsets/spacing,
+   non-boolean reflection flags and reflected pieces whose definition forbade
+   reflection. These inputs now fail validation before mutation. Sub-0.01 mm
+   primary dimensions are rejected to avoid numerical collapse. Rejected local
+   storage is copied to a .recovery key when storage remains available.
+
+6. Medium: group snapping rebuilt the stationary connection network for each
+   selected piece. It now reuses targets, and connections use spatial buckets
+   rather than comparing every port with every other port. A 500-piece chain
+   regression verifies 998 linked endpoints and precisely two free ends.
+
+7. Medium: interpolated preview points cut chords through curved slots. Guide
+   position and heading now use exact world-coordinate arcs/lines. Sampling
+   memory and speed-plan sample count are bounded. Squared-speed interpolation
+   keeps acceleration and braking within the configured distance-based limits.
+   Tests exercise reflected and reversed travel. Preview remains illustrative.
+
+8. Medium: the local server relied on lexical path checks and accepted arbitrary
+   Host headers and methods. It now resolves real paths before reads, restricts
+   Host/origin to local requests, accepts GET/HEAD only, and rejects hidden,
+   escaping and malformed paths. It still binds only to 127.0.0.1. Handler tests
+   cover requests without opening extra network listeners; the restarted server
+   was also exercised through the browser. Windows junction races were not
+   penetration-tested; this is a local preview server, not a public service.
+
+9. Low: changing a title created history without updating the Undo button.
+   Inspector controls now refresh after the edit. Verified in the browser.
+   Blank/invalid coordinate edits now restore the actual selected coordinate.
+
+10. Low: custom Carrera-family borders narrower than 24 mm could paint outside
+    the surface or use a negative kerb radius. Kerb width now fits the border.
+    Empty reports now show no footprint rather than the empty-canvas default.
+
+11. Low: pointer gestures could be overwritten by a second pointer or changed
+    by zoom/keyboard edits mid-drag. Pointer ownership, capture release and
+    gesture guards now keep the drag transaction consistent.
+
+12. Low: CSV formula protection omitted a leading newline. Exported text cells
+    now also guard leading whitespace before formula prefixes and line breaks.
+
+VALIDATION
+- 25 application/core/server tests passed; 0 failed.
+- 51 existing catalogue validation checks passed across all six packs.
+- 24 JavaScript source/generated files passed syntax checks.
+- 709 local HTML links/assets resolve; 0 missing.
+- Browser: reload/autosave, title edit and undo, example closure and metrics,
+  preview start/pause/start, report contents and returning to editor.
+- Original 31-piece user layout restored after the temporary example checks.
+- No captured browser console errors in the checks.
+- Prior v0.1.1 browser checks covered marquee selection, group drag/snap,
+  transformations, duplicate/delete, and mirror preference persistence.
+
+SCOPE AND REMAINING GAPS
+Catalogue checks establish internal consistency, not manufacturer dimensions.
+SCX remains reference-only. Collision detection, elevations, digital branches,
+automatic border placement and the SlotForge Timing importer remain unbuilt.
+Footprints are sampled bounds. Very long layouts use a coarser bounded speed
+plan, although the car guide itself follows exact geometry. The visual drift
+model does not predict physical handling or lap times.
+Native PDF output, actual downloaded-file delivery, offline file:// execution,
+mobile layouts and a multi-browser/assistive-technology matrix were not tested.
+The custom-piece form exposes uniform lane spacing; imported explicit offsets
+are validated but do not have a dedicated uneven-offset editing interface.
+Static pack-generation utilities received syntax, shared-helper and resulting
+catalogue/asset checks; they were not all rebuilt or independently re-audited
+against manufacturer sources during this application code review.
+The app controller is still compact and would benefit from modularisation as
+the editor grows. That maintenance work is not required for these fixes.
+
+REPEAT CHECKS
+node --test app/core.test.cjs app/server.test.cjs
+node --check app/app.js
+node track-packs/tools/validate.cjs
+node track-packs/tools/validate-scalextric.cjs
+node track-packs/tools/validate-policar.cjs
+node track-packs/tools/validate-scaleauto.cjs
+node track-packs/tools/validate-ninco.cjs
+node track-packs/tools/validate-scx.cjs

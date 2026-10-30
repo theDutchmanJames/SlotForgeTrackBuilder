@@ -1,0 +1,44 @@
+Builder 0.2.2 verification — 29 October 2026
+
+SOURCE: 70 tests, zero failures.
+ node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/server.test.cjs
+
+STANDALONE HANDOFF: 26 tests, zero failures.
+ node --test app/integration.test.cjs app/editor-features.test.cjs
+Includes 21 integration module tests and 5 curve/reference feature tests.
+
+FIXTURES: 15 existing cases pass.
+ node integration/slotforge-timing/check-fixtures.cjs
+Checks 2/4/8 lanes, mirrored/reversed routes, timing offsets, stable identities,
+remapping, open/disconnected/ambiguous circuits, old files and invalid input.
+The extra draft.2 example also round-trips and preserves its base circuit's
+lane identities and lengths while adding a reference-artwork warning.
+
+New regressions cover named pack migration/membership/export/import, matching
+R1–R8 road edges, persistent curve family settings, all four buildable starting
+ grids, reference picture serialization, malformed/unsafe image rejection,
+reference transforms and absence of connectors, stable lane IDs and lengths.
+Explicit unsupported units/contract metadata still reject before normalization.
+
+Browser verification used isolated localhost:8175, separate from the user's
+8173 workspace: named multi-piece pack saved to library and reopened; R2 derived
+and saved; reference placed, rotated, mirrored, resized and restored on reload;
+PNG export succeeded; print report included reference with Unknown length;
+ScaleAuto grid artwork rendered. No captured console errors or warnings.
+Download destinations and native PDF printing were not independently checked.
+
+ARCHIVES
+Both ZIPs are CRC checked. Tests are rerun from separately extracted source and
+handoff archives. The shared runtime files are checked for byte equality.
+
+LIMITS
+- Contract draft.2 requires deliberate adoption by Timing. Receiving-side code,
+  actual hardware and Timing's database/UI have not been tested here.
+- One closed through circuit; no digital switch/pit tracking, elevation or
+  collision checking. Reference pictures cannot make missing routes usable.
+- Reference display sizes and nominal/user dimensions do not certify physical fit.
+- Shared animation profile only. Sensor crossings remain authoritative; the
+  profile only shapes estimated positions between events.
+- PNG is optional. JSON embeds used definitions and any reference PNGs.
+- Native PDF dialogs, mobile layout and file:// image capture were not retested.
+- Prior release results remain in historical FOLLOW-UP notes.

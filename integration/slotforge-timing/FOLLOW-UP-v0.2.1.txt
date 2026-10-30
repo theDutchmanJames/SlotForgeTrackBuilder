@@ -1,0 +1,55 @@
+SlotForge Track Builder 0.2.1 — follow-up to the Timing review
+29 October 2026
+
+FORMAT STATUS
+Main envelope: slotforge.layout version 1 (unchanged).
+Integration contract: 1.0.0-draft.1 (unchanged).
+Producer version: 0.2.1. No unit conversion, automatic downgrade or schema
+migration was introduced. Timing can keep its agreed receiving-side approach.
+
+VALIDATION FIXES
+1. importLayout() and prepare() validate the original units declaration before
+   normalization. Explicit "mm" and omitted legacy units are accepted. Every
+   other explicit value rejects clearly; numeric dimensions are never silently
+   reinterpreted from an unsupported declared unit.
+2. Both entry points check integration metadata before normalizing timing state.
+   Explicit contractVersion must be "1.0.0-draft.1". Unsupported strings and
+   malformed versions reject. integration must be a non-null, non-array object;
+   its known descriptive fields must be non-empty strings <=200 characters.
+   Omitted integration and unversioned legacy objects remain accepted, including
+   the actual v0.1.3 fixture. Unknown additive metadata remains ignorable.
+3. An explicit state passed to prepare() cannot bypass incoming timing.version
+   validation. readState() and picture() also reject unsupported unit/contract
+   declarations. Failed validation does not mutate the source object.
+
+SOURCE AND TESTS
+Code: app/integration.js. Regressions: app/integration.test.cjs (six new tests).
+Specification: EXPORT-SPEC-1.0.0-draft.1.txt, declaration-validation section.
+Both archives include the same runtime modules and the actual old v0.1.3 JSON
+fixture needed by the new legacy-compatibility regression.
+
+PASS: 57 full-source tests (47 prior + 6 validation + 4 border regressions).
+PASS: 19 standalone integration tests (13 prior + 6 validation regressions).
+PASS: all 15 exported fixture checks; regenerated JSON and expected results.
+PASS: JavaScript syntax checks. ZIP integrity and runtime parity checked.
+
+OTHER BUILDER FIXES INCLUDED SINCE 0.2.0
+- Layer order: Bring to front / Send to back, including groups, undo/redo and
+  saved drawing order. Route IDs and calculated lengths remain unchanged.
+- Border placement: inside/outside follows each closed circuit across straights
+  and curves, including reflected/reversed pieces. Open chains inherit sides
+  from a connected bend; isolated straights use local right as inside. The UI
+  explains this fallback. Closed loops in separate components are handled
+  independently for borders (Live Tracker still requires one circuit).
+- Existing placed borders are not moved automatically. Remove wrong straight
+  borders and re-add Outside of circuit after refreshing Builder.
+- Visual check on an isolated Carrera oval: outside borders form a continuous
+  boundary around straights and corners; lane lengths and closure stay intact.
+
+DELIVERY
+ SlotForge-Track-Builder-v0.2.1-source.zip
+ SlotForge-Timing-integration-v0.2.1-handoff.zip
+
+Work was confined to Track Builder. No Timing repository, database, measured
+lengths, records or historical race data was changed. Existing limitations in
+TEST-RESULTS-AND-LIMITS.txt still apply, including through-route-only animation.

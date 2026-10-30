@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-29",
+  "checks": [
+    {
+      "name": "All catalogue assets and source references resolve",
+      "result": "passed"
+    },
+    {
+      "name": "Nominal radial families nest with no gap",
+      "result": "passed"
+    },
+    {
+      "name": "Full-circle lane length difference follows configured slot spacing",
+      "result": "passed"
+    },
+    {
+      "name": "Road width and lane spacing remain independent",
+      "result": "passed"
+    },
+    {
+      "name": "Stored models and connector positions match generated paths",
+      "result": "passed"
+    },
+    {
+      "name": "Unmeasured specials and borders cannot claim snapping or lane lengths",
+      "result": "passed"
+    },
+    {
+      "name": "Published lengths and unresolved quantities are preserved",
+      "result": "passed"
+    },
+    {
+      "name": "Ordinary Scalextric artwork does not inherit Carrera centre dashes",
+      "result": "passed"
+    }
+  ],
+  "limits": "Checks establish catalogue consistency and nominal mathematics, not manufacturing accuracy."
+}

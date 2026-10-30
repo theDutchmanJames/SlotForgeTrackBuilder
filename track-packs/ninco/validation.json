@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-29",
+  "checks": [
+    {
+      "name": "Unique identities, assets, sources, counterpart links and retail contents resolve",
+      "result": "passed"
+    },
+    {
+      "name": "Precise Ninco radii are retained and all five road families nest",
+      "result": "passed"
+    },
+    {
+      "name": "Straight dimensions and nominal cross-sections remain independent",
+      "result": "passed"
+    },
+    {
+      "name": "Circular lane lengths differ by 2 pi times configured lane spacing",
+      "result": "passed"
+    },
+    {
+      "name": "Stored models preserve path endpoints and lane identities",
+      "result": "passed"
+    },
+    {
+      "name": "Half-angle outer borders are not mistaken for full matching-road coverage",
+      "result": "passed"
+    },
+    {
+      "name": "Unverified illustrations and accessory elevations cannot provide fit or lane lengths",
+      "result": "passed"
+    },
+    {
+      "name": "Retail quantities, unknown kit contents and disputed border counts remain separate",
+      "result": "passed"
+    },
+    {
+      "name": "Ninco road artwork uses its texture, with dashed markings confined to grid variants",
+      "result": "passed"
+    }
+  ],
+  "limits": "Nominal mathematical and catalogue consistency checks only. Unmeasured borders, special routes, connectors and accessory footprints remain unresolved."
+}

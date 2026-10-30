@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-29",
+  "checks": [
+    {
+      "name": "Lane spacing is independent of road width",
+      "result": "passed"
+    },
+    {
+      "name": "Six 60 degree arcs reproduce full-circle lane lengths",
+      "result": "passed"
+    },
+    {
+      "name": "Connector slot positions match paths",
+      "result": "passed"
+    },
+    {
+      "name": "Nested curves share a boundary on the nominal grid",
+      "result": "passed"
+    },
+    {
+      "name": "Invalid and ambiguous dimensions rejected",
+      "result": "passed"
+    },
+    {
+      "name": "Explicit uneven offsets supported",
+      "result": "passed"
+    },
+    {
+      "name": "Borders add footprint but no lane distance",
+      "result": "passed"
+    },
+    {
+      "name": "Catalogue references, capability flags and assets are valid",
+      "result": "passed"
+    }
+  ],
+  "limits": "Checks validate nominal calculations and catalogue structure, not real-world mould dimensions."
+}

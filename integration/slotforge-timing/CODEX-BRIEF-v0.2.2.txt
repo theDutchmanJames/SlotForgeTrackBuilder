@@ -1,0 +1,58 @@
+Implement the SlotForge Track Builder integration in SlotForge Timing using
+the attached SlotForge-Timing-integration-v0.2.2-handoff.zip. The full Builder
+source is also supplied separately for reference. Work in the Timing repository;
+no Track Builder changes are requested in this brief.
+
+Read START-HERE.txt and TIMING-IMPORTER-CHANGES.txt first. Apply the draft.1 base
+spec plus the draft.2 extension. Adopt the supplied shared runtime deliberately,
+including its geometry dependency, instead of merely relaxing version checks.
+
+Changes since v0.2.1:
+- Envelope stays slotforge.layout version 1.
+- Integration contract is now 1.0.0-draft.2. The runtime accepts draft.1 and
+  documented legacy exports; unknown explicit versions and non-mm units reject.
+- New reference picture definitions use parameters.type = reference, with
+  lengthMm/widthMm describing approximate display boxes. They may embed PNG
+  artwork in referenceImage. They have NO slots/connectors/calculated length.
+- References survive layout saving, transforms, inventory and regenerated PNGs.
+  Display the reference-artwork compatibility warning. Never use reference
+  pictures to fill a route gap, close a circuit, award laps or set a timing line.
+  Preserve an otherwise valid circuit's lane IDs and lengths when art is added.
+- Shared artwork rendering now covers ScaleAuto SC-10001C/D, Scalextric C7018
+  and Ninco 10114 starting-grid markings.
+- Builder now has named custom packs, library saving/export selection and a
+  matching R1–R8 curve helper. Timing does NOT need those packs installed:
+  every used piece definition and its reference PNG is embedded in the layout.
+
+Receiving flow:
+1. Database > Tracks > Import from Track Builder.
+2. Validate the JSON, then preview name, regenerated picture, lane count,
+   calculated nominal lengths, compatibility notes and reference counts.
+3. Explicitly create a new database track or update an existing one. Match the
+   imported design by design.id and compare design.revision; preserve Timing's
+   database identity, measured lengths, records and historical race data.
+4. Map stable imported route IDs to Timing lanes. Reconfirm mapping whenever
+   routeMappingRevision changes or requiresLaneRemap is set.
+5. Confirm start/finish location and driving direction. Use regenerated timing
+   offsets and keep canonical slot geometry unchanged.
+6. Persist the validated design and shared tune profile with the database track.
+7. Live Tracker > Simple Oval / Race Track Design uses the race-selected track.
+   Position cars along slot routes, not the picture. Use the shared speed/brake/
+   acceleration/corner/drift profile to shape estimates, normalized to Timing's
+   chosen lap benchmark. Real sensor crossings alone award laps and determine
+   results. Visual drift moves the car's tail outward while its guide follows
+   the slot. Per-car profile overrides, digital switching and pit tracking are
+   outside this first integration.
+
+JSON alone must be sufficient. A separate PNG is optional: regenerate the
+transparent thumbnail with I.picture() and the host's image renderer if needed.
+Embedded reference artwork must remain self-contained; do not fetch external
+URLs from imported files. Missing/undecodable artwork should show a reference
+placeholder without inventing track geometry.
+
+Run the handoff tests before integration, then add receiving-side tests for
+new/update import, round trips, lane remapping, timing offsets/reverse travel,
+unknown units/versions, reference-only/open layouts, thumbnail fallback and
+preservation of measured lengths/history. Confirm draft.1 compatibility.
+Report implementation, test results and remaining limitations. Do not claim
+real car positions or physical fit from the nominal drawing or tune profile.

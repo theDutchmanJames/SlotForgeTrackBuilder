@@ -1,0 +1,2704 @@
+{
+  "format": "slotforge.track-pack",
+  "formatVersion": "0.1-draft",
+  "id": "slotforge.scx",
+  "version": "0.1.0-design",
+  "title": "SCX Universal / Classic / Advance",
+  "manufacturer": "SCX",
+  "date": "2026-10-29",
+  "units": "mm",
+  "status": "first-design-pack-geometry-pending",
+  "runtime": {
+    "containsExecutableCode": false,
+    "importerImplemented": false
+  },
+  "scope": {
+    "basis": "Modern grey 1:32 Universal track shared by Classic/Original analogue and Advance, plus selected track-mounted devices, borders and elevation hardware from the 2026 catalogue.",
+    "availability": "Catalogue coverage, including announced products; no claim of current stock or final release appearance.",
+    "excluded": [
+      "Compact 1:43",
+      "Full legacy black-track catalogue",
+      "Earlier Digital/WOS electronics and electrical compatibility",
+      "Complete racing sets, conversion bundles, cars, controllers, transformers and spare car parts",
+      "Rally workshop tent and other decorative scenery",
+      "Historical 90 mm quarter-straight SKU mapping pending verification"
+    ]
+  },
+  "defaults": {
+    "trackWidthMm": null,
+    "laneSpacingMm": null,
+    "slotOffsetsMm": null,
+    "status": "unverified",
+    "note": "No modern SCX cross-section established. Drawing helper uses arbitrary 170/85 coordinate proportions; these are not SCX measurements."
+  },
+  "sources": [
+    {
+      "id": "scx-2026",
+      "title": "SCX manufacturer catalogue 2026, printed pp. 6–7 and 49–61",
+      "url": "https://www.gaugemasterretail.com/media/downloads/SCX_Catalogue_2026.pdf",
+      "note": "Manufacturer publication hosted by distributor; product photographs visually inspected. Box dimensions and STD carton quantities are not piece dimensions or retail contents."
+    },
+    {
+      "id": "scx-2024",
+      "title": "SCX manufacturer catalogue 2024, printed pp. 49–56",
+      "url": "https://www.slotcar-union.com/img/cms/gallery/catalogues/SCX%20Catalog%202024.pdf",
+      "note": "Confirms standard R2 curve angle of 45 degrees."
+    },
+    {
+      "id": "scx-2021",
+      "title": "SCX manufacturer catalogue 2021, pp. 40–46",
+      "url": "https://www.gaugemasterretail.com/media/downloads/SCXCatalogue2021_11_15.pdf",
+      "note": "Also inspected the user-provided 63-page SCX Catalog 2021.pdf. Page 44 calls U10323X200 90 mm; page 41 lists U10327X200 as 4+4."
+    },
+    {
+      "id": "community-thread",
+      "title": "SCX Universal track pieces length — community measurements",
+      "url": "https://www.slotcarillustrated.com/forum/scale-racing/digital/97585-scx-universal-track-pieces-length",
+      "note": "User supplied the measurement excerpt on 29 October 2026; direct access blocked by site verification. Approximate dimensions and legacy codes are preserved as community reports, not manufacturer specifications."
+    },
+    {
+      "id": "style",
+      "title": "SlotForge Timing visual style",
+      "url": "https://github.com/theDutchmanJames/SlotForgeTiming/blob/main/renderer/styles.css"
+    }
+  ],
+  "pieces": [
+    {
+      "id": "scx:U10297X200",
+      "revision": 1,
+      "name": "Straight · 360 mm",
+      "manufacturerSku": "U10297X200",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10297X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {
+        "lengthMm": 360,
+        "laneCount": 2,
+        "status": "published-partial"
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Published length is retained independently of unverified road width and slot spacing."
+      ]
+    },
+    {
+      "id": "scx:U10298X200",
+      "revision": 1,
+      "name": "Straight · 180 mm",
+      "manufacturerSku": "U10298X200",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10298X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {
+        "lengthMm": 180,
+        "laneCount": 2,
+        "status": "published-partial"
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          180,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Published length is retained independently of unverified road width and slot spacing."
+      ]
+    },
+    {
+      "id": "scx:U10323X200",
+      "revision": 1,
+      "name": "Straight · 80 mm catalogue label",
+      "manufacturerSku": "U10323X200",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10323X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {
+        "lengthMm": 80,
+        "laneCount": 2,
+        "status": "conflicting-catalogue-labels"
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          80,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "scx-2021",
+          "community-thread"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "2026 says 80 mm; 2021 says 90 mm for this same SKU. The community thread distinguishes closing 80 mm from quarter 90 mm, but does not resolve the modern SKU. Do not use for fit or length totals."
+      ],
+      "conflicts": [
+        {
+          "field": "lengthMm",
+          "values": [
+            {
+              "sourceId": "scx-2026",
+              "value": 80
+            },
+            {
+              "sourceId": "scx-2021",
+              "value": 90
+            }
+          ],
+          "resolution": null
+        }
+      ]
+    },
+    {
+      "id": "scx:U10399X200",
+      "revision": 1,
+      "name": "Single-lane straight · 360 mm",
+      "manufacturerSku": "U10399X200",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10399X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {
+        "lengthMm": 360,
+        "laneCount": 1,
+        "status": "published-partial"
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          85
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Published length is retained independently of unverified road width and slot spacing."
+      ]
+    },
+    {
+      "id": "scx:U10301X200",
+      "revision": 1,
+      "name": "R1 curve · 45°",
+      "manufacturerSku": "U10301X200",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10301X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {
+        "radiusFamily": 1,
+        "angleDeg": 45,
+        "status": "community-reported-angle",
+        "innerRadiusMm": null,
+        "outerRadiusMm": null
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -225,
+          159.099026,
+          186.109127
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "community-thread"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "R1 identity and retail quantity from current catalogue. 45° angle inferred from community-reported pieces per semicircle. Drawn radius and width are illustrative; nesting is not verified."
+      ]
+    },
+    {
+      "id": "scx:U10296X200",
+      "revision": 1,
+      "name": "R2 curve · 45°",
+      "manufacturerSku": "U10296X200",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10296X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {
+        "radiusFamily": 2,
+        "angleDeg": 45,
+        "status": "manufacturer-published-angle",
+        "innerRadiusMm": null,
+        "outerRadiusMm": null
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -395,
+          279.307179,
+          235.900974
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "scx-2024",
+          "community-thread"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "R2 identity and retail quantity from current catalogue. 45° angle confirmed by the 2024 manufacturer catalogue. Drawn radius and width are illustrative; nesting is not verified."
+      ]
+    },
+    {
+      "id": "scx:U10322X200",
+      "revision": 1,
+      "name": "R3 curve · 22.5°",
+      "manufacturerSku": "U10322X200",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10322X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {
+        "radiusFamily": 3,
+        "angleDeg": 22.5,
+        "status": "community-reported-angle",
+        "innerRadiusMm": null,
+        "outerRadiusMm": null
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -565,
+          216.216139,
+          200.067585
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "community-thread"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "R3 identity and retail quantity from current catalogue. 22.5° angle inferred from community-reported pieces per semicircle. Drawn radius and width are illustrative; nesting is not verified."
+      ]
+    },
+    {
+      "id": "scx:U10401X100",
+      "revision": 1,
+      "name": "R4 curve · 22.5°",
+      "manufacturerSku": "U10401X100",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10401X100.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {
+        "radiusFamily": 4,
+        "angleDeg": 22.5,
+        "status": "community-reported-angle",
+        "innerRadiusMm": null,
+        "outerRadiusMm": null
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -735,
+          281.272323,
+          213.008064
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "community-thread"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "R4 identity and retail quantity from current catalogue. 22.5° angle inferred from community-reported pieces per semicircle. Drawn radius and width are illustrative; nesting is not verified."
+      ]
+    },
+    {
+      "id": "scx:U10400X200",
+      "revision": 1,
+      "name": "Single-lane outer half of inner curve",
+      "manufacturerSku": "U10400X200",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10400X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {
+        "laneCount": 1
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -225,
+          159.099026,
+          126.005051
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Single-lane curve identity follows catalogue. Angle, slot radius and relationship to the current R1 mould remain unverified."
+      ]
+    },
+    {
+      "id": "scx:U10475X200",
+      "revision": 1,
+      "name": "Universal passive crossover",
+      "manufacturerSku": "U10475X200",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10475X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Fixed crossed slots. This is distinct from the Advance switch, which also has straight-through routes. Curve transitions are illustrative."
+      ]
+    },
+    {
+      "id": "scx:U10364X200",
+      "revision": 1,
+      "name": "Universal to legacy-black adapter",
+      "manufacturerSku": "U10364X200",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue"
+      ],
+      "asset": "assets/U10364X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          180,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Grey Universal to older black SCX track. The manufacturer explicitly excludes legacy black track from Advance compatibility. The tapered drawing does not establish exact endpoint spacing."
+      ],
+      "endpointSystems": [
+        "scx-universal-grey",
+        "scx-legacy-black"
+      ]
+    },
+    {
+      "id": "scx:U10360X400",
+      "revision": 1,
+      "name": "Original terminal track",
+      "manufacturerSku": "U10360X400",
+      "category": "Power and timing",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue"
+      ],
+      "asset": "assets/U10360X400.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          212
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Directional hardware: do not mirror sensors, switching mechanisms or device housings."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Grid markings, finish line and red side power pod follow catalogue appearance. Full housing footprint and road length remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10327X200",
+      "revision": 1,
+      "name": "R1 border with barrier",
+      "manufacturerSku": "U10327X200",
+      "category": "Borders",
+      "kind": "border-barrier-assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10327X200.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -273,
+          193.040151,
+          113.90097399999999
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "scx-2021"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Red shoulder, red/white trackside kerb and grey wall follow the clear 2021 catalogue photograph for this same SKU.",
+        "Radius-family name refers to the road; border width, angle and mounting position are unverified.",
+        "2021 lists 4+4; 2026 prints +4. Component allocation remains unresolved."
+      ],
+      "attachment": {
+        "radiusFamily": 1,
+        "side": "outer-illustrated-not-verified",
+        "status": "unverified"
+      }
+    },
+    {
+      "id": "scx:U10326X200",
+      "revision": 1,
+      "name": "R2 border with barrier",
+      "manufacturerSku": "U10326X200",
+      "category": "Borders",
+      "kind": "border-barrier-assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10326X200.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -443,
+          313.248304,
+          163.69282099999998
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "scx-2021"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Red shoulder, red/white trackside kerb and grey wall follow the clear 2021 catalogue photograph for this same SKU.",
+        "Radius-family name refers to the road; border width, angle and mounting position are unverified."
+      ],
+      "attachment": {
+        "radiusFamily": 2,
+        "side": "outer-illustrated-not-verified",
+        "status": "unverified"
+      }
+    },
+    {
+      "id": "scx:U10473X200",
+      "revision": 1,
+      "name": "R3 border with barrier",
+      "manufacturerSku": "U10473X200",
+      "category": "Borders",
+      "kind": "border-barrier-assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10473X200.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -613,
+          234.584944,
+          91.00806399999999
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Grey shoulder, striped trackside kerb and grey wall follow the current catalogue photograph.",
+        "Radius-family name refers to the road; border width, angle and mounting position are unverified."
+      ],
+      "attachment": {
+        "radiusFamily": 3,
+        "side": "outer-illustrated-not-verified",
+        "status": "unverified"
+      }
+    },
+    {
+      "id": "scx:U10474X200",
+      "revision": 1,
+      "name": "R4 border with barrier · provisional",
+      "manufacturerSku": "U10474X200",
+      "category": "Borders",
+      "kind": "border-barrier-assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10474X200.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "provisional-family-illustration",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -783,
+          299.641128,
+          103.94854399999997
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "family-based-provisional",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Catalogue has a coming-soon placeholder, so this is a provisional R3-family illustration, not confirmed R4 appearance.",
+        "Radius-family name refers to the road; border width, angle and mounting position are unverified.",
+        "Catalogue lists 4+4; component allocation remains unresolved."
+      ],
+      "attachment": {
+        "radiusFamily": 4,
+        "side": "outer-illustrated-not-verified",
+        "status": "unverified"
+      },
+      "releaseEvidence": "2026 catalogue placeholder; no current stock claim"
+    },
+    {
+      "id": "scx:U10488X200",
+      "revision": 1,
+      "name": "180 mm straight border with barrier",
+      "manufacturerSku": "U10488X200",
+      "category": "Borders",
+      "kind": "border-barrier-assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10488X200.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {
+        "lengthMm": 180
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          180,
+          48
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Grey shoulder, red/white kerb and grey solid wall. Published length is 180 mm; width, wall thickness and mounts are unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10325X200-in",
+      "revision": 1,
+      "name": "Tapering border · lead-in",
+      "manufacturerSku": "U10325X200",
+      "category": "Borders",
+      "kind": "border-barrier-assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10325X200-in.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          180,
+          51
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scx:U10325X200-out"
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "scx-2021"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Angular red taper and short grey wall follow the clearer 2021 product photograph. Two orientations are shown; catalogue 2+2 allocation and installed dimensions remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10325X200-out",
+      "revision": 1,
+      "name": "Tapering border · lead-out",
+      "manufacturerSku": "U10325X200",
+      "category": "Borders",
+      "kind": "border-barrier-assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10325X200-out.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          180,
+          51
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scx:U10325X200-in"
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "scx-2021"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Angular red taper and short grey wall follow the clearer 2021 product photograph. Two orientations are shown; catalogue 2+2 allocation and installed dimensions remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10324X200",
+      "revision": 1,
+      "name": "Red straight barrier · 180 mm",
+      "manufacturerSku": "U10324X200",
+      "category": "Barriers",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10324X200.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "publishedDimensions": {
+        "lengthMm": 180
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-elevation-identification",
+        "bounds": [
+          0,
+          0,
+          180,
+          36
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Side elevation shows moulded ribs and mounting clips. Height and installed footprint are unverified."
+      ]
+    },
+    {
+      "id": "scx:U10299X200",
+      "revision": 1,
+      "name": "Red standard-curve barrier",
+      "manufacturerSku": "U10299X200",
+      "category": "Barriers",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10299X200.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "publishedDimensions": {
+        "angleDeg": 45,
+        "radiusFamily": 2
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -400,
+          282.842712,
+          124.22835500000002
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026",
+          "scx-2021"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Curved red barrier for standard 45-degree track. Mounting radius and thickness remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10591X100",
+      "revision": 1,
+      "name": "Flexible barrier · 3 m roll",
+      "manufacturerSku": "U10591X100",
+      "category": "Barriers",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10591X100.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "publishedDimensions": {
+        "unrolledLengthMm": 3000
+      },
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -7,
+          400,
+          95
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Shortened ribbon symbol; the published 3 m is unrolled material length, not installed road length or a fixed footprint."
+      ]
+    },
+    {
+      "id": "scx:U10295X200",
+      "revision": 1,
+      "name": "Bridge elevation support",
+      "manufacturerSku": "U10295X200",
+      "category": "Supports",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10295X200.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "front-elevation-identification",
+        "bounds": [
+          0,
+          10,
+          192,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Red bridge support frame; six per retail package. No road included; span and height unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10434X200-in",
+      "revision": 1,
+      "name": "Grand Chicane · entry",
+      "manufacturerSku": "U10434X200",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10434X200-in.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scx:U10434X200-out"
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Narrowing slot pair and sculpted edges follow box photography. Entry/exit drawings represent the pictured two-part set; lengths and narrowed spacing remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10434X200-out",
+      "revision": 1,
+      "name": "Grand Chicane · exit",
+      "manufacturerSku": "U10434X200",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10434X200-out.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scx:U10434X200-in"
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Narrowing slot pair and sculpted edges follow box photography. Entry/exit drawings represent the pictured two-part set; lengths and narrowed spacing remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10398X100",
+      "revision": 1,
+      "name": "Sliding chicane curve set",
+      "manufacturerSku": "U10398X100",
+      "category": "Special track",
+      "kind": "assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10398X100.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -225,
+          225,
+          450
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Illustrative U-shaped slippery chicane assembly with narrowed slots and red barriers. Complete inventory, slot transitions and footprint remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10537X100",
+      "revision": 1,
+      "name": "Banked curve set",
+      "manufacturerSku": "U10537X100",
+      "category": "Special track",
+      "kind": "assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10537X100.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "schematic-top-view-with-supports",
+        "bounds": [
+          0,
+          -415,
+          430,
+          840
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Banking, grey walls and supports identified from catalogue image. Illustration does not define banking angle, projected footprint, height profile or lane lengths."
+      ]
+    },
+    {
+      "id": "scx:U10538X100",
+      "revision": 1,
+      "name": "Complete bridge set",
+      "manufacturerSku": "U10538X100",
+      "category": "Special track",
+      "kind": "assembly",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10538X100.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "assembly-identification",
+        "bounds": [
+          0,
+          -35,
+          600,
+          240
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Preserve slot identities; this does not authorize mirrored electronics."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Grey walls, red piers and striped kerbs. Schematic joints do not specify component count. Road length, elevation and clearance require documentation."
+      ]
+    },
+    {
+      "id": "scx:E10288X200",
+      "revision": 1,
+      "name": "Advance double lane changer",
+      "manufacturerSku": "E10288X200",
+      "category": "Advance track",
+      "kind": "piece",
+      "systems": [
+        "scx-advance"
+      ],
+      "asset": "assets/E10288X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Directional hardware: do not mirror sensors, switching mechanisms or device housings."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Crossed switching branches alongside straight-through routes. Retail count, switch positions and lane geometry remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:E10403X200-left",
+      "revision": 1,
+      "name": "Advance turnout · left",
+      "manufacturerSku": "E10403X200",
+      "category": "Advance track",
+      "kind": "piece",
+      "systems": [
+        "scx-advance"
+      ],
+      "asset": "assets/E10403X200-left.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Published left/right kit members are distinct; their exact direction and ports must be documented before mirroring.",
+        "relatedPieceId": "scx:E10403X200-right"
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Schematic of one member of the published left/right turnout pair. Exact branching mechanism, port assignment and occupied outline remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:E10403X200-right",
+      "revision": 1,
+      "name": "Advance turnout · right",
+      "manufacturerSku": "E10403X200",
+      "category": "Advance track",
+      "kind": "piece",
+      "systems": [
+        "scx-advance"
+      ],
+      "asset": "assets/E10403X200-right.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Published left/right kit members are distinct; their exact direction and ports must be documented before mirroring.",
+        "relatedPieceId": "scx:E10403X200-left"
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Schematic of one member of the published left/right turnout pair. Exact branching mechanism, port assignment and occupied outline remain unresolved."
+      ]
+    },
+    {
+      "id": "scx:E10291X200",
+      "revision": 1,
+      "name": "Advance pit-lane track set",
+      "manufacturerSku": "E10291X200",
+      "category": "Advance track",
+      "kind": "assembly",
+      "systems": [
+        "scx-advance"
+      ],
+      "asset": "assets/E10291X200.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          195
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Directional hardware: do not mirror sensors, switching mechanisms or device housings."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Yellow BOX lettering and chevrons identify pit sections. Drawing represents the kit, not its full layout or an asserted inventory."
+      ]
+    },
+    {
+      "id": "scx:E10292X200",
+      "revision": 1,
+      "name": "Advance Bluetooth connection track",
+      "manufacturerSku": "E10292X200",
+      "category": "Power and timing",
+      "kind": "piece",
+      "systems": [
+        "scx-advance"
+      ],
+      "asset": "assets/E10292X200.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          232
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Directional hardware: do not mirror sensors, switching mechanisms or device housings."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Checkered line and grey side electronics housing. Housing and sensor footprint remain unverified."
+      ]
+    },
+    {
+      "id": "scx:E10478X100",
+      "revision": 1,
+      "name": "Advance chicane set",
+      "manufacturerSku": "E10478X100",
+      "category": "Advance track",
+      "kind": "assembly",
+      "systems": [
+        "scx-advance"
+      ],
+      "asset": "assets/E10478X100.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          360,
+          170
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Directional hardware: do not mirror sensors, switching mechanisms or device housings."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions",
+          "Verified slot offsets and complete route geometry"
+        ]
+      },
+      "notes": [
+        "Barrel obstacles and grey walls follow product artwork. This is a kit identification image; component inventory and exact slot routes are unresolved."
+      ]
+    },
+    {
+      "id": "scx:U10590X100",
+      "revision": 1,
+      "name": "Starlight gantry",
+      "manufacturerSku": "U10590X100",
+      "category": "Trackside devices",
+      "kind": "piece",
+      "systems": [
+        "scx-classic-original-analogue",
+        "scx-advance"
+      ],
+      "asset": "assets/U10590X100.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "front-elevation-identification",
+        "bounds": [
+          10,
+          -8,
+          340,
+          123
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Directional hardware: do not mirror sensors, switching mechanisms or device housings."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "Grey/red arch and red start lights from catalogue. Front elevation is not an installed footprint; road is not included in this drawing."
+      ]
+    },
+    {
+      "id": "scx:A10593X100",
+      "revision": 1,
+      "name": "Electronic lap counter",
+      "manufacturerSku": "A10593X100",
+      "category": "Trackside devices",
+      "kind": "device",
+      "systems": [
+        "scx-classic-original-analogue"
+      ],
+      "asset": "assets/A10593X100.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "publishedDimensions": {},
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "front-elevation-identification",
+        "bounds": [
+          0,
+          0,
+          180,
+          140
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Open arrowhead loops are identification artwork; mating geometry is unresolved."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Directional hardware: do not mirror sensors, switching mechanisms or device housings."
+      },
+      "evidence": {
+        "sources": [
+          "scx-2026"
+        ],
+        "identity": "published",
+        "appearance": "catalogue-photo-based",
+        "geometry": "incomplete",
+        "missing": [
+          "Verified occupied outline and attachment dimensions"
+        ]
+      },
+      "notes": [
+        "2026 catalogue Q3 announcement. Side scoreboard shown in elevation; supplied road/sensor inventory and mounted footprint are unresolved."
+      ]
+    }
+  ],
+  "products": [
+    {
+      "sku": "U10297X200",
+      "name": "Straight · 360 mm",
+      "contents": [
+        {
+          "pieceId": "scx:U10297X200",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10298X200",
+      "name": "Straight · 180 mm",
+      "contents": [
+        {
+          "pieceId": "scx:U10298X200",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10323X200",
+      "name": "Straight · 80 mm catalogue label",
+      "contents": [
+        {
+          "pieceId": "scx:U10323X200",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10399X200",
+      "name": "Single-lane straight · 360 mm",
+      "contents": [
+        {
+          "pieceId": "scx:U10399X200",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10301X200",
+      "name": "R1 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "scx:U10301X200",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10296X200",
+      "name": "R2 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "scx:U10296X200",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10322X200",
+      "name": "R3 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scx:U10322X200",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10401X100",
+      "name": "R4 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scx:U10401X100",
+          "quantity": 8
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10400X200",
+      "name": "Single-lane outer half of inner curve",
+      "contents": [
+        {
+          "pieceId": "scx:U10400X200",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10475X200",
+      "name": "Universal passive crossover",
+      "contents": [
+        {
+          "pieceId": "scx:U10475X200",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10364X200",
+      "name": "Universal to legacy-black adapter",
+      "contents": [
+        {
+          "pieceId": "scx:U10364X200",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10360X400",
+      "name": "Original terminal track",
+      "contents": [
+        {
+          "pieceId": "scx:U10360X400",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10327X200",
+      "name": "R1 border with barrier",
+      "contents": [
+        {
+          "pieceId": "scx:U10327X200",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10326X200",
+      "name": "R2 border with barrier",
+      "contents": [
+        {
+          "pieceId": "scx:U10326X200",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10473X200",
+      "name": "R3 border with barrier",
+      "contents": [
+        {
+          "pieceId": "scx:U10473X200",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10474X200",
+      "name": "R4 border with barrier · provisional",
+      "contents": [
+        {
+          "pieceId": "scx:U10474X200",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10488X200",
+      "name": "180 mm straight border with barrier",
+      "contents": [
+        {
+          "pieceId": "scx:U10488X200",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10325X200",
+      "name": "Tapering border and barrier set",
+      "contents": [
+        {
+          "pieceId": "scx:U10325X200-in",
+          "quantity": null
+        },
+        {
+          "pieceId": "scx:U10325X200-out",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": [
+        "Published 2+2 retained as a description; do not interpret master carton quantity as retail contents."
+      ]
+    },
+    {
+      "sku": "U10324X200",
+      "name": "Red straight barrier · 180 mm",
+      "contents": [
+        {
+          "pieceId": "scx:U10324X200",
+          "quantity": 8
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10299X200",
+      "name": "Red standard-curve barrier",
+      "contents": [
+        {
+          "pieceId": "scx:U10299X200",
+          "quantity": 8
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10591X100",
+      "name": "Flexible barrier · 3 m roll",
+      "contents": [
+        {
+          "pieceId": "scx:U10591X100",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10295X200",
+      "name": "Bridge elevation support",
+      "contents": [
+        {
+          "pieceId": "scx:U10295X200",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10434X200",
+      "name": "Grand Chicane",
+      "contents": [
+        {
+          "pieceId": "scx:U10434X200-in",
+          "quantity": 1
+        },
+        {
+          "pieceId": "scx:U10434X200-out",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": [
+        "Two sections shown on the 2026 product box."
+      ]
+    },
+    {
+      "sku": "U10398X100",
+      "name": "Sliding chicane curve set",
+      "contents": [
+        {
+          "pieceId": "scx:U10398X100",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10537X100",
+      "name": "Banked curve set",
+      "contents": [
+        {
+          "pieceId": "scx:U10537X100",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10538X100",
+      "name": "Complete bridge set",
+      "contents": [
+        {
+          "pieceId": "scx:U10538X100",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "E10288X200",
+      "name": "Advance double lane changer",
+      "contents": [
+        {
+          "pieceId": "scx:E10288X200",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "E10403X200",
+      "name": "Advance left and right turnout tracks",
+      "contents": [
+        {
+          "pieceId": "scx:E10403X200-left",
+          "quantity": null
+        },
+        {
+          "pieceId": "scx:E10403X200-right",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": [
+        "Catalogue identifies both hands; exact quantity allocation awaits explicit inventory."
+      ]
+    },
+    {
+      "sku": "E10291X200",
+      "name": "Advance pit-lane track set",
+      "contents": [
+        {
+          "pieceId": "scx:E10291X200",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "E10292X200",
+      "name": "Advance Bluetooth connection track",
+      "contents": [
+        {
+          "pieceId": "scx:E10292X200",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "E10478X100",
+      "name": "Advance chicane set",
+      "contents": [
+        {
+          "pieceId": "scx:E10478X100",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "U10590X100",
+      "name": "Starlight gantry",
+      "contents": [
+        {
+          "pieceId": "scx:U10590X100",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "A10593X100",
+      "name": "Electronic lap counter",
+      "contents": [
+        {
+          "pieceId": "scx:A10593X100",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "scx-2026"
+      ],
+      "notes": []
+    }
+  ],
+  "visualStyle": {
+    "road": "Blue-grey fine texture, paired silver rails, open-loop end connectors; no centreline on ordinary track",
+    "borders": "Red R1/R2 shoulders and angular tapers from 2021 close-ups; grey straight/R3 shoulders, grey walls and red/white trackside kerbs",
+    "hardware": "Red standalone barriers and elevation frames; grey/red timing devices"
+  },
+  "communityMeasurements": {
+    "sourceId": "community-thread",
+    "status": "user-supplied-excerpt-unverified-legacy-mapping",
+    "straightLengthsMm": {
+      "standard": 360,
+      "half": 180,
+      "quarter": 90,
+      "closing": 80
+    },
+    "reportedSemicircleDiametersInches": {
+      "R1": 17,
+      "R2": 30.75,
+      "R3": 42.5,
+      "R4": 54,
+      "banked": 36
+    },
+    "derivedSemicircleDiametersMm": {
+      "R1": 431.8,
+      "R2": 781.05,
+      "R3": 1079.5,
+      "R4": 1371.6,
+      "banked": 914.4
+    },
+    "piecesPerSemicircle": {
+      "R1": 4,
+      "R2": 4,
+      "R3": 8,
+      "R4": 8,
+      "banked": 4
+    },
+    "legacyReferences": {
+      "R1": "B02011X200",
+      "R3": "B02026X200",
+      "R4": "B10017X200",
+      "innerCurveBorders": "B02029X200",
+      "R3Borders": "B02030X200"
+    },
+    "note": "Diameter reference edge is not specified. Adjacent half-diameter increments are 174.625, 149.225 and 146.05 mm, so these approximations do not establish one consistent nesting width. Reported inside/outside lengths are not labelled radii. Do not derive slot spacing from these values."
+  },
+  "sourceIssues": [
+    {
+      "field": "Physical geometry",
+      "detail": "Road width, slot spacing, radii, connector moulds and border footprints remain unresolved. All SVGs are identification illustrations; no snapping or lane-length geometry is enabled."
+    },
+    {
+      "field": "80 mm versus 90 mm",
+      "detail": "2026 labels U10323X200 80 mm, while the user-provided 2021 catalogue labels it 90 mm. Community notes identify closing 80 mm and quarter 90 mm as distinct, without resolving this modern SKU."
+    },
+    {
+      "field": "Community measurements",
+      "detail": "The user-provided forum excerpt helps establish curve angles and historical references. Approximate diameters are retained with their provenance, not converted into a supposedly exact nesting grid."
+    },
+    {
+      "field": "Border quantities",
+      "detail": "2+2, 4+4 and the R1 +4 label do not establish allocation between shoulders, walls or end pieces. Unresolved counts stay null. STD units are carton quantities."
+    },
+    {
+      "field": "R4 border appearance",
+      "detail": "U10474X200 has a coming-soon placeholder in the 2026 catalogue. Its family-based illustration is provisional."
+    },
+    {
+      "field": "System identity",
+      "detail": "Modern Universal grey track is shared by analogue and Advance. The legacy-black adapter is analogue only. Hornby Scalextric and SCX remain separate systems."
+    }
+  ],
+  "precisionPolicy": {
+    "illustrationsAreNotGeometry": true,
+    "exactFitAllowed": false,
+    "unknownLength": null,
+    "unknownCount": null,
+    "nominalLengthsMustBeLabelled": true
+  },
+  "outstanding": [
+    "Published modern width and slot spacing",
+    "Verified curve radii and nesting grid",
+    "Resolve short-straight catalogue conflict and legacy SKU mapping",
+    "Border dimensions, hands and component allocations",
+    "Digital route definitions, housing envelopes and kit inventories",
+    "Final R4 border appearance"
+  ]
+}

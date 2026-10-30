@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-29",
+  "checks": [
+    {
+      "name": "Catalogue identities, assets, source references and purchase contents resolve",
+      "result": "passed"
+    },
+    {
+      "name": "Published road dimensions and five nested radius families are retained",
+      "result": "passed"
+    },
+    {
+      "name": "Road width and configured slot spacing are independent, including inter-module gap",
+      "result": "passed"
+    },
+    {
+      "name": "Complete circular lane length difference equals 2 pi times slot spacing",
+      "result": "passed"
+    },
+    {
+      "name": "Border attachment faces meet the published road edges and add 60 mm",
+      "result": "passed"
+    },
+    {
+      "name": "All stored models agree with derived endpoints and connector lane ordering",
+      "result": "passed"
+    },
+    {
+      "name": "Conflicted border, special pieces and hardware cannot claim measured fit or route length",
+      "result": "passed"
+    },
+    {
+      "name": "Retail units, road sections and unverified assembly contents stay separate",
+      "result": "passed"
+    },
+    {
+      "name": "Policar artwork keeps black borders and plain roads without Carrera kerbs or centre dashes",
+      "result": "passed"
+    }
+  ],
+  "limits": "Checks establish source-data consistency and nominal geometry, not manufacturing accuracy or unresolved accessory footprints."
+}

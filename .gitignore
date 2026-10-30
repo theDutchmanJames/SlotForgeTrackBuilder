@@ -1,0 +1,21 @@
+# Machine-specific data and development output
+/dist/
+/research/
+*.lnk
+__pycache__/
+*.pyc
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini
+.env
+.env.*
+
+# Historical archives; retain the downloadable pack linked by the catalogue.
+/designs/*.zip
+/track-packs/*.zip
+
+# Local development screenshots, not application assets.
+/app/*.png
+!/app/icon.png
+/app/package-files.json

@@ -1,0 +1,61 @@
+{
+  "scope": {
+    "basis": "Modern grey 1:32 Universal track shared by Classic/Original analogue and Advance, plus selected track-mounted devices, borders and elevation hardware from the 2026 catalogue.",
+    "availability": "Catalogue coverage, including announced products; no claim of current stock or final release appearance.",
+    "excluded": [
+      "Compact 1:43",
+      "Full legacy black-track catalogue",
+      "Earlier Digital/WOS electronics and electrical compatibility",
+      "Complete racing sets, conversion bundles, cars, controllers, transformers and spare car parts",
+      "Rally workshop tent and other decorative scenery",
+      "Historical 90 mm quarter-straight SKU mapping pending verification"
+    ]
+  },
+  "drawingCount": 36,
+  "productCount": 33,
+  "roadGeometryCount": 0,
+  "borderGeometryCount": 0,
+  "coveredProductSkus": [
+    "U10297X200",
+    "U10298X200",
+    "U10323X200",
+    "U10399X200",
+    "U10301X200",
+    "U10296X200",
+    "U10322X200",
+    "U10401X100",
+    "U10400X200",
+    "U10475X200",
+    "U10364X200",
+    "U10360X400",
+    "U10327X200",
+    "U10326X200",
+    "U10473X200",
+    "U10474X200",
+    "U10488X200",
+    "U10325X200",
+    "U10324X200",
+    "U10299X200",
+    "U10591X100",
+    "U10295X200",
+    "U10434X200",
+    "U10398X100",
+    "U10537X100",
+    "U10538X100",
+    "E10288X200",
+    "E10403X200",
+    "E10291X200",
+    "E10292X200",
+    "E10478X100",
+    "U10590X100",
+    "A10593X100"
+  ],
+  "unresolved": [
+    "Published modern width and slot spacing",
+    "Verified curve radii and nesting grid",
+    "Resolve short-straight catalogue conflict and legacy SKU mapping",
+    "Border dimensions, hands and component allocations",
+    "Digital route definitions, housing envelopes and kit inventories",
+    "Final R4 border appearance"
+  ]
+}

@@ -1,0 +1,51 @@
+SlotForge Timing integration handoff — Builder 0.2.2
+29 October 2026
+
+CURRENT CONTRACT
+slotforge.layout envelope: version 1 (unchanged)
+integration.contractVersion: 1.0.0-draft.2 (new reference-picture template)
+Supported imports: draft.2, draft.1, and documented legacy/unversioned v1.
+Explicit unknown versions and unsupported units are rejected before normalization.
+
+READ IN THIS ORDER
+1. CODEX-BRIEF-v0.2.2.txt — pasteable implementation brief for Timing.
+2. TIMING-IMPORTER-CHANGES.txt — receiving-side workflow and invariants.
+3. EXPORT-SPEC-1.0.0-draft.1.txt — base geometry, identity, timing and profile rules.
+4. EXPORT-SPEC-1.0.0-draft.2.txt — extension and version negotiation rules.
+5. DEPENDENCIES-AND-LICENSING.txt — runtime dependencies and reuse information.
+6. TEST-RESULTS-AND-LIMITS.txt — current verification and limitations.
+
+RUN FROM THE HANDOFF ARCHIVE ROOT (modern Node; no npm install)
+ node --test app/integration.test.cjs app/editor-features.test.cjs
+ node integration/slotforge-timing/check-fixtures.cjs
+Expected: 26 tests, 15 fixture cases, no failures.
+The catalogue and custom-packs module are included for these tests; Timing's
+layout runtime needs only integration.js, core.js and the geometry module.
+
+SOURCE ARCHIVE
+The source ZIP also contains the complete Builder, six track catalogues,
+named custom packs, matching curves, reference placement and all app tests.
+ node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/server.test.cjs
+Expected: 70 tests, no failures.
+ node app/serve.cjs
+Open http://127.0.0.1:8173/app/ . Keep an already-running server if it serves
+this directory. The localhost origin is recommended for autosave and images.
+
+MODULE ENTRY POINTS
+ const I = require('./app/integration.js');
+ const imported = I.importLayout(parsedJSON);
+ const regenerated = I.prepare(parsedJSON, imported.state);
+Enforce the 5 MiB external JSON limit before parsing. Derived geometry and
+cached summaries are untrusted; regenerate them through the runtime.
+
+EXAMPLES
+v1-fixtures/ contains the 15 existing compatibility/rejection cases, including
+2/4/8 lanes, reflected/reversed routes, timing offsets and identity revisions.
+v2-examples/closed-with-reference.slotforge.json is a draft.2 closed circuit
+with a reference-picture placeholder (no image, illustrating the fallback).
+References do not alter lane lengths, IDs or circuit closure.
+
+Historical v0.1.3, v0.2.0 and v0.2.1 notes/fixtures remain where useful. Current
+instructions in this file and CODEX-BRIEF-v0.2.2.txt supersede older handoffs.
+No SlotForge Timing repository changes were made. The contract remains a draft
+until Timing explicitly adopts and tests it.

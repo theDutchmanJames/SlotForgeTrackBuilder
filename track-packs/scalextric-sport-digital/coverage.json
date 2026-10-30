@@ -1,0 +1,63 @@
+{
+  "scope": {
+    "basis": "Core 1:32 Sport/Digital track and borders on 2016 catalogue pages 60–61, checked against available current manufacturer product pages.",
+    "excluded": [
+      "Micro / My First Scalextric",
+      "Full Classic track catalogue beyond C8222 adapter",
+      "SCX / Spanish Scalextric systems",
+      "Set-only and cosmetic-print variations",
+      "Powerbases, lap counters and newer long-straight / double-curve variants pending a separate expansion",
+      "Loose supports, scenery and separately sold guardrail hardware"
+    ],
+    "availability": "Historical catalogue inclusion is not a current stock claim."
+  },
+  "productCount": 37,
+  "drawingCount": 39,
+  "nominalGeometryCount": 12,
+  "coveredProductSkus": [
+    "C8205",
+    "C8207",
+    "C8200",
+    "C8236",
+    "C7018",
+    "C7016",
+    "C8202",
+    "C8278",
+    "C8206",
+    "C8234",
+    "C8204",
+    "C8235",
+    "C8223",
+    "C8233",
+    "C8240",
+    "C8225",
+    "C8228",
+    "C8280",
+    "C8239",
+    "C8281",
+    "C8224",
+    "C8282",
+    "C8238",
+    "C8279",
+    "C7017",
+    "C8201",
+    "C8246",
+    "C8203",
+    "C8222",
+    "C7036",
+    "C7014",
+    "C7015",
+    "C8296",
+    "C8297",
+    "C8295",
+    "C8210",
+    "C8211"
+  ],
+  "unresolved": [
+    "Confirm exact width, slot spacing and mating geometry",
+    "Resolve border widths and barrier envelopes",
+    "Measure/document special routes, bank angles and bridge profiles",
+    "Resolve C8295 revision conflict",
+    "Expand current powerbase and set-only catalogue"
+  ]
+}

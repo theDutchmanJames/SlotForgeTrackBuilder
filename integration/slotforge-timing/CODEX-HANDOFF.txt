@@ -1,0 +1,217 @@
+HISTORICAL HANDOFF — Builder 0.1.3. Superseded for Builder 0.2.0 by
+TIMING-IMPORTER-CHANGES.txt and EXPORT-SPEC-1.0.0-draft.1.txt.
+
+Implement SlotForge Track Builder integration in SlotForge Timing
+Handoff based on Track Builder v0.1.3, 29 October 2026
+
+OBJECTIVE
+Import a Track Builder layout into Timing's Track Database and use its actual
+slot geometry in the Live Tracker chart widget. Reuse the exported motion
+profile for variable speed, braking, acceleration and outward visual drift.
+Keep Timing's measured race data authoritative. Work in the Timing repository;
+inspect its instructions, persistence model, chart widget and event flow first.
+Do not invent table names or replace existing race/timing infrastructure.
+
+SOURCE MATERIAL
+Builder workspace:
+C:/Users/theDutchmanJames/Documents/ChatGPT/SlotForge Track Builder
+Source archive: dist/SlotForge-Track-Builder-v0.1.3-source.zip
+Read these files in that workspace/archive:
+- app/app.js: layout(), exportDefinition(), drawBody(), frame(), sliderSpecs.
+- app/core.js: validateLayout(), validateDefinition(), routes(), at(),
+  speedPlan(), worldSegments(), alternateRoutes(), animationLoop().
+- track-packs/tools/geometry.cjs: authoritative parametric geometry generator.
+- app/core.test.cjs: connection, reflection, route, profile and import tests.
+- app/REVIEW.txt and README.txt: implemented behaviour and known limitations.
+The geometry is nominal/user-defined, not certified physical measurements.
+
+The accompanying fixtures/ folder contains a closed oval, a reflected/rotated
+oval, an open layout, a layout with a double lane changer, and invalid negative
+dimensions. expected-results.json records the expected import/route outcomes.
+Four valid fixtures passed Builder validation and route regeneration; the
+invalid fixture is intentionally rejected. Treat these as test data, not saved
+user tracks. Fixture placement IDs may repeat across separate documents.
+
+CURRENT FILE CONTRACT — IMPLEMENT THIS FIRST
+Users choose Export > Save layout in Builder. The filename normally ends in
+.slotforge.json. The JSON discriminator is format: "slotforge.layout",
+version: 1. App release v0.1.3 is NOT file format version 1.3.
+
+Top-level fields:
+- title: string.
+- units: "mm".
+- pieces: [{id, definitionId, x, y, angle, flip}].
+- definitions: [{id, name, sku, pack, family, parameters, color, status, mirror}].
+  Embedded definitions make the layout independent of installed track packs.
+- profile: {speed, acceleration, brake, corner, drift}.
+- precision: explanatory string; preserve its uncertainty meaning.
+- preparedGeometry: optional derived data described below.
+- integration: {target: "SlotForge Timing",
+  status: "export-contract-draft-importer-not-implemented"}.
+  This status describes the current Builder exporter, not a reason to reject
+  the file once Timing implements its importer.
+
+preparedGeometry contains:
+- closed: whether the current model forms one supported closed circuit.
+- boundsMm: [minX, minY, width, height], including placed borders.
+- surfaces: [{pieceId, outline, transform:{x,y,angleDeg,reflectY}, kind}].
+  outline is a LOCAL SVG path. Apply its transform exactly once.
+- routes: [{id, lengthMm, segments, sections}].
+  id is typically "lane-1", "lane-2", etc. Segments are ordered WORLD geometry:
+    line: {type:"line", from:[x,y], to:[x,y], lengthMm}
+    arc: {type:"arc", center:[x,y], radiusMm, startAngleDeg, sweepDeg, lengthMm}
+  sections: [{pieceId,laneIndex,reverse,startMm,lengthMm}].
+- alternateRoutes: optional lane-changer branches, added in v0.1.3:
+  [{pieceId,id,fromLaneIndex,toLaneIndex,lengthMm,segments}].
+  Branch segments are lines or:
+    {type:"cubic",from,control1,control2,to,lengthMm}.
+  These coordinates are already transformed to world space. Lane indices are
+  zero-based LOCAL indices in that piece definition, not timing-channel IDs.
+
+Coordinates: +X right, +Y down, millimetres. Angles are degrees. An arc's zero
+angle points along +X; positive sweep is clockwise. Negative sweep is valid.
+Placement order: reflect LOCAL Y if flip, rotate by angle, then translate x/y.
+Do not transform prepared world routes a second time or reverse mirrored lanes
+based only on their labels. Use actual endpoint connectivity/section mapping.
+
+parameters currently use straight, curve, straight-border, curve-border.
+Custom lane changers use type:"straight" plus laneChange:"left"|"right"|"both",
+switchStartMm and switchEndMm, and exactly two lanes. Left changes local lane
+index 1 to 0; right changes 0 to 1. The base slots remain straight-through.
+Use geometry.cjs instead of deriving another interpretation of these fields.
+
+IMPORT AND DATABASE
+1. Add an explicit import action to the Track Database. Parse bounded JSON
+   and validate before any database mutation. Builder currently limits input
+   to 5 MB, 500 placements, 500 embedded definitions and at most 8 lanes.
+2. Reuse/adapt the pure core validator and geometry generator. Regenerate
+   geometry from validated definitions and placements; treat preparedGeometry
+   as a cache to compare or rebuild, not as authority over the source model.
+   preparedGeometry may be absent (e.g. autosave-format data).
+3. Do not execute pack code or inject imported SVG/HTML with innerHTML.
+   Use generated paths/numeric geometry and the framework's safe text APIs.
+4. Preserve the imported source document and store a normalized geometry model,
+   thumbnail, title, per-route lengths and default profile with a stable Timing
+   track ID/revision. Follow Timing's actual storage conventions and migrations.
+5. A second import must not silently overwrite a track with the same title.
+   Offer create-copy or explicit update according to existing app conventions.
+6. Accept an open layout as a static database drawing if useful, but explain
+   why closed-loop Live Tracker animation is unavailable. Never invent a closing
+   segment. Separate loops, unmatched slots and unsupported routes need a clear
+   state rather than an incorrect lane-length total.
+7. Existing Timing tracks must remain usable without an imported layout. Keep
+   the existing widget fallback and support removing/replacing a layout.
+
+LIVE TRACKER DRAWING AND LANE MAPPING
+Render the surface/slot paths at their aspect ratio, fitted to the widget with
+padding and resize support. Borders affect the displayed envelope, not driving
+distance. Draw cars by arc length on the SLOT route, not the road centreline or
+the visible surface edge. Draw line/arc/cubic geometry using safe SVG/Canvas APIs.
+Exact arc position is centre + radius * [cos(angle),sin(angle)].
+
+The export DOES NOT contain a start/finish marker, physical timing-channel map,
+car identities or race direction. Add Timing-side configuration for:
+- timing lane/channel -> imported route;
+- a start/finish offset per route (prefer a common physical section/fraction);
+- travel direction where required.
+Do not assume lane-1 means the leftmost, innermost or physical timing lane 1.
+Builder starts its route traversal from a placement/connector, not a lap sensor.
+Persist this mapping on the Timing track. Reverse heading, curvature and route
+ordering consistently if travel is reversed, including braking look-ahead.
+
+PROFILE CONTRACT
+The current export has ONE shared profile, not one profile per vehicle.
+Example (Balanced):
+{"speed":1200,"acceleration":1300,"brake":2200,"corner":0.57,"drift":10}
+
+Fields, units and current supported bounds:
+speed         maximum preview speed, mm/s       200..3000
+acceleration  acceleration magnitude, mm/s^2   100..4000
+brake         braking magnitude, mm/s^2        100..5000
+corner        corner-speed multiplier          0.20..0.95
+drift         maximum visual body rotation, °   0..30
+
+These are illustrative motion settings, not motor calibration, measured car
+performance, throttle/brake outputs or predicted race times.
+Import the profile as the TRACK DEFAULT. If Timing supports slotcar profiles,
+add optional per-car overrides using its existing car/profile model. Suggested
+precedence: explicit session override > car override > imported track default
+> Balanced fallback. This precedence is a proposed Timing feature, not an
+existing Builder export field. Preserve defaults when an override is removed.
+The Builder UI's playback-rate selector is separate and is NOT exported.
+
+MOTION AND DRIFT
+Reuse the intent of core.speedPlan(): curvature limits corner speed; a backward
+pass brakes ahead of corners and a forward pass applies acceleration limits.
+The existing implementation uses squared-speed interpolation between samples.
+Call core.at() on a regenerated core route, or implement an adapter for the
+prepared segment format. Do not pass raw prepared routes directly to helpers
+that expect regenerated internal route structures without checking the shape.
+
+Keep the car's guide point exactly on the slot. Rotate the sprite body around
+that guide point; do not offset the whole car sideways to simulate drift.
+Builder sprites face local +X, with their rear at negative X. For that sprite
+convention use POSITIVE signed body rotation:
+  driftAngle = sign(curvature) * profile.drift
+               * min(1, abs(curvature) * 350)
+Positive curvature means a clockwise bend in the +Y-down coordinate system.
+The rear then swings outward. Adapt the formula if Timing's sprite convention
+differs. Test both travel directions and reflected tracks; do not copy the old
+negative drift sign. Stop/cancel animation frames on pause, unmount and restart.
+
+CONNECTING TO ACTUAL TIMING
+Use Timing's existing timing feed. Determine whether it provides continuous
+position, sector crossings or only lap crossings. Render supplied position when
+available. With lap-only data, intermediate position is ESTIMATED animation.
+Keep that distinction visible; a tuning profile is not position telemetry.
+
+For an illustrative lap matched to a known/estimated lap duration, use the
+profile's normalized time-of-travel distribution rather than constant speed:
+  tau(s) = integral from 0 to s of 1 / v(u) du
+  phase = elapsed / estimatedLapDuration
+  s = inverseTau(phase * tau(totalLength))
+Account for the configured start offset/direction when building this table.
+For a live lap, its final duration is not yet known. Use a documented estimate
+(e.g. last valid lap, smoothed recent laps or a session default), then reconcile
+with actual crossing events. Choose a bounded, visible policy for overdue laps,
+pit stops, missed detections and out-of-order/duplicate events. Do not silently
+fabricate completed laps by wrapping an estimate indefinitely.
+Timing results, lap counters and positions at actual sensor events remain
+authoritative. Pace normalization can change apparent speed/acceleration;
+therefore profile limits describe the base illustration, not measured physics.
+
+LANE CHANGERS — FIRST INTEGRATION LIMIT
+Draw alternate branches and preserve them during storage/export. Initial
+animation should use the through routes, matching Builder's current behaviour.
+Do not randomly switch a car or infer its lane from the drawing/profile.
+Actual branching needs switching/lane events plus a route graph, or an explicit
+simulation mode with its own choices. Add that only as a separate capability.
+Branch lengths are alternate travel distances; do not add them to every lap.
+
+RECOMMENDED IMPLEMENTATION ORDER
+1. Inspect Timing and identify database/import/widget/profile boundaries.
+2. Build a pure importer/normalizer with fixtures and error handling.
+3. Add database import, layout preview and lane/start mapping.
+4. Draw the layout and place stationary cars at known route distances.
+5. Add the shared profile and optional per-car override UI.
+6. Connect race events to estimated/live motion with pause/reset cleanup.
+7. Exercise compatibility, migrations and regression tests, then document the
+   supported file version and remaining switching/telemetry limitations.
+
+ACCEPTANCE CHECKS
+- All bundled fixtures import without any manufacturer pack installed.
+- Rotating/mirroring preserves measured route lengths and endpoint continuity.
+- Car guides remain on exact arcs; rear drift is outward in both directions.
+- Imported title is safely rendered; malformed values/IDs cannot mutate data.
+- Different tracks/definitions with equal names do not corrupt one another.
+- Start mapping aligns actual lap events with the displayed start line.
+- Per-car tuning does not mutate the shared track default or race results.
+- Pause/resume, restart, widget removal and repeated imports do not leak frames.
+- Open layouts display gracefully, with no invented closed-loop animation.
+- Lane-changer branches render but through-route lap lengths stay unchanged.
+- Existing Timing tracks and widgets still work after the storage migration.
+
+DELIVERABLE
+Implement and test this in SlotForge Timing. Explain the files changed, storage
+migration, supported import contract, validation performed and remaining gaps.
+Do not claim this handoff already implements the Timing integration.

@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-29",
+  "checks": [
+    {
+      "name": "Piece, asset, source and retail references resolve without duplicate identities",
+      "result": "passed"
+    },
+    {
+      "name": "Unverified drawings cannot enter snapping, border-fit or lane-length calculations",
+      "result": "passed"
+    },
+    {
+      "name": "Short-straight conflict and community closing/quarter distinction remain explicit",
+      "result": "passed"
+    },
+    {
+      "name": "Curve angles have provenance, approximate diameters are never treated as slot radii",
+      "result": "passed"
+    },
+    {
+      "name": "Advance-only hardware and analogue-only legacy adapter retain system boundaries",
+      "result": "passed"
+    },
+    {
+      "name": "Retail quantities are separate from cartons and unresolved assembly inventories",
+      "result": "passed"
+    },
+    {
+      "name": "Provisional R4 artwork and elevation views cannot masquerade as measured footprints",
+      "result": "passed"
+    },
+    {
+      "name": "SCX surface differs from other brands and plain roads carry no centreline markings",
+      "result": "passed"
+    }
+  ],
+  "limits": "Catalogue and uncertainty consistency only. No verified modern SCX physical geometry, nesting or total lane-length model. Artwork requires separate visual review."
+}

@@ -1,0 +1,6043 @@
+{
+  "format": "slotforge.track-pack",
+  "formatVersion": "0.1-draft",
+  "id": "slotforge.scaleauto-pro-track",
+  "version": "0.1.0-design",
+  "title": "ScaleAuto Pro Track",
+  "manufacturer": "ScaleAuto",
+  "date": "2026-10-29",
+  "units": "mm",
+  "status": "first-design-pack-published-nominal-and-illustrative",
+  "runtime": {
+    "containsExecutableCode": false,
+    "importerImplemented": false
+  },
+  "scope": {
+    "basis": "Track, borders and mounting accessories depicted on the current official Pro Track catalogue panels, reviewed October 2026.",
+    "excluded": [
+      "Complete starter-set layouts and their non-track electronics",
+      "Surface paint marker SC-10132",
+      "Unidentified R1 22.5-degree pieces shown in the dimension diagram without mapped catalogue SKUs",
+      "Custom sponsor graphics; generic graphic placeholders are supplied"
+    ],
+    "availability": "Includes catalogue-announced special pieces. Listing is not proof of retail availability, installed digital hardware or compatibility with a particular digital protocol."
+  },
+  "defaults": {
+    "trackWidthMm": 200,
+    "laneSpacingMm": 100,
+    "singleLaneWidthMm": 100,
+    "straightBorderWidthMm": 48,
+    "nominalCurveBorderWidthMm": 48,
+    "slotOffsetsMm": [
+      50,
+      150
+    ],
+    "status": "published-road-dimensions-derived-slot-offsets",
+    "note": "Road width, lane spacing and radius boundaries are published. Centred slot offsets are derived. 48 mm is explicitly shown for straight borders; its application to curve borders is an assumption."
+  },
+  "visualStyle": {
+    "road": "Medium grey with a slight green cast and subtle surface texture, plain without centre dashes",
+    "borders": "Plain matching grey based on product photographs; custom-print border is a separate variant",
+    "rails": "Paired silver rails with dark slots; moulded tabs and silver contact tips",
+    "accessories": "Separate red/white guardrail types, orange/white fixing links, metal clips and white flexible wall",
+    "basis": "Official catalogue photographs and diagrams. Original SVG drawings, not reproduced product images."
+  },
+  "sources": [
+    {
+      "id": "manufacturer",
+      "title": "ScaleAuto Pro Track — official catalogue page",
+      "url": "https://scaleauto-slot.com/pro-track/",
+      "note": "Reviewed 29 October 2026. Catalogue inclusion does not establish release status or stock."
+    },
+    {
+      "id": "intro",
+      "title": "Manufacturer system overview and straight dimensions",
+      "url": "https://scaleauto-slot.com/wp-content/uploads/2025/12/Cata%CC%80leg-SC-2025-pro-track-01.jpg"
+    },
+    {
+      "id": "radii",
+      "title": "Manufacturer dimension comparison, January 2026",
+      "url": "https://scaleauto-slot.com/wp-content/uploads/2026/01/Cata%CC%80leg-SC-25-comparativa-pistes-1.jpg"
+    },
+    {
+      "id": "page04",
+      "title": "Manufacturer Pro Track catalogue panel 04",
+      "url": "https://scaleauto-slot.com/wp-content/uploads/2025/12/Cata%CC%80leg-SC-2025-pro-track-04.jpg",
+      "note": "Visually inspected; local research copy retained."
+    },
+    {
+      "id": "page05",
+      "title": "Manufacturer Pro Track catalogue panel 05",
+      "url": "https://scaleauto-slot.com/wp-content/uploads/2025/12/Cata%CC%80leg-SC-2025-pro-track-05.jpg",
+      "note": "Visually inspected; local research copy retained."
+    },
+    {
+      "id": "page06",
+      "title": "Manufacturer Pro Track catalogue panel 06",
+      "url": "https://scaleauto-slot.com/wp-content/uploads/2025/12/Cata%CC%80leg-SC-2025-pro-track-06.jpg",
+      "note": "Visually inspected; local research copy retained."
+    },
+    {
+      "id": "page07",
+      "title": "Manufacturer Pro Track catalogue panel 07",
+      "url": "https://scaleauto-slot.com/wp-content/uploads/2025/12/Cata%CC%80leg-SC-2025-pro-track-07-1125x800.jpg",
+      "note": "Visually inspected; local research copy retained."
+    },
+    {
+      "id": "page08",
+      "title": "Manufacturer Pro Track catalogue panel 08",
+      "url": "https://scaleauto-slot.com/wp-content/uploads/2025/12/Cata%CC%80leg-SC-2025-pro-track-08-1125x800.jpg",
+      "note": "Visually inspected; local research copy retained."
+    },
+    {
+      "id": "page09",
+      "title": "Manufacturer Pro Track catalogue panel 09",
+      "url": "https://scaleauto-slot.com/wp-content/uploads/2025/12/Cata%CC%80leg-SC-2025-pro-track-09-1125x800.jpg",
+      "note": "Visually inspected; local research copy retained."
+    },
+    {
+      "id": "style",
+      "title": "SlotForge Timing interface reference",
+      "url": "https://github.com/theDutchmanJames/SlotForgeTiming/blob/main/renderer/styles.css"
+    }
+  ],
+  "pieces": [
+    {
+      "id": "scaleauto:SC-10001",
+      "revision": 1,
+      "name": "Standard straight · 400 mm",
+      "manufacturerSku": "SC-10001",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10001.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 400,
+          "widthMm": 200,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 400 V 200 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            400,
+            200
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                400,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    400,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 50 H 400"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                150
+              ],
+              "end": [
+                400,
+                150
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    150
+                  ],
+                  "to": [
+                    400,
+                    150
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 150 H 400"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                100
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    150
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                400,
+                100
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    400,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    400,
+                    150
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 400
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          200
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page04",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 400,
+        "widthMm": 200
+      },
+      "notes": [
+        "Slot offsets are centred at 50 / 150 mm for two lanes, or 50 mm for one lane."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10005",
+      "revision": 1,
+      "name": "Half straight · 200 mm",
+      "manufacturerSku": "SC-10005",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10005.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 200,
+          "widthMm": 200,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 200 V 200 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            200,
+            200
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                200,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    200,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 200,
+              "d": "M 0 50 H 200"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                150
+              ],
+              "end": [
+                200,
+                150
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    150
+                  ],
+                  "to": [
+                    200,
+                    150
+                  ]
+                }
+              ],
+              "lengthMm": 200,
+              "d": "M 0 150 H 200"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                100
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    150
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                200,
+                100
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    200,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    200,
+                    150
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 200
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          200
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page04",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200,
+        "widthMm": 200
+      },
+      "notes": [
+        "Panel 07 mislabels the 200 mm road as SC-10105, which also identifies an R2 border. Panel 04 unambiguously assigns the road SC-10005.",
+        "Slot offsets are centred at 50 / 150 mm for two lanes, or 50 mm for one lane."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10006",
+      "revision": 1,
+      "name": "Quarter straight · 100 mm",
+      "manufacturerSku": "SC-10006",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10006.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 100,
+          "widthMm": 200,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 100 V 200 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            100,
+            200
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                100,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    100,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 100,
+              "d": "M 0 50 H 100"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                150
+              ],
+              "end": [
+                100,
+                150
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    150
+                  ],
+                  "to": [
+                    100,
+                    150
+                  ]
+                }
+              ],
+              "lengthMm": 100,
+              "d": "M 0 150 H 100"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                100
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    150
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                100,
+                100
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    100,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    100,
+                    150
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 100
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          100,
+          200
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page04",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 100,
+        "widthMm": 200
+      },
+      "notes": [
+        "Slot offsets are centred at 50 / 150 mm for two lanes, or 50 mm for one lane."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10021",
+      "revision": 1,
+      "name": "Short straight · 50 mm",
+      "manufacturerSku": "SC-10021",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10021.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 50,
+          "widthMm": 200,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 50 V 200 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            50,
+            200
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                50,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    50,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 50,
+              "d": "M 0 50 H 50"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                150
+              ],
+              "end": [
+                50,
+                150
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    150
+                  ],
+                  "to": [
+                    50,
+                    150
+                  ]
+                }
+              ],
+              "lengthMm": 50,
+              "d": "M 0 150 H 50"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                100
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    150
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                50,
+                100
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    50,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    50,
+                    150
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 50
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          50,
+          200
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page04",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 50,
+        "widthMm": 200
+      },
+      "notes": [
+        "Slot offsets are centred at 50 / 150 mm for two lanes, or 50 mm for one lane."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10020",
+      "revision": 1,
+      "name": "Single-lane straight · 400 mm",
+      "manufacturerSku": "SC-10020",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10020.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 400,
+          "widthMm": 100,
+          "laneCount": 1,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 400 V 100 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            400,
+            100
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                400,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    400,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 50 H 400"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                50
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                400,
+                50
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    400,
+                    50
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 400
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          100
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page04",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 400,
+        "widthMm": 100
+      },
+      "notes": [
+        "Slot offsets are centred at 50 / 150 mm for two lanes, or 50 mm for one lane."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10001C",
+      "revision": 1,
+      "name": "Starting-grid straight · 400 mm",
+      "manufacturerSku": "SC-10001C",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10001C.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 400,
+          "widthMm": 200,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 400 V 200 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            400,
+            200
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                400,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    400,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 50 H 400"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                150
+              ],
+              "end": [
+                400,
+                150
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    150
+                  ],
+                  "to": [
+                    400,
+                    150
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 150 H 400"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                100
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    150
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                400,
+                100
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    400,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    400,
+                    150
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 400
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          200
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page04",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 400,
+        "widthMm": 200
+      },
+      "notes": [
+        "Printed grid and branding placement are illustrative. Manufacturer panel abbreviates this SKU as SC-1001c / SC-1000d; normalized five-digit base used here.",
+        "Slot offsets are centred at 50 / 150 mm for two lanes, or 50 mm for one lane."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10001D",
+      "revision": 1,
+      "name": "Personalised starting-grid straight · 400 mm",
+      "manufacturerSku": "SC-10001D",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10001D.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 400,
+          "widthMm": 200,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 400 V 200 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            400,
+            200
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                400,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    400,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 50 H 400"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                150
+              ],
+              "end": [
+                400,
+                150
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    150
+                  ],
+                  "to": [
+                    400,
+                    150
+                  ]
+                }
+              ],
+              "lengthMm": 400,
+              "d": "M 0 150 H 400"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                100
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    150
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                400,
+                100
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    400,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    400,
+                    150
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 400
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          200
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page04",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 400,
+        "widthMm": 200
+      },
+      "notes": [
+        "Printed grid and branding placement are illustrative. Manufacturer panel abbreviates this SKU as SC-1001c / SC-1000d; normalized five-digit base used here.",
+        "Green panel represents user-supplied printing, not a supplied sponsor logo.",
+        "Slot offsets are centred at 50 / 150 mm for two lanes, or 50 mm for one lane."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10008",
+      "revision": 1,
+      "name": "R1 curve · 45°",
+      "manufacturerSku": "SC-10008",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10008.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 50,
+          "widthMm": 200,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -250 A 250 250 0 0 1 176.776695 -176.776695 L 35.355339 -35.355339 A 50 50 0 0 0 0 -50 Z",
+          "boundsMm": [
+            0,
+            -250,
+            176.776695,
+            214.64466099999999
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -100
+              ],
+              "end": [
+                70.710678,
+                -70.710678
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 100,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 78.53981633974483,
+              "d": "M 0 -100 A 100 100 0 0 1 70.710678,-70.710678"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -200
+              ],
+              "end": [
+                141.421356,
+                -141.421356
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 200,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 157.07963267948966,
+              "d": "M 0 -200 A 200 200 0 0 1 141.421356,-141.421356"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -150
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -100
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -200
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                106.066017,
+                -106.066017
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    70.710678,
+                    -70.710678
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    141.421356,
+                    -141.421356
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 117.80972450961724
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -250,
+          176.776695,
+          214.64466099999999
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page05",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 50,
+        "outerRadiusMm": 250,
+        "angleDeg": 45
+      },
+      "notes": [
+        "Road radius boundaries and 200 mm width follow the manufacturer comparison drawing; slots use centred 100 mm spacing."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10007",
+      "revision": 1,
+      "name": "R2 curve · 45°",
+      "manufacturerSku": "SC-10007",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10007.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 250,
+          "widthMm": 200,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -450 A 450 450 0 0 1 318.198052 -318.198052 L 176.776695 -176.776695 A 250 250 0 0 0 0 -250 Z",
+          "boundsMm": [
+            0,
+            -450,
+            318.198052,
+            273.223305
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -300
+              ],
+              "end": [
+                212.132034,
+                -212.132034
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 300,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 235.61944901923448,
+              "d": "M 0 -300 A 300 300 0 0 1 212.132034,-212.132034"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -400
+              ],
+              "end": [
+                282.842712,
+                -282.842712
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 400,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 314.1592653589793,
+              "d": "M 0 -400 A 400 400 0 0 1 282.842712,-282.842712"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -350
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -300
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -400
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                247.487373,
+                -247.487373
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    212.132034,
+                    -212.132034
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    282.842712,
+                    -282.842712
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 274.8893571891069
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -450,
+          318.198052,
+          273.223305
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page05",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 250,
+        "outerRadiusMm": 450,
+        "angleDeg": 45
+      },
+      "notes": [
+        "Road radius boundaries and 200 mm width follow the manufacturer comparison drawing; slots use centred 100 mm spacing."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10013",
+      "revision": 1,
+      "name": "R2 curve · 22.5°",
+      "manufacturerSku": "SC-10013",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10013.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 250,
+          "widthMm": 200,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -450 A 450 450 0 0 1 172.207545 -415.74579 L 95.670858 -230.969883 A 250 250 0 0 0 0 -250 Z",
+          "boundsMm": [
+            0,
+            -450,
+            172.207545,
+            219.030117
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -300
+              ],
+              "end": [
+                114.80503,
+                -277.16386
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 300,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 117.80972450961724,
+              "d": "M 0 -300 A 300 300 0 0 1 114.80503,-277.16386"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -400
+              ],
+              "end": [
+                153.073373,
+                -369.551813
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 400,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 157.07963267948966,
+              "d": "M 0 -400 A 400 400 0 0 1 153.073373,-369.551813"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -350
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -300
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -400
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                133.939201,
+                -323.357836
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    114.80503,
+                    -277.16386
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    153.073373,
+                    -369.551813
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 137.44467859455344
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -450,
+          172.207545,
+          219.030117
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page05",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 250,
+        "outerRadiusMm": 450,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Road radius boundaries and 200 mm width follow the manufacturer comparison drawing; slots use centred 100 mm spacing."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10009",
+      "revision": 1,
+      "name": "R3 curve · 45°",
+      "manufacturerSku": "SC-10009",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10009.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 450,
+          "widthMm": 200,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -650 A 650 650 0 0 1 459.619408 -459.619408 L 318.198052 -318.198052 A 450 450 0 0 0 0 -450 Z",
+          "boundsMm": [
+            0,
+            -650,
+            459.619408,
+            331.801948
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -500
+              ],
+              "end": [
+                353.553391,
+                -353.553391
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 500,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 392.6990816987241,
+              "d": "M 0 -500 A 500 500 0 0 1 353.553391,-353.553391"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -600
+              ],
+              "end": [
+                424.264069,
+                -424.264069
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 600,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 471.23889803846896,
+              "d": "M 0 -600 A 600 600 0 0 1 424.264069,-424.264069"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -550
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -500
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -600
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                388.90873,
+                -388.90873
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    353.553391,
+                    -353.553391
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    424.264069,
+                    -424.264069
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 431.9689898685965
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -650,
+          459.619408,
+          331.801948
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page05",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 450,
+        "outerRadiusMm": 650,
+        "angleDeg": 45
+      },
+      "notes": [
+        "Road radius boundaries and 200 mm width follow the manufacturer comparison drawing; slots use centred 100 mm spacing."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10014",
+      "revision": 1,
+      "name": "R3 curve · 22.5°",
+      "manufacturerSku": "SC-10014",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10014.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 450,
+          "widthMm": 200,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -650 A 650 650 0 0 1 248.744231 -600.521696 L 172.207545 -415.74579 A 450 450 0 0 0 0 -450 Z",
+          "boundsMm": [
+            0,
+            -650,
+            248.744231,
+            234.25421
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -500
+              ],
+              "end": [
+                191.341716,
+                -461.939766
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 500,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 196.34954084936206,
+              "d": "M 0 -500 A 500 500 0 0 1 191.341716,-461.939766"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -600
+              ],
+              "end": [
+                229.610059,
+                -554.32772
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 600,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 235.61944901923448,
+              "d": "M 0 -600 A 600 600 0 0 1 229.610059,-554.32772"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -550
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -500
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -600
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                210.475888,
+                -508.133743
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    191.341716,
+                    -461.939766
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    229.610059,
+                    -554.32772
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 215.98449493429825
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -650,
+          248.744231,
+          234.25421
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page05",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 450,
+        "outerRadiusMm": 650,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Road radius boundaries and 200 mm width follow the manufacturer comparison drawing; slots use centred 100 mm spacing."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10010",
+      "revision": 1,
+      "name": "R4 curve · 22.5°",
+      "manufacturerSku": "SC-10010",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10010.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 650,
+          "widthMm": 200,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -850 A 850 850 0 0 1 325.280918 -785.297603 L 248.744231 -600.521696 A 650 650 0 0 0 0 -650 Z",
+          "boundsMm": [
+            0,
+            -850,
+            325.280918,
+            249.47830399999998
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -700
+              ],
+              "end": [
+                267.878403,
+                -646.715673
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 700,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 274.8893571891069,
+              "d": "M 0 -700 A 700 700 0 0 1 267.878403,-646.715673"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -800
+              ],
+              "end": [
+                306.146746,
+                -739.103626
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 800,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 314.1592653589793,
+              "d": "M 0 -800 A 800 800 0 0 1 306.146746,-739.103626"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -750
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -700
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -800
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                287.012574,
+                -692.909649
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    267.878403,
+                    -646.715673
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    306.146746,
+                    -739.103626
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 294.5243112740431
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -850,
+          325.280918,
+          249.47830399999998
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page05",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 650,
+        "outerRadiusMm": 850,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Road radius boundaries and 200 mm width follow the manufacturer comparison drawing; slots use centred 100 mm spacing."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10015",
+      "revision": 1,
+      "name": "R5 curve · 22.5°",
+      "manufacturerSku": "SC-10015",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10015.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 850,
+          "widthMm": 200,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -1050 A 1050 1050 0 0 1 401.817604 -970.073509 L 325.280918 -785.297603 A 850 850 0 0 0 0 -850 Z",
+          "boundsMm": [
+            0,
+            -1050,
+            401.817604,
+            264.702397
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -900
+              ],
+              "end": [
+                344.415089,
+                -831.491579
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 900,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 353.4291735288517,
+              "d": "M 0 -900 A 900 900 0 0 1 344.415089,-831.491579"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -1000
+              ],
+              "end": [
+                382.683432,
+                -923.879533
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 1000,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 392.6990816987241,
+              "d": "M 0 -1000 A 1000 1000 0 0 1 382.683432,-923.879533"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -950
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -900
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -1000
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                363.549261,
+                -877.685556
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    344.415089,
+                    -831.491579
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    382.683432,
+                    -923.879533
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 373.0641276137879
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -1050,
+          401.817604,
+          264.702397
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page05",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 850,
+        "outerRadiusMm": 1050,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Road radius boundaries and 200 mm width follow the manufacturer comparison drawing; slots use centred 100 mm spacing."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10016",
+      "revision": 1,
+      "name": "R6 curve · 22.5°",
+      "manufacturerSku": "SC-10016",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10016.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 1050,
+          "widthMm": 200,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -1250 A 1250 1250 0 0 1 478.35429 -1154.849416 L 401.817604 -970.073509 A 1050 1050 0 0 0 0 -1050 Z",
+          "boundsMm": [
+            0,
+            -1250,
+            478.35429,
+            279.92649100000006
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -1100
+              ],
+              "end": [
+                420.951776,
+                -1016.267486
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 1100,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 431.96898986859657,
+              "d": "M 0 -1100 A 1100 1100 0 0 1 420.951776,-1016.267486"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -1200
+              ],
+              "end": [
+                459.220119,
+                -1108.655439
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 1200,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 471.23889803846896,
+              "d": "M 0 -1200 A 1200 1200 0 0 1 459.220119,-1108.655439"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -1150
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -1100
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -1200
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                440.085947,
+                -1062.461462
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    420.951776,
+                    -1016.267486
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    459.220119,
+                    -1108.655439
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 451.6039439535328
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -1250,
+          478.35429,
+          279.92649100000006
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "radii",
+          "page05",
+          "page06",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 1050,
+        "outerRadiusMm": 1250,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Road radius boundaries and 200 mm width follow the manufacturer comparison drawing; slots use centred 100 mm spacing."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10101",
+      "revision": 1,
+      "name": "R1 inner border · 45°",
+      "manufacturerSku": "SC-10101",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10101.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 2,
+          "widthMm": 48,
+          "angleDeg": 45,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -50 A 50 50 0 0 1 35.355339 -35.355339 L 1.414214 -1.414214 A 2 2 0 0 0 0 -2 Z",
+          "boundsMm": [
+            0,
+            -50,
+            35.355339,
+            48.585786
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -50,
+          35.355339,
+          48.585786
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 45
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 1,
+        "side": "inner",
+        "radiusMm": 50,
+        "angleDeg": 45
+      }
+    },
+    {
+      "id": "scaleauto:SC-10102",
+      "revision": 1,
+      "name": "R1 outer border · 45°",
+      "manufacturerSku": "SC-10102",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10102.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 250,
+          "widthMm": 48,
+          "angleDeg": 45,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -298 A 298 298 0 0 1 210.717821 -210.717821 L 176.776695 -176.776695 A 250 250 0 0 0 0 -250 Z",
+          "boundsMm": [
+            0,
+            -298,
+            210.717821,
+            121.22330500000001
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -298,
+          210.717821,
+          121.22330500000001
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 45
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 1,
+        "side": "outer",
+        "radiusMm": 250,
+        "angleDeg": 45
+      }
+    },
+    {
+      "id": "scaleauto:SC-10105",
+      "revision": 1,
+      "name": "R2 inner border · 45°",
+      "manufacturerSku": "SC-10105",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10105.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 202,
+          "widthMm": 48,
+          "angleDeg": 45,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -250 A 250 250 0 0 1 176.776695 -176.776695 L 142.83557 -142.83557 A 202 202 0 0 0 0 -202 Z",
+          "boundsMm": [
+            0,
+            -250,
+            176.776695,
+            107.16443000000001
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -250,
+          176.776695,
+          107.16443000000001
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 45
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 2,
+        "side": "inner",
+        "radiusMm": 250,
+        "angleDeg": 45
+      }
+    },
+    {
+      "id": "scaleauto:SC-10106",
+      "revision": 1,
+      "name": "R2 inner border · 22.5°",
+      "manufacturerSku": "SC-10106",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10106.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 202,
+          "widthMm": 48,
+          "angleDeg": 22.5,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -250 A 250 250 0 0 1 95.670858 -230.969883 L 77.302053 -186.623666 A 202 202 0 0 0 0 -202 Z",
+          "boundsMm": [
+            0,
+            -250,
+            95.670858,
+            63.376334000000014
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -250,
+          95.670858,
+          63.376334000000014
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 2,
+        "side": "inner",
+        "radiusMm": 250,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "scaleauto:SC-10107",
+      "revision": 1,
+      "name": "R2 outer border · 22.5°",
+      "manufacturerSku": "SC-10107",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10107.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 450,
+          "widthMm": 48,
+          "angleDeg": 22.5,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -498 A 498 498 0 0 1 190.576349 -460.092007 L 172.207545 -415.74579 A 450 450 0 0 0 0 -450 Z",
+          "boundsMm": [
+            0,
+            -498,
+            190.576349,
+            82.25421
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -498,
+          190.576349,
+          82.25421
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 2,
+        "side": "outer",
+        "radiusMm": 450,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "scaleauto:SC-10108",
+      "revision": 1,
+      "name": "R3 inner border · 22.5°",
+      "manufacturerSku": "SC-10108",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10108.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 402,
+          "widthMm": 48,
+          "angleDeg": 22.5,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -450 A 450 450 0 0 1 172.207545 -415.74579 L 153.83874 -371.399572 A 402 402 0 0 0 0 -402 Z",
+          "boundsMm": [
+            0,
+            -450,
+            172.207545,
+            78.60042800000002
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -450,
+          172.207545,
+          78.60042800000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 3,
+        "side": "inner",
+        "radiusMm": 450,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "scaleauto:SC-10109",
+      "revision": 1,
+      "name": "R3 outer border · 22.5°",
+      "manufacturerSku": "SC-10109",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10109.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 650,
+          "widthMm": 48,
+          "angleDeg": 22.5,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -698 A 698 698 0 0 1 267.113036 -644.867914 L 248.744231 -600.521696 A 650 650 0 0 0 0 -650 Z",
+          "boundsMm": [
+            0,
+            -698,
+            267.113036,
+            97.47830399999998
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -698,
+          267.113036,
+          97.47830399999998
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 3,
+        "side": "outer",
+        "radiusMm": 650,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "scaleauto:SC-10110",
+      "revision": 1,
+      "name": "R4 inner border · 22.5°",
+      "manufacturerSku": "SC-10110",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10110.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 602,
+          "widthMm": 48,
+          "angleDeg": 22.5,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -650 A 650 650 0 0 1 248.744231 -600.521696 L 230.375426 -556.175479 A 602 602 0 0 0 0 -602 Z",
+          "boundsMm": [
+            0,
+            -650,
+            248.744231,
+            93.824521
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -650,
+          248.744231,
+          93.824521
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 4,
+        "side": "inner",
+        "radiusMm": 650,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "scaleauto:SC-10111",
+      "revision": 1,
+      "name": "R4 outer border · 11.25°",
+      "manufacturerSku": "SC-10111",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10111.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 850,
+          "widthMm": 48,
+          "angleDeg": 11.25,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -898 A 898 898 0 0 1 175.191109 -880.745182 L 165.826774 -833.667488 A 850 850 0 0 0 0 -850 Z",
+          "boundsMm": [
+            0,
+            -898,
+            175.191109,
+            64.33251199999995
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -898,
+          175.191109,
+          64.33251199999995
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 11.25
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 4,
+        "side": "outer",
+        "radiusMm": 850,
+        "angleDeg": 11.25
+      }
+    },
+    {
+      "id": "scaleauto:SC-10112",
+      "revision": 1,
+      "name": "R5 inner border · 11.25°",
+      "manufacturerSku": "SC-10112",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10112.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 802,
+          "widthMm": 48,
+          "angleDeg": 11.25,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -850 A 850 850 0 0 1 165.826774 -833.667488 L 156.462438 -786.589795 A 802 802 0 0 0 0 -802 Z",
+          "boundsMm": [
+            0,
+            -850,
+            165.826774,
+            63.41020500000002
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -850,
+          165.826774,
+          63.41020500000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 11.25
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 5,
+        "side": "inner",
+        "radiusMm": 850,
+        "angleDeg": 11.25
+      }
+    },
+    {
+      "id": "scaleauto:SC-10113",
+      "revision": 1,
+      "name": "R5 outer border · 11.25°",
+      "manufacturerSku": "SC-10113",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10113.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 1050,
+          "widthMm": 48,
+          "angleDeg": 11.25,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -1098 A 1098 1098 0 0 1 214.209174 -1076.902238 L 204.844838 -1029.824544 A 1050 1050 0 0 0 0 -1050 Z",
+          "boundsMm": [
+            0,
+            -1098,
+            214.209174,
+            68.17545599999994
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -1098,
+          214.209174,
+          68.17545599999994
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 11.25
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 5,
+        "side": "outer",
+        "radiusMm": 1050,
+        "angleDeg": 11.25
+      }
+    },
+    {
+      "id": "scaleauto:SC-10114",
+      "revision": 1,
+      "name": "R6 inner border · 11.25°",
+      "manufacturerSku": "SC-10114",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10114.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 1002,
+          "widthMm": 48,
+          "angleDeg": 11.25,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -1050 A 1050 1050 0 0 1 204.844838 -1029.824544 L 195.480503 -982.746851 A 1002 1002 0 0 0 0 -1002 Z",
+          "boundsMm": [
+            0,
+            -1050,
+            204.844838,
+            67.25314900000001
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -1050,
+          204.844838,
+          67.25314900000001
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 11.25
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 6,
+        "side": "inner",
+        "radiusMm": 1050,
+        "angleDeg": 11.25
+      }
+    },
+    {
+      "id": "scaleauto:SC-10115",
+      "revision": 1,
+      "name": "R6 outer border · 11.25°",
+      "manufacturerSku": "SC-10115",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10115.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 1250,
+          "widthMm": 48,
+          "angleDeg": 11.25,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -1298 A 1298 1298 0 0 1 253.227238 -1273.059294 L 243.862903 -1225.981601 A 1250 1250 0 0 0 0 -1250 Z",
+          "boundsMm": [
+            0,
+            -1298,
+            253.227238,
+            72.01839900000004
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-border-width-inferred"
+      },
+      "preview": {
+        "status": "nominal-border-width-inferred",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -1298,
+          253.227238,
+          72.01839900000004
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "nominal-border-width-inferred",
+        "missing": [
+          "Exact connector geometry and mould tolerances",
+          "Curve-specific border width confirmation"
+        ]
+      },
+      "publishedDimensions": {
+        "angleDeg": 11.25
+      },
+      "notes": [
+        "Angle and matching radius family are published. 48 mm curve-border width is inferred from the dimensioned straight border; exact curve outline is unverified.",
+        "Plain grey surface follows product photos; red/white kerbs appear in schematic drawings only."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 6,
+        "side": "outer",
+        "radiusMm": 1250,
+        "angleDeg": 11.25
+      }
+    },
+    {
+      "id": "scaleauto:SC-10116",
+      "revision": 1,
+      "name": "Straight border · 200 mm",
+      "manufacturerSku": "SC-10116",
+      "category": "Straight borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10116.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "straight-border",
+        "parameters": {
+          "type": "straight-border",
+          "lengthMm": 200,
+          "widthMm": 48,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 200 V 48 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            200,
+            48
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          48
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200,
+        "widthMm": 48
+      },
+      "notes": [
+        "Plain grey shoulder without painted kerbs, following the product photograph."
+      ],
+      "attachment": {
+        "type": "road-edge",
+        "lengthMm": 200
+      }
+    },
+    {
+      "id": "scaleauto:SC-10116C",
+      "revision": 1,
+      "name": "Personalised straight border · 200 mm",
+      "manufacturerSku": "SC-10116C",
+      "category": "Straight borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10116C.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "straight-border",
+        "parameters": {
+          "type": "straight-border",
+          "lengthMm": 200,
+          "widthMm": 48,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 200 V 48 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            200,
+            48
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimensions-derived-offsets",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          48
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "published-dimensions-derived-offsets",
+        "missing": [
+          "Exact connector geometry and mould tolerances"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200,
+        "widthMm": 48
+      },
+      "notes": [
+        "Illustrative custom graphic panel; no sponsor artwork supplied."
+      ],
+      "attachment": {
+        "type": "road-edge",
+        "lengthMm": 200
+      }
+    },
+    {
+      "id": "scaleauto:SC-10117-left",
+      "revision": 1,
+      "name": "Closing border · left",
+      "manufacturerSku": "SC-10117",
+      "category": "End borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10117-left.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          100,
+          48
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scaleauto:SC-10117-right"
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 100,
+        "widthMm": 48
+      },
+      "notes": [
+        "Published bounding dimensions retained. Rounded profile and attachment details are illustrative."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10117-right",
+      "revision": 1,
+      "name": "Closing border · right",
+      "manufacturerSku": "SC-10117",
+      "category": "End borders",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10117-right.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          100,
+          48
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "scaleauto:SC-10117-left"
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 100,
+        "widthMm": 48
+      },
+      "notes": [
+        "Published bounding dimensions retained. Rounded profile and attachment details are illustrative."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10002",
+      "revision": 1,
+      "name": "Connection straight · 400 mm",
+      "manufacturerSku": "SC-10002",
+      "category": "Power and special track",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10002.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          400,
+          231
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page04",
+          "page06"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates",
+          "Exact internal slot routes"
+        ]
+      },
+      "publishedDimensions": {
+        "roadLengthMm": 400,
+        "roadWidthMm": 200
+      },
+      "notes": [
+        "Grey side connection housing shown in catalogue. Full occupied housing footprint and socket locations are not dimensioned."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10011",
+      "revision": 1,
+      "name": "German-system adapter · 200 mm",
+      "manufacturerSku": "SC-10011",
+      "category": "Power and special track",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10011.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          200,
+          200
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "intro",
+          "page05",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates",
+          "Exact internal slot routes"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200,
+        "scaleautoWidthMm": 200
+      },
+      "notes": [
+        "Manufacturer specifies two adapter sections. Foreign-end slot offsets and connector outline remain unresolved."
+      ],
+      "endpointSystems": [
+        "scaleauto-pro-track",
+        "german-1-24-system-unresolved"
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10017",
+      "revision": 1,
+      "name": "Digital lane changer · 800 mm",
+      "manufacturerSku": "SC-10017",
+      "category": "Lane changes and pit lane",
+      "kind": "assembly",
+      "systems": [
+        "scaleauto-digital-hardware-unresolved"
+      ],
+      "asset": "assets/SC-10017.svg",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          800,
+          200
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Sensor and flipper orientation must be preserved."
+      },
+      "evidence": {
+        "sources": [
+          "page06"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates",
+          "Exact internal slot routes"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 800,
+        "widthMm": 200
+      },
+      "notes": [
+        "Two-section form shown by manufacturer. Slot transitions are diagrammatic; lane lengths are unresolved.",
+        "Catalogue listing does not establish availability or installed digital electronics."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10018",
+      "revision": 1,
+      "name": "Passive crossover · 800 mm",
+      "manufacturerSku": "SC-10018",
+      "category": "Lane changes and pit lane",
+      "kind": "assembly",
+      "systems": [
+        "scaleauto-analogue"
+      ],
+      "asset": "assets/SC-10018.svg",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          800,
+          200
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page06"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates",
+          "Exact internal slot routes"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 800,
+        "widthMm": 200
+      },
+      "notes": [
+        "Two-section form shown by manufacturer. Slot transitions are diagrammatic; lane lengths are unresolved.",
+        "Catalogue listing does not establish availability or installed digital electronics."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10019",
+      "revision": 1,
+      "name": "Digital pit-lane assembly · 1600 mm",
+      "manufacturerSku": "SC-10019",
+      "category": "Lane changes and pit lane",
+      "kind": "assembly",
+      "systems": [
+        "scaleauto-digital-hardware-unresolved"
+      ],
+      "asset": "assets/SC-10019.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          1600,
+          312
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Directional pit entry/exit and digital hardware; no opposite-hand SKU verified."
+      },
+      "evidence": {
+        "sources": [
+          "page06"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates",
+          "Exact internal slot routes"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 1600
+      },
+      "notes": [
+        "Four-section diagram with an extra pit route. Road split, component inventory, widening and border geometry are unresolved.",
+        "Red/white boundary follows this specific manufacturer pit schematic. Catalogue illustration only; release status and electronics not verified."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10120-white",
+      "revision": 1,
+      "name": "Type 1 guardrail · white",
+      "manufacturerSku": "SC-10120",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10120-white.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          200,
+          28
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page04",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "1 horizontal rail, following the product picture. Separate red and white variants. Installed envelope and height unresolved.",
+        "Illustrative length; no independent dimension found for this guardrail type."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10120-red",
+      "revision": 1,
+      "name": "Type 1 guardrail · red",
+      "manufacturerSku": "SC-10120",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10120-red.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          200,
+          28
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page04",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "1 horizontal rail, following the product picture. Separate red and white variants. Installed envelope and height unresolved.",
+        "Illustrative length; no independent dimension found for this guardrail type."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10121-white",
+      "revision": 1,
+      "name": "Type 2 guardrail · white",
+      "manufacturerSku": "SC-10121",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10121-white.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          200,
+          39
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page04",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200
+      },
+      "notes": [
+        "2 horizontal rails, following the product picture. Separate red and white variants. Installed envelope and height unresolved.",
+        "200 mm length stated in set contents."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10121-red",
+      "revision": 1,
+      "name": "Type 2 guardrail · red",
+      "manufacturerSku": "SC-10121",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10121-red.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          200,
+          39
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page04",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 200
+      },
+      "notes": [
+        "2 horizontal rails, following the product picture. Separate red and white variants. Installed envelope and height unresolved.",
+        "200 mm length stated in set contents."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10122-white",
+      "revision": 1,
+      "name": "Type 3 guardrail · white",
+      "manufacturerSku": "SC-10122",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10122-white.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          200,
+          50
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page04",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "3 horizontal rails, following the product picture. Separate red and white variants. Installed envelope and height unresolved.",
+        "Illustrative length; no independent dimension found for this guardrail type."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10122-red",
+      "revision": 1,
+      "name": "Type 3 guardrail · red",
+      "manufacturerSku": "SC-10122",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10122-red.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          200,
+          50
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page04",
+          "page07"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "3 horizontal rails, following the product picture. Separate red and white variants. Installed envelope and height unresolved.",
+        "Illustrative length; no independent dimension found for this guardrail type."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10118-orange",
+      "revision": 1,
+      "name": "Track-fixing link · orange",
+      "manufacturerSku": "SC-10118",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10118-orange.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "underside-hardware-identification",
+        "bounds": [
+          0,
+          0,
+          94,
+          20
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page08"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Two-eye fixing link shown under the track. Symbol size is illustrative; adds no road length."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10118-white",
+      "revision": 1,
+      "name": "Track-fixing link · white",
+      "manufacturerSku": "SC-10118",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10118-white.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "underside-hardware-identification",
+        "bounds": [
+          0,
+          0,
+          94,
+          20
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page08"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Two-eye fixing link shown under the track. Symbol size is illustrative; adds no road length."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10119",
+      "revision": 1,
+      "name": "Wall-fixing metal clip",
+      "manufacturerSku": "SC-10119",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10119.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "hardware-identification",
+        "bounds": [
+          0,
+          0,
+          52,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page08"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Holds a separate plastic wall at the track edge.",
+        "Shape and size are schematic."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10130",
+      "revision": 1,
+      "name": "Track-connection metal clip",
+      "manufacturerSku": "SC-10130",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10130.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "hardware-identification",
+        "bounds": [
+          0,
+          0,
+          52,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page08"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Underside fastener connecting track sections.",
+        "Shape and size are schematic."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10131",
+      "revision": 1,
+      "name": "Power-boost metal contact",
+      "manufacturerSku": "SC-10131",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10131.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "hardware-identification",
+        "bounds": [
+          0,
+          0,
+          52,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page08"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Electrical contact for track power feeds; not an additional road section.",
+        "Shape and size are schematic."
+      ]
+    },
+    {
+      "id": "scaleauto:SC-10119C",
+      "revision": 1,
+      "name": "Plastic wall with metal clips",
+      "manufacturerSku": "SC-10119C",
+      "category": "Accessories",
+      "kind": "accessory-set",
+      "systems": [
+        "scaleauto-pro-track"
+      ],
+      "asset": "assets/SC-10119C.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "perspective-identification",
+        "bounds": [
+          0,
+          0,
+          350,
+          100
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic moulded tabs and rail contacts, excluded from usable surface measurements."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Maintain slot and endpoint ordering when reversing or reflecting."
+      },
+      "evidence": {
+        "sources": [
+          "page08"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and connection coordinates"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Flexible white wall and metal mounts. Catalogue says 15 units without an unambiguous wall/clip allocation; component inventory remains unknown.",
+        "Length, height and installed footprint are not published in the inspected panel."
+      ]
+    }
+  ],
+  "products": [
+    {
+      "sku": "SC-10001",
+      "name": "Standard straight · 400 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10001",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "radii",
+        "page04",
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10005",
+      "name": "Half straight · 200 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10005",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "radii",
+        "page04",
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10006",
+      "name": "Quarter straight · 100 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10006",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "radii",
+        "page04",
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10021",
+      "name": "Short straight · 50 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10021",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "radii",
+        "page04",
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10020",
+      "name": "Single-lane straight · 400 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10020",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "radii",
+        "page04",
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10001C",
+      "name": "Starting-grid straight · 400 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10001C",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "radii",
+        "page04",
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10001D",
+      "name": "Personalised starting-grid straight · 400 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10001D",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "radii",
+        "page04",
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10008",
+      "name": "R1 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10008",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10007",
+      "name": "R2 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10007",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10013",
+      "name": "R2 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10013",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10009",
+      "name": "R3 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10009",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10014",
+      "name": "R3 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10014",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10010",
+      "name": "R4 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10010",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10015",
+      "name": "R5 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10015",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10016",
+      "name": "R6 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10016",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10101",
+      "name": "R1 inner border · 45°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10101",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10102",
+      "name": "R1 outer border · 45°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10102",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10105",
+      "name": "R2 inner border · 45°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10105",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10106",
+      "name": "R2 inner border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10106",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10107",
+      "name": "R2 outer border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10107",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10108",
+      "name": "R3 inner border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10108",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10109",
+      "name": "R3 outer border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10109",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10110",
+      "name": "R4 inner border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10110",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10111",
+      "name": "R4 outer border · 11.25°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10111",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10112",
+      "name": "R5 inner border · 11.25°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10112",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10113",
+      "name": "R5 outer border · 11.25°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10113",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10114",
+      "name": "R6 inner border · 11.25°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10114",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10115",
+      "name": "R6 outer border · 11.25°",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10115",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10116",
+      "name": "Straight border · 200 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10116",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10116C",
+      "name": "Personalised straight border · 200 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10116C",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10117",
+      "name": "Closing straight borders",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10117-left",
+          "quantity": 3
+        },
+        {
+          "pieceId": "scaleauto:SC-10117-right",
+          "quantity": 3
+        }
+      ],
+      "sourceIds": [
+        "page07"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10002",
+      "name": "Connection straight · 400 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10002",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page04",
+        "page06"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10011",
+      "name": "German-system adapter · 200 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10011",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "intro",
+        "page05",
+        "page07"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10017",
+      "name": "Digital lane changer · 800 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10017",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10018",
+      "name": "Passive crossover · 800 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10018",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10019",
+      "name": "Digital pit-lane assembly · 1600 mm",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10019",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page06"
+      ],
+      "notes": [
+        "Retail package quantity not established by the inspected manufacturer panel; null is unknown, not zero."
+      ]
+    },
+    {
+      "sku": "SC-10120",
+      "name": "Type 1 guardrails",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10120-white",
+          "quantity": 5
+        },
+        {
+          "pieceId": "scaleauto:SC-10120-red",
+          "quantity": 5
+        }
+      ],
+      "sourceIds": [
+        "page07"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10121",
+      "name": "Type 2 guardrails",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10121-white",
+          "quantity": 5
+        },
+        {
+          "pieceId": "scaleauto:SC-10121-red",
+          "quantity": 5
+        }
+      ],
+      "sourceIds": [
+        "page07"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10122",
+      "name": "Type 3 guardrails",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10122-white",
+          "quantity": 5
+        },
+        {
+          "pieceId": "scaleauto:SC-10122-red",
+          "quantity": 5
+        }
+      ],
+      "sourceIds": [
+        "page07"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10118",
+      "name": "Track fixing links",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10118-orange",
+          "quantity": 15
+        },
+        {
+          "pieceId": "scaleauto:SC-10118-white",
+          "quantity": 5
+        }
+      ],
+      "sourceIds": [
+        "page08"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10118BP",
+      "name": "Bulk track fixing links",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10118-orange",
+          "quantity": 400
+        },
+        {
+          "pieceId": "scaleauto:SC-10118-white",
+          "quantity": 100
+        }
+      ],
+      "sourceIds": [
+        "page08"
+      ],
+      "notes": [
+        "Manufacturer specifies 500 units, 80% orange / 20% white."
+      ]
+    },
+    {
+      "sku": "SC-10119",
+      "name": "Wall-fixing metal clip",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10119",
+          "quantity": 10
+        }
+      ],
+      "sourceIds": [
+        "page08"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10119BP",
+      "name": "Bulk wall-fixing metal clip",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10119",
+          "quantity": 50
+        }
+      ],
+      "sourceIds": [
+        "page08"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10130",
+      "name": "Track-connection metal clip",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10130",
+          "quantity": 10
+        }
+      ],
+      "sourceIds": [
+        "page08"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10130BP",
+      "name": "Bulk track-connection metal clip",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10130",
+          "quantity": 50
+        }
+      ],
+      "sourceIds": [
+        "page08"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10131",
+      "name": "Power-boost metal contact",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10131",
+          "quantity": 10
+        }
+      ],
+      "sourceIds": [
+        "page08"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10131BP",
+      "name": "Bulk power-boost metal contact",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10131",
+          "quantity": 50
+        }
+      ],
+      "sourceIds": [
+        "page08"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "SC-10119C",
+      "name": "Plastic wall with metal clips",
+      "contents": [
+        {
+          "pieceId": "scaleauto:SC-10119C",
+          "quantity": null
+        }
+      ],
+      "sourceIds": [
+        "page08"
+      ],
+      "notes": [
+        "Caption: 15 units. Allocation among wall sections and clips is unresolved."
+      ]
+    }
+  ],
+  "sourceIssues": [
+    {
+      "field": "SC-10005 identity",
+      "detail": "Panel 07 labels its 200 mm road SC-10105, also used there for an R2 inner border. Panel 04 and the starter-set inventory identify the road as SC-10005; the latter is used."
+    },
+    {
+      "field": "SC-10001C / SC-10001D identity",
+      "detail": "Panel 06 shortens/mistypes the base codes as SC-1001c / SC-1000d. Normalized to the SC-10001 straight family, with letter suffixes; confirm commercial SKU before ordering."
+    },
+    {
+      "field": "Border colouring",
+      "detail": "Overview geometry has red/white kerbs, but standard product photographs show plain grey mouldings. Artwork follows product photographs; pit schematic and custom-print variants are separately labelled."
+    },
+    {
+      "field": "R1 half-angle pieces",
+      "detail": "Diagram items 25–27 have no unambiguous product-code mapping in the inspected panels and are excluded rather than assigned invented SKUs."
+    }
+  ],
+  "precisionPolicy": {
+    "illustrationsAreNotGeometry": true,
+    "exactFitAllowed": false,
+    "unknownLength": null,
+    "unknownCount": null,
+    "nominalLengthsMustBeLabelled": true
+  },
+  "outstanding": [
+    "Confirm curve border widths and R1 inner-border outline",
+    "Document connector geometry and manufacturing tolerances",
+    "Document adapter endpoints, powerbase footprint and special slot routes",
+    "Verify special-product release status and digital hardware",
+    "Resolve unmapped half-angle R1 pieces, printed-piece SKUs and unspecified retail counts"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "format": "slotforge.design-pack-index",
+  "date": "2026-10-29",
+  "note": "Design catalogue only. No application importer or installed plugin system yet.",
+  "packs": [
+    {
+      "id": "slotforge.carrera-evolution-digital",
+      "name": "Carrera Evolution / Digital",
+      "status": "design-draft",
+      "path": "carrera-evolution-digital/pack.json",
+      "gallery": "carrera-evolution-digital/index.html"
+    },
+    {
+      "id": "slotforge.scalextric-sport-digital",
+      "name": "Scalextric Sport / Digital",
+      "status": "first-design-draft",
+      "path": "scalextric-sport-digital/pack.json",
+      "gallery": "scalextric-sport-digital/index.html"
+    },
+    {
+      "id": "slotforge.policar",
+      "name": "Policar",
+      "status": "first-design-draft",
+      "path": "policar/pack.json",
+      "gallery": "policar/index.html"
+    },
+    {
+      "id": "slotforge.scaleauto-pro-track",
+      "name": "ScaleAuto Pro Track",
+      "status": "first-design-draft",
+      "path": "scaleauto-pro-track/pack.json",
+      "gallery": "scaleauto-pro-track/index.html"
+    },
+    {
+      "id": "slotforge.ninco",
+      "name": "Ninco Classic / N-Digital",
+      "status": "first-historical-design-draft",
+      "path": "ninco/pack.json",
+      "gallery": "ninco/index.html"
+    },
+    {
+      "id": "slotforge.scx",
+      "name": "SCX Universal / Classic / Advance",
+      "status": "first-design-draft-geometry-pending",
+      "path": "scx/pack.json",
+      "gallery": "scx/index.html"
+    }
+  ],
+  "remainingRequestedPacks": []
+}

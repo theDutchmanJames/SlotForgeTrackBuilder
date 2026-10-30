@@ -1,0 +1,7807 @@
+{
+  "format": "slotforge.track-pack",
+  "formatVersion": "0.1-draft",
+  "id": "slotforge.carrera-evolution-digital",
+  "version": "0.2.0-design",
+  "title": "Carrera Evolution / Digital 132 / Digital 124",
+  "status": "catalogue-design-complete-geometry-not-certified",
+  "date": "2026-10-29",
+  "units": "mm",
+  "runtime": {
+    "containsExecutableCode": false,
+    "importerImplemented": false
+  },
+  "scope": {
+    "basis": "All track-bearing products and associated borders on Carrera 2024 pages 88–90, 94–95, 97–98, plus 20515 and selected legacy 20516/30344.",
+    "sourceProducts": [
+      "20020509",
+      "20020601",
+      "20020611",
+      "20020612",
+      "20020517",
+      "20020587",
+      "20020560",
+      "20020588",
+      "20020589",
+      "20020597",
+      "20020598",
+      "20020599",
+      "20020600",
+      "20020577",
+      "20020571",
+      "20020572",
+      "20020573",
+      "20020578",
+      "20020590",
+      "20020551",
+      "20020591",
+      "20020592",
+      "20020593",
+      "20020567",
+      "20020561",
+      "20020562",
+      "20020563",
+      "20020568",
+      "20020574",
+      "20020575",
+      "20020576",
+      "20020579",
+      "20020569",
+      "20020594",
+      "20020595",
+      "20020596",
+      "20020564",
+      "20020565",
+      "20020566",
+      "20020580",
+      "20020613",
+      "20030343",
+      "20030345",
+      "20030347",
+      "20030350",
+      "20030351",
+      "20020603",
+      "20030362",
+      "20030363",
+      "20030364",
+      "20030365",
+      "20030356",
+      "20020602",
+      "20030341",
+      "20030373",
+      "20020604",
+      "20030352",
+      "20030370",
+      "20030360",
+      "20030361",
+      "20030368",
+      "20030358",
+      "20030359",
+      "20030371",
+      "20020518",
+      "20020515",
+      "20030353",
+      "20030354",
+      "20030355",
+      "20030357"
+    ],
+    "excluded": [
+      "Other Carrera families: GO, First, Hybrid, Universal, Servo, Pro-X electronics",
+      "Cosmetic-only limited-edition prints of an existing geometry",
+      "Buildings, figures, cars, hand controllers, transformers, cables and loose support hardware",
+      "Guardrails and scenery envelopes: separate accessory pack, not included in fit validation",
+      "Unpublished or future pieces; add as a versioned community extension"
+    ],
+    "availability": "Catalogue presence does not assert present-day retail availability."
+  },
+  "defaults": {
+    "trackWidthMm": 200,
+    "laneSpacingMm": 100,
+    "shoulderWidthMm": 100,
+    "status": "nominal-design-grid",
+    "evidence": "Outer-radius progression of 400/600/800/1000 mm is shown, rounded, in the manufacturer catalogue. This nominal drawing grid is not exact physical measurement.",
+    "previousStudy": "The first study used provisional 198/99 mm parameters. Those files are preserved; no saved layout should be silently rescaled."
+  },
+  "sources": [
+    {
+      "id": "carrera-2024",
+      "title": "Carrera 2024 international manufacturer catalogue",
+      "url": "https://com.cqe.cz/db/downloads/397_carrera_carrerarc_katalog_2024_de_en.pdf",
+      "localReference": "../../research/carrera/catalogue-2024.pdf",
+      "pages": [
+        87,
+        88,
+        89,
+        90,
+        94,
+        95,
+        97,
+        98,
+        99
+      ],
+      "kind": "manufacturer-catalogue"
+    },
+    {
+      "id": "carrera-2025",
+      "title": "Carrera 2025 Czech catalogue",
+      "url": "https://www.toy.cz/db/downloads/416_carrera_katalog_2025_cz_web.indd.pdf",
+      "kind": "manufacturer-catalogue",
+      "note": "Supplementary published listing; not a claim of exhaustive 2026 stock availability."
+    },
+    {
+      "id": "carrera-2013",
+      "title": "Carrera 2013 catalogue — legacy sections",
+      "url": "https://www.carreraclub.com/fileadmin/user_upload/downloads/Carrera_Catalogue_ROW_2013_screen.pdf",
+      "kind": "manufacturer-catalogue"
+    },
+    {
+      "id": "pit-manual",
+      "title": "Carrera 30356 assembly instructions",
+      "url": "https://www.myracer.de/media/STA_BA_30356_PitLane_A5_small_06.pdf",
+      "kind": "manufacturer-manual"
+    },
+    {
+      "id": "power-20515",
+      "title": "Carrera Evolution connecting section",
+      "url": "https://carrera-revell-toys.com/carrera/product/20020515-evolution-connecting-section",
+      "kind": "manufacturer-product"
+    },
+    {
+      "id": "timing-style",
+      "title": "SlotForge Timing theme and components",
+      "url": "https://github.com/theDutchmanJames/SlotForgeTiming/blob/main/renderer/styles.css",
+      "kind": "design-reference"
+    }
+  ],
+  "pieces": [
+    {
+      "id": "carrera:20509",
+      "revision": 1,
+      "name": "Standard straight",
+      "category": "Flat track",
+      "manufacturerSku": "20020509",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20509.svg",
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 345,
+          "widthMm": 200,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 345 V 200 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            345,
+            200
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                345,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    345,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 345,
+              "d": "M 0 50 H 345"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                150
+              ],
+              "end": [
+                345,
+                150
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    150
+                  ],
+                  "to": [
+                    345,
+                    150
+                  ]
+                }
+              ],
+              "lengthMm": 345,
+              "d": "M 0 150 H 345"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                100
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    150
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                345,
+                100
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    345,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    345,
+                    150
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 345
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer length where recorded; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "id": "carrera:20560",
+      "revision": 1,
+      "name": "Standard straight border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020560",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20560.svg",
+      "geometry": {
+        "template": "straight-border",
+        "parameters": {
+          "type": "straight-border",
+          "lengthMm": 345,
+          "widthMm": 100,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 345 V 100 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            345,
+            100
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer length where recorded; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          345,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20509",
+          "edges": [
+            "left",
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20611",
+      "revision": 1,
+      "name": "One-third straight",
+      "category": "Flat track",
+      "manufacturerSku": "20020611",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20611.svg",
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 115,
+          "widthMm": 200,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 115 V 200 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            115,
+            200
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                115,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    115,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 115,
+              "d": "M 0 50 H 115"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                150
+              ],
+              "end": [
+                115,
+                150
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    150
+                  ],
+                  "to": [
+                    115,
+                    150
+                  ]
+                }
+              ],
+              "lengthMm": 115,
+              "d": "M 0 150 H 115"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                100
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    150
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                115,
+                100
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    115,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    115,
+                    150
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 115
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer length where recorded; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          115,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "id": "carrera:20588",
+      "revision": 1,
+      "name": "One-third straight border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020588",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20588.svg",
+      "geometry": {
+        "template": "straight-border",
+        "parameters": {
+          "type": "straight-border",
+          "lengthMm": 115,
+          "widthMm": 100,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 115 V 100 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            115,
+            100
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer length where recorded; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          115,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20611",
+          "edges": [
+            "left",
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20612",
+      "revision": 1,
+      "name": "Quarter straight",
+      "category": "Flat track",
+      "manufacturerSku": "20020612",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20612.svg",
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 86,
+          "widthMm": 200,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 86 V 200 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            86,
+            200
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                86,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    86,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 86,
+              "d": "M 0 50 H 86"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                150
+              ],
+              "end": [
+                86,
+                150
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    150
+                  ],
+                  "to": [
+                    86,
+                    150
+                  ]
+                }
+              ],
+              "lengthMm": 86,
+              "d": "M 0 150 H 86"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                100
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    150
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                86,
+                100
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    86,
+                    50
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    86,
+                    150
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 86
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer length where recorded; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          86,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [
+        "Published length is 86 mm; do not silently replace with 86.25 mm."
+      ]
+    },
+    {
+      "id": "carrera:20589",
+      "revision": 1,
+      "name": "Quarter straight border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020589",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20589.svg",
+      "geometry": {
+        "template": "straight-border",
+        "parameters": {
+          "type": "straight-border",
+          "lengthMm": 86,
+          "widthMm": 100,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 86 V 100 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            86,
+            100
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer length where recorded; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          86,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20612",
+          "edges": [
+            "left",
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20577",
+      "revision": 1,
+      "name": "R1 / 30° curve",
+      "category": "Flat track",
+      "manufacturerSku": "20020577",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20577.svg",
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 200,
+          "widthMm": 200,
+          "angleDeg": 30,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -400 A 400 400 0 0 1 200 -346.410162 L 100 -173.205081 A 200 200 0 0 0 0 -200 Z",
+          "boundsMm": [
+            0,
+            -400,
+            200,
+            226.794919
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -250
+              ],
+              "end": [
+                125,
+                -216.506351
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 250,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 30
+                }
+              ],
+              "lengthMm": 130.89969389957471,
+              "d": "M 0 -250 A 250 250 0 0 1 125,-216.506351"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -350
+              ],
+              "end": [
+                175,
+                -303.108891
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 350,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 30
+                }
+              ],
+              "lengthMm": 183.25957145940458,
+              "d": "M 0 -350 A 350 350 0 0 1 175,-303.108891"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -300
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -250
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -350
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                150,
+                -259.807621
+              ],
+              "outwardAngleDeg": 30,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    125,
+                    -216.506351
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    175,
+                    -303.108891
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 157.07963267948966
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -400,
+          200,
+          226.794919
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "id": "carrera:20590",
+      "revision": 1,
+      "name": "R1 / 30° inner border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020590",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20590.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 100,
+          "widthMm": 100,
+          "angleDeg": 30,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -200 A 200 200 0 0 1 100 -173.205081 L 50 -86.60254 A 100 100 0 0 0 0 -100 Z",
+          "boundsMm": [
+            0,
+            -200,
+            100,
+            113.39746
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -200,
+          100,
+          113.39746
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20577",
+          "edges": [
+            "inner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20567",
+      "revision": 1,
+      "name": "R1 / 30° outer border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020567",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20567.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 400,
+          "widthMm": 100,
+          "angleDeg": 30,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -500 A 500 500 0 0 1 250 -433.012702 L 200 -346.410162 A 400 400 0 0 0 0 -400 Z",
+          "boundsMm": [
+            0,
+            -500,
+            250,
+            153.589838
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -500,
+          250,
+          153.589838
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20577",
+          "edges": [
+            "outer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20571",
+      "revision": 1,
+      "name": "R1 / 60° curve",
+      "category": "Flat track",
+      "manufacturerSku": "20020571",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20571.svg",
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 200,
+          "widthMm": 200,
+          "angleDeg": 60,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -400 A 400 400 0 0 1 346.410162 -200 L 173.205081 -100 A 200 200 0 0 0 0 -200 Z",
+          "boundsMm": [
+            0,
+            -400,
+            346.410162,
+            300
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -250
+              ],
+              "end": [
+                216.506351,
+                -125
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 250,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 60
+                }
+              ],
+              "lengthMm": 261.79938779914943,
+              "d": "M 0 -250 A 250 250 0 0 1 216.506351,-125"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -350
+              ],
+              "end": [
+                303.108891,
+                -175
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 350,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 60
+                }
+              ],
+              "lengthMm": 366.51914291880917,
+              "d": "M 0 -350 A 350 350 0 0 1 303.108891,-175"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -300
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -250
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -350
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                259.807621,
+                -150
+              ],
+              "outwardAngleDeg": 60,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    216.506351,
+                    -125
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    303.108891,
+                    -175
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 314.1592653589793
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -400,
+          346.410162,
+          300
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "id": "carrera:20551",
+      "revision": 1,
+      "name": "R1 / 60° inner border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020551",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20551.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 100,
+          "widthMm": 100,
+          "angleDeg": 60,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -200 A 200 200 0 0 1 173.205081 -100 L 86.60254 -50 A 100 100 0 0 0 0 -100 Z",
+          "boundsMm": [
+            0,
+            -200,
+            173.205081,
+            150
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -200,
+          173.205081,
+          150
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20571",
+          "edges": [
+            "inner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20561",
+      "revision": 1,
+      "name": "R1 / 60° outer border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020561",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20561.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 400,
+          "widthMm": 100,
+          "angleDeg": 60,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -500 A 500 500 0 0 1 433.012702 -250 L 346.410162 -200 A 400 400 0 0 0 0 -400 Z",
+          "boundsMm": [
+            0,
+            -500,
+            433.012702,
+            300
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -500,
+          433.012702,
+          300
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20571",
+          "edges": [
+            "outer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20572",
+      "revision": 1,
+      "name": "R2 / 30° curve",
+      "category": "Flat track",
+      "manufacturerSku": "20020572",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20572.svg",
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 400,
+          "widthMm": 200,
+          "angleDeg": 30,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -600 A 600 600 0 0 1 300 -519.615242 L 200 -346.410162 A 400 400 0 0 0 0 -400 Z",
+          "boundsMm": [
+            0,
+            -600,
+            300,
+            253.589838
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -450
+              ],
+              "end": [
+                225,
+                -389.711432
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 450,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 30
+                }
+              ],
+              "lengthMm": 235.61944901923448,
+              "d": "M 0 -450 A 450 450 0 0 1 225,-389.711432"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -550
+              ],
+              "end": [
+                275,
+                -476.313972
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 550,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 30
+                }
+              ],
+              "lengthMm": 287.9793265790643,
+              "d": "M 0 -550 A 550 550 0 0 1 275,-476.313972"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -500
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -450
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -550
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                250,
+                -433.012702
+              ],
+              "outwardAngleDeg": 30,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    225,
+                    -389.711432
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    275,
+                    -476.313972
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 261.79938779914943
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -600,
+          300,
+          253.589838
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "id": "carrera:20591",
+      "revision": 1,
+      "name": "R2 / 30° inner border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020591",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20591.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 300,
+          "widthMm": 100,
+          "angleDeg": 30,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -400 A 400 400 0 0 1 200 -346.410162 L 150 -259.807621 A 300 300 0 0 0 0 -300 Z",
+          "boundsMm": [
+            0,
+            -400,
+            200,
+            140.19237900000002
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -400,
+          200,
+          140.19237900000002
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20572",
+          "edges": [
+            "inner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20562",
+      "revision": 1,
+      "name": "R2 / 30° outer border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020562",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20562.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 600,
+          "widthMm": 100,
+          "angleDeg": 30,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -700 A 700 700 0 0 1 350 -606.217783 L 300 -519.615242 A 600 600 0 0 0 0 -600 Z",
+          "boundsMm": [
+            0,
+            -700,
+            350,
+            180.38475800000003
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -700,
+          350,
+          180.38475800000003
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20572",
+          "edges": [
+            "outer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20573",
+      "revision": 1,
+      "name": "R3 / 30° curve",
+      "category": "Flat track",
+      "manufacturerSku": "20020573",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20573.svg",
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 600,
+          "widthMm": 200,
+          "angleDeg": 30,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -800 A 800 800 0 0 1 400 -692.820323 L 300 -519.615242 A 600 600 0 0 0 0 -600 Z",
+          "boundsMm": [
+            0,
+            -800,
+            400,
+            280.38475800000003
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -650
+              ],
+              "end": [
+                325,
+                -562.916512
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 650,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 30
+                }
+              ],
+              "lengthMm": 340.3392041388942,
+              "d": "M 0 -650 A 650 650 0 0 1 325,-562.916512"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -750
+              ],
+              "end": [
+                375,
+                -649.519053
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 750,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 30
+                }
+              ],
+              "lengthMm": 392.6990816987241,
+              "d": "M 0 -750 A 750 750 0 0 1 375,-649.519053"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -700
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -650
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -750
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                350,
+                -606.217783
+              ],
+              "outwardAngleDeg": 30,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    325,
+                    -562.916512
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    375,
+                    -649.519053
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 366.51914291880917
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -800,
+          400,
+          280.38475800000003
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "id": "carrera:20592",
+      "revision": 1,
+      "name": "R3 / 30° inner border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020592",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20592.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 500,
+          "widthMm": 100,
+          "angleDeg": 30,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -600 A 600 600 0 0 1 300 -519.615242 L 250 -433.012702 A 500 500 0 0 0 0 -500 Z",
+          "boundsMm": [
+            0,
+            -600,
+            300,
+            166.987298
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -600,
+          300,
+          166.987298
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20573",
+          "edges": [
+            "inner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20563",
+      "revision": 1,
+      "name": "R3 / 30° outer border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020563",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20563.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 800,
+          "widthMm": 100,
+          "angleDeg": 30,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -900 A 900 900 0 0 1 450 -779.422863 L 400 -692.820323 A 800 800 0 0 0 0 -800 Z",
+          "boundsMm": [
+            0,
+            -900,
+            450,
+            207.17967699999997
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -900,
+          450,
+          207.17967699999997
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20573",
+          "edges": [
+            "outer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20578",
+      "revision": 1,
+      "name": "R4 / 15° curve",
+      "category": "Flat track",
+      "manufacturerSku": "20020578",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20578.svg",
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 800,
+          "widthMm": 200,
+          "angleDeg": 15,
+          "laneCount": 2,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -1000 A 1000 1000 0 0 1 258.819045 -965.925826 L 207.055236 -772.740661 A 800 800 0 0 0 0 -800 Z",
+          "boundsMm": [
+            0,
+            -1000,
+            258.819045,
+            227.25933899999995
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -850
+              ],
+              "end": [
+                219.996188,
+                -821.036952
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 850,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 15
+                }
+              ],
+              "lengthMm": 222.529479629277,
+              "d": "M 0 -850 A 850 850 0 0 1 219.996188,-821.036952"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -950
+              ],
+              "end": [
+                245.878093,
+                -917.629535
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 950,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 15
+                }
+              ],
+              "lengthMm": 248.70941840919193,
+              "d": "M 0 -950 A 950 950 0 0 1 245.878093,-917.629535"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -900
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -850
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -950
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                232.937141,
+                -869.333244
+              ],
+              "outwardAngleDeg": 15,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    219.996188,
+                    -821.036952
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    245.878093,
+                    -917.629535
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 235.61944901923448
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -1000,
+          258.819045,
+          227.25933899999995
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": []
+    },
+    {
+      "id": "carrera:20593",
+      "revision": 1,
+      "name": "R4 / 15° inner border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020593",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20593.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 700,
+          "widthMm": 100,
+          "angleDeg": 15,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -800 A 800 800 0 0 1 207.055236 -772.740661 L 181.173332 -676.148078 A 700 700 0 0 0 0 -700 Z",
+          "boundsMm": [
+            0,
+            -800,
+            207.055236,
+            123.85192199999995
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -800,
+          207.055236,
+          123.85192199999995
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20578",
+          "edges": [
+            "inner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20568",
+      "revision": 1,
+      "name": "R4 / 15° outer border",
+      "category": "Flat borders",
+      "manufacturerSku": "20020568",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20568.svg",
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 1000,
+          "widthMm": 100,
+          "angleDeg": 15,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -1100 A 1100 1100 0 0 1 284.70095 -1062.518409 L 258.819045 -965.925826 A 1000 1000 0 0 0 0 -1000 Z",
+          "boundsMm": [
+            0,
+            -1100,
+            284.70095,
+            134.07417399999997
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "nominal-derived",
+        "parameterEvidence": "Manufacturer angle and nominal radial family; width and lane spacing inferred for nominal grid."
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          -1100,
+          284.70095,
+          134.07417399999997
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20578",
+          "edges": [
+            "outer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20574",
+      "revision": 1,
+      "name": "R1 / 30° banked curve",
+      "category": "Banked track",
+      "manufacturerSku": "20020574",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20574.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -400,
+          200,
+          226.794919
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Perspective-free catalogue symbol only. Banking angle, projected footprint and elevations are not documented; do not treat this as a flat curve."
+      ]
+    },
+    {
+      "id": "carrera:20569",
+      "revision": 1,
+      "name": "R1 / 30° banked inner border",
+      "category": "Banked borders",
+      "manufacturerSku": "20020569",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20569.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -200,
+          100,
+          70.09618900000001
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Banked inner borders are visibly narrower than flat borders; depicted width is illustrative, not a specification."
+      ],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20574",
+          "edges": [
+            "inner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20564",
+      "revision": 1,
+      "name": "R1 / 30° banked outer border",
+      "category": "Banked borders",
+      "manufacturerSku": "20020564",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20564.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -500,
+          250,
+          153.589838
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Banked inner borders are visibly narrower than flat borders; depicted width is illustrative, not a specification."
+      ],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20574",
+          "edges": [
+            "outer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20575",
+      "revision": 1,
+      "name": "R2 / 30° banked curve",
+      "category": "Banked track",
+      "manufacturerSku": "20020575",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20575.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -600,
+          300,
+          253.589838
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Perspective-free catalogue symbol only. Banking angle, projected footprint and elevations are not documented; do not treat this as a flat curve."
+      ]
+    },
+    {
+      "id": "carrera:20594",
+      "revision": 1,
+      "name": "R2 / 30° banked inner border",
+      "category": "Banked borders",
+      "manufacturerSku": "20020594",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20594.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -400,
+          200,
+          96.89110899999997
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Banked inner borders are visibly narrower than flat borders; depicted width is illustrative, not a specification."
+      ],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20575",
+          "edges": [
+            "inner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20565",
+      "revision": 1,
+      "name": "R2 / 30° banked outer border",
+      "category": "Banked borders",
+      "manufacturerSku": "20020565",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20565.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -700,
+          350,
+          180.38475800000003
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Banked inner borders are visibly narrower than flat borders; depicted width is illustrative, not a specification."
+      ],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20575",
+          "edges": [
+            "outer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20576",
+      "revision": 1,
+      "name": "R3 / 30° banked curve",
+      "category": "Banked track",
+      "manufacturerSku": "20020576",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20576.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -800,
+          400,
+          280.38475800000003
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Perspective-free catalogue symbol only. Banking angle, projected footprint and elevations are not documented; do not treat this as a flat curve."
+      ]
+    },
+    {
+      "id": "carrera:20595",
+      "revision": 1,
+      "name": "R3 / 30° banked inner border",
+      "category": "Banked borders",
+      "manufacturerSku": "20020595",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20595.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -600,
+          300,
+          123.68602800000002
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Banked inner borders are visibly narrower than flat borders; depicted width is illustrative, not a specification."
+      ],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20576",
+          "edges": [
+            "inner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20566",
+      "revision": 1,
+      "name": "R3 / 30° banked outer border",
+      "category": "Banked borders",
+      "manufacturerSku": "20020566",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20566.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -900,
+          450,
+          207.17967699999997
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Banked inner borders are visibly narrower than flat borders; depicted width is illustrative, not a specification."
+      ],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20576",
+          "edges": [
+            "outer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20579",
+      "revision": 1,
+      "name": "R4 / 15° banked curve",
+      "category": "Banked track",
+      "manufacturerSku": "20020579",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20579.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -1000,
+          258.819045,
+          227.25933899999995
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Perspective-free catalogue symbol only. Banking angle, projected footprint and elevations are not documented; do not treat this as a flat curve."
+      ]
+    },
+    {
+      "id": "carrera:20596",
+      "revision": 1,
+      "name": "R4 / 15° banked inner border",
+      "category": "Banked borders",
+      "manufacturerSku": "20020596",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20596.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -800,
+          207.055236,
+          75.55562999999995
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Banked inner borders are visibly narrower than flat borders; depicted width is illustrative, not a specification."
+      ],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20579",
+          "edges": [
+            "inner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20580",
+      "revision": 1,
+      "name": "R4 / 15° banked outer border",
+      "category": "Banked borders",
+      "manufacturerSku": "20020580",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20580.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -1100,
+          284.70095,
+          134.07417399999997
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Banked inner borders are visibly narrower than flat borders; depicted width is illustrative, not a specification."
+      ],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20579",
+          "edges": [
+            "outer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20598-left",
+      "revision": 1,
+      "name": "Wide shoulder end cap · left",
+      "category": "End borders",
+      "manufacturerSku": "20020598",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20598-left.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          200,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:20598-right"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Outline follows the catalogue silhouette; length and curvature are not published."
+      ]
+    },
+    {
+      "id": "carrera:20598-right",
+      "revision": 1,
+      "name": "Wide shoulder end cap · right",
+      "category": "End borders",
+      "manufacturerSku": "20020598",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20598-right.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          200,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:20598-left"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Outline follows the catalogue silhouette; length and curvature are not published."
+      ]
+    },
+    {
+      "id": "carrera:20599-left",
+      "revision": 1,
+      "name": "Banked inner shoulder end cap · left",
+      "category": "End borders",
+      "manufacturerSku": "20020599",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20599-left.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          200,
+          50
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:20599-right"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Outline follows the catalogue silhouette; length and curvature are not published."
+      ]
+    },
+    {
+      "id": "carrera:20599-right",
+      "revision": 1,
+      "name": "Banked inner shoulder end cap · right",
+      "category": "End borders",
+      "manufacturerSku": "20020599",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20599-right.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          200,
+          50
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:20599-left"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Outline follows the catalogue silhouette; length and curvature are not published."
+      ]
+    },
+    {
+      "id": "carrera:20600-left",
+      "revision": 1,
+      "name": "Wide-to-narrow shoulder transition · left",
+      "category": "End borders",
+      "manufacturerSku": "20020600",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20600-left.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          200,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:20600-right"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Outline follows the catalogue silhouette; length and curvature are not published."
+      ]
+    },
+    {
+      "id": "carrera:20600-right",
+      "revision": 1,
+      "name": "Wide-to-narrow shoulder transition · right",
+      "category": "End borders",
+      "manufacturerSku": "20020600",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20600-right.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          200,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:20600-left"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Outline follows the catalogue silhouette; length and curvature are not published."
+      ]
+    },
+    {
+      "id": "carrera:20587-concave",
+      "revision": 1,
+      "name": "Bridge transition · concave",
+      "category": "Elevated track",
+      "manufacturerSku": "20020587",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20587-concave.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Published section length 345 mm. Top-down projection, height profile and support clearance unverified."
+      ]
+    },
+    {
+      "id": "carrera:20597-concave",
+      "revision": 1,
+      "name": "Bridge border · concave",
+      "category": "Elevated borders",
+      "manufacturerSku": "20020597",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20597-concave.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20587-concave",
+          "edges": [
+            "left",
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20587-convex",
+      "revision": 1,
+      "name": "Bridge transition · convex",
+      "category": "Elevated track",
+      "manufacturerSku": "20020587",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20587-convex.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Published section length 345 mm. Top-down projection, height profile and support clearance unverified."
+      ]
+    },
+    {
+      "id": "carrera:20597-convex",
+      "revision": 1,
+      "name": "Bridge border · convex",
+      "category": "Elevated borders",
+      "manufacturerSku": "20020597",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20597-convex.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [],
+      "attachesTo": [
+        {
+          "pieceId": "carrera:20587-convex",
+          "edges": [
+            "left",
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrera:20517",
+      "revision": 1,
+      "name": "Fixed lane crossover",
+      "category": "Flat track",
+      "manufacturerSku": "20020517",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20517.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 88
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Passive crossover swaps lanes permanently. Bezier illustration is not a measured route; lane distances intentionally unavailable."
+      ],
+      "topology": [
+        [
+          "a.1",
+          "b.2"
+        ],
+        [
+          "a.2",
+          "b.1"
+        ]
+      ]
+    },
+    {
+      "id": "carrera:30343",
+      "revision": 1,
+      "name": "Lane changer · left",
+      "category": "Digital switches",
+      "manufacturerSku": "20030343",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30343.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          690,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:30345"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Two physical 345 mm sections form one 690 mm assembly. Internal switch geometry is illustrative; no calculated switching distance."
+      ],
+      "published": {
+        "assemblyLengthMm": 690,
+        "sectionLengthMm": 345
+      },
+      "topology": [
+        [
+          "a.1",
+          "b.1"
+        ],
+        [
+          "a.2",
+          "b.2"
+        ],
+        [
+          "a.2",
+          "b.1"
+        ]
+      ]
+    },
+    {
+      "id": "carrera:30345",
+      "revision": 1,
+      "name": "Lane changer · right",
+      "category": "Digital switches",
+      "manufacturerSku": "20030345",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30345.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          690,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:30343"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Two physical 345 mm sections form one 690 mm assembly. Internal switch geometry is illustrative; no calculated switching distance."
+      ],
+      "published": {
+        "assemblyLengthMm": 690,
+        "sectionLengthMm": 345
+      },
+      "topology": [
+        [
+          "a.1",
+          "b.1"
+        ],
+        [
+          "a.2",
+          "b.2"
+        ],
+        [
+          "a.1",
+          "b.2"
+        ]
+      ]
+    },
+    {
+      "id": "carrera:30347",
+      "revision": 1,
+      "name": "Double lane changer",
+      "category": "Digital switches",
+      "manufacturerSku": "20030347",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30347.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          690,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Direction and sensor placement must be preserved."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Two physical 345 mm sections form one 690 mm assembly. Internal switch geometry is illustrative; no calculated switching distance."
+      ],
+      "published": {
+        "assemblyLengthMm": 690,
+        "sectionLengthMm": 345
+      },
+      "topology": [
+        [
+          "a.1",
+          "b.1"
+        ],
+        [
+          "a.2",
+          "b.2"
+        ],
+        [
+          "a.1",
+          "b.2"
+        ],
+        [
+          "a.2",
+          "b.1"
+        ]
+      ]
+    },
+    {
+      "id": "carrera:30362",
+      "revision": 1,
+      "name": "Curve switch · left · in → out",
+      "category": "Digital switches",
+      "manufacturerSku": "20030362",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30362.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -202,
+          692,
+          402
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:30364"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Catalogue drawing includes a straight approach and a curve. The switching path, radius and bounds here are illustrative; not fit-ready."
+      ]
+    },
+    {
+      "id": "carrera:30363",
+      "revision": 1,
+      "name": "Curve switch · left · out → in",
+      "category": "Digital switches",
+      "manufacturerSku": "20030363",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30363.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          -202,
+          692,
+          402
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:30365"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Catalogue drawing includes a straight approach and a curve. The switching path, radius and bounds here are illustrative; not fit-ready."
+      ]
+    },
+    {
+      "id": "carrera:30364",
+      "revision": 1,
+      "name": "Curve switch · right · in → out",
+      "category": "Digital switches",
+      "manufacturerSku": "20030364",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30364.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          692,
+          402
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:30362"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Catalogue drawing includes a straight approach and a curve. The switching path, radius and bounds here are illustrative; not fit-ready."
+      ]
+    },
+    {
+      "id": "carrera:30365",
+      "revision": 1,
+      "name": "Curve switch · right · out → in",
+      "category": "Digital switches",
+      "manufacturerSku": "20030365",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30365.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          692,
+          402
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:30363"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Catalogue drawing includes a straight approach and a curve. The switching path, radius and bounds here are illustrative; not fit-ready."
+      ]
+    },
+    {
+      "id": "carrera:20516",
+      "revision": 1,
+      "name": "Legacy squeeze / narrow section",
+      "category": "Legacy track",
+      "manufacturerSku": "20020516",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20516.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          690,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2013"
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Passive two-section squeeze. Included for existing collections; illustration only."
+      ]
+    },
+    {
+      "id": "carrera:30350",
+      "revision": 1,
+      "name": "Digital narrow section · left",
+      "category": "Digital switches",
+      "manufacturerSku": "20030350",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 4,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30350.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          690,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:30351"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Four physical sections, nominal assembly length 690 mm. Split single-lane elements and route geometry need exact definitions."
+      ],
+      "published": {
+        "assemblyLengthMm": 690,
+        "sectionLengthMm": 345
+      }
+    },
+    {
+      "id": "carrera:30351",
+      "revision": 1,
+      "name": "Digital narrow section · right",
+      "category": "Digital switches",
+      "manufacturerSku": "20030351",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 4,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30351.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          690,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "carrera:30350"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Four physical sections, nominal assembly length 690 mm. Split single-lane elements and route geometry need exact definitions."
+      ],
+      "published": {
+        "assemblyLengthMm": 690,
+        "sectionLengthMm": 345
+      }
+    },
+    {
+      "id": "carrera:30373",
+      "revision": 1,
+      "name": "Three-section chicane",
+      "category": "Special track",
+      "manufacturerSku": "20030373",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 3,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30373.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          1035,
+          300
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Published longitudinal assembly length 1035 mm. This is not the driving distance along its lanes. S-bend offsets and physical outline remain illustrative."
+      ],
+      "published": {
+        "assemblyLengthMm": 1035,
+        "sectionLengthMm": 345
+      }
+    },
+    {
+      "id": "carrera:30356-entry",
+      "revision": 1,
+      "name": "Pit lane entry",
+      "category": "Pit lane",
+      "manufacturerSku": "20030356",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30356-entry.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          300
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Pit switch mechanism and sensor make it directional."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Subcomponent of 30356; not a separately asserted retail SKU. Rectangular preview envelope and internal route are illustrative."
+      ]
+    },
+    {
+      "id": "carrera:30356-exit",
+      "revision": 1,
+      "name": "Pit lane exit",
+      "category": "Pit lane",
+      "manufacturerSku": "20030356",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30356-exit.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          300
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Pit switch mechanism and sensor make it directional."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Subcomponent of 30356; not a separately asserted retail SKU. Rectangular preview envelope and internal route are illustrative."
+      ]
+    },
+    {
+      "id": "carrera:30341",
+      "revision": 1,
+      "name": "Single-lane straight",
+      "category": "Pit lane",
+      "manufacturerSku": "20030341",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30341.svg",
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 345,
+          "widthMm": 100,
+          "laneCount": 1,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 345 V 100 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            345,
+            100
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                345,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    345,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 345,
+              "d": "M 0 50 H 345"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                50
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                345,
+                50
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    345,
+                    50
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 345
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          345,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [
+        "Nominal single-lane width 100 mm; exact width not specified."
+      ]
+    },
+    {
+      "id": "carrera:30361",
+      "revision": 1,
+      "name": "Pit Stop Adapter Unit",
+      "category": "Pit lane",
+      "manufacturerSku": "20030361",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30361.svg",
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 345,
+          "widthMm": 100,
+          "laneCount": 1,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 345 V 100 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            345,
+            100
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                345,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    345,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 345,
+              "d": "M 0 50 H 345"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                50
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                345,
+                50
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    345,
+                    50
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 345
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          345,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Sensor/connection orientation must be preserved."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [
+        "Nominal single-lane width 100 mm; exact width not specified."
+      ]
+    },
+    {
+      "id": "carrera:30368",
+      "revision": 1,
+      "name": "Single-lane Adapter Unit",
+      "category": "Pit lane",
+      "manufacturerSku": "20030368",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30368.svg",
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 345,
+          "widthMm": 100,
+          "laneCount": 1,
+          "laneSpacingMm": 100
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 345 V 100 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            345,
+            100
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                50
+              ],
+              "end": [
+                345,
+                50
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    50
+                  ],
+                  "to": [
+                    345,
+                    50
+                  ]
+                }
+              ],
+              "lengthMm": 345,
+              "d": "M 0 50 H 345"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                50
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    50
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                345,
+                50
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    345,
+                    50
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 345
+        },
+        "status": "nominal-derived"
+      },
+      "preview": {
+        "units": "mm",
+        "status": "nominal-model",
+        "bounds": [
+          0,
+          0,
+          345,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Sensor/connection orientation must be preserved."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "nominal-derived",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact mould dimensions and tolerances",
+          "Connector teeth and mating depth"
+        ]
+      },
+      "notes": [
+        "Nominal single-lane width 100 mm; exact width not specified."
+      ]
+    },
+    {
+      "id": "carrera:30352",
+      "revision": 1,
+      "name": "Control Unit",
+      "category": "Power and timing",
+      "manufacturerSku": "20030352",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30352.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          282
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Power, electronics and sensor placement must remain physically valid."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 94
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Drawing includes a distinct equipment envelope where applicable. Exact enclosure dimensions and sensor locations are not published."
+      ],
+      "published": {
+        "roadLengthMm": null
+      }
+    },
+    {
+      "id": "carrera:30360",
+      "revision": 1,
+      "name": "Adapter Unit",
+      "category": "Power and timing",
+      "manufacturerSku": "20030360",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30360.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          230
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Power, electronics and sensor placement must remain physically valid."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Drawing includes a distinct equipment envelope where applicable. Exact enclosure dimensions and sensor locations are not published."
+      ],
+      "published": {
+        "roadLengthMm": 345
+      }
+    },
+    {
+      "id": "carrera:30370",
+      "revision": 1,
+      "name": "Multistart Lane",
+      "category": "Power and timing",
+      "manufacturerSku": "20030370",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30370.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Power, electronics and sensor placement must remain physically valid."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 94
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Drawing includes a distinct equipment envelope where applicable. Exact enclosure dimensions and sensor locations are not published."
+      ],
+      "published": {
+        "roadLengthMm": null
+      }
+    },
+    {
+      "id": "carrera:30371",
+      "revision": 1,
+      "name": "Check Lane",
+      "category": "Power and timing",
+      "manufacturerSku": "20030371",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30371.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Power, electronics and sensor placement must remain physically valid."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 97
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Drawing includes a distinct equipment envelope where applicable. Exact enclosure dimensions and sensor locations are not published."
+      ],
+      "published": {
+        "roadLengthMm": null
+      }
+    },
+    {
+      "id": "carrera:20518",
+      "revision": 1,
+      "name": "Evolution electronic power track",
+      "category": "Power and timing",
+      "manufacturerSku": "20020518",
+      "systems": [
+        "evolution"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20518.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          282
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Power, electronics and sensor placement must remain physically valid."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 98
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Drawing includes a distinct equipment envelope where applicable. Exact enclosure dimensions and sensor locations are not published."
+      ],
+      "published": {
+        "roadLengthMm": 345
+      }
+    },
+    {
+      "id": "carrera:20515",
+      "revision": 1,
+      "name": "Evolution mechanical power track",
+      "category": "Power and timing",
+      "manufacturerSku": "20020515",
+      "systems": [
+        "evolution"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/20515.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          282
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Power, electronics and sensor placement must remain physically valid."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "power-20515"
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Drawing includes a distinct equipment envelope where applicable. Exact enclosure dimensions and sensor locations are not published."
+      ],
+      "published": {
+        "roadLengthMm": 345
+      }
+    },
+    {
+      "id": "carrera:30344",
+      "revision": 1,
+      "name": "Legacy Black Box",
+      "category": "Legacy track",
+      "manufacturerSku": "20030344",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30344.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          282
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Power, electronics and sensor placement must remain physically valid."
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2013"
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Drawing includes a distinct equipment envelope where applicable. Exact enclosure dimensions and sensor locations are not published."
+      ],
+      "published": {
+        "roadLengthMm": null
+      }
+    },
+    {
+      "id": "carrera:30358",
+      "revision": 1,
+      "name": "Shoulder connecting section",
+      "category": "Special borders",
+      "manufacturerSku": "20030358",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/30358.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          172.5,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "172.5 mm length published. Width, port details and exact outline are illustrative."
+      ],
+      "published": {
+        "lengthMm": 172.5
+      }
+    },
+    {
+      "id": "carrera:30359",
+      "revision": 1,
+      "name": "Shoulder complement",
+      "category": "Special borders",
+      "manufacturerSku": "20030359",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/30359.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          172.5,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "172.5 mm length published. Width, port details and exact outline are illustrative."
+      ],
+      "published": {
+        "lengthMm": 172.5
+      }
+    },
+    {
+      "id": "carrera:20602-entry",
+      "revision": 1,
+      "name": "Pit lane border · entry",
+      "category": "Special borders",
+      "manufacturerSku": "20020602",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20602-entry.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Illustrative silhouette of a kit component; exact outline and mounting side not dimensioned."
+      ],
+      "partOfProduct": "20020602"
+    },
+    {
+      "id": "carrera:20602-middle",
+      "revision": 1,
+      "name": "Pit lane border · middle",
+      "category": "Special borders",
+      "manufacturerSku": "20020602",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20602-middle.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Illustrative silhouette of a kit component; exact outline and mounting side not dimensioned."
+      ],
+      "partOfProduct": "20020602"
+    },
+    {
+      "id": "carrera:20602-exit",
+      "revision": 1,
+      "name": "Pit lane border · exit",
+      "category": "Special borders",
+      "manufacturerSku": "20020602",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20602-exit.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Illustrative silhouette of a kit component; exact outline and mounting side not dimensioned."
+      ],
+      "partOfProduct": "20020602"
+    },
+    {
+      "id": "carrera:20603-entry",
+      "revision": 1,
+      "name": "Narrow section border · entry",
+      "category": "Special borders",
+      "manufacturerSku": "20020603",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20603-entry.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Illustrative silhouette of a kit component; exact outline and mounting side not dimensioned."
+      ],
+      "partOfProduct": "20020603"
+    },
+    {
+      "id": "carrera:20603-exit",
+      "revision": 1,
+      "name": "Narrow section border · exit",
+      "category": "Special borders",
+      "manufacturerSku": "20020603",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20603-exit.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Illustrative silhouette of a kit component; exact outline and mounting side not dimensioned."
+      ],
+      "partOfProduct": "20020603"
+    },
+    {
+      "id": "carrera:20604-entry",
+      "revision": 1,
+      "name": "Chicane border · entry",
+      "category": "Special borders",
+      "manufacturerSku": "20020604",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20604-entry.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Illustrative silhouette of a kit component; exact outline and mounting side not dimensioned."
+      ],
+      "partOfProduct": "20020604"
+    },
+    {
+      "id": "carrera:20604-middle",
+      "revision": 1,
+      "name": "Chicane border · middle",
+      "category": "Special borders",
+      "manufacturerSku": "20020604",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20604-middle.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          100
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Illustrative silhouette of a kit component; exact outline and mounting side not dimensioned."
+      ],
+      "partOfProduct": "20020604"
+    },
+    {
+      "id": "carrera:20604-exit",
+      "revision": 1,
+      "name": "Chicane border · exit",
+      "category": "Special borders",
+      "manufacturerSku": "20020604",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/20604-exit.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          345,
+          200
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Illustrative silhouette of a kit component; exact outline and mounting side not dimensioned."
+      ],
+      "partOfProduct": "20020604"
+    },
+    {
+      "id": "carrera:30356",
+      "revision": 1,
+      "name": "Pit lane kit components",
+      "category": "Pit lane",
+      "manufacturerSku": "20030356",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 6,
+      "physicalAccessoryPieces": 0,
+      "asset": "assets/30356.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          1115,
+          450
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 90
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Kit contains entry, exit, standard straight, two single-lane straights and a fuel adapter. Diagram is a schematic, not a measured placement."
+      ],
+      "assemblyInventory": [
+        {
+          "pieceId": "carrera:30356-entry",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:30356-exit",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:20509",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:30341",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera:30361",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "carrera:20613",
+      "revision": 1,
+      "name": "Hairpin kit",
+      "category": "Special track",
+      "manufacturerSku": "20020613",
+      "systems": [
+        "evolution",
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "assembly",
+      "physicalTrackPieces": 5,
+      "physicalAccessoryPieces": 12,
+      "asset": "assets/20613.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          -258.75,
+          -400,
+          658.75,
+          800
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "laneMapping": "reverse endpoint/lane order where applicable"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 89
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Catalogue: two 3/4 straights, three special bend sections, two straight borders, three inner and three outer borders, four end pieces. The transitions and narrowed lane spacing here are illustrative; not ordinary R1 pieces."
+      ],
+      "contents": [
+        {
+          "description": "Three-quarter straight components",
+          "quantity": 2
+        },
+        {
+          "description": "Special hairpin bend components",
+          "quantity": 3
+        },
+        {
+          "description": "Straight shoulders",
+          "quantity": 2
+        },
+        {
+          "description": "Outer shoulders",
+          "quantity": 3
+        },
+        {
+          "description": "Inner shoulders with tyre stacks",
+          "quantity": 3
+        },
+        {
+          "description": "End pieces",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "carrera:30353",
+      "revision": 1,
+      "name": "Driver Display",
+      "category": "Trackside",
+      "manufacturerSku": "20030353",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/30353.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          180,
+          120
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Identification icon only, not a top-down footprint. Adapter track in a retail bundle must be counted separately."
+      ],
+      "representation": "identification-icon"
+    },
+    {
+      "id": "carrera:30354",
+      "revision": 1,
+      "name": "Startlight",
+      "category": "Trackside",
+      "manufacturerSku": "20030354",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/30354.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          300,
+          75
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Identification icon only, not a top-down footprint. Adapter track in a retail bundle must be counted separately."
+      ],
+      "representation": "identification-icon"
+    },
+    {
+      "id": "carrera:30355",
+      "revision": 1,
+      "name": "Lap Counter",
+      "category": "Trackside",
+      "manufacturerSku": "20030355",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/30355.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          180,
+          120
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Identification icon only, not a top-down footprint. Adapter track in a retail bundle must be counted separately."
+      ],
+      "representation": "identification-icon"
+    },
+    {
+      "id": "carrera:30357",
+      "revision": 1,
+      "name": "Position Tower",
+      "category": "Trackside",
+      "manufacturerSku": "20030357",
+      "systems": [
+        "digital-132",
+        "digital-124"
+      ],
+      "kind": "piece",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "asset": "assets/30357.svg",
+      "geometry": null,
+      "preview": {
+        "units": "mm",
+        "status": "illustrative-only",
+        "bounds": [
+          0,
+          0,
+          200,
+          300
+        ]
+      },
+      "capabilities": {
+        "preview": true,
+        "exactFit": false,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "banking": false
+      },
+      "mirror": {
+        "mode": "forbidden"
+      },
+      "evidence": {
+        "identity": "documented",
+        "geometry": "not-dimensioned",
+        "sources": [
+          {
+            "id": "carrera-2024",
+            "page": 95
+          }
+        ],
+        "missing": [
+          "Exact outline, connector coordinates and lane paths"
+        ]
+      },
+      "notes": [
+        "Identification icon only, not a top-down footprint. Adapter track in a retail bundle must be counted separately."
+      ],
+      "representation": "identification-icon"
+    }
+  ],
+  "products": [
+    {
+      "sku": "20020509",
+      "name": "Standard straight",
+      "contents": [
+        {
+          "pieceId": "carrera:20509",
+          "quantity": 4
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020560",
+      "name": "Standard straight borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20560",
+          "quantity": 6
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020611",
+      "name": "One-third straight",
+      "contents": [
+        {
+          "pieceId": "carrera:20611",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020588",
+      "name": "One-third straight borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20588",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020612",
+      "name": "Quarter straight",
+      "contents": [
+        {
+          "pieceId": "carrera:20612",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020589",
+      "name": "Quarter straight borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20589",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020601",
+      "name": "Standard straights — two pack",
+      "contents": [
+        {
+          "pieceId": "carrera:20509",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020577",
+      "name": "R1 / 30° curves",
+      "contents": [
+        {
+          "pieceId": "carrera:20577",
+          "quantity": 6
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020590",
+      "name": "R1 / 30° inner borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20590",
+          "quantity": 6
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020567",
+      "name": "R1 / 30° outer borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20567",
+          "quantity": 6
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020571",
+      "name": "R1 / 60° curves",
+      "contents": [
+        {
+          "pieceId": "carrera:20571",
+          "quantity": 3
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020551",
+      "name": "R1 / 60° inner borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20551",
+          "quantity": 3
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020561",
+      "name": "R1 / 60° outer borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20561",
+          "quantity": 3
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020572",
+      "name": "R2 / 30° curves",
+      "contents": [
+        {
+          "pieceId": "carrera:20572",
+          "quantity": 6
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020591",
+      "name": "R2 / 30° inner borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20591",
+          "quantity": 6
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020562",
+      "name": "R2 / 30° outer borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20562",
+          "quantity": 6
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020573",
+      "name": "R3 / 30° curves",
+      "contents": [
+        {
+          "pieceId": "carrera:20573",
+          "quantity": 6
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020592",
+      "name": "R3 / 30° inner borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20592",
+          "quantity": 6
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020563",
+      "name": "R3 / 30° outer borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20563",
+          "quantity": 6
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020578",
+      "name": "R4 / 15° curves",
+      "contents": [
+        {
+          "pieceId": "carrera:20578",
+          "quantity": 12
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020593",
+      "name": "R4 / 15° inner borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20593",
+          "quantity": 12
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020568",
+      "name": "R4 / 15° outer borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20568",
+          "quantity": 12
+        },
+        {
+          "description": "Included end pieces; exact variant not specified by catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020574",
+      "name": "R1 banked curves",
+      "contents": [
+        {
+          "pieceId": "carrera:20574",
+          "quantity": 6
+        },
+        {
+          "description": "Supports included; quantity not specified",
+          "quantity": null
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020569",
+      "name": "R1 banked inner borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20569",
+          "quantity": 6
+        },
+        {
+          "description": "End pieces; exact variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020564",
+      "name": "R1 banked outer borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20564",
+          "quantity": 6
+        },
+        {
+          "description": "End pieces; exact variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020575",
+      "name": "R2 banked curves",
+      "contents": [
+        {
+          "pieceId": "carrera:20575",
+          "quantity": 6
+        },
+        {
+          "description": "Supports included; quantity not specified",
+          "quantity": null
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020594",
+      "name": "R2 banked inner borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20594",
+          "quantity": 6
+        },
+        {
+          "description": "End pieces; exact variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020565",
+      "name": "R2 banked outer borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20565",
+          "quantity": 6
+        },
+        {
+          "description": "End pieces; exact variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020576",
+      "name": "R3 banked curves",
+      "contents": [
+        {
+          "pieceId": "carrera:20576",
+          "quantity": 6
+        },
+        {
+          "description": "Supports included; quantity not specified",
+          "quantity": null
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020595",
+      "name": "R3 banked inner borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20595",
+          "quantity": 6
+        },
+        {
+          "description": "End pieces; exact variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020566",
+      "name": "R3 banked outer borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20566",
+          "quantity": 6
+        },
+        {
+          "description": "End pieces; exact variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020579",
+      "name": "R4 banked curves",
+      "contents": [
+        {
+          "pieceId": "carrera:20579",
+          "quantity": 12
+        },
+        {
+          "description": "Supports included; quantity not specified",
+          "quantity": null
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020596",
+      "name": "R4 banked inner borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20596",
+          "quantity": 12
+        },
+        {
+          "description": "End pieces; exact variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020580",
+      "name": "R4 banked outer borders",
+      "contents": [
+        {
+          "pieceId": "carrera:20580",
+          "quantity": 12
+        },
+        {
+          "description": "End pieces; exact variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020598",
+      "name": "Wide shoulder end cap",
+      "contents": [
+        {
+          "pieceId": "carrera:20598-left",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera:20598-right",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020599",
+      "name": "Banked inner shoulder end cap",
+      "contents": [
+        {
+          "pieceId": "carrera:20599-left",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera:20599-right",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020600",
+      "name": "Wide-to-narrow shoulder transition",
+      "contents": [
+        {
+          "description": "Transition pieces; handed split unresolved",
+          "quantity": 4
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020587",
+      "name": "Bridge / flyover",
+      "contents": [
+        {
+          "pieceId": "carrera:20587-concave",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera:20587-convex",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": [
+        "Four sections confirmed; concave/convex component split based on assembly shape."
+      ]
+    },
+    {
+      "sku": "20020597",
+      "name": "Bridge shoulders",
+      "contents": [
+        {
+          "pieceId": "carrera:20597-concave",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera:20597-convex",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020517",
+      "name": "Fixed lane crossovers",
+      "contents": [
+        {
+          "pieceId": "carrera:20517",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 88
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030343",
+      "name": "Lane changer · left",
+      "contents": [
+        {
+          "pieceId": "carrera:30343",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030345",
+      "name": "Lane changer · right",
+      "contents": [
+        {
+          "pieceId": "carrera:30345",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030347",
+      "name": "Double lane changer",
+      "contents": [
+        {
+          "pieceId": "carrera:30347",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030362",
+      "name": "Lane-changing curve",
+      "contents": [
+        {
+          "pieceId": "carrera:30362",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030363",
+      "name": "Lane-changing curve",
+      "contents": [
+        {
+          "pieceId": "carrera:30363",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030364",
+      "name": "Lane-changing curve",
+      "contents": [
+        {
+          "pieceId": "carrera:30364",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030365",
+      "name": "Lane-changing curve",
+      "contents": [
+        {
+          "pieceId": "carrera:30365",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020516",
+      "name": "Legacy squeeze",
+      "contents": [
+        {
+          "pieceId": "carrera:20516",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2013"
+      },
+      "notes": [
+        "Legacy identity source: carrera-2013."
+      ]
+    },
+    {
+      "sku": "20030350",
+      "name": "Digital narrow section",
+      "contents": [
+        {
+          "pieceId": "carrera:30350",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030351",
+      "name": "Digital narrow section",
+      "contents": [
+        {
+          "pieceId": "carrera:30351",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030373",
+      "name": "Three-section chicane",
+      "contents": [
+        {
+          "pieceId": "carrera:30373",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030341",
+      "name": "Single-lane straight",
+      "contents": [
+        {
+          "pieceId": "carrera:30341",
+          "quantity": null
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": [
+        "Package quantity not established from the cited catalogue."
+      ]
+    },
+    {
+      "sku": "20030361",
+      "name": "Pit Stop Adapter Unit",
+      "contents": [
+        {
+          "pieceId": "carrera:30361",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030368",
+      "name": "Single-lane Adapter Unit",
+      "contents": [
+        {
+          "pieceId": "carrera:30368",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030352",
+      "name": "Control Unit",
+      "contents": [
+        {
+          "pieceId": "carrera:30352",
+          "quantity": 1
+        },
+        {
+          "description": "Included end pieces; variant unspecified",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 94
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030360",
+      "name": "Adapter Unit",
+      "contents": [
+        {
+          "pieceId": "carrera:30360",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030370",
+      "name": "Multistart Lane",
+      "contents": [
+        {
+          "pieceId": "carrera:30370",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 94
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030371",
+      "name": "Check Lane",
+      "contents": [
+        {
+          "pieceId": "carrera:30371",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 97
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020518",
+      "name": "Evolution electronic power track",
+      "contents": [
+        {
+          "pieceId": "carrera:20518",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:20509",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 98
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020515",
+      "name": "Evolution mechanical power track",
+      "contents": [
+        {
+          "pieceId": "carrera:20515",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:20509",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "power-20515"
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030344",
+      "name": "Legacy Black Box",
+      "contents": [
+        {
+          "pieceId": "carrera:30344",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2013"
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030358",
+      "name": "Shoulder connecting section",
+      "contents": [
+        {
+          "pieceId": "carrera:30358",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:30359",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030359",
+      "name": "Shoulder complement",
+      "contents": [
+        {
+          "pieceId": "carrera:30359",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020602",
+      "name": "Pit lane border kit",
+      "contents": [
+        {
+          "pieceId": "carrera:20602-entry",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:20602-middle",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:20602-exit",
+          "quantity": 1
+        },
+        {
+          "description": "End pieces; variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020603",
+      "name": "Narrow section border kit",
+      "contents": [
+        {
+          "pieceId": "carrera:20603-entry",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera:20603-exit",
+          "quantity": 2
+        },
+        {
+          "description": "End pieces; variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020604",
+      "name": "Chicane border kit",
+      "contents": [
+        {
+          "pieceId": "carrera:20604-entry",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:20604-middle",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:20604-exit",
+          "quantity": 1
+        },
+        {
+          "description": "End pieces; variant pending",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": [
+        "Catalogue translation conflicts: German says two end pieces; English says three. Quantity two is provisional."
+      ]
+    },
+    {
+      "sku": "20030356",
+      "name": "Pit Lane",
+      "contents": [
+        {
+          "pieceId": "carrera:30356-entry",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:30356-exit",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:20509",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:30341",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera:30361",
+          "quantity": 1
+        },
+        {
+          "description": "End pieces per catalogue",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 90
+      },
+      "notes": []
+    },
+    {
+      "sku": "20020613",
+      "name": "Hairpin kit",
+      "contents": [
+        {
+          "description": "Three-quarter straight components",
+          "quantity": 2
+        },
+        {
+          "description": "Special hairpin bend components",
+          "quantity": 3
+        },
+        {
+          "description": "Straight shoulders",
+          "quantity": 2
+        },
+        {
+          "description": "Outer shoulders",
+          "quantity": 3
+        },
+        {
+          "description": "Inner shoulders with tyre stacks",
+          "quantity": 3
+        },
+        {
+          "description": "End pieces",
+          "quantity": 4
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 89
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030353",
+      "name": "Driver Display",
+      "contents": [
+        {
+          "pieceId": "carrera:30353",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:30360",
+          "quantity": 1
+        },
+        {
+          "description": "Included end pieces; exact variant unspecified",
+          "quantity": 2
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030354",
+      "name": "Startlight",
+      "contents": [
+        {
+          "pieceId": "carrera:30354",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:30360",
+          "quantity": 1
+        },
+        {
+          "description": "Included end pieces; exact variant unspecified",
+          "quantity": 4
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030355",
+      "name": "Lap Counter",
+      "contents": [
+        {
+          "pieceId": "carrera:30355",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": []
+    },
+    {
+      "sku": "20030357",
+      "name": "Position Tower",
+      "contents": [
+        {
+          "pieceId": "carrera:30357",
+          "quantity": 1
+        },
+        {
+          "pieceId": "carrera:30360",
+          "quantity": 1
+        }
+      ],
+      "source": {
+        "id": "carrera-2024",
+        "page": 95
+      },
+      "notes": []
+    }
+  ],
+  "precisionPolicy": {
+    "exactFitAllowed": false,
+    "unknownLaneLengths": null,
+    "illustrativeAssetsMustNotBeUsedAsGeometry": true,
+    "nominalLengthsMustBeLabelled": true,
+    "requireCompleteFootprintBeforeFitClaim": true,
+    "bankedAndElevatedRequire3DProfile": true
+  },
+  "authoring": {
+    "templates": [
+      "straight",
+      "curve",
+      "straight-border",
+      "curve-border"
+    ],
+    "dimensions": [
+      "lengthMm",
+      "widthMm",
+      "innerRadiusMm",
+      "angleDeg",
+      "laneCount",
+      "laneSpacingMm",
+      "edgeMarginMm",
+      "laneOffsetsMm"
+    ],
+    "spacingDefinition": "Distance between adjacent slot centre lines, in mm. Independent of track width.",
+    "spacingCompatibility": "Compare actual ordered lane positions in connector coordinates; incompatible profiles require an adapter.",
+    "savedLayoutPolicy": "Embed immutable piece definition, revision and dimensions. Edits create a new revision.",
+    "specialPiecePolicy": "User-defined arbitrary outlines, multiple ports and lane-path graphs are a future template. Do not infer routes from width and length alone."
+  },
+  "outstanding": [
+    "Manufacturer engineering dimensions were not located; nominal drawing grid is not certified physical geometry.",
+    "Special-piece SVGs are recognisable illustrations, not measured footprints or routing curves.",
+    "Banked and elevated sections lack documented height and banking profiles.",
+    "Product package contents with ambiguous wording are explicitly flagged."
+  ]
+}

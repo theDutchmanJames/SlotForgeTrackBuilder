@@ -1,0 +1,4950 @@
+{
+  "format": "slotforge.track-pack",
+  "formatVersion": "0.1-draft",
+  "id": "slotforge.policar",
+  "version": "0.1.0-design",
+  "title": "Policar",
+  "manufacturer": "Galileo Engineering / Policar",
+  "date": "2026-10-29",
+  "units": "mm",
+  "status": "first-design-pack-published-and-illustrative",
+  "runtime": {
+    "containsExecutableCode": false,
+    "importerImplemented": false
+  },
+  "scope": {
+    "basis": "Modern Policar 1:32 track, borders, lane changer, power/timing assemblies and track-mounted hardware listed on the manufacturer site and catalogue pages 28–39.",
+    "excluded": [
+      "Vintage Policar / Polistil pieces beyond adapter identity",
+      "Complete starter sets and cosmetic variants",
+      "P070 Polistil / Fleischmann powerbase kit pending assembly reference",
+      "Loose electrical spares, controllers, power supplies, cables and banners"
+    ],
+    "availability": "Catalogue coverage is not a stock or availability claim."
+  },
+  "defaults": {
+    "trackWidthMm": 179,
+    "singleLaneWidthMm": 89.5,
+    "laneSpacingMm": 90,
+    "borderWidthMm": 60,
+    "status": "published-with-derived-slot-offsets",
+    "slotOffsetsMm": [
+      44.5,
+      134.5
+    ],
+    "note": "179 mm road width from dimensional flyer; 90 mm lane spacing from manufacturer prose. Centred offsets are derived, not directly dimensioned. Side-by-side modules consequently have a nominal 89 mm inter-module slot gap. Do not silently round width to 180 mm or claim uniform 90 mm spacing across nested modules."
+  },
+  "visualStyle": {
+    "road": "Coarse black textured plastic; plain road without centre dashes",
+    "slots": "Paired silver rails and dark guide slots",
+    "borders": "Black textured 60 mm shoulders and raised outer lip; no coloured kerbs",
+    "accessories": "Separate white/grey triple-rail guardrails, flexible barrier, blue bridge beams on black pillars",
+    "basis": "Manufacturer catalogue photos inspected; original SVG interpretations, not copied product photographs"
+  },
+  "sources": [
+    {
+      "id": "geometry-2023",
+      "title": "Policar dimensional flyer, March 2023",
+      "url": "https://www.policar.it/wp-content/uploads/2023/03/A4-_-FLYER-PISTA-WEB-21-03-2023.pdf",
+      "pages": [
+        1
+      ],
+      "note": "Dimension diagram visually inspected; source saved in research/policar."
+    },
+    {
+      "id": "catalogue-2025",
+      "title": "Policar / Slot.it spare-parts catalogue, January 2025",
+      "url": "https://www.policar.it/wp-content/uploads/2025/02/SPAREPARTS-policarslotit-2024.pdf",
+      "pages": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "note": "PDF page numbers. Cover identifies January 2025 despite the 2024 filename. Track photographs and captions visually inspected."
+    },
+    {
+      "id": "manufacturer-track",
+      "title": "Policar manufacturer track catalogue and specifications",
+      "url": "https://policar.it/policar-track/",
+      "note": "Checked 29 October 2026. Lists 90 mm lane spacing, 60 mm borders and product quantities. P058 angle conflicts with both PDFs."
+    },
+    {
+      "id": "style",
+      "title": "SlotForge Timing interface reference",
+      "url": "https://github.com/theDutchmanJames/SlotForgeTiming/blob/main/renderer/styles.css"
+    }
+  ],
+  "pieces": [
+    {
+      "id": "policar:P008",
+      "revision": 1,
+      "name": "Two-lane straight · 358 mm",
+      "manufacturerSku": "P008-4",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P008.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 358,
+          "widthMm": 179,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 358 V 179 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            358,
+            179
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                44.5
+              ],
+              "end": [
+                358,
+                44.5
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    44.5
+                  ],
+                  "to": [
+                    358,
+                    44.5
+                  ]
+                }
+              ],
+              "lengthMm": 358,
+              "d": "M 0 44.5 H 358"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                134.5
+              ],
+              "end": [
+                358,
+                134.5
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    134.5
+                  ],
+                  "to": [
+                    358,
+                    134.5
+                  ]
+                }
+              ],
+              "lengthMm": 358,
+              "d": "M 0 134.5 H 358"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                89.5
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    44.5
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    134.5
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                358,
+                89.5
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    358,
+                    44.5
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    358,
+                    134.5
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 358
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          358,
+          179
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 358,
+        "widthMm": 179
+      },
+      "notes": [
+        "Road width from dimensional flyer. Slots centred within the surface; offset from either edge is derived."
+      ]
+    },
+    {
+      "id": "policar:P023",
+      "revision": 1,
+      "name": "Two-lane straight · 179 mm",
+      "manufacturerSku": "P023-4",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P023.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 179,
+          "widthMm": 179,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 179 V 179 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            179,
+            179
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                44.5
+              ],
+              "end": [
+                179,
+                44.5
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    44.5
+                  ],
+                  "to": [
+                    179,
+                    44.5
+                  ]
+                }
+              ],
+              "lengthMm": 179,
+              "d": "M 0 44.5 H 179"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                134.5
+              ],
+              "end": [
+                179,
+                134.5
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    134.5
+                  ],
+                  "to": [
+                    179,
+                    134.5
+                  ]
+                }
+              ],
+              "lengthMm": 179,
+              "d": "M 0 134.5 H 179"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                89.5
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    44.5
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    134.5
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                179,
+                89.5
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    179,
+                    44.5
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    179,
+                    134.5
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 179
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          179,
+          179
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 179,
+        "widthMm": 179
+      },
+      "notes": [
+        "Road width from dimensional flyer. Slots centred within the surface; offset from either edge is derived."
+      ]
+    },
+    {
+      "id": "policar:P024",
+      "revision": 1,
+      "name": "Two-lane straight · 61.4 mm",
+      "manufacturerSku": "P024-4",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P024.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 61.4,
+          "widthMm": 179,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 61.4 V 179 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            61.4,
+            179
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                44.5
+              ],
+              "end": [
+                61.4,
+                44.5
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    44.5
+                  ],
+                  "to": [
+                    61.4,
+                    44.5
+                  ]
+                }
+              ],
+              "lengthMm": 61.4,
+              "d": "M 0 44.5 H 61.4"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                134.5
+              ],
+              "end": [
+                61.4,
+                134.5
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    134.5
+                  ],
+                  "to": [
+                    61.4,
+                    134.5
+                  ]
+                }
+              ],
+              "lengthMm": 61.4,
+              "d": "M 0 134.5 H 61.4"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                89.5
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    44.5
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    134.5
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                61.4,
+                89.5
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    61.4,
+                    44.5
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    61.4,
+                    134.5
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 61.4
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          61.4,
+          179
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 61.4,
+        "widthMm": 179
+      },
+      "notes": [
+        "Road width from dimensional flyer. Slots centred within the surface; offset from either edge is derived."
+      ]
+    },
+    {
+      "id": "policar:P091",
+      "revision": 1,
+      "name": "Single-lane straight · 179 mm",
+      "manufacturerSku": "P091-4",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P091.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 179,
+          "widthMm": 89.5,
+          "laneCount": 1,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 179 V 89.5 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            179,
+            89.5
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                44.75
+              ],
+              "end": [
+                179,
+                44.75
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    44.75
+                  ],
+                  "to": [
+                    179,
+                    44.75
+                  ]
+                }
+              ],
+              "lengthMm": 179,
+              "d": "M 0 44.75 H 179"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                44.75
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    44.75
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                179,
+                44.75
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    179,
+                    44.75
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 179
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          179,
+          89.5
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 179,
+        "widthMm": 89.5
+      },
+      "notes": [
+        "Road width from dimensional flyer. Slots centred within the surface; offset from either edge is derived."
+      ]
+    },
+    {
+      "id": "policar:P092",
+      "revision": 1,
+      "name": "Single-lane straight · 61.4 mm",
+      "manufacturerSku": "P092-4",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P092.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 61.4,
+          "widthMm": 89.5,
+          "laneCount": 1,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 61.4 V 89.5 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            61.4,
+            89.5
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                44.75
+              ],
+              "end": [
+                61.4,
+                44.75
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    44.75
+                  ],
+                  "to": [
+                    61.4,
+                    44.75
+                  ]
+                }
+              ],
+              "lengthMm": 61.4,
+              "d": "M 0 44.75 H 61.4"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                44.75
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    44.75
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                61.4,
+                44.75
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    61.4,
+                    44.75
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 61.4
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          61.4,
+          89.5
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 61.4,
+        "widthMm": 89.5
+      },
+      "notes": [
+        "Road width from dimensional flyer. Slots centred within the surface; offset from either edge is derived."
+      ]
+    },
+    {
+      "id": "policar:P009",
+      "revision": 1,
+      "name": "R1 curve · 45°",
+      "manufacturerSku": "P009-4",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P009.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 89.5,
+          "widthMm": 179,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -268.5 A 268.5 268.5 0 0 1 189.858171 -189.858171 L 63.286057 -63.286057 A 89.5 89.5 0 0 0 0 -89.5 Z",
+          "boundsMm": [
+            0,
+            -268.5,
+            189.858171,
+            205.213943
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -134
+              ],
+              "end": [
+                94.752309,
+                -94.752309
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 134,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 105.24335389525807,
+              "d": "M 0 -134 A 134 134 0 0 1 94.752309,-94.752309"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -224
+              ],
+              "end": [
+                158.391919,
+                -158.391919
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 224,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 175.92918860102841,
+              "d": "M 0 -224 A 224 224 0 0 1 158.391919,-158.391919"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -179
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -134
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -224
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                126.572114,
+                -126.572114
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    94.752309,
+                    -94.752309
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    158.391919,
+                    -158.391919
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 140.58627124814325
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -268.5,
+          189.858171,
+          205.213943
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 89.5,
+        "outerRadiusMm": 268.5,
+        "angleDeg": 45
+      },
+      "notes": [
+        "Adjacent road radius families nest at their published edges. 90 mm slot spacing with centred offsets is a nominal model."
+      ]
+    },
+    {
+      "id": "policar:P013",
+      "revision": 1,
+      "name": "R1 curve · 22.5°",
+      "manufacturerSku": "P013-4",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P013.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 89.5,
+          "widthMm": 179,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -268.5 A 268.5 268.5 0 0 1 102.750502 -248.061654 L 34.250167 -82.687218 A 89.5 89.5 0 0 0 0 -89.5 Z",
+          "boundsMm": [
+            0,
+            -268.5,
+            102.750502,
+            185.812782
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -134
+              ],
+              "end": [
+                51.27958,
+                -123.799857
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 134,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 52.621676947629034,
+              "d": "M 0 -134 A 134 134 0 0 1 51.27958,-123.799857"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -224
+              ],
+              "end": [
+                85.721089,
+                -206.949015
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 224,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 87.96459430051421,
+              "d": "M 0 -224 A 224 224 0 0 1 85.721089,-206.949015"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -179
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -134
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -224
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                68.500334,
+                -165.374436
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    51.27958,
+                    -123.799857
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    85.721089,
+                    -206.949015
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 70.29313562407162
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -268.5,
+          102.750502,
+          185.812782
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 89.5,
+        "outerRadiusMm": 268.5,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Adjacent road radius families nest at their published edges. 90 mm slot spacing with centred offsets is a nominal model."
+      ]
+    },
+    {
+      "id": "policar:P014",
+      "revision": 1,
+      "name": "R2 curve · 45°",
+      "manufacturerSku": "P014-2",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P014.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 268.5,
+          "widthMm": 179,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -447.5 A 447.5 447.5 0 0 1 316.430285 -316.430285 L 189.858171 -189.858171 A 268.5 268.5 0 0 0 0 -268.5 Z",
+          "boundsMm": [
+            0,
+            -447.5,
+            316.430285,
+            257.64182900000003
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -313
+              ],
+              "end": [
+                221.324423,
+                -221.324423
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 313,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 245.8296251434013,
+              "d": "M 0 -313 A 313 313 0 0 1 221.324423,-221.324423"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -403
+              ],
+              "end": [
+                284.964033,
+                -284.964033
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 403,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 316.51545984917163,
+              "d": "M 0 -403 A 403 403 0 0 1 284.964033,-284.964033"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -358
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -313
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -403
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                253.144228,
+                -253.144228
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    221.324423,
+                    -221.324423
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    284.964033,
+                    -284.964033
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 281.1725424962865
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -447.5,
+          316.430285,
+          257.64182900000003
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 268.5,
+        "outerRadiusMm": 447.5,
+        "angleDeg": 45
+      },
+      "notes": [
+        "Adjacent road radius families nest at their published edges. 90 mm slot spacing with centred offsets is a nominal model."
+      ]
+    },
+    {
+      "id": "policar:P043",
+      "revision": 1,
+      "name": "R2 curve · 22.5°",
+      "manufacturerSku": "P043-2",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P043.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 268.5,
+          "widthMm": 179,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -447.5 A 447.5 447.5 0 0 1 171.250836 -413.436091 L 102.750502 -248.061654 A 268.5 268.5 0 0 0 0 -268.5 Z",
+          "boundsMm": [
+            0,
+            -447.5,
+            171.250836,
+            199.438346
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -313
+              ],
+              "end": [
+                119.779914,
+                -289.174294
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 313,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 122.91481257170065,
+              "d": "M 0 -313 A 313 313 0 0 1 119.779914,-289.174294"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -403
+              ],
+              "end": [
+                154.221423,
+                -372.323452
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 403,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 158.25772992458582,
+              "d": "M 0 -403 A 403 403 0 0 1 154.221423,-372.323452"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -358
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -313
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -403
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                137.000669,
+                -330.748873
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    119.779914,
+                    -289.174294
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    154.221423,
+                    -372.323452
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 140.58627124814325
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -447.5,
+          171.250836,
+          199.438346
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 268.5,
+        "outerRadiusMm": 447.5,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Adjacent road radius families nest at their published edges. 90 mm slot spacing with centred offsets is a nominal model."
+      ]
+    },
+    {
+      "id": "policar:P044",
+      "revision": 1,
+      "name": "R3 curve · 22.5°",
+      "manufacturerSku": "P044-2",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P044.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 447.5,
+          "widthMm": 179,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -626.5 A 626.5 626.5 0 0 1 239.75117 -578.810527 L 171.250836 -413.436091 A 447.5 447.5 0 0 0 0 -447.5 Z",
+          "boundsMm": [
+            0,
+            -626.5,
+            239.75117,
+            213.06390900000002
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -492
+              ],
+              "end": [
+                188.280249,
+                -454.54873
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 492,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 193.20794819577227,
+              "d": "M 0 -492 A 492 492 0 0 1 188.280249,-454.54873"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -582
+              ],
+              "end": [
+                222.721758,
+                -537.697888
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 582,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 228.55086554865744,
+              "d": "M 0 -582 A 582 582 0 0 1 222.721758,-537.697888"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -537
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -492
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -582
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                205.501003,
+                -496.123309
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    188.280249,
+                    -454.54873
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    222.721758,
+                    -537.697888
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 210.87940687221484
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -626.5,
+          239.75117,
+          213.06390900000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 447.5,
+        "outerRadiusMm": 626.5,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Adjacent road radius families nest at their published edges. 90 mm slot spacing with centred offsets is a nominal model."
+      ]
+    },
+    {
+      "id": "policar:P045",
+      "revision": 1,
+      "name": "R4 curve · 22.5°",
+      "manufacturerSku": "P045-2",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P045.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 626.5,
+          "widthMm": 179,
+          "angleDeg": 22.5,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -805.5 A 805.5 805.5 0 0 1 308.251505 -744.184963 L 239.75117 -578.810527 A 626.5 626.5 0 0 0 0 -626.5 Z",
+          "boundsMm": [
+            0,
+            -805.5,
+            308.251505,
+            226.68947300000002
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -671
+              ],
+              "end": [
+                256.780583,
+                -619.923166
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 671,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 263.50108381984387,
+              "d": "M 0 -671 A 671 671 0 0 1 256.780583,-619.923166"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -761
+              ],
+              "end": [
+                291.222092,
+                -703.072324
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 761,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 22.5
+                }
+              ],
+              "lengthMm": 298.84400117272907,
+              "d": "M 0 -761 A 761 761 0 0 1 291.222092,-703.072324"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -716
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -671
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -761
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                274.001338,
+                -661.497745
+              ],
+              "outwardAngleDeg": 22.5,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    256.780583,
+                    -619.923166
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    291.222092,
+                    -703.072324
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 281.1725424962865
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -805.5,
+          308.251505,
+          226.68947300000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 626.5,
+        "outerRadiusMm": 805.5,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "Adjacent road radius families nest at their published edges. 90 mm slot spacing with centred offsets is a nominal model."
+      ]
+    },
+    {
+      "id": "policar:P077",
+      "revision": 1,
+      "name": "R5 curve · 11.25°",
+      "manufacturerSku": "P077-4",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P077.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 805.5,
+          "widthMm": 179,
+          "angleDeg": 11.25,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -984.5 A 984.5 984.5 0 0 1 192.066422 -965.583109 L 157.145254 -790.022543 A 805.5 805.5 0 0 0 0 -805.5 Z",
+          "boundsMm": [
+            0,
+            -984.5,
+            192.066422,
+            194.47745699999996
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -850
+              ],
+              "end": [
+                165.826774,
+                -833.667488
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 850,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 11.25
+                }
+              ],
+              "lengthMm": 166.89710972195775,
+              "d": "M 0 -850 A 850 850 0 0 1 165.826774,-833.667488"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -940
+              ],
+              "end": [
+                183.384903,
+                -921.938164
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 940,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 11.25
+                }
+              ],
+              "lengthMm": 184.56856839840034,
+              "d": "M 0 -940 A 940 940 0 0 1 183.384903,-921.938164"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -895
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -850
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -940
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                174.605838,
+                -877.802826
+              ],
+              "outwardAngleDeg": 11.25,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    165.826774,
+                    -833.667488
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    183.384903,
+                    -921.938164
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 175.73283906017906
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -984.5,
+          192.066422,
+          194.47745699999996
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalBorderFit": false,
+        "nominalLaneLength": true,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline",
+          "Independent slot offsets from road edges"
+        ]
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 805.5,
+        "outerRadiusMm": 984.5,
+        "angleDeg": 11.25
+      },
+      "notes": [
+        "Adjacent road radius families nest at their published edges. 90 mm slot spacing with centred offsets is a nominal model."
+      ]
+    },
+    {
+      "id": "policar:P002",
+      "revision": 1,
+      "name": "Straight border · 179 mm",
+      "manufacturerSku": "P002-6",
+      "category": "Straight borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P002.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "straight-border",
+        "parameters": {
+          "type": "straight-border",
+          "lengthMm": 179,
+          "widthMm": 60,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 179 V 60 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            179,
+            60
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          179,
+          60
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 179,
+        "widthMm": 60
+      },
+      "notes": [
+        "Black textured shoulder with raised outer lip. Guardrails are separate accessories."
+      ],
+      "attachment": {
+        "type": "road-edge",
+        "lengthMm": 179
+      }
+    },
+    {
+      "id": "policar:P061",
+      "revision": 1,
+      "name": "Straight border · 61.4 mm",
+      "manufacturerSku": "P061-6",
+      "category": "Straight borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P061.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "straight-border",
+        "parameters": {
+          "type": "straight-border",
+          "lengthMm": 61.4,
+          "widthMm": 60,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 61.4 V 60 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            61.4,
+            60
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          61.4,
+          60
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 61.4,
+        "widthMm": 60
+      },
+      "notes": [
+        "Black textured shoulder with raised outer lip. Guardrails are separate accessories."
+      ],
+      "attachment": {
+        "type": "road-edge",
+        "lengthMm": 61.4
+      }
+    },
+    {
+      "id": "policar:P051",
+      "revision": 1,
+      "name": "R1 inner border · 22.5°",
+      "manufacturerSku": "P051-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P051.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 29.5,
+          "widthMm": 60,
+          "angleDeg": 22.5,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -89.5 A 89.5 89.5 0 0 1 34.250167 -82.687218 L 11.289161 -27.254446 A 29.5 29.5 0 0 0 0 -29.5 Z",
+          "boundsMm": [
+            0,
+            -89.5,
+            34.250167,
+            62.245554
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -89.5,
+          34.250167,
+          62.245554
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "60 mm black border; attachment radius derived from the published matching road edge."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 1,
+        "side": "inner",
+        "radiusMm": 89.5,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "policar:P053",
+      "revision": 1,
+      "name": "R1 outer border · 22.5°",
+      "manufacturerSku": "P053-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P053.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 268.5,
+          "widthMm": 60,
+          "angleDeg": 22.5,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -328.5 A 328.5 328.5 0 0 1 125.711508 -303.494426 L 102.750502 -248.061654 A 268.5 268.5 0 0 0 0 -268.5 Z",
+          "boundsMm": [
+            0,
+            -328.5,
+            125.711508,
+            80.438346
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -328.5,
+          125.711508,
+          80.438346
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "60 mm black border; attachment radius derived from the published matching road edge."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 1,
+        "side": "outer",
+        "radiusMm": 268.5,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "policar:P052",
+      "revision": 1,
+      "name": "R2 inner border · 22.5°",
+      "manufacturerSku": "P052-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P052.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 208.5,
+          "widthMm": 60,
+          "angleDeg": 22.5,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -268.5 A 268.5 268.5 0 0 1 102.750502 -248.061654 L 79.789496 -192.628883 A 208.5 208.5 0 0 0 0 -208.5 Z",
+          "boundsMm": [
+            0,
+            -268.5,
+            102.750502,
+            75.871117
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -268.5,
+          102.750502,
+          75.871117
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "60 mm black border; attachment radius derived from the published matching road edge."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 2,
+        "side": "inner",
+        "radiusMm": 268.5,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "policar:P054",
+      "revision": 1,
+      "name": "R2 outer border · 22.5°",
+      "manufacturerSku": "P054-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P054.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 447.5,
+          "widthMm": 60,
+          "angleDeg": 22.5,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -507.5 A 507.5 507.5 0 0 1 194.211842 -468.868863 L 171.250836 -413.436091 A 447.5 447.5 0 0 0 0 -447.5 Z",
+          "boundsMm": [
+            0,
+            -507.5,
+            194.211842,
+            94.06390900000002
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -507.5,
+          194.211842,
+          94.06390900000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "60 mm black border; attachment radius derived from the published matching road edge."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 2,
+        "side": "outer",
+        "radiusMm": 447.5,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "policar:P055",
+      "revision": 1,
+      "name": "R3 inner border · 22.5°",
+      "manufacturerSku": "P055-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P055.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 387.5,
+          "widthMm": 60,
+          "angleDeg": 22.5,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -447.5 A 447.5 447.5 0 0 1 171.250836 -413.436091 L 148.28983 -358.003319 A 387.5 387.5 0 0 0 0 -387.5 Z",
+          "boundsMm": [
+            0,
+            -447.5,
+            171.250836,
+            89.49668100000002
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -447.5,
+          171.250836,
+          89.49668100000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "60 mm black border; attachment radius derived from the published matching road edge."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 3,
+        "side": "inner",
+        "radiusMm": 447.5,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "policar:P056",
+      "revision": 1,
+      "name": "R3 outer border · 22.5°",
+      "manufacturerSku": "P056-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P056.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 626.5,
+          "widthMm": 60,
+          "angleDeg": 22.5,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -686.5 A 686.5 686.5 0 0 1 262.712176 -634.243299 L 239.75117 -578.810527 A 626.5 626.5 0 0 0 0 -626.5 Z",
+          "boundsMm": [
+            0,
+            -686.5,
+            262.712176,
+            107.68947300000002
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -686.5,
+          262.712176,
+          107.68947300000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "60 mm black border; attachment radius derived from the published matching road edge."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 3,
+        "side": "outer",
+        "radiusMm": 626.5,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "policar:P057",
+      "revision": 1,
+      "name": "R4 inner border · 22.5°",
+      "manufacturerSku": "P057-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P057.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 566.5,
+          "widthMm": 60,
+          "angleDeg": 22.5,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -626.5 A 626.5 626.5 0 0 1 239.75117 -578.810527 L 216.790164 -523.377755 A 566.5 566.5 0 0 0 0 -566.5 Z",
+          "boundsMm": [
+            0,
+            -626.5,
+            239.75117,
+            103.12224500000002
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -626.5,
+          239.75117,
+          103.12224500000002
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60,
+        "angleDeg": 22.5
+      },
+      "notes": [
+        "60 mm black border; attachment radius derived from the published matching road edge."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 4,
+        "side": "inner",
+        "radiusMm": 626.5,
+        "angleDeg": 22.5
+      }
+    },
+    {
+      "id": "policar:P058",
+      "revision": 1,
+      "name": "R4 outer border · angle disputed",
+      "manufacturerSku": "P058-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P058.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -865.5,
+          168.850674,
+          75.47745699999996
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60
+      },
+      "notes": [
+        "2023 dimension flyer and January 2025 catalogue show 11.25°. Current website says 22.5°. Drawing follows the PDFs; fit and automatic quantity matching remain disabled pending resolution."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 4,
+        "side": "outer",
+        "radiusMm": 805.5,
+        "angleDeg": null
+      },
+      "conflicts": [
+        {
+          "field": "angleDeg",
+          "values": [
+            {
+              "value": 11.25,
+              "sourceIds": [
+                "geometry-2023",
+                "catalogue-2025"
+              ]
+            },
+            {
+              "value": 22.5,
+              "sourceIds": [
+                "manufacturer-track"
+              ]
+            }
+          ],
+          "resolution": "unresolved",
+          "illustrationValue": 11.25
+        }
+      ]
+    },
+    {
+      "id": "policar:P071",
+      "revision": 1,
+      "name": "R5 inner border · 11.25°",
+      "manufacturerSku": "P071-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P071.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 745.5,
+          "widthMm": 60,
+          "angleDeg": 11.25,
+          "side": "inner"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -805.5 A 805.5 805.5 0 0 1 157.145254 -790.022543 L 145.439835 -731.175427 A 745.5 745.5 0 0 0 0 -745.5 Z",
+          "boundsMm": [
+            0,
+            -805.5,
+            157.145254,
+            74.32457299999999
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -805.5,
+          157.145254,
+          74.32457299999999
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60,
+        "angleDeg": 11.25
+      },
+      "notes": [
+        "60 mm black border; attachment radius derived from the published matching road edge."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 5,
+        "side": "inner",
+        "radiusMm": 805.5,
+        "angleDeg": 11.25
+      }
+    },
+    {
+      "id": "policar:P072",
+      "revision": 1,
+      "name": "R5 outer border · 11.25°",
+      "manufacturerSku": "P072-6",
+      "category": "Curve borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P072.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": {
+        "template": "curve-border",
+        "parameters": {
+          "type": "curve-border",
+          "innerRadiusMm": 984.5,
+          "widthMm": 60,
+          "angleDeg": 11.25,
+          "side": "outer"
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -1044.5 A 1044.5 1044.5 0 0 1 203.771841 -1024.430225 L 192.066422 -965.583109 A 984.5 984.5 0 0 0 0 -984.5 Z",
+          "boundsMm": [
+            0,
+            -1044.5,
+            203.771841,
+            78.91689099999996
+          ],
+          "lanePaths": [],
+          "connectors": [],
+          "centrelineLengthMm": 0
+        },
+        "status": "published-dimensions-with-derived-offsets"
+      },
+      "preview": {
+        "status": "published-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -1044.5,
+          203.771841,
+          78.91689099999996
+        ],
+        "units": "mm",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": true,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "published-envelope-derived-slots",
+        "missing": [
+          "Mould tolerances and exact connector outline"
+        ]
+      },
+      "publishedDimensions": {
+        "widthMm": 60,
+        "angleDeg": 11.25
+      },
+      "notes": [
+        "60 mm black border; attachment radius derived from the published matching road edge."
+      ],
+      "attachment": {
+        "type": "curve-edge",
+        "radiusFamily": 5,
+        "side": "outer",
+        "radiusMm": 984.5,
+        "angleDeg": 11.25
+      }
+    },
+    {
+      "id": "policar:P059",
+      "revision": 1,
+      "name": "End border · left",
+      "manufacturerSku": "P059-6",
+      "category": "End borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P059.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          90,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "policar:P060"
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Rounded black end cap, drawn from catalogue photographs. Taper length and end attachment are not dimensioned."
+      ]
+    },
+    {
+      "id": "policar:P060",
+      "revision": 1,
+      "name": "End border · right",
+      "manufacturerSku": "P060-6",
+      "category": "End borders",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P060.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          90,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "counterpart",
+        "pieceId": "policar:P059"
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Rounded black end cap, drawn from catalogue photographs. Taper length and end attachment are not dimensioned."
+      ]
+    },
+    {
+      "id": "policar:P006",
+      "revision": 1,
+      "name": "Ninco adapter",
+      "manufacturerSku": "P006-2",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P006.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          179,
+          179
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry",
+          "Exact slot routes and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 179,
+        "policarWidthMm": 179
+      },
+      "notes": [
+        "Published length and Policar width retained. Foreign-end slot positions and connector outline unresolved; picture is schematic."
+      ],
+      "endpointSystems": [
+        "policar-modern",
+        "ninco"
+      ]
+    },
+    {
+      "id": "policar:P046",
+      "revision": 1,
+      "name": "Polistil / Fleischmann adapter",
+      "manufacturerSku": "P046-2",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P046.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          61.4,
+          179
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry",
+          "Exact slot routes and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 61.4,
+        "policarWidthMm": 179
+      },
+      "notes": [
+        "Published length and Policar width retained. Foreign-end slot positions and connector outline unresolved; picture is schematic."
+      ],
+      "endpointSystems": [
+        "policar-modern",
+        "polistil-fleischmann-legacy"
+      ]
+    },
+    {
+      "id": "policar:P027",
+      "revision": 1,
+      "name": "Analogue crossover · 358 mm",
+      "manufacturerSku": "P027-2",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "policar-analogue"
+      ],
+      "asset": "assets/P027.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          358,
+          179
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry",
+          "Exact slot routes and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 358,
+        "widthMm": 179
+      },
+      "notes": [
+        "Passive slot crossover. Curved transition routes are illustrative; do not substitute straight-piece lane lengths."
+      ]
+    },
+    {
+      "id": "policar:P090",
+      "revision": 1,
+      "name": "oXigen double lane changer · 716 mm",
+      "manufacturerSku": "P090-1",
+      "category": "Digital track",
+      "kind": "assembly",
+      "systems": [
+        "policar-oxigen"
+      ],
+      "asset": "assets/P090.svg",
+      "physicalTrackPieces": 2,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          716,
+          179
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Sensor and flipper travel direction must be preserved."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry",
+          "Exact slot routes and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 716,
+        "widthMm": 179
+      },
+      "notes": [
+        "Two standard-length road sections form one retail lane-changer assembly. Branch curves, sensors and flippers are illustrative."
+      ]
+    },
+    {
+      "id": "policar:P098",
+      "revision": 1,
+      "name": "Dead-strip straight with cables · 179 mm",
+      "manufacturerSku": "P098-1",
+      "category": "Timing and power",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P098.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          179,
+          207
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry",
+          "Exact slot routes and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "roadLengthMm": 179,
+        "roadWidthMm": 179
+      },
+      "notes": [
+        "Slot interruptions and cable exits illustrated. Cable envelope and sensing breaks not fully dimensioned."
+      ]
+    },
+    {
+      "id": "policar:P015",
+      "revision": 1,
+      "name": "Analogue powerbase · lanes 1–2",
+      "manufacturerSku": "P015-1",
+      "category": "Timing and power",
+      "kind": "assembly",
+      "systems": [
+        "policar-analogue"
+      ],
+      "asset": "assets/P015.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          179,
+          309
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Device location, wiring and lane identities must be preserved."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry",
+          "Exact slot routes and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "roadLengthMm": 179
+      },
+      "notes": [
+        "2-lane assembly shown as in the catalogue photo. Complete housing footprint, component count and route definitions are unresolved; displayed dimensions must not be used for room-fit checks."
+      ],
+      "displayLaneCount": 2
+    },
+    {
+      "id": "policar:P016",
+      "revision": 1,
+      "name": "Analogue powerbase · lanes 3–4",
+      "manufacturerSku": "P016-1",
+      "category": "Timing and power",
+      "kind": "assembly",
+      "systems": [
+        "policar-analogue"
+      ],
+      "asset": "assets/P016.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          179,
+          488
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Device location, wiring and lane identities must be preserved."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry",
+          "Exact slot routes and connectivity"
+        ]
+      },
+      "publishedDimensions": {
+        "roadLengthMm": 179
+      },
+      "notes": [
+        "4-lane assembly shown as in the catalogue photo. Complete housing footprint, component count and route definitions are unresolved; displayed dimensions must not be used for room-fit checks."
+      ],
+      "displayLaneCount": 4
+    },
+    {
+      "id": "policar:P096",
+      "revision": 1,
+      "name": "Bluetooth lap counter · 2 lanes",
+      "manufacturerSku": "P096-1",
+      "category": "Timing and power",
+      "kind": "assembly",
+      "systems": [
+        "policar-timing"
+      ],
+      "asset": "assets/P096.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          179,
+          309
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Device location, wiring and lane identities must be preserved."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry",
+          "Exact slot routes and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "2-lane assembly shown as in the catalogue photo. Complete housing footprint, component count and route definitions are unresolved; displayed dimensions must not be used for room-fit checks."
+      ],
+      "displayLaneCount": 2
+    },
+    {
+      "id": "policar:P097",
+      "revision": 1,
+      "name": "Bluetooth lap counter · 4 lanes",
+      "manufacturerSku": "P097-1",
+      "category": "Timing and power",
+      "kind": "assembly",
+      "systems": [
+        "policar-timing"
+      ],
+      "asset": "assets/P097.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          179,
+          488
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "reason": "Device location, wiring and lane identities must be preserved."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry",
+          "Exact slot routes and connectivity"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "4-lane assembly shown as in the catalogue photo. Complete housing footprint, component count and route definitions are unresolved; displayed dimensions must not be used for room-fit checks."
+      ],
+      "displayLaneCount": 4
+    },
+    {
+      "id": "policar:P020",
+      "revision": 1,
+      "name": "White triple-rail guardrail · 250 mm",
+      "manufacturerSku": "P020-10",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P020.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          250,
+          58
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 250
+      },
+      "notes": [
+        "Side elevation for identification; height, feet and occupied plan-view envelope are unverified. Separate from the black borders."
+      ]
+    },
+    {
+      "id": "policar:P020g",
+      "revision": 1,
+      "name": "Grey triple-rail guardrail · 250 mm",
+      "manufacturerSku": "P020g-10",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P020g.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          250,
+          58
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {
+        "lengthMm": 250
+      },
+      "notes": [
+        "Side elevation for identification; height, feet and occupied plan-view envelope are unverified. Separate from the black borders."
+      ]
+    },
+    {
+      "id": "policar:P073",
+      "revision": 1,
+      "name": "Flexible barrier and clips · 1 metre",
+      "manufacturerSku": "P073-6",
+      "category": "Accessories",
+      "kind": "accessory-set",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P073.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          350,
+          55
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {
+        "barrierLengthMm": 1000
+      },
+      "notes": [
+        "Catalogue specifies use without borders. Shortened side-view symbol; installed curvature, support footprint and clip count unresolved."
+      ]
+    },
+    {
+      "id": "policar:P010",
+      "revision": 1,
+      "name": "Bridge support set",
+      "manufacturerSku": "P010-4",
+      "category": "Accessories",
+      "kind": "accessory-set",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P010.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": null,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "side-view-identification",
+        "bounds": [
+          0,
+          0,
+          280,
+          139
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Blue beams on black pillars, following catalogue photo. Support hardware only: does not add road or lane length. Height, span and constituent counts unresolved."
+      ]
+    },
+    {
+      "id": "policar:P007",
+      "revision": 1,
+      "name": "Ninco adapter spare clip",
+      "manufacturerSku": "P007-4",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P007.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "identification-icon",
+        "bounds": [
+          0,
+          0,
+          60,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Schematic hardware symbol based on the catalogue. Size and mounting envelope are not measured."
+      ]
+    },
+    {
+      "id": "policar:P074",
+      "revision": 1,
+      "name": "Straight locking clip",
+      "manufacturerSku": "P074-10",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P074.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "identification-icon",
+        "bounds": [
+          0,
+          0,
+          60,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Schematic hardware symbol based on the catalogue. Size and mounting envelope are not measured."
+      ]
+    },
+    {
+      "id": "policar:P075",
+      "revision": 1,
+      "name": "Curve locking clip",
+      "manufacturerSku": "P075-10",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P075.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "identification-icon",
+        "bounds": [
+          0,
+          0,
+          60,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Schematic hardware symbol based on the catalogue. Size and mounting envelope are not measured."
+      ]
+    },
+    {
+      "id": "policar:P076",
+      "revision": 1,
+      "name": "Intersection locking clip",
+      "manufacturerSku": "P076-20",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "policar-modern"
+      ],
+      "asset": "assets/P076.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "illustrative-only",
+        "representation": "identification-icon",
+        "bounds": [
+          0,
+          0,
+          60,
+          60
+        ],
+        "units": "illustrative-coordinate-units",
+        "connectorArtwork": "Schematic tongues, clips and recesses; excluded from usable road dimensions."
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalBorderFit": false,
+        "nominalLaneLength": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-accessory",
+        "note": "Ordinary pieces may be reoriented; preserve endpoint and lane ordering."
+      },
+      "evidence": {
+        "sources": [
+          "geometry-2023",
+          "catalogue-2025",
+          "manufacturer-track"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Full occupied outline and attachment geometry"
+        ]
+      },
+      "publishedDimensions": {},
+      "notes": [
+        "Schematic hardware symbol based on the catalogue. Size and mounting envelope are not measured."
+      ]
+    }
+  ],
+  "products": [
+    {
+      "sku": "P008-4",
+      "name": "Two-lane straight · 358 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P008",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P023-4",
+      "name": "Two-lane straight · 179 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P023",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P024-4",
+      "name": "Two-lane straight · 61.4 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P024",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P091-4",
+      "name": "Single-lane straight · 179 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P091",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P092-4",
+      "name": "Single-lane straight · 61.4 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P092",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P009-4",
+      "name": "R1 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "policar:P009",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P013-4",
+      "name": "R1 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P013",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P014-2",
+      "name": "R2 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "policar:P014",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P043-2",
+      "name": "R2 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P043",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P044-2",
+      "name": "R3 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P044",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P045-2",
+      "name": "R4 curve · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P045",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P077-4",
+      "name": "R5 curve · 11.25°",
+      "contents": [
+        {
+          "pieceId": "policar:P077",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P002-6",
+      "name": "Straight border · 179 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P002",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P061-6",
+      "name": "Straight border · 61.4 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P061",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P051-6",
+      "name": "R1 inner border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P051",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P053-6",
+      "name": "R1 outer border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P053",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P052-6",
+      "name": "R2 inner border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P052",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P054-6",
+      "name": "R2 outer border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P054",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P055-6",
+      "name": "R3 inner border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P055",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P056-6",
+      "name": "R3 outer border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P056",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P057-6",
+      "name": "R4 inner border · 22.5°",
+      "contents": [
+        {
+          "pieceId": "policar:P057",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P058-6",
+      "name": "R4 outer border · angle disputed",
+      "contents": [
+        {
+          "pieceId": "policar:P058",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P071-6",
+      "name": "R5 inner border · 11.25°",
+      "contents": [
+        {
+          "pieceId": "policar:P071",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P072-6",
+      "name": "R5 outer border · 11.25°",
+      "contents": [
+        {
+          "pieceId": "policar:P072",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P059-6",
+      "name": "End border · left",
+      "contents": [
+        {
+          "pieceId": "policar:P059",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P060-6",
+      "name": "End border · right",
+      "contents": [
+        {
+          "pieceId": "policar:P060",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P006-2",
+      "name": "Ninco adapter",
+      "contents": [
+        {
+          "pieceId": "policar:P006",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P046-2",
+      "name": "Polistil / Fleischmann adapter",
+      "contents": [
+        {
+          "pieceId": "policar:P046",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P027-2",
+      "name": "Analogue crossover · 358 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P027",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P090-1",
+      "name": "oXigen double lane changer · 716 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P090",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": [
+        "One assembled product; two road sections. Keep purchase quantity separate from physical road count."
+      ]
+    },
+    {
+      "sku": "P098-1",
+      "name": "Dead-strip straight with cables · 179 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P098",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P015-1",
+      "name": "Analogue powerbase · lanes 1–2",
+      "contents": [
+        {
+          "pieceId": "policar:P015",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P016-1",
+      "name": "Analogue powerbase · lanes 3–4",
+      "contents": [
+        {
+          "pieceId": "policar:P016",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P096-1",
+      "name": "Bluetooth lap counter · 2 lanes",
+      "contents": [
+        {
+          "pieceId": "policar:P096",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P097-1",
+      "name": "Bluetooth lap counter · 4 lanes",
+      "contents": [
+        {
+          "pieceId": "policar:P097",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P020-10",
+      "name": "White triple-rail guardrail · 250 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P020",
+          "quantity": 10
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P020g-10",
+      "name": "Grey triple-rail guardrail · 250 mm",
+      "contents": [
+        {
+          "pieceId": "policar:P020g",
+          "quantity": 10
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P073-6",
+      "name": "Flexible barrier and clips · 1 metre",
+      "contents": [
+        {
+          "pieceId": "policar:P073",
+          "quantity": 6
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P010-4",
+      "name": "Bridge support set",
+      "contents": [
+        {
+          "pieceId": "policar:P010",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P007-4",
+      "name": "Ninco adapter spare clip",
+      "contents": [
+        {
+          "pieceId": "policar:P007",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P074-10",
+      "name": "Straight locking clip",
+      "contents": [
+        {
+          "pieceId": "policar:P074",
+          "quantity": 10
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P075-10",
+      "name": "Curve locking clip",
+      "contents": [
+        {
+          "pieceId": "policar:P075",
+          "quantity": 10
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    },
+    {
+      "sku": "P076-20",
+      "name": "Intersection locking clip",
+      "contents": [
+        {
+          "pieceId": "policar:P076",
+          "quantity": 20
+        }
+      ],
+      "sourceIds": [
+        "manufacturer-track",
+        "catalogue-2025"
+      ],
+      "notes": []
+    }
+  ],
+  "precisionPolicy": {
+    "illustrationsAreNotGeometry": true,
+    "exactFitAllowed": false,
+    "unknownLength": null,
+    "unknownCount": null,
+    "nominalLengthsMustBeLabelled": true
+  },
+  "outstanding": [
+    "Resolve P058 angle: 11.25° in PDFs versus 22.5° on website",
+    "Confirm exact slot offsets and inter-module slot spacing",
+    "Document connector, cap, housing, guardrail and support envelopes",
+    "Document special lane routes and assembly component inventories",
+    "Add P070 after obtaining a clear assembly reference"
+  ]
+}

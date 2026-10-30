@@ -1,0 +1,123 @@
+{
+  "definition": {
+    "name": "Custom curve — 100 mm lane spacing",
+    "type": "curve",
+    "innerRadiusMm": 200,
+    "angleDeg": 60,
+    "widthMm": 198,
+    "laneCount": 2,
+    "laneSpacingMm": 100
+  },
+  "geometry": {
+    "outlineSvgPath": "M 0 -398 A 398 398 0 0 1 344.678111 -199 L 173.205081 -100 A 200 200 0 0 0 0 -200 Z",
+    "boundsMm": [
+      0,
+      -398,
+      344.678111,
+      298
+    ],
+    "lanePaths": [
+      {
+        "id": "lane-1",
+        "start": [
+          0,
+          -249
+        ],
+        "end": [
+          215.640326,
+          -124.5
+        ],
+        "segments": [
+          {
+            "type": "arc",
+            "center": [
+              0,
+              0
+            ],
+            "radiusMm": 249,
+            "startAngleDeg": -90,
+            "sweepDeg": 60
+          }
+        ],
+        "lengthMm": 260.7521902479528,
+        "d": "M 0 -249 A 249 249 0 0 1 215.640326,-124.5"
+      },
+      {
+        "id": "lane-2",
+        "start": [
+          0,
+          -349
+        ],
+        "end": [
+          302.242866,
+          -174.5
+        ],
+        "segments": [
+          {
+            "type": "arc",
+            "center": [
+              0,
+              0
+            ],
+            "radiusMm": 349,
+            "startAngleDeg": -90,
+            "sweepDeg": 60
+          }
+        ],
+        "lengthMm": 365.4719453676126,
+        "d": "M 0 -349 A 349 349 0 0 1 302.242866,-174.5"
+      }
+    ],
+    "connectors": [
+      {
+        "id": "a",
+        "position": [
+          0,
+          -299
+        ],
+        "outwardAngleDeg": 180,
+        "lanes": [
+          {
+            "pathId": "lane-1",
+            "position": [
+              0,
+              -249
+            ]
+          },
+          {
+            "pathId": "lane-2",
+            "position": [
+              0,
+              -349
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "position": [
+          258.941596,
+          -149.5
+        ],
+        "outwardAngleDeg": 60,
+        "lanes": [
+          {
+            "pathId": "lane-1",
+            "position": [
+              215.640326,
+              -124.5
+            ]
+          },
+          {
+            "pathId": "lane-2",
+            "position": [
+              302.242866,
+              -174.5
+            ]
+          }
+        ]
+      }
+    ],
+    "centrelineLengthMm": 313.1120678077827
+  }
+}

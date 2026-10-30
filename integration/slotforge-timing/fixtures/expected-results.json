@@ -1,0 +1,76 @@
+[
+  {
+    "file": "01-closed-oval.slotforge.json",
+    "valid": true,
+    "pieces": 18,
+    "closed": true,
+    "routeLengthsMm": [
+      5525.751918948771,
+      4897.433388230816
+    ],
+    "alternateRoutes": 0,
+    "profile": {
+      "speed": 1200,
+      "acceleration": 1300,
+      "brake": 2200,
+      "corner": 0.57,
+      "drift": 10
+    }
+  },
+  {
+    "file": "02-reflected-oval.slotforge.json",
+    "valid": true,
+    "pieces": 18,
+    "closed": true,
+    "routeLengthsMm": [
+      5525.751918948771,
+      4897.433388230816
+    ],
+    "alternateRoutes": 0,
+    "profile": {
+      "speed": 1800,
+      "acceleration": 2200,
+      "brake": 3200,
+      "corner": 0.68,
+      "drift": 16
+    }
+  },
+  {
+    "file": "03-open-layout.slotforge.json",
+    "valid": true,
+    "pieces": 17,
+    "closed": false,
+    "routeLengthsMm": [],
+    "alternateRoutes": 0,
+    "profile": {
+      "speed": 1200,
+      "acceleration": 1300,
+      "brake": 2200,
+      "corner": 0.57,
+      "drift": 10
+    }
+  },
+  {
+    "file": "04-lane-changer.slotforge.json",
+    "valid": true,
+    "pieces": 18,
+    "closed": true,
+    "routeLengthsMm": [
+      5525.751918948771,
+      4897.433388230816
+    ],
+    "alternateRoutes": 2,
+    "profile": {
+      "speed": 1200,
+      "acceleration": 1300,
+      "brake": 2200,
+      "corner": 0.57,
+      "drift": 10
+    }
+  },
+  {
+    "file": "05-invalid-dimensions.slotforge.json",
+    "valid": false,
+    "expected": "Reject negative straight length before changing database state"
+  }
+]
