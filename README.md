@@ -4,13 +4,76 @@
 
 ### Design it. Build it. Race it.
 
-Turn the space you have into the circuit you want. **SlotForge Track Builder** is a visual slot-car track planner that combines physical piece geometry with a flexible drag-and-snap editor. Plan your next layout, explore a live preview, and take a clear parts list to the real build.
+Plan your next slot-car circuit before building it for real. Choose track pieces, snap them together and see how the layout fits your available space.
 
-Go beyond the supplied catalogues: create custom pieces using your own dimensions, lane spacing and colours, with matching icons and track artwork generated automatically from their geometry. Organise them into your own track packs to reuse and share. Built for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming), the Builder exports your track design, slot routes, timing-line settings and tuned car-animation profile in a single `.slotforge.json` file.
+Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Current version: 0.3.0 · Runs in your browser · No account required**
+**Version 0.3.0 · Runs in your browser · Saves files on your computer · No account needed**
 
-[Download the complete app](downloads/SlotForge-Track-Builder-v0.3.0-complete.zip) · [Getting started](START-HERE.txt) · [Detailed notes](README.txt) · [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming)
+**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.0/SlotForge-Track-Builder-v0.3.0-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.0)
+
+## Install and start
+
+1. Download the ZIP above and **extract it completely**.
+2. Open the extracted folder and run the installer for your system:
+
+| System | File to run |
+| --- | --- |
+| Windows | Double-click **Install Windows.cmd** |
+| macOS | Open **Install macOS.command** |
+| Linux | Run `sh "Install Linux.sh"` in the extracted folder |
+
+3. The installer opens the app in your browser. Choose a track pack and start building!
+
+Setup needs an internet connection the first time. It installs the small local helper automatically—you do not need to install Node.js or other developer tools yourself. After setup, the app works offline.
+
+**Next time:** use the **SlotForge Track Builder** desktop shortcut on Windows. On macOS/Linux, use **Start SlotForge** in the installed folder; the installer tells you where that folder is.
+
+Windows installation has been tested. **The macOS and Linux installers are available for testing; they have not yet been tested on those systems.**
+
+## Will my work stay saved?
+
+**Yes. When you use the installed launcher, your layouts and custom packs are saved as files on your computer.** Closing the browser, restarting your computer or clearing browser data does not remove those files.
+
+- **Save to Library** keeps a named track in your Track Library.
+- Custom packs and your current drawing are saved locally as you work.
+- The app keeps previous workspace versions as backups.
+- Installing an update keeps your saved data.
+
+Click **Storage** at the bottom of the app to see where your files live or download a complete workspace backup. Keep a backup on another disk or computer for protection against device loss.
+
+**Use the installed launcher for these disk saves.** Opening the `.html` file directly uses browser storage instead. The footer tells you which mode is active: **Storage: disk** or **Storage: browser**.
+
+## Already have tracks in the older app?
+
+1. Open your original app tab and choose **Storage → Download workspace backup**.
+2. Open the installed app and choose **Storage → Import workspace transfer**.
+3. Choose the backup file, then **Reload imported workspace**.
+
+Your imported tracks and packs are added to the library. Existing work is kept. If the older app has no Storage button, use its JSON export buttons to transfer your tracks and custom packs individually.
+
+## What can I do with it?
+
+- **Build a layout:** drag, snap, rotate, mirror, duplicate and select groups of pieces.
+- **Check your available space:** create a rectangle with exact dimensions, then move, resize or lock it.
+- **Plan the physical build:** see piece counts, borders, footprint and calculated lane lengths for supported closed circuits.
+- **Create your own packs:** add custom straights, matching curves, borders and lane changers with generated artwork.
+- **Watch a live preview:** tune car speed, acceleration, braking, cornering and visual drift.
+- **Export your design:** download a PDF report, PNG picture, CSV parts list or SlotForge layout file.
+
+PDFs are generated inside the app. Choose **Portrait** or **Landscape**, then **Download PDF**—there is no browser print dialog.
+
+## Included track packs
+
+Carrera Evolution / Digital, Scalextric Sport / Digital, Policar, ScaleAuto Pro Track, Ninco Classic / N-Digital and SCX Universal / Classic / Advance.
+
+Support varies by piece. Some special pieces have reference artwork only; **SCX is currently reference-only**. The app uses nominal or user-entered dimensions and does not check collisions, bridges or vertical clearance. The space guide is a visual planning aid.
+
+## SlotForge Timing
+
+Choose **Export to SlotForge** to download a `.slotforge.json` file. It contains the layout, lane routes, timing-line settings and your tuned car-animation profile for the Timing integration.
+
+Receiving-side support is being coordinated with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming). Preview animation is illustrative; real sensors remain responsible for laps and race results.
 
 ## Screenshots
 
@@ -25,71 +88,19 @@ Go beyond the supplied catalogues: create custom pieces using your own dimension
 
 Click any screenshot to view it at full size.
 
-## From an idea to a physical layout
 
-- **Build by feel.** Drag, snap, rotate, reflect and duplicate pieces. Select several at once, arrange their drawing order and undo changes.
-- **Plan around your room or table.** Add a space guide with exact length and width. Move, resize or scale it, then lock it so it stays out of the way while building.
-- **Keep the geometry honest.** Piece dimensions, lane spacing, matching curve radii and borders determine the layout. See parts counts, footprint, track centreline length and per-lane lengths for supported closed circuits.
-- **Make your own track system.** Create named custom packs with straights, matching R1/R2/R3 curves, borders and lane changers. Save them to the pack library, then import or export them as data-only plugins.
-- **See it in motion.** Preview two cars following the slots. Tune speed, acceleration, braking, cornering and visual drift with a shared animation profile.
-- **Keep your favourites.** Save independent layouts in the Track Library, including their timing settings, tune profile and space guide.
-- **Take the design with you.** Export a printer-friendly PDF report, a transparent PNG, a CSV parts list or a complete `.slotforge.json` layout for the SlotForge Timing integration. Choose the current track or a saved library track.
+## Help and updates
 
-## Supplied track packs
+To update, choose **Storage → Stop local app** in the old copy and close that tab. Download the latest release and run its installer again. Your saved data folder is kept.
 
-| Track system | Pack |
-| --- | --- |
-| Carrera | Evolution / Digital |
-| Scalextric | Sport / Digital |
-| Policar | Policar track system |
-| ScaleAuto | Pro Track |
-| Ninco | Classic / N-Digital |
-| SCX | Universal / Classic / Advance reference catalogue |
+[Report a problem or suggest a feature](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) · [More setup details](START-HERE.txt)
 
-Each pack has matching artwork and source notes. Support varies by piece: supported geometry can snap and contribute to route calculations; incomplete or special pieces can be placed as reference pictures. **SCX is currently reference-only.**
+<details>
+<summary>For developers and technical details</summary>
 
-## Get started
+[Installer and storage details](installer/README.txt) · [Timing integration specification](integration/slotforge-timing/EXPORT-SPEC-1.0.0-draft.2.txt) · [Historical development notes](README.txt)
 
-1. [Download the complete ZIP](downloads/SlotForge-Track-Builder-v0.3.0-complete.zip) and extract it fully.
-2. Run **Install Windows.cmd**, **Install macOS.command**, or `sh "Install Linux.sh"`.
-3. Use the installed **Start SlotForge** launcher to open the app in your browser.
-
-Setup copies the app into your own application-data folder and supplies a private local runtime. Its first download is verified against the official Node.js release checksum. There is no account, npm installation, administrator requirement or global Node setup. After installation, the app works offline.
-
-The installer places files; a small local helper lets the browser read and write the known data folder. The interface stays browser-based. Windows setup and the browser storage flow are tested; **native macOS and Linux installation testing is still pending**. The scripts select x64 or arm64 runtimes for all three systems. See [setup details](START-HERE.txt).
-
-## Your files stay on your disk
-
-Installed copies save the current drawing, Track Library and custom packs to **`data/workspace.json`**, with up to 20 previous workspace versions in `data/backups/`. The data folder sits beside the versioned application files, so an update can replace the app while keeping your work.
-
-| System | Default installation folder |
-| --- | --- |
-| Windows | `%LOCALAPPDATA%\SlotForgeTrackBuilder` |
-| macOS | `~/Library/Application Support/SlotForgeTrackBuilder` |
-| Linux | `~/.local/share/SlotForgeTrackBuilder` (or `$XDG_DATA_HOME`) |
-
-The footer's **Storage** button shows the exact data folder and provides a complete workspace backup/transfer. Clearing browser data or using another browser does not clear the installed disk workspace. Back up the data folder to another disk for protection against device or disk loss.
-
-To move older browser saves, open **Storage → Download workspace backup** in the original tab, then **Storage → Import workspace transfer** in the installed app. Older versions without Storage can export individual track and custom-pack JSON files. Imported work is merged, with the old current drawing added to the library rather than replacing the new current drawing.
-
-Opening **SlotForge Track Builder.html** directly still works as a browser-only fallback; it uses browser storage and is labelled accordingly. Use the installed launcher for automatic file saving. Developers with Node.js can run `node app/serve.cjs`; the local server uses the same default disk data location. Details and environment overrides are in [the installer notes](installer/README.txt).
-
-## SlotForge Timing integration
-
-The `.slotforge.json` export includes the design, embedded piece definitions, validated slot routes, nominal lane lengths, timing-line settings, stable identities and a shared animation profile. The receiving application can regenerate the drawing without a separate PNG.
-
-- Layout envelope: **`slotforge.layout` version 1**.
-- Integration contract: **`1.0.0-draft.2`**.
-- [Base specification](integration/slotforge-timing/EXPORT-SPEC-1.0.0-draft.1.txt) and [draft.2 additions](integration/slotforge-timing/EXPORT-SPEC-1.0.0-draft.2.txt).
-- [Receiving-side workflow](integration/slotforge-timing/TIMING-IMPORTER-CHANGES.txt).
-
-Receiving-side support is coordinated with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming). The animation profile shapes estimated movement; real sensor crossings remain authoritative for laps and race results.
-
-## Current boundaries
-
-This is an early desktop-browser iteration. Dimensions are nominal or user-entered planning values. The editor does not certify physical fit or detect collisions, bridges or vertical clearance. The space guide is a visual aid. Preview and lane calculations follow a single supported closed circuit using straight-through lane-changer routes; digital switching and pit-route simulation are outside the current scope. PDF export generates the file directly in the app, with portrait A4 as the default and an optional landscape layout.
-
-## Work on the project
+### Development notes
 
 The app uses plain HTML, CSS and JavaScript. PDF generation uses bundled jsPDF and Noto Sans fonts, so it works offline without an npm installation or online PDF service. See [third-party notices](THIRD-PARTY-NOTICES.txt).
 
@@ -112,3 +123,5 @@ node integration/slotforge-timing/check-fixtures.cjs
 The v0.3.0 package was checked with **105 passing source tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
 
 Found a rough edge or have an idea for a new piece? [Open an issue](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) with the track system, piece details and a small example layout where possible.
+
+</details>

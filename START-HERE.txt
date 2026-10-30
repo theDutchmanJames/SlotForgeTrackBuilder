@@ -1,88 +1,51 @@
-SLOTFORGE TRACK BUILDER — BROWSER APP WITH DISK STORAGE v0.3.0
-30 October 2026
+SLOTFORGE TRACK BUILDER v0.3.0
 
-INSTALL ONCE
-1. Extract the entire ZIP. Keep its supporting folders together during setup.
-2. Run the installer for your operating system:
-   Windows: double-click Install Windows.cmd.
-   macOS: double-click Install macOS.command (or run it with sh in Terminal).
-   Linux: run sh "Install Linux.sh" in the extracted folder.
-3. The installer copies the app to your own application-data folder, places a
-   private local runtime alongside it, and opens the app in your browser.
-   The first install downloads Node.js v24.22.2 from nodejs.org and checks its
-   official SHA-256 hash. No global Node/npm installation or administrator
-   access is needed. Afterwards the app and PDF export work offline.
+INSTALL
+1. Extract the entire ZIP into a folder.
+2. Run the installer for your system:
+   Windows: Install Windows.cmd
+   macOS:   Install macOS.command
+   Linux:   sh "Install Linux.sh"
+3. The app opens in your browser. Choose a track pack and start building.
 
-START AGAIN
-Windows: use the SlotForge Track Builder desktop shortcut, or Start SlotForge.cmd
-inside the installed folder. macOS: Start SlotForge.command. Linux: Start SlotForge.sh.
-A Linux .desktop launcher is also supplied inside the installed folder.
-Keep using that launcher rather than double-clicking the app's HTML file.
-The browser should show "Storage: disk" at the bottom and "Saved to disk" after
-changes. A small private process runs locally while you use the app.
-Storage > Stop local app stops an installed launcher's process when finished.
+Setup needs internet access the first time. It installs its own local helper;
+you do not need to install Node.js or developer tools. Afterwards it works offline.
+Windows setup is tested. Native macOS/Linux testing is still pending.
 
-WHERE THE FILES LIVE
-Windows: %LOCALAPPDATA%\SlotForgeTrackBuilder
-macOS: ~/Library/Application Support/SlotForgeTrackBuilder
-Linux: ${XDG_DATA_HOME:-~/.local/share}/SlotForgeTrackBuilder
-Open Storage in the app to see the exact data path.
+OPEN IT AGAIN
+Windows: use the SlotForge Track Builder desktop shortcut.
+macOS/Linux: open Start SlotForge in the installed folder. Setup prints its location.
+Use the installed launcher for disk saving. Opening the HTML directly uses browser
+storage instead; the footer clearly shows the current storage mode.
 
-The installed folder contains:
-  app/                 Versioned application files.
-  runtime/             Private local Node.js executable and license.
-  data/workspace.json  Current drawing, saved Track Library and custom packs.
-  data/backups/        Up to 20 previous successful workspace versions.
-  Start SlotForge...   Launcher for this installation.
+YOUR SAVED WORK
+- Save to Library keeps a named track in your Track Library.
+- Your current drawing and custom packs are saved locally as you work.
+- Closing the browser or restarting your computer does not remove disk saves.
+- App updates keep your data folder. Previous workspace versions are backed up.
+Click Storage at the bottom to see the folder or download a complete backup.
+Keep a backup on another disk for protection against device loss.
 
-The installer copies files; the local helper gives the browser access to the
-known data folder. An HTML page alone cannot automatically write arbitrary disk
-folders. No accounts, remote database or cloud service are involved.
+MOVE OLDER BROWSER SAVES
+In the original app tab: Storage > Download workspace backup.
+In the installed app: Storage > Import workspace transfer, then Reload imported
+workspace. Imported tracks and packs are added; existing work is kept.
+If the older version has no Storage button, export and import individual track
+and custom-pack JSON files using its existing buttons instead.
 
-UPDATES AND BACKUPS
-Run a newer installer's script to the same location. It changes the active app
-version and preserves data/. Old app versions are kept rather than deleted.
-Clearing browser data, using another browser, or changing the local port does
-not clear the disk workspace. Back up data/ to another disk, or choose Storage >
-Download workspace backup. Device or disk loss still requires your own backup.
-The workspace supports 200 saved tracks, 500 custom pieces and a 50 MiB file.
-Saved layouts are limited to 500 placed pieces and a 5 MiB layout payload.
-Conflicting changes from another window produce an error instead of overwriting.
+PDF EXPORT
+Choose Export to PDF, select Portrait or Landscape, then Download PDF.
+The file is generated in the app; no browser print dialog is needed.
 
-MOVE EXISTING BROWSER SAVES
-In the old browser tab, open Storage > Download workspace backup. In the installed
-copy, choose Storage > Import workspace transfer, then Reload imported workspace.
-Imported tracks and packs are merged; current work is added as a library track
-rather than replacing your current drawing. Re-importing the same transfer is safe.
-For an older app version without Storage, use its existing JSON exports for each
-track and custom pack, or update the app files in the same old folder and refresh
-that original tab to get the Storage transfer controls. Keep the original browser
-saves until the imported tracks and packs have been checked.
+UPDATE
+Choose Storage > Stop local app in the old copy and close that tab.
+Download the newest release, extract it, then run its installer again.
+Do not delete the saved data folder.
 
-DIRECT HTML / DEVELOPMENT MODE
-SlotForge Track Builder.html still opens the browser-only app. That mode uses
-browser storage and shows "Storage: browser"; moving files alone does not enable
-disk saving. Export existing browser work before changing where you open it.
-With a current Node runtime you can run node app/serve.cjs from the source folder;
-it uses the same default user-data location as an installation. SLOTFORGE_HOME can
-select another dedicated installation folder. SLOTFORGE_DATA_DIR selects a separate
-data folder for the development server only. SLOTFORGE_PORT overrides its port.
+TROUBLESHOOTING
+If the browser does not open, run the installed Start SlotForge launcher again.
+If the footer says Storage: browser, open the installed launcher rather than HTML.
+If it says saving failed, export your work as JSON before reloading.
 
-PDF REPORTS
-Export to PDF generates the file directly in the app. Choose portrait or landscape,
-then Download PDF. No printer dialog or online PDF service is required.
-
-CHECKS AND PLATFORM STATUS
-Windows disk storage, browser UI and install/update flow are tested locally.
-macOS and Linux scripts target x64 and arm64; native testing is still needed.
-Windows x64 and arm64 runtimes are supported by the bootstrap selection.
-Modern OS versions capable of running Node.js 24 are required. Linux needs curl,
-tar and sha256sum or shasum; Alpine/musl distributions are not targeted here.
-Unsigned macOS scripts may require the user's normal OS approval to run.
-
-SOURCE TESTS (CURRENT NODE; NO NPM INSTALL)
-  node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs
-  node integration/slotforge-timing/check-fixtures.cjs
-Expected: 105 source tests and 15 integration fixtures pass.
-Rebuild with Python 3: python app/package-share.py
-See README.txt, installer/README.txt and app/validation.json for details.
+More installation, storage, recovery and developer details: installer/README.txt.
+Project and releases: https://github.com/theDutchmanJames/SlotForgeTrackBuilder
