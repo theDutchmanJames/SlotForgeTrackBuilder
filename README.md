@@ -8,9 +8,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.7 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.8 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.7/SlotForge-Track-Builder-v0.3.7-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.7)
+**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.8/SlotForge-Track-Builder-v0.3.8-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.8)
 
 ## Install and start
 
@@ -29,7 +29,7 @@ Setup needs an internet connection the first time. It installs the small local h
 
 **Next time:** use the **SlotForge Track Builder** desktop shortcut on Windows. On macOS/Linux, use **Start SlotForge** in the installed folder; the installer tells you where that folder is.
 
-**Appearance:** use the **Light / Dark** switch in the top-right corner. Light matches SlotForge Timing's warm grey and white style. Your choice is remembered in this browser and applies to the builder, library, piece editor and Track Pack galleries.
+**Appearance:** open **Settings → App Theme** in the top-right corner. Choose from eight themes matching SlotForge Timing, or choose **Custom** and set your own background, panels, text, quiet text, lines and accent colours. Changes appear immediately and are remembered in this browser. You can start a custom palette from any preset, and it stays available when you try other themes. The header also keeps the quick **Light / Dark** switch. Track artwork keeps its physical colours and PDF reports stay printer-friendly.
 
 If the browser does not open, Windows shows an error dialog with the local address. Launch details are saved in `data/launcher.log` inside your installed folder. macOS/Linux launchers print that location in the terminal. Run the latest installer again to repair an older shortcut; your saved data is kept.
 
@@ -156,7 +156,7 @@ The app uses plain HTML, CSS and JavaScript. PDF generation uses bundled jsPDF a
 Run the source tests with a current Node.js runtime:
 
 ```sh
-node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs
+node --test app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs
 node integration/slotforge-timing/check-fixtures.cjs
 ```
 

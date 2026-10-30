@@ -1,10 +1,14 @@
-SlotForge Track Builder — editor iteration (v0.3.7)
+SlotForge Track Builder — editor iteration (v0.3.8)
 
 APPEARANCE
-Use the Light / Dark switch in the top-right corner of the header.
-Light matches SlotForge Timing's warm grey backgrounds, white panels and red
-accent. Your choice is remembered in this browser, including when browsing
-Track Pack galleries. Track artwork keeps its original physical colours.
+Open Settings > App Theme in the top-right corner. Choose Dark, Light,
+Midnight blue, Forest green, Sunset orange, Violet, Carbon and yellow, or
+Ocean (light). Custom lets you choose background, panels, text, quiet text,
+lines and accent colours. Start from any preset and adjust it live. Custom
+colours stay available when you try other themes. Choices are remembered in
+this browser, including across Track Pack galleries. The quick Light / Dark
+switch remains in the header. Track artwork keeps its physical colours;
+PDF reports stay printer-friendly.
 
 LICENSE
 See LICENSE for the SlotForge Source-Available License 1.0. Personal, club and

@@ -311,9 +311,10 @@ async function exportSelectedTrack(format){
  const choice=exportChoice;exportButtons(true);try{const model=await XM.resolveSource(choice,()=>layout(),DL.get);if(choice!==exportChoice)return;if(!model.pieces.length)throw Error('Add pieces to this track before exporting.');showExportTrack(model);if(format==='pdf')openPdfReport(model.layout);else if(format==='slotforge')downloadTrack(model.layout);else if(format==='png')await exportPNG(model.layout);else if(format==='csv')exportCSV(model.layout);}catch(e){$('export-source-error').textContent=e.message;say(e.message,true);}finally{if(choice===exportChoice)exportButtons(false);}
 }
 function routeSection(){
- const section=['custom','plugins','export','library'].includes(location.hash.slice(1))?location.hash.slice(1):'builder';
+ const section=['custom','plugins','export','library','settings'].includes(location.hash.slice(1))?location.hash.slice(1):'builder';
  finishDrag(true);stop();document.body.dataset.section=section;
  $('builder-view').hidden=section!=='builder';document.querySelector('.projectbar').hidden=section!=='builder';$('custom-view').hidden=section!=='custom';$('export-view').hidden=section!=='export';$('plugins-view').hidden=section!=='plugins';$('library-view').hidden=section!=='library';
+ $('settings-view').hidden=section!=='settings';
  document.querySelectorAll('.sf-nav-link').forEach(a=>{if(a.dataset.section===section)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  if(section==='library')renderDesignLibrary();if(section==='custom'){renderPackControls();renderCustomLibrary();}if(section==='plugins')renderPlugins();
  if(section==='export'){renderPackControls();populateExportTracks();}

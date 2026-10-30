@@ -168,3 +168,11 @@ status labels while keeping manufacturer artwork intact. Remember the browser
 preference before the page is drawn; carry it across direct HTML page links.
 All 170 existing tests and 15 Timing fixtures pass. Layout and Timing versions
 are unchanged. The complete package now includes the project LICENSE.
+
+0.3.8 - App Theme settings
+Settings > App Theme adds all eight Timing presets and a custom palette with
+six colour roles. Copy any preset, edit live, retain custom colours when trying
+other themes and show contrast feedback. The header retains quick Light/Dark
+controls and gains a Settings link on every gallery. Preferences are per browser
+and separate from track geometry. Theme import/migration and portable-link
+validation have five focused tests; all 175 tests and 15 Timing fixtures pass.

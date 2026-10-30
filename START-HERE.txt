@@ -1,4 +1,4 @@
-SLOTFORGE TRACK BUILDER v0.3.7
+SLOTFORGE TRACK BUILDER v0.3.8
 
 INSTALL
 1. Extract the entire ZIP into a folder.

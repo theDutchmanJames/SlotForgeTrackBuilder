@@ -1,9 +1,9 @@
 {
-  "version": "0.3.7",
+  "version": "0.3.8",
   "date": "2026-10-30",
   "automated": {
-    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
-    "passed": 170,
+    "command": "node --test app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
+    "passed": 175,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -419,5 +419,21 @@
       "Visual checks used localhost; direct file navigation was not visually tested",
       "Native macOS/Linux installation remains untested"
     ]
+  },
+  "appThemeSettings": {
+    "notes": "APP-THEME.txt",
+    "newTests": 5,
+    "themePresets": 8,
+    "customColorRoles": 6,
+    "browserVerified": [
+      "Every preset selected; Midnight and Ocean visually checked",
+      "Custom begins with the current preset and changes the entire builder",
+      "Custom palette survives reload and gallery navigation",
+      "Copy Ocean into Custom reproduces its six colours",
+      "Low-contrast text produces visible feedback; restoring contrast clears it"
+    ],
+    "layoutEnvelope": 1,
+    "integrationContract": "1.0.0-draft.2",
+    "version": "0.3.8"
   }
 }

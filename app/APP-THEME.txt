@@ -1,0 +1,25 @@
+App Theme settings
+30 October 2026
+
+Settings > App Theme contains the eight SlotForge Timing presets and a custom
+palette. Presets use the shared stylesheet, with the Timing reference at commit
+3719f61b8918491c58e385b4c19778df68b2c71f. Custom exposes six colour roles and
+chooses white or black button text automatically. Contrast warnings identify
+text/background combinations that may be difficult to read.
+
+Custom starts from the current preset the first time it is selected. Use these
+colours explicitly replaces the custom palette with a selected preset. Choosing
+another theme or a quick header theme does not discard the custom palette.
+Colours apply while editing without rebuilding the controls or changing track
+geometry. Track artwork and PDF drawings retain their own colours.
+
+Appearance is saved in this browser under slotforge.appearance.v1. Existing
+slotforge.theme.v1 light/dark choices migrate automatically. It is separate
+from track files and the disk workspace: another browser can have its own
+theme, and clearing browser preferences can reset it. Same-origin windows
+follow theme changes. Direct HTML links carry a validated palette because
+file:// storage can be isolated by file. Unknown fields and non-hex colours
+are discarded; malformed custom URL data cannot replace the current palette.
+
+The Settings link is present in the builder, pack library and all ten galleries.
+The generated catalogue templates include the link and required theme scripts.
