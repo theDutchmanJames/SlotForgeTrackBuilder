@@ -1142,6 +1142,12 @@
       "physicalTrackPieces": 1,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "straight",
+        "widthMm": 180,
+        "lengthMm": 370,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",
@@ -1196,6 +1202,12 @@
       "physicalTrackPieces": 1,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "straight",
+        "widthMm": 180,
+        "lengthMm": 185,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",
@@ -1250,6 +1262,12 @@
       "physicalTrackPieces": 1,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "straight",
+        "widthMm": 180,
+        "lengthMm": 185,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",
@@ -1360,6 +1378,13 @@
       "physicalTrackPieces": 1,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "curve",
+        "widthMm": 180,
+        "innerRadiusMm": 180,
+        "angleDeg": 30,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",
@@ -1413,6 +1438,13 @@
       "physicalTrackPieces": 1,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "curve",
+        "widthMm": 180,
+        "innerRadiusMm": 360,
+        "angleDeg": 30,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",

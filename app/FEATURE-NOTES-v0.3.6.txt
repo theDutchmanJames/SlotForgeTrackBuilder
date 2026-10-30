@@ -1,0 +1,38 @@
+REFERENCE EDITOR REPAIRS - v0.3.6
+
+1. Planning edits keep the picture and magnets aligned.
+The reference editor now reprojects the road texture along/across the planning
+surface when its angle, radius, width or shape changes. Existing colours and
+markings follow the new surface. Unchanged embedded pictures stay untouched.
+Both handedness and transparent edges are preserved. The generated PNG travels
+with the layout and is used by the editor, PNG export and PDF drawing.
+
+2. Cancelling a pending reference placement really cancels it.
+Each dialog operation has a request token. Closing, cancelling or reopening the
+dialog invalidates older work. After image decoding, the app checks the token
+and dialog before changing the layout. Cancelled errors stay quiet and old
+operations cannot close or enable the controls of a newer dialog.
+
+3. Imported references without optional artwork remain editable.
+The editor no longer tries to load an undefined asset. It retains a filled
+reference/road fallback that can be selected, configured, saved and exported.
+Editing retains the piece's colour and reflection restriction. The preview
+image is hidden when no picture exists.
+
+Verification: 170 automated tests pass, including 15 added for these repairs.
+The original 15 Timing integration fixtures pass. New tests cover road/image
+coordinate round trips, the reproduced 60-to-90-degree endpoint mismatch,
+radius/width/type/handedness edits, pixel texture placement, transparent edges,
+unchanged-image reuse, missing images, malformed buffers, request cancellation,
+stale requests, current errors and blank-reference edits.
+
+Browser checks used isolated localhost:8191 with test-only saved data. A held
+image response was cancelled while Apply was disabled; releasing the image
+did not change the piece count. A reference without artwork was selected,
+given planning dimensions and saved. A Hybrid R1/60 curve was changed to 90
+degrees and attached to a straight: its picture and ends aligned. Reload and
+PDF preview retained the new artwork. No browser warnings/errors were captured.
+
+These are approximate planning images, not manufacturing fit verification.
+No guide slots, measured lap lengths or Timing routes are inferred from them.
+Layout envelope v1 and Timing contract 1.0.0-draft.2 remain unchanged.

@@ -1912,6 +1912,12 @@
       "physicalTrackPieces": 1,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "straight",
+        "widthMm": 76.2,
+        "lengthMm": 228.6,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",
@@ -1967,6 +1973,12 @@
       "physicalTrackPieces": 1,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "straight",
+        "widthMm": 76.2,
+        "lengthMm": 228.6,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",
@@ -2077,6 +2089,13 @@
       "physicalTrackPieces": null,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "curve",
+        "widthMm": 76.2,
+        "innerRadiusMm": 152.4,
+        "angleDeg": 45,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",
@@ -2132,6 +2151,13 @@
       "physicalTrackPieces": null,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "curve",
+        "widthMm": 76.2,
+        "innerRadiusMm": 228.6,
+        "angleDeg": 45,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",
@@ -2187,6 +2213,13 @@
       "physicalTrackPieces": 1,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "curve",
+        "widthMm": 68.2,
+        "innerRadiusMm": 8,
+        "angleDeg": 180,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",
@@ -2242,6 +2275,12 @@
       "physicalTrackPieces": null,
       "physicalAccessoryPieces": 0,
       "geometry": null,
+      "referencePlan": {
+        "type": "straight",
+        "widthMm": 76.2,
+        "lengthMm": 228.6,
+        "artworkPaddingMm": 6
+      },
       "preview": {
         "status": "reference-only",
         "representation": "top-view",

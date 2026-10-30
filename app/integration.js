@@ -1,6 +1,6 @@
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./core.js'));else root.SlotForgeIntegration=factory(root.Forge);})(typeof globalThis!=='undefined'?globalThis:this,function(F){
 'use strict';
-const VERSION='0.3.4',CONTRACT='1.0.0-draft.2';
+const VERSION='0.3.6',CONTRACT='1.0.0-draft.2';
 const compare=(a,b)=>a<b?-1:a>b?1:0;
 function canonical(v){if(Array.isArray(v))return '['+v.map(canonical).join(',')+']';if(v&&typeof v==='object')return '{'+Object.keys(v).filter(k=>v[k]!==undefined).sort().map(k=>JSON.stringify(k)+':'+canonical(v[k])).join(',')+'}';return JSON.stringify(v);}
 // Synchronous SHA-256 keeps offline browser autosave and Node exports identical.
@@ -60,7 +60,7 @@ function compatibility(pieces,defs,net,startFinish){
  if(components>1)add('disconnected-circuits','error','This integration supports one connected circuit only.');
  if(con.ambiguous.size)add('ambiguous-connections','error','More than one road matches a connector.');
  if(roads.length&&!net.closed&&!con.open.length&&components===1&&!con.ambiguous.size)add('unsupported-route-geometry','error',net.reason);
- if(pieces.some(p=>defs[p.definitionId].parameters.type==='reference'))add('reference-artwork','warning','Reference pictures have approximate display sizes and no slot routes. They count in inventory, but not road lengths, snapping or circuit closure.');
+ if(pieces.some(p=>defs[p.definitionId].parameters.type==='reference'))add('reference-artwork','warning','Reference pictures have approximate display sizes and no slot routes. They count in inventory, but not slot lengths or slot-circuit closure. Optional planning magnets only align estimated surfaces.');
  if(pieces.some(p=>defs[p.definitionId].parameters.laneChange))add('lane-changing-branches','warning','Branches are drawn and preserved; Live Tracker follows through routes. Digital switching and pit tracking are unsupported.');
  add('elevation-order-unavailable','warning','This is a flat drawing. Elevation, bridges and crossing order are not modelled.');
  if(!roads.some(p=>p.id===startFinish?.pieceId)||offsets(net,startFinish).length!==net.routes.length)add('start-finish-unset','warning','Set or confirm a timing line before Live Tracker playback in Timing.');

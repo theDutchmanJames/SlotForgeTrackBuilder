@@ -1,4 +1,18 @@
-SlotForge Track Builder — editor iteration (v0.3.4)
+SlotForge Track Builder — editor iteration (v0.3.6)
+
+REFERENCE EDITOR REPAIRS - v0.3.6
+Changing a reference road's planning shape reshapes its artwork so the pictured
+ends stay aligned with the magnets. Cancelling an image load cannot place a
+piece later. Imported references without artwork remain editable and show a
+simple road drawing. Existing saved work is preserved.
+
+APPROXIMATE REFERENCE PLANNING - v0.3.5
+Carrera Hybrid road pieces can be placed directly from the catalogue and snap
+at their approximate ends. Other reference pieces offer planning controls:
+enable approximate snapping, choose Straight or Curve, and adjust dimensions.
+Select a placed reference and choose Edit reference planning to change it.
+Visual layouts save to the Track Library and export to PDF/PNG with piece counts.
+Estimated magnets do not create slots, lap lengths or a physical-fit guarantee.
 
 REVIEW AND RELIABILITY FIXES - v0.3.4
 Saved-track updates protect the version opened in your window. If another

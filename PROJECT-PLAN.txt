@@ -144,3 +144,19 @@ running after failed autosave. Share editor/PNG/PDF artwork; retain imported
 connector families and explicit slot offsets when copying pieces. Repair stale
 partial locks, maximum-length import names, renamed pack labels and export retry.
 Layout v1 and Timing contract 1.0.0-draft.2 remain unchanged.
+
+0.3.5 - approximate reference-piece planning
+Reference artwork supports configurable straight/curve planning magnets.
+Hybrid roads have presets and one-click placement, preserving handed parts.
+Additional-pack road references also have approximate presets; other reference
+pieces expose dimensions and planning controls. Existing references can be
+edited to add magnets. Saved layouts and PDF/PNG/CSV exports preserve artwork
+and quantities. Approximate alignment remains separate from real slot routes,
+lap lengths and physical fit. Layout v1 / Timing draft.2 remain unchanged.
+
+0.3.6 - reference editor repairs
+Reproject picture textures when a planning surface changes, retaining road
+markings and aligned ends. Cancel stale image requests before any placement or
+save. Keep image-free references selectable and editable with a solid fallback.
+Guard old requests from changing a newer dialog's state. Added 15 regressions;
+layout v1 and Timing draft.2 are unchanged.

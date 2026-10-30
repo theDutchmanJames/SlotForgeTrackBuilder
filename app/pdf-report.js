@@ -19,16 +19,16 @@ function create(raw,diagram,{orientation='portrait',date=new Date().toLocaleDate
  text('SLOTFORGE  /  TRACK BUILDER',margin,15,8,true,muted);text(String(date),W-margin-doc.getTextWidth(String(date)),15,8,false,muted);
  doc.setDrawColor(229,72,77);doc.setLineWidth(.8);doc.line(margin,20,margin+19,20);y=28;
  const titleLines=wrapped(model.title||'Untitled circuit',23,width);for(const line of titleLines){text(line,margin,y,23,true);y+=10;}y+=2;
- const metrics=[['TRACK CENTRELINE',metres(s.length)],['PLACED PIECES',String(model.pieces.length)],['FOOTPRINT WITH BORDERS',Math.ceil(s.bounds[2])+' × '+Math.ceil(s.bounds[3])+' mm']];
+ const metrics=[['TRACK CENTRELINE',s.planning?(s.roads?metres(s.length)+' + unknown':'Not calculated'):metres(s.length)],['PLACED PIECES',String(model.pieces.length)],['FOOTPRINT WITH BORDERS',Math.ceil(s.bounds[2])+' × '+Math.ceil(s.bounds[3])+' mm']];
  metrics.forEach(([label,value],i)=>{const x=margin+i*width/3;text(label,x,y,7.5,true,muted);text(value,x,y+8,13,true);});y+=15;
- text(s.roads+' road pieces  /  '+s.borders+' borders  /  '+s.references+' references',margin,y,8,false,muted);y+=6;
+ text(s.planning?(s.roads+s.planning)+' road pieces ('+s.planning+' approximate)  /  '+s.borders+' borders  /  '+(s.references-s.planning)+' other references':s.roads+' road pieces  /  '+s.borders+' borders  /  '+s.references+' references',margin,y,8,false,muted);y+=6;
  const maxImageHeight=orientation==='portrait'?102:65,scale=Math.min(width/diagram.width,maxImageHeight/diagram.height),iw=diagram.width*scale,ih=diagram.height*scale;
  ensure(ih+9);doc.addImage(diagram.data,'JPEG',margin+(width-iw)/2,y,iw,ih,undefined,'FAST');y+=ih+5;
  text('Layout overview - fitted to page, not a 1:1 template.',margin,y,7.5,false,muted);y+=8;
  if(network.closed){const lanes=model.layout.track.lanes;paragraph(lanes.map((lane,i)=>(lane.label||'Lane '+(i+1))+': '+metres(lane.lengthMm)).join('   |   '),9,body);}
- else paragraph('Per-lane circuit lengths unavailable: '+network.reason,9,body);
+ else paragraph(s.planning?'Approximate visual layout: guide slots and lap lengths are not calculated.':'Per-lane circuit lengths unavailable: '+network.reason,9,body);
  const hasSwitches=model.pieces.some(p=>model.definitions[p.definitionId].parameters.laneChange);
- paragraph('Calculated nominal or user-entered dimensions. Footprint includes placed borders; overlaps and vertical clearance are not checked.'+(hasSwitches?' Lane changers use straight-through routes for these totals.':''),8);
+ paragraph((s.planning?'Planning dimensions are estimates. Magnetic alignment does not validate physical fit. ':'Calculated nominal or user-entered dimensions. ')+'Footprint includes placed borders; overlaps and vertical clearance are not checked.'+(hasSwitches?' Lane changers use straight-through routes for these totals.':''),8);
 
  // Whole rows move together; each continuation page repeats the column headings.
  const fractions=[.16,.34,.24,.08,.18],columns=fractions.map(v=>v*width),xs=[margin];for(let i=0;i<columns.length-1;i++)xs.push(xs[i]+columns[i]);

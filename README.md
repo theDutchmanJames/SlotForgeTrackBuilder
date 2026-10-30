@@ -8,9 +8,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.4 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.6 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.4/SlotForge-Track-Builder-v0.3.4-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.4)
+**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.6/SlotForge-Track-Builder-v0.3.6-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.6)
 
 ## Install and start
 
@@ -60,6 +60,7 @@ Your imported tracks and packs are added to the library. Existing work is kept. 
 
 - **Build a layout:** drag, snap, rotate, mirror, duplicate and select groups of pieces. Side magnets align parallel straights and matching nested curves for wider layouts; hold Shift while dragging to bypass snapping.
 - **Check your available space:** create a rectangle with exact dimensions, then move, resize or lock it.
+- **Plan with reference pieces:** Carrera Hybrid roads snap directly into visual layouts. For other references, enable approximate snapping and choose a straight or curved planning shape. PDF/PNG exports and parts counts work even when slot lengths are unknown.
 - **Plan the physical build:** see piece counts, borders, footprint and calculated lane lengths for supported closed circuits.
 - **Create your own packs:** add custom straights, matching curves, borders and lane changers with generated artwork.
 - **Watch a live preview:** tune car speed, acceleration, braking, cornering and visual drift.
@@ -81,14 +82,14 @@ Ten built-in packs cover several model scales:
 | SCX Universal / Classic / Advance | 1:32 | Reference artwork |
 | AFX Racing / Tomy | HO / 1:64 | Flat straights and curves; special-piece references |
 | Carrera GO!!! | 1:43 | Flat straights and R1/R2 curves; special-piece references |
-| Carrera Hybrid | 1:50 | Slotless reference artwork; separate left/right surfaces |
+| Carrera Hybrid | 1:50 | Approximate visual layouts with snapping, artwork and piece counts |
 | Fleischmann Auto-Rallye | 1:32 | Historic flat straights and three nested curve families |
 
 Every pack uses physical dimensions in **millimetres**. Model scale does not resize the pieces. Each system has a separate connector family. Modern Tomy/AFX is distinct from vintage Aurora A/FX, which is outside this first pack.
 
-Published dimensions, independent measurements and nominal assumptions are identified in the [pack catalogues](track-packs/index.html). Fleischmann slot spacing is a nominal 90 mm assumption. AFX uses owner-reported 34.925 mm spacing, not Tyco spacing. Hybrid has no guide slots: reference placement provides pictures, without snapping, lane lengths or slot animation.
+Published dimensions, independent measurements and nominal assumptions are identified in the [pack catalogues](track-packs/index.html). Fleischmann slot spacing is a nominal 90 mm assumption. AFX uses owner-reported 34.925 mm spacing, not Tyco spacing. Hybrid has no guide slots. Approximate magnetic ends let you plan a visual layout and export its picture and piece counts; slot lengths and slot animation remain unavailable.
 
-Support varies by piece. Some special pieces have reference artwork only; **SCX and Carrera Hybrid are currently reference-only**. The app uses nominal or user-entered dimensions and does not check collisions, bridges or vertical clearance. The space guide is a visual planning aid.
+Support varies by piece. Some special pieces have reference artwork only; **SCX and Carrera Hybrid use reference-based visual planning**. Hybrid has preset planning shapes; other references offer adjustable approximate shapes. The app uses nominal or user-entered dimensions and does not check collisions, bridges or vertical clearance. The space guide is a visual planning aid.
 
 ## SlotForge Timing
 
@@ -142,11 +143,11 @@ The app uses plain HTML, CSS and JavaScript. PDF generation uses bundled jsPDF a
 Run the source tests with a current Node.js runtime:
 
 ```sh
-node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs installer/launcher.test.cjs
+node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs
 node integration/slotforge-timing/check-fixtures.cjs
 ```
 
-The current source was checked with **148 passing automated tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
+The current source was checked with **170 passing automated tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
 
 Found a rough edge or have an idea for a new piece? [Open an issue](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) with the track system, piece details and a small example layout where possible.
 

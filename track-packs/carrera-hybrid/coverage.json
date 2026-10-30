@@ -3,7 +3,7 @@
     "basis": "Initial documented selection of road pieces and track-mounted accessories.",
     "availability": "Historical and current products are mixed; catalogue inclusion does not imply current availability.",
     "excluded": [
-      "Native slotless snapping and free-driving simulation",
+      "Free-driving simulation",
       "Digital slot-switch routes",
       "Unreleased or unverified special geometry"
     ]
@@ -18,7 +18,7 @@
     "50052010"
   ],
   "unresolved": [
-    "Hybrid is reference-only in this version of the slot-track editor. Reference placement is available, but snapping, centreline / per-lane lengths, slot preview and Timing slot routes are not supplied.",
+    "Hybrid supports approximate visual planning with magnetic road ends. Slot routes, calculated lap lengths and slot-car preview are not supplied.",
     "Left and right are separate physical parts with directional red/blue edge markings. They are listed separately; reflecting artwork does not make the opposite physical part.",
     "Standard straight and standard curve envelope use manufacturer dimensions. R2 dimensions use the cited independent examination. Special surfaces / accessories have incomplete footprints and remain schematic."
   ]

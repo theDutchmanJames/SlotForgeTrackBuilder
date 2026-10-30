@@ -1,9 +1,9 @@
 {
-  "version": "0.3.4",
+  "version": "0.3.6",
   "date": "2026-10-30",
   "automated": {
-    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs installer/launcher.test.cjs",
-    "passed": 148,
+    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
+    "passed": 170,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -361,5 +361,44 @@
       "review-custom-measurements.png",
       "review-stale-save.png"
     ]
+  },
+  "referencePlanning": {
+    "version": "0.3.5",
+    "newTests": 7,
+    "layoutEnvelope": 1,
+    "integrationContract": "1.0.0-draft.2",
+    "browserVerified": [
+      "All 11 Hybrid pieces available with Ready to place filter",
+      "Ten-piece Hybrid oval built from catalogue clicks; visual ends align",
+      "Actual drag away exposes four ends; drag back magnetically reconnects",
+      "Planning width validation rejects zero; edit and undo restore original shape",
+      "Library save and reload preserve planning geometry and quantities",
+      "SCX reference placement supports adjustable magnets; two pieces align and undo correctly",
+      "Published SCX 360 mm length prefilled where available",
+      "Actual PDF downloaded and rendered: portrait A4, 1 start straight + 3 standard straights + 6 curves; lengths explicitly unknown",
+      "No captured browser errors or warnings",
+      "Measured AFX straight + approximate banked curve snap together; known total remains explicitly partial"
+    ],
+    "screenshot": "hybrid-planning-preview.png",
+    "limitations": [
+      "Estimates do not certify physical fit",
+      "Only two-ended straight/curve visual planning shapes",
+      "Reference ports are separate from slot connectors and create no lap lengths or car simulation",
+      "Native Timing receiving UI not tested; older readers can retain image placement while ignoring planning hints"
+    ]
+  },
+  "referenceRepairs": {
+    "version": "0.3.6",
+    "newTests": 15,
+    "notes": "FEATURE-NOTES-v0.3.6.txt",
+    "browserVerified": [
+      "Blank imported reference is selectable and editable without an image request",
+      "Held image request cancelled while Apply disabled; response released without a late placement",
+      "Hybrid R1/60 edited to 90 degrees; reshaped artwork and magnets meet the attached straight",
+      "Reload and PDF preview preserve transformed PNG artwork",
+      "No captured browser errors or warnings"
+    ],
+    "screenshot": "reference-repairs-preview.png",
+    "contractUnchanged": true
   }
 }

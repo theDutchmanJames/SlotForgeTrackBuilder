@@ -74,3 +74,22 @@ Receiving runtimes must update core.js and integration.js together. This does no
 change lane geometry, route identities, Timing contract or the layout envelope.
 Editor library-save baselines are local storage metadata and are not exported
 as timing settings in slotforge.layout files.
+
+OPTIONAL VISUAL PLANNING HINTS (Builder 0.3.5, no contract revision)
+A reference definition may additionally carry parameters.planning:
+ {"type":"curve","widthMm":250,"innerRadiusMm":250,"angleDeg":60,
+  "reflectX":false,"artworkPaddingMm":6}
+A straight instead uses type straight, lengthMm and widthMm. Dimensions are
+finite, positive and bounded as other templates. reflectX is optional boolean;
+artworkPaddingMm defaults to zero and is finite in [0,100]. These hints only
+align approximate reference surfaces inside their existing image boxes. The
+reference image still renders at [0,0,lengthMm,widthMm] with its placed transform.
+A receiver may ignore the planning hints and retain the same image placement.
+Regenerated Builder geometry may contain planningConnectors/planningOutline for
+editor magnets and hit testing. These are not slot connectors. The ordinary
+connectors and lanePaths arrays stay empty and centrelineLengthMm remains zero.
+These pieces must never bridge missing slot roads, create timing lines or lap
+lengths, or alter otherwise unchanged lane IDs. No prepared slot routes are
+inferred. Physical fit is unverified. Parts inventory counts placed references,
+and PDF exports identify estimated planning dimensions. Old picture-only
+references without the hints remain freely placeable with no magnets.

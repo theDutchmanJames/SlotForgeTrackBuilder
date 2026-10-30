@@ -1,0 +1,44 @@
+APPROXIMATE REFERENCE PLANNING - v0.3.5
+
+Carrera Hybrid is now usable for visual track design. Its 11 road drawings have
+approximate straight/curve presets: click to add, drag to magnetically attach
+ends, rotate, duplicate, arrange layers and save to the Track Library. Separate
+left/right Hybrid parts retain their artwork and reflection restrictions.
+Some additional-pack road references also have presets. Other reference pieces
+open a planning panel: enable approximate snapping, choose Straight or Curve,
+then set road width, length or inner radius/angle. Published partial dimensions
+are used where available; missing dimensions are editable estimates.
+Select any placed reference and choose Edit reference planning to add or change
+its magnets. Old picture-only references stay unchanged until explicitly edited.
+
+Reference artwork is embedded as PNG for portable save/reopen. Planning hints
+survive layouts and custom packs. Their image box remains compatible with older
+reference readers that ignore the optional hints. No guide slots are invented:
+ordinary geometry.connectors and lanePaths stay empty and lane length is zero.
+Planning connectors only align drawing surfaces, including compatible measured
+roads of the same family and width. They cannot replace missing slot geometry
+for a Timing lap circuit or enable slot-car simulation.
+
+The catalogue's Ready to place only filter includes preset visual pieces.
+The editor distinguishes approximate road counts from other reference pictures,
+shows estimated planning status and does not present unknown lengths as zero.
+PDFs and other exports retain the layout picture, product codes and quantities.
+PDFs explicitly mark approximate layouts and unknown slot lengths.
+
+Verification: 155 automated tests and 15 integration fixtures pass. Seven new
+tests cover all Hybrid presets, both handed ovals, end magnets, transformed
+pieces, incompatible families, real-road isolation, layout/pack round trips,
+selection footprints, scaled connector widths and malformed planning metadata.
+Browser checks used a separate test data folder on localhost:8190. A 10-piece
+Hybrid oval was built by catalogue clicks, dragged apart and magnetically
+reconnected, edited/undone, saved and reloaded. SCX references were configured,
+attached and undone. An approximate AFX banked curve attached to a measured
+AFX straight, with the length total explicitly partial. No console warnings
+or errors were captured. A downloaded PDF
+was rendered and checked: one portrait A4 page, 1 Part A, 3 Part B and 6 Part D,
+with a clear track image, footprint and unknown-length labels.
+
+Physical fit, elevation and collisions are not checked. Visual magnets currently
+describe two-ended straight or curved surfaces, not arbitrary branch junctions.
+Native macOS/Linux launch testing and the separate Timing UI remain outside the
+checks. Layout envelope v1 and Timing contract 1.0.0-draft.2 remain unchanged.
