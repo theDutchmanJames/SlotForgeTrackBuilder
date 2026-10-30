@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),G=require('./geometry.cjs');
 module.exports=function publish({root,pack,art,defs,introduction,featured}){
  const E=G.attrs,pieces=pack.pieces,products=pack.products;
- const spacing=Number.isFinite(pack.defaults.laneSpacingMm)?`${pack.defaults.laneSpacingMm} mm`:'Unverified';
+ const spacing=pack.trackSystem==='slotless'?'Not applicable':Number.isFinite(pack.defaults.laneSpacingMm)?`${pack.defaults.laneSpacingMm} mm`:'Unverified';
  const rect=(x,y,w,h,fill,stroke='none',rx=0)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${stroke}" rx="${rx}"/>`;
  const text=(x,y,s,size=14,color='#e8e6e1')=>`<text x="${x}" y="${y}" fill="${color}" font-size="${size}" font-family="Segoe UI,sans-serif">${E(s)}</text>`;
  const label=p=>p.geometry?'Nominal geometry':'Illustration only';

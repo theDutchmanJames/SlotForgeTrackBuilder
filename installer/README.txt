@@ -50,3 +50,20 @@ stop all SlotForge processes before removing that lock file.
 
 Native macOS/Linux installation testing remains outstanding. No signed installer,
 Gatekeeper bypass, Linux service or Windows registry installation is included.
+
+Windows launcher (v0.3.2): the desktop shortcut targets Windows Script Host
+and Start SlotForge.vbs, encoded as UTF-16LE for non-ASCII installation paths.
+It checks runtime / launcher files and starts the helper hidden. The helper
+uses Windows ShellExecute via PowerShell Start-Process for the default browser,
+awaits the result, and logs startup / browser handoff to data/launcher.log.
+A browser-opening failure leaves the loopback helper running and shows its URL.
+Fatal startup failures also produce a log and visible Windows message.
+
+macOS/Linux launcher review (v0.3.2): repeat starts append to the launch log.
+Shell starters check the private runtime and report the log location. Linux
+desktop entries invoke the same shell starter with escaped special characters.
+xdg-open may legitimately stay attached to a browser; a live opener after the
+initial grace period is not reported as a timeout failure. Immediate missing
+command and nonzero-exit errors are still reported in the launch log.
+Cross-platform process and script tests pass on Windows; native macOS/Linux
+desktop validation still requires those operating systems.

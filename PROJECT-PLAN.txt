@@ -121,3 +121,13 @@ workspace.json with checked atomic writes, per-record conflict detection and
 Updates retain data. Direct HTML remains explicitly labelled browser mode.
 Windows install/start/reinstall tested in an isolated folder; native macOS/Linux
 validation remains outstanding. No native desktop rewrite or cloud account.
+
+0.3.1 — additional scales and historic track systems
+AFX Racing / Tomy, Carrera GO!!!, Carrera Hybrid and Fleischmann Auto-Rallye.
+Physical mm geometry is independent of model scale; connector families stay
+separate. Hybrid slotless snapping / free-driving preview remains future work.
+Vintage Aurora connectors remain outside the modern AFX pack.
+
+0.3.2 — Windows desktop shortcut / browser launch repair
+Hidden script-host startup, awaited native default-browser handoff, durable
+startup logs and visible failure messages. Saved workspace files stay intact.

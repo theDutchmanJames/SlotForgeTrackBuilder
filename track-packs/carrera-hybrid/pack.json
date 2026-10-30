@@ -1,0 +1,779 @@
+{
+  "format": "slotforge.track-pack",
+  "formatVersion": "0.1-draft",
+  "id": "slotforge.carrera-hybrid",
+  "version": "0.1.0-design",
+  "title": "Carrera Hybrid",
+  "manufacturer": "Carrera",
+  "date": "2026-10-30",
+  "units": "mm",
+  "modelScale": "1:50",
+  "trackSystem": "slotless",
+  "status": "reference-only",
+  "runtime": {
+    "containsExecutableCode": false
+  },
+  "scope": {
+    "basis": "Initial documented selection of road pieces and track-mounted accessories.",
+    "availability": "Historical and current products are mixed; catalogue inclusion does not imply current availability.",
+    "excluded": [
+      "Native slotless snapping and free-driving simulation",
+      "Digital slot-switch routes",
+      "Unreleased or unverified special geometry"
+    ]
+  },
+  "defaults": {
+    "trackWidthMm": 250,
+    "laneSpacingMm": null,
+    "status": "nominal",
+    "note": "Car scale is descriptive. Physical dimensions are millimetres. Centred slot offsets are a nominal model, not manufacturing tolerances."
+  },
+  "visualStyle": {
+    "basis": "Original schematic SVG interpretations of the cited product/catalogue illustrations; connector details are illustrative.",
+    "road": "#272b2e"
+  },
+  "sources": [
+    {
+      "id": "hy-manufacturer",
+      "title": "Carrera Hybrid manufacturer overview and dimensional FAQ",
+      "url": "https://carrera-toys.com/en-eu/pages/overview-page-hybrid-overview",
+      "note": "1:50 scale; slotless; 433 × 250 mm straight; standard curve centre radius 375 mm."
+    },
+    {
+      "id": "hy-pack1",
+      "title": "Carrera Hybrid Track Pack 1",
+      "url": "https://carrera-toys.com/en/products/50052001-track-pack-1",
+      "note": "Six straights, two left and two right curves."
+    },
+    {
+      "id": "hy-r2",
+      "title": "Carrera Hybrid R2 / 30° curves",
+      "url": "https://carrera-toys.com/en/products/50052004-curves-radius-2-30-2x-l-2x-r"
+    },
+    {
+      "id": "hy-r1-30",
+      "title": "Carrera Hybrid R1 / 30° curves",
+      "url": "https://carrera-toys.com/en/products/50052010-curves-radius-1-30deg-2x-l-2x-r",
+      "note": "Manufacturer lists this product as pre-order; catalogue presence is not availability."
+    },
+    {
+      "id": "hy-owner",
+      "title": "Carrera Fun: own Hybrid track examination",
+      "url": "https://www.carrera-fun.com/?p=7909&lang=en",
+      "note": "Original examination with photos, part letters, 60-degree standard curve, R2 road edges, handed red/blue borders and directional markings."
+    }
+  ],
+  "sourceIssues": [
+    {
+      "field": "Slotless support",
+      "detail": "Hybrid is reference-only in this version of the slot-track editor. Reference placement is available, but snapping, centreline / per-lane lengths, slot preview and Timing slot routes are not supplied."
+    },
+    {
+      "field": "Handed pieces",
+      "detail": "Left and right are separate physical parts with directional red/blue edge markings. They are listed separately; reflecting artwork does not make the opposite physical part."
+    },
+    {
+      "field": "Dimensions",
+      "detail": "Standard straight and standard curve envelope use manufacturer dimensions. R2 dimensions use the cited independent examination. Special surfaces / accessories have incomplete footprints and remain schematic."
+    }
+  ],
+  "pieces": [
+    {
+      "id": "carrera-hybrid:A",
+      "revision": 1,
+      "name": "Start / finish straight · 433 mm",
+      "manufacturerSku": "Part A",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/A.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          433,
+          250
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {
+        "lengthMm": 433,
+        "widthMm": 250
+      },
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Published manufacturer envelope; reference-only surface, no slots. Part letter is not a separately sold SKU."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:B",
+      "revision": 1,
+      "name": "Standard straight · 433 mm",
+      "manufacturerSku": "Part B",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/B.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          433,
+          250
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {
+        "lengthMm": 433,
+        "widthMm": 250
+      },
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Published manufacturer envelope; reference-only surface, no slots. Part letter is not a separately sold SKU."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:C",
+      "revision": 1,
+      "name": "R1 left curve · 60°",
+      "manufacturerSku": "Part C",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/C.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -500,
+          433.012702,
+          375
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 250,
+        "outerRadiusMm": 500,
+        "angleDeg": 60
+      },
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference-only slotless road. Left/right are different directional physical pieces, not ordinary mirrored slot track. Check the product page for availability; the R1/30 variant is listed as pre-order."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:D",
+      "revision": 1,
+      "name": "R1 right curve · 60°",
+      "manufacturerSku": "Part D",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/D.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -500,
+          433.012702,
+          375
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 250,
+        "outerRadiusMm": 500,
+        "angleDeg": 60
+      },
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference-only slotless road. Left/right are different directional physical pieces, not ordinary mirrored slot track. Check the product page for availability; the R1/30 variant is listed as pre-order."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:G",
+      "revision": 1,
+      "name": "R2 left curve · 30°",
+      "manufacturerSku": "50052004 / G",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/G.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -1250,
+          625,
+          383.974596
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 1000,
+        "outerRadiusMm": 1250,
+        "angleDeg": 30
+      },
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference-only slotless road. Left/right are different directional physical pieces, not ordinary mirrored slot track. Check the product page for availability; the R1/30 variant is listed as pre-order."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:H",
+      "revision": 1,
+      "name": "R2 right curve · 30°",
+      "manufacturerSku": "50052004 / H",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/H.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -1250,
+          625,
+          383.974596
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 1000,
+        "outerRadiusMm": 1250,
+        "angleDeg": 30
+      },
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference-only slotless road. Left/right are different directional physical pieces, not ordinary mirrored slot track. Check the product page for availability; the R1/30 variant is listed as pre-order."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:R1-30-L",
+      "revision": 1,
+      "name": "R1 left curve · 30°",
+      "manufacturerSku": "50052010 / L",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/R1-30-L.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -500,
+          250,
+          283.493649
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 250,
+        "outerRadiusMm": 500,
+        "angleDeg": 30
+      },
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference-only slotless road. Left/right are different directional physical pieces, not ordinary mirrored slot track. Check the product page for availability; the R1/30 variant is listed as pre-order."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:R1-30-R",
+      "revision": 1,
+      "name": "R1 right curve · 30°",
+      "manufacturerSku": "50052010 / R",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/R1-30-R.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -500,
+          250,
+          283.493649
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 250,
+        "outerRadiusMm": 500,
+        "angleDeg": 30
+      },
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference-only slotless road. Left/right are different directional physical pieces, not ordinary mirrored slot track. Check the product page for availability; the R1/30 variant is listed as pre-order."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:E",
+      "revision": 1,
+      "name": "Hairpin left · 180°",
+      "manufacturerSku": "50052005 / Part E",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/E.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -350,
+          350,
+          700
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Schematic handed hairpin from published product illustration. Exact inner radius / installed footprint are unverified; this is not a measured fit model."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:F",
+      "revision": 1,
+      "name": "Hairpin right · 180°",
+      "manufacturerSku": "50052005 / Part F",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/F.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -350,
+          350,
+          700
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Schematic handed hairpin from published product illustration. Exact inner radius / installed footprint are unverified; this is not a measured fit model."
+      ]
+    },
+    {
+      "id": "carrera-hybrid:I",
+      "revision": 1,
+      "name": "Narrow section",
+      "manufacturerSku": "50052006 / Part I",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "carrera-hybrid"
+      ],
+      "asset": "assets/I.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          433,
+          250
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "forbidden",
+        "note": "Handed artwork or directional components; reflection does not create the physical counterpart."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "hy-manufacturer",
+          "hy-pack1",
+          "hy-r2",
+          "hy-r1-30",
+          "hy-owner"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Original identification drawing of slotless narrowing markings. Surface dimensions and marking positions are schematic, without guide slots."
+      ]
+    }
+  ],
+  "products": [
+    {
+      "sku": "50052001",
+      "name": "Track Pack 1",
+      "contents": [
+        {
+          "pieceId": "carrera-hybrid:B",
+          "quantity": 6
+        },
+        {
+          "pieceId": "carrera-hybrid:C",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera-hybrid:D",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "hy-pack1"
+      ]
+    },
+    {
+      "sku": "50052004",
+      "name": "R2 / 30° curves",
+      "contents": [
+        {
+          "pieceId": "carrera-hybrid:G",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera-hybrid:H",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "hy-r2"
+      ]
+    },
+    {
+      "sku": "50052010",
+      "name": "R1 / 30° curves (pre-order)",
+      "contents": [
+        {
+          "pieceId": "carrera-hybrid:R1-30-L",
+          "quantity": 2
+        },
+        {
+          "pieceId": "carrera-hybrid:R1-30-R",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "hy-r1-30"
+      ]
+    }
+  ],
+  "outstanding": [
+    "Hybrid is reference-only in this version of the slot-track editor. Reference placement is available, but snapping, centreline / per-lane lengths, slot preview and Timing slot routes are not supplied.",
+    "Left and right are separate physical parts with directional red/blue edge markings. They are listed separately; reflecting artwork does not make the opposite physical part.",
+    "Standard straight and standard curve envelope use manufacturer dimensions. R2 dimensions use the cited independent examination. Special surfaces / accessories have incomplete footprints and remain schematic."
+  ]
+}

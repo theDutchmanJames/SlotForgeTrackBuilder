@@ -17,7 +17,7 @@ for folder in ('app', 'designs', 'track-packs', 'integration', 'installer'):
         rel = file.relative_to(root).as_posix()
         if file.suffix.lower() in ('.pyc', '.lnk', '.tmp', '.pdf'):
             continue
-        if file.suffix.lower() == '.zip' and rel != 'track-packs/examples/slotforge-six-track-packs.zip':
+        if file.suffix.lower() == '.zip':
             continue
         if folder == 'app' and file.suffix.lower() == '.png' and file.name != 'icon.png':
             continue  # Development screenshots can show local work; not app assets.

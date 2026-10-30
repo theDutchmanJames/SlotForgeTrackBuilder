@@ -1,9 +1,9 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.2",
   "date": "2026-10-30",
   "automated": {
-    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs",
-    "passed": 105,
+    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs installer/launcher.test.cjs",
+    "passed": 121,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -25,7 +25,7 @@
       "Animation callback cleanup",
       "World-coordinate route export",
       "Malformed imports",
-      "All 102 built-in definitions round-trip",
+      "All 125 built-in definitions round-trip",
       "Exact arc interpolation",
       "500-piece connection chain",
       "Local server request validation",
@@ -264,5 +264,50 @@
     ],
     "screenshot": "../dist/persistent-storage-preview.png",
     "runtime": "Node.js v24.22.2, private per-user copy"
+  },
+  "additionalTrackPacks": {
+    "date": "2026-10-30",
+    "drawings": 62,
+    "nominalRoadModels": 23,
+    "sourceTestsPassed": 112,
+    "integrationFixturesPassed": 15,
+    "browserChecks": [
+      "All ten packs visible in selector and gallery",
+      "AFX HO / 1:64 label and real 381 mm straight",
+      "GO!!! 1:43 label and 342 mm straight placement",
+      "Fleischmann 1:32 label, 370 mm placement and nominal 90 mm spacing notice",
+      "Hybrid 1:50 reference mode automatically reveals reference items",
+      "Hybrid reference places with no additional slot routes or calculated length",
+      "Hybrid reflection disabled for handed physical artwork"
+    ],
+    "limitations": [
+      "Modern Tomy/AFX only; vintage Aurora connectors excluded",
+      "Fleischmann 90 mm slot spacing is nominal and explicitly labelled",
+      "Hybrid native slotless snapping / driving preview not implemented",
+      "Unmeasured special pieces remain reference-only"
+    ]
+  },
+  "launcherRepair": {
+    "version": "0.3.2",
+    "tests": 9,
+    "windows": [
+      "Existing app healthy; old silent browser handoff reproduced by user report",
+      "Replacement native browser opener exits successfully",
+      "Native hidden VBS startup works in a path with spaces, Unicode and ampersand",
+      "Repeat native startup reuses the same app instance",
+      "Existing installed workspace hash unchanged during repair",
+      "Desktop shortcut repaired to Windows Script Host"
+    ],
+    "crossPlatform": [
+      "macOS/Linux opener commands and failure propagation tested with process doubles",
+      "Linux long-running xdg-open accepted rather than reporting a false timeout",
+      "POSIX log append, runtime checks and shell path quoting verified",
+      "Linux desktop-entry quoting and literal percent fields checked",
+      "Four POSIX runtime filenames and hashes match bootstrap manifest"
+    ],
+    "notVerified": [
+      "Native macOS GUI launch",
+      "Native Linux desktop/GUI launch"
+    ]
   }
 }

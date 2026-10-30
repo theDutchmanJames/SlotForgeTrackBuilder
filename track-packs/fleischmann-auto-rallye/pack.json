@@ -1,0 +1,1694 @@
+{
+  "format": "slotforge.track-pack",
+  "formatVersion": "0.1-draft",
+  "id": "slotforge.fleischmann-auto-rallye",
+  "version": "0.1.0-design",
+  "title": "Fleischmann Auto-Rallye",
+  "manufacturer": "Fleischmann",
+  "date": "2026-10-30",
+  "units": "mm",
+  "modelScale": "1:32",
+  "trackSystem": "slotted",
+  "status": "nominal-planning",
+  "runtime": {
+    "containsExecutableCode": false
+  },
+  "scope": {
+    "basis": "Initial documented selection of road pieces and track-mounted accessories.",
+    "availability": "Historical and current products are mixed; catalogue inclusion does not imply current availability.",
+    "excluded": [
+      "Later Monte Carlo additions",
+      "1:24 cars and electrical spares",
+      "Unmeasured aftermarket borders"
+    ]
+  },
+  "defaults": {
+    "trackWidthMm": 180,
+    "laneSpacingMm": 90,
+    "status": "nominal",
+    "note": "Car scale is descriptive. Physical dimensions are millimetres. Centred slot offsets are a nominal model, not manufacturing tolerances."
+  },
+  "visualStyle": {
+    "basis": "Original schematic SVG interpretations of the cited product/catalogue illustrations; connector details are illustrative.",
+    "road": "#262829"
+  },
+  "sources": [
+    {
+      "id": "fl-catalogue",
+      "title": "Fleischmann Auto-Rallye manufacturer catalogue 1968–1969",
+      "url": "https://finslot.net/arkisto/wp-content/uploads/2022/03/Fleischmann-Auto-Rallye-1968-1969-de.pdf",
+      "pages": [
+        41,
+        42,
+        43
+      ],
+      "note": "Printed pages 41–43 (PDF pages 5–7) visually inspected. 3100/3102/3104 dimensions and 3110/3111/3112 road-edge radii 95/275/455/635 mm."
+    }
+  ],
+  "sourceIssues": [
+    {
+      "field": "Slot spacing",
+      "detail": "The catalogue dimensions road edges, not slot centres. This nominal model assumes two centred slots 90 mm apart in the 180 mm road. Per-lane lengths remain estimates until independently measured."
+    },
+    {
+      "field": "Historical scope",
+      "detail": "This first selection follows the 1968–1969 catalogue. Later products, including 3123 lane crossover, 3124 hump, 3125 looping and 3154 banked bowl, are outside this pack."
+    },
+    {
+      "field": "Special pieces",
+      "detail": "Electrical connection housings, junction, chicane, banking and accessories remain reference-only; complete route and attachment geometry is unresolved."
+    }
+  ],
+  "pieces": [
+    {
+      "id": "fleischmann-auto-rallye:3100",
+      "revision": 1,
+      "name": "Straight · 370 mm",
+      "manufacturerSku": "3100",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3100.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 370,
+          "widthMm": 180,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 370 V 180 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            370,
+            180
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                45
+              ],
+              "end": [
+                370,
+                45
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    45
+                  ],
+                  "to": [
+                    370,
+                    45
+                  ]
+                }
+              ],
+              "lengthMm": 370,
+              "d": "M 0 45 H 370"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                135
+              ],
+              "end": [
+                370,
+                135
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    135
+                  ],
+                  "to": [
+                    370,
+                    135
+                  ]
+                }
+              ],
+              "lengthMm": 370,
+              "d": "M 0 135 H 370"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                90
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    135
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                370,
+                90
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    370,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    370,
+                    135
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 370
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          370,
+          180
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "lengthMm": 370,
+        "widthMm": 180
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Road dimensions from printed catalogue page 43; slot spacing / edge offsets are nominal assumptions."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3102",
+      "revision": 1,
+      "name": "Straight · 185 mm",
+      "manufacturerSku": "3102",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3102.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 185,
+          "widthMm": 180,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 185 V 180 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            185,
+            180
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                45
+              ],
+              "end": [
+                185,
+                45
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    45
+                  ],
+                  "to": [
+                    185,
+                    45
+                  ]
+                }
+              ],
+              "lengthMm": 185,
+              "d": "M 0 45 H 185"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                135
+              ],
+              "end": [
+                185,
+                135
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    135
+                  ],
+                  "to": [
+                    185,
+                    135
+                  ]
+                }
+              ],
+              "lengthMm": 185,
+              "d": "M 0 135 H 185"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                90
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    135
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                185,
+                90
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    185,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    185,
+                    135
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 185
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          185,
+          180
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "lengthMm": 185,
+        "widthMm": 180
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Road dimensions from printed catalogue page 43; slot spacing / edge offsets are nominal assumptions."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3104",
+      "revision": 1,
+      "name": "Straight · 92.5 mm",
+      "manufacturerSku": "3104",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3104.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 92.5,
+          "widthMm": 180,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 92.5 V 180 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            92.5,
+            180
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                45
+              ],
+              "end": [
+                92.5,
+                45
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    45
+                  ],
+                  "to": [
+                    92.5,
+                    45
+                  ]
+                }
+              ],
+              "lengthMm": 92.5,
+              "d": "M 0 45 H 92.5"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                135
+              ],
+              "end": [
+                92.5,
+                135
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    135
+                  ],
+                  "to": [
+                    92.5,
+                    135
+                  ]
+                }
+              ],
+              "lengthMm": 92.5,
+              "d": "M 0 135 H 92.5"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                90
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    135
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                92.5,
+                90
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    92.5,
+                    45
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    92.5,
+                    135
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 92.5
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          92.5,
+          180
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "lengthMm": 92.5,
+        "widthMm": 180
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Road dimensions from printed catalogue page 43; slot spacing / edge offsets are nominal assumptions."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3110",
+      "revision": 1,
+      "name": "R1 flat curve · 45°",
+      "manufacturerSku": "3110",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3110.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 95,
+          "widthMm": 180,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -275 A 275 275 0 0 1 194.454365 -194.454365 L 67.175144 -67.175144 A 95 95 0 0 0 0 -95 Z",
+          "boundsMm": [
+            0,
+            -275,
+            194.454365,
+            207.824856
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -140
+              ],
+              "end": [
+                98.994949,
+                -98.994949
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 140,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 109.95574287564276,
+              "d": "M 0 -140 A 140 140 0 0 1 98.994949,-98.994949"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -230
+              ],
+              "end": [
+                162.63456,
+                -162.63456
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 230,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 180.64157758141312,
+              "d": "M 0 -230 A 230 230 0 0 1 162.63456,-162.63456"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -185
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -140
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -230
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                130.814755,
+                -130.814755
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    98.994949,
+                    -98.994949
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    162.63456,
+                    -162.63456
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 145.29866022852792
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -275,
+          194.454365,
+          207.824856
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 95,
+        "outerRadiusMm": 275,
+        "angleDeg": 45
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Manufacturer quarter-turn diagram shows two 45-degree sections per quarter circle. Road edges nest without gaps. Slot centres remain nominal."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3111",
+      "revision": 1,
+      "name": "R2 flat curve · 45°",
+      "manufacturerSku": "3111",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3111.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 275,
+          "widthMm": 180,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -455 A 455 455 0 0 1 321.733585 -321.733585 L 194.454365 -194.454365 A 275 275 0 0 0 0 -275 Z",
+          "boundsMm": [
+            0,
+            -455,
+            321.733585,
+            260.545635
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -320
+              ],
+              "end": [
+                226.27417,
+                -226.27417
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 320,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 251.32741228718345,
+              "d": "M 0 -320 A 320 320 0 0 1 226.27417,-226.27417"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -410
+              ],
+              "end": [
+                289.91378,
+                -289.91378
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 410,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 322.0132469929538,
+              "d": "M 0 -410 A 410 410 0 0 1 289.91378,-289.91378"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -365
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -320
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -410
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                258.093975,
+                -258.093975
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    226.27417,
+                    -226.27417
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    289.91378,
+                    -289.91378
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 286.67032964006864
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -455,
+          321.733585,
+          260.545635
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 275,
+        "outerRadiusMm": 455,
+        "angleDeg": 45
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Manufacturer quarter-turn diagram shows two 45-degree sections per quarter circle. Road edges nest without gaps. Slot centres remain nominal."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3112",
+      "revision": 1,
+      "name": "R3 flat curve · 45°",
+      "manufacturerSku": "3112",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3112.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 455,
+          "widthMm": 180,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 90
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -635 A 635 635 0 0 1 449.012806 -449.012806 L 321.733585 -321.733585 A 455 455 0 0 0 0 -455 Z",
+          "boundsMm": [
+            0,
+            -635,
+            449.012806,
+            313.266415
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -500
+              ],
+              "end": [
+                353.553391,
+                -353.553391
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 500,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 392.6990816987241,
+              "d": "M 0 -500 A 500 500 0 0 1 353.553391,-353.553391"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -590
+              ],
+              "end": [
+                417.193001,
+                -417.193001
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 590,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 463.3849164044945,
+              "d": "M 0 -590 A 590 590 0 0 1 417.193001,-417.193001"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -545
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -500
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -590
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                385.373196,
+                -385.373196
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    353.553391,
+                    -353.553391
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    417.193001,
+                    -417.193001
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 428.0419990516093
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -635,
+          449.012806,
+          313.266415
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 455,
+        "outerRadiusMm": 635,
+        "angleDeg": 45
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Manufacturer quarter-turn diagram shows two 45-degree sections per quarter circle. Road edges nest without gaps. Slot centres remain nominal."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3115",
+      "revision": 1,
+      "name": "Connecting straight",
+      "manufacturerSku": "3115",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3115.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          370,
+          180
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "roadLengthMm": 370,
+        "roadWidthMm": 180
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Road rectangle published; occupied housing / nonstandard slot details remain unvalidated. Reference artwork only."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3121",
+      "revision": 1,
+      "name": "Chicane section",
+      "manufacturerSku": "3121",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3121.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          185,
+          180
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "roadLengthMm": 185,
+        "roadWidthMm": 180
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Road rectangle published; occupied housing / nonstandard slot details remain unvalidated. Reference artwork only."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3122",
+      "revision": 1,
+      "name": "Dead-strip straight",
+      "manufacturerSku": "3122",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3122.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          185,
+          180
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "roadLengthMm": 185,
+        "roadWidthMm": 180
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Road rectangle published; occupied housing / nonstandard slot details remain unvalidated. Reference artwork only."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3120",
+      "revision": 1,
+      "name": "Crossing / junction",
+      "manufacturerSku": "3120",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3120.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -50,
+          180,
+          280
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "catalogueDimensionsMm": [
+          180,
+          100
+        ]
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Catalogue labels 180 × 100 mm; complete combined outline and all route connections are not resolved. Illustration deliberately not used as measured geometry."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3151",
+      "revision": 1,
+      "name": "Banked curve · family 1 · 30°",
+      "manufacturerSku": "3151",
+      "category": "Banked curves",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3151.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -360,
+          180,
+          204.115427
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "angleDeg": 30
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Manufacturer specifies six 30-degree banked segments for a half turn. Top-view radii and projection are illustrative."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3152",
+      "revision": 1,
+      "name": "Banked curve · family 2 · 30°",
+      "manufacturerSku": "3152",
+      "category": "Banked curves",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3152.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -540,
+          270,
+          228.23085500000002
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "angleDeg": 30
+      },
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Manufacturer specifies six 30-degree banked segments for a half turn. Top-view radii and projection are illustrative."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3400",
+      "revision": 1,
+      "name": "Guardrail",
+      "manufacturerSku": "3400",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3400.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          240,
+          52
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Side-view identification; flexible mounting outline unmeasured."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3401",
+      "revision": 1,
+      "name": "Bridge pillar set",
+      "manufacturerSku": "3401",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3401.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          220,
+          112
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Schematic side-view hardware, not a road bridge or measured room-fit outline."
+      ]
+    },
+    {
+      "id": "fleischmann-auto-rallye:3150",
+      "revision": 1,
+      "name": "Adjustable banking support",
+      "manufacturerSku": "3150",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "fleischmann-auto-rallye"
+      ],
+      "asset": "assets/3150.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          220,
+          112
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "fl-catalogue"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Height-adjustable banking hardware. Side-view identification only."
+      ]
+    }
+  ],
+  "products": [
+    {
+      "sku": "3100",
+      "name": "Straight · 370 mm",
+      "contents": [
+        {
+          "pieceId": "fleischmann-auto-rallye:3100",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "fl-catalogue"
+      ]
+    },
+    {
+      "sku": "3102",
+      "name": "Straight · 185 mm",
+      "contents": [
+        {
+          "pieceId": "fleischmann-auto-rallye:3102",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "fl-catalogue"
+      ]
+    },
+    {
+      "sku": "3104",
+      "name": "Straight · 92.5 mm",
+      "contents": [
+        {
+          "pieceId": "fleischmann-auto-rallye:3104",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "fl-catalogue"
+      ]
+    },
+    {
+      "sku": "3110",
+      "name": "R1 flat curve · 45°",
+      "contents": [
+        {
+          "pieceId": "fleischmann-auto-rallye:3110",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "fl-catalogue"
+      ]
+    },
+    {
+      "sku": "3111",
+      "name": "R2 flat curve · 45°",
+      "contents": [
+        {
+          "pieceId": "fleischmann-auto-rallye:3111",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "fl-catalogue"
+      ]
+    },
+    {
+      "sku": "3112",
+      "name": "R3 flat curve · 45°",
+      "contents": [
+        {
+          "pieceId": "fleischmann-auto-rallye:3112",
+          "quantity": 1
+        }
+      ],
+      "sourceIds": [
+        "fl-catalogue"
+      ]
+    }
+  ],
+  "outstanding": [
+    "The catalogue dimensions road edges, not slot centres. This nominal model assumes two centred slots 90 mm apart in the 180 mm road. Per-lane lengths remain estimates until independently measured.",
+    "This first selection follows the 1968–1969 catalogue. Later products, including 3123 lane crossover, 3124 hump, 3125 looping and 3154 banked bowl, are outside this pack.",
+    "Electrical connection housings, junction, chicane, banking and accessories remain reference-only; complete route and attachment geometry is unresolved."
+  ]
+}

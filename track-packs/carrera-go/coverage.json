@@ -1,0 +1,28 @@
+{
+  "scope": {
+    "basis": "Initial documented selection of road pieces and track-mounted accessories.",
+    "availability": "Historical and current products are mixed; catalogue inclusion does not imply current availability.",
+    "excluded": [
+      "Carrera FIRST",
+      "Build ’n Race decorative structures",
+      "Unverified aftermarket borders"
+    ]
+  },
+  "drawingCount": 19,
+  "productCount": 6,
+  "roadGeometryCount": 7,
+  "borderGeometryCount": 0,
+  "coveredProductSkus": [
+    "20061602",
+    "20061656",
+    "20061658",
+    "20061603",
+    "20061611",
+    "20061617"
+  ],
+  "unresolved": [
+    "Lengths and identities use Carrera documents; width, spacing and R1/R2 road-edge diameters use independent published measurements. Exact mould tolerances are not established.",
+    "Crossovers, narrow sections, banking, loops, junctions and digital switches are reference-only; their actual paths and elevation are not replaced by straight/flat geometry.",
+    "R3 identity/45-degree angle is published, but its road-edge diameter remains unverified in this pack; no buildable model is supplied."
+  ]
+}

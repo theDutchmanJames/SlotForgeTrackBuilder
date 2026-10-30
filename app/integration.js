@@ -1,6 +1,6 @@
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./core.js'));else root.SlotForgeIntegration=factory(root.Forge);})(typeof globalThis!=='undefined'?globalThis:this,function(F){
 'use strict';
-const VERSION='0.3.0',CONTRACT='1.0.0-draft.2';
+const VERSION='0.3.2',CONTRACT='1.0.0-draft.2';
 const compare=(a,b)=>a<b?-1:a>b?1:0;
 function canonical(v){if(Array.isArray(v))return '['+v.map(canonical).join(',')+']';if(v&&typeof v==='object')return '{'+Object.keys(v).filter(k=>v[k]!==undefined).sort().map(k=>JSON.stringify(k)+':'+canonical(v[k])).join(',')+'}';return JSON.stringify(v);}
 // Synchronous SHA-256 keeps offline browser autosave and Node exports identical.
@@ -83,7 +83,7 @@ function picture(raw,{borders=true,maxDimension=1600,padding=24}={}){
  const clean=F.validateLayout(raw),defs=clean.definitions,pieces=clean.pieces.filter(p=>borders||!defs[p.definitionId].parameters.type.endsWith('border'));
  if(!pieces.length)throw Error('Add pieces before exporting a track picture.');
  const limit=Math.floor(Math.max(64,Math.min(2048,Number.isFinite(maxDimension)?maxDimension:1600))),pad=Math.max(4,Math.min(64,(limit-1)/2,Number.isFinite(padding)?padding:24)),b=F.bounds(pieces,defs),scale=(limit-2*pad)/Math.max(b[2],b[3],1),width=Math.min(limit,Math.max(1,Math.ceil(b[2]*scale+2*pad))),height=Math.min(limit,Math.max(1,Math.ceil(b[3]*scale+2*pad)));
- const esc=F.G.attrs;let body='';for(const p of pieces){const d=defs[p.definitionId],g=d.geometry;body+=`<g transform="translate(${p.x} ${p.y}) rotate(${p.angle}) scale(1 ${p.flip?-1:1})"><path d="${esc(g.outlineSvgPath)}" fill="${d.parameters.type==='reference'?'none':d.color}" stroke="${d.parameters.type==='reference'?'none':'#858d97'}" stroke-width="0.8"/>`;body+=F.surfaceMarkings(d);for(const l of [...g.lanePaths,...(g.alternateLanePaths||[]).map(r=>({d:r.switchSvgPath}))])body+=`<path d="${esc(l.d)}" fill="none" stroke="#aeb5b7" stroke-width="8"/><path d="${esc(l.d)}" fill="none" stroke="#14181d" stroke-width="2.8"/>`;body+='</g>';}
+ const esc=F.G.attrs;let body='';for(const p of pieces){const d=defs[p.definitionId],g=d.geometry;body+=`<g transform="translate(${p.x} ${p.y}) rotate(${p.angle}) scale(1 ${p.flip?-1:1})"><path d="${esc(g.outlineSvgPath)}" fill="${d.parameters.type==='reference'?'none':d.color}" stroke="${d.parameters.type==='reference'?'none':'#858d97'}" stroke-width="0.8"/>`;body+=F.surfaceMarkings(d);for(const l of [...g.lanePaths,...(g.alternateLanePaths||[]).map(r=>({d:r.switchSvgPath}))])body+=`<path d="${esc(l.d)}" fill="none" stroke="#aeb5b7" stroke-width="${d.family==='slotforge.afx-racing'?4:d.family==='slotforge.carrera-go'?7:d.family==='slotforge.fleischmann-auto-rallye'?11:8}"/><path d="${esc(l.d)}" fill="none" stroke="#14181d" stroke-width="${d.family==='slotforge.afx-racing'?1.1:d.family==='slotforge.carrera-go'?2.4:2.8}"/>`;body+='</g>';}
  return{width,height,svg:`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="${b[0]-pad/scale} ${b[1]-pad/scale} ${width/scale} ${height/scale}">${body}</svg>`};
 }
 return{VERSION,CONTRACT,canonical,hash,newState,readState,network,reconcile,offsets,atTravel,travelPlan,compatibility,prepare,importLayout,picture};

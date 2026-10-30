@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "drawingCount": 19,
+  "nominalRoadModels": 7,
+  "referenceDrawings": 12,
+  "checks": [
+    "Unique piece IDs and existing SVG assets",
+    "Evidence references resolve",
+    "Re-derived nominal geometry matches stored geometry",
+    "Retail contents refer to existing pieces with positive whole quantities",
+    "Slotless references supply no slot model or reflection"
+  ],
+  "regressionCommand": "node --test app/additional-packs.test.cjs",
+  "limitations": [
+    "Lengths and identities use Carrera documents; width, spacing and R1/R2 road-edge diameters use independent published measurements. Exact mould tolerances are not established.",
+    "Crossovers, narrow sections, banking, loops, junctions and digital switches are reference-only; their actual paths and elevation are not replaced by straight/flat geometry.",
+    "R3 identity/45-degree angle is published, but its road-edge diameter remains unverified in this pack; no buildable model is supplied."
+  ]
+}

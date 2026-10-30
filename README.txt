@@ -1,4 +1,4 @@
-SlotForge Track Builder — editor iteration (v0.3.0)
+SlotForge Track Builder — editor iteration (v0.3.2)
 29 October 2026
 
 OPEN THE APP
@@ -310,3 +310,22 @@ runtime. Install Windows.cmd, Install macOS.command and Install Linux.sh select
 x64/arm64. Windows setup is tested here; native macOS/Linux checks are pending.
 See START-HERE.txt and installer/README.txt for installation, data and recovery.
 Physical layout envelope v1 and Timing contract draft.2 are unchanged.
+
+TRACK PACK EXPANSION — v0.3.1
+Four new packs: AFX Racing / Tomy (HO / 1:64), Carrera GO!!! (1:43),
+Carrera Hybrid (1:50, slotless reference artwork) and Fleischmann Auto-Rallye
+(1:32). 62 new SVG drawings; 23 new nominal flat-road geometry models.
+Actual dimensions always use mm; model scale never resizes the road.
+Modern Tomy/AFX is separate from vintage Aurora A/FX. Hybrid uses reference
+placement only, without invented slots, snapping, lane lengths or preview.
+Fleischmann slot spacing is a documented nominal 90 mm assumption.
+Sources and limitations: track-packs/<system>/pack.json and index.html.
+Integration contract remains 1.0.0-draft.2; layout envelope remains version 1.
+
+WINDOWS LAUNCHER FIX — v0.3.2
+The desktop shortcut starts the private helper without a terminal window and
+opens the default browser through Windows ShellExecute. Browser handoff is
+awaited even when reusing a running app. Startup errors are written to
+data/launcher.log and shown in a Windows error dialog. If the browser cannot
+open, the helper stays available and the dialog gives its local address.
+Reinstalling updates the desktop shortcut and keeps data/ unchanged.

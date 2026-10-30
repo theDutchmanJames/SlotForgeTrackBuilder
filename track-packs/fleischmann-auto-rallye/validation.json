@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "drawingCount": 15,
+  "nominalRoadModels": 6,
+  "referenceDrawings": 9,
+  "checks": [
+    "Unique piece IDs and existing SVG assets",
+    "Evidence references resolve",
+    "Re-derived nominal geometry matches stored geometry",
+    "Retail contents refer to existing pieces with positive whole quantities",
+    "Slotless references supply no slot model or reflection"
+  ],
+  "regressionCommand": "node --test app/additional-packs.test.cjs",
+  "limitations": [
+    "The catalogue dimensions road edges, not slot centres. This nominal model assumes two centred slots 90 mm apart in the 180 mm road. Per-lane lengths remain estimates until independently measured.",
+    "This first selection follows the 1968–1969 catalogue. Later products, including 3123 lane crossover, 3124 hump, 3125 looping and 3154 banked bowl, are outside this pack.",
+    "Electrical connection housings, junction, chicane, banking and accessories remain reference-only; complete route and attachment geometry is unresolved."
+  ]
+}

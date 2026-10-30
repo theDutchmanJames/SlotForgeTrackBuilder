@@ -1,0 +1,26 @@
+TRACK PACK EXPANSION — v0.3.1
+
+The built-in catalogue now also includes modern AFX Racing / Tomy (HO / 1:64),
+Carrera GO!!! (1:43), Carrera Hybrid (1:50, slotless references) and historic
+Fleischmann Auto-Rallye (1:32). There are 62 additional drawings and 23 nominal
+flat-road models. The normal layout import/export validates all 125 bundled
+parametric definitions.
+
+Integration contract remains 1.0.0-draft.2; slotforge.layout remains version 1.
+No new geometry template or unit is introduced. Physical dimensions are always
+millimetres. Model scale is descriptive pack metadata and must never rescale
+imported numeric geometry. Connector family remains independent of car scale.
+
+Hybrid is reference-only and supplies no slot routes, connections or calculated
+lane length. Handed reference artwork cannot be reflected. Existing draft.2
+reference recovery / compatibility warnings apply unchanged. Native slotless
+tracking is outside this update.
+
+Fleischmann slot spacing is an explicitly documented nominal 90 mm assumption.
+Modern AFX uses owner-reported 34.925 mm spacing; vintage Aurora connectors are
+excluded from this modern pack. All calculated lengths remain nominal.
+
+The core rendering helper adds GO / Fleischmann road markings; picture export
+uses narrower AFX rails. Consumers using the supplied rendering modules should
+update core.js and integration.js together. No Timing repository changes have
+been made. Full source suite: 112 passed; integration fixtures: 15 passed.

@@ -1,0 +1,32 @@
+{
+  "scope": {
+    "basis": "Initial documented selection of road pieces and track-mounted accessories.",
+    "availability": "Historical and current products are mixed; catalogue inclusion does not imply current availability.",
+    "excluded": [
+      "Vintage Aurora A/FX and Aurora Model Motoring",
+      "Car/chassis spares",
+      "Unmeasured aftermarket borders"
+    ]
+  },
+  "drawingCount": 17,
+  "productCount": 10,
+  "roadGeometryCount": 10,
+  "borderGeometryCount": 0,
+  "coveredProductSkus": [
+    "70600",
+    "70601",
+    "70608",
+    "70607",
+    "70611",
+    "70602",
+    "70603",
+    "70609",
+    "70613",
+    "70621"
+  ],
+  "unresolved": [
+    "This pack models modern Tomy/AFX connectors. Vintage Aurora A/FX has different connectors and is excluded; no direct compatibility is claimed.",
+    "76.2 mm road width, 34.925 mm slot spacing and outer-edge radius convention use published owner observations. Centred edge offsets are derived; verify before a precision build.",
+    "Banked turns, hairpin, crossovers, chicane and terminal housing remain reference-only because their full routes or occupied outlines are not established."
+  ]
+}

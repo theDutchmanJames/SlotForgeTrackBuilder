@@ -1,0 +1,2095 @@
+{
+  "format": "slotforge.track-pack",
+  "formatVersion": "0.1-draft",
+  "id": "slotforge.carrera-go",
+  "version": "0.1.0-design",
+  "title": "Carrera GO!!!",
+  "manufacturer": "Carrera",
+  "date": "2026-10-30",
+  "units": "mm",
+  "modelScale": "1:43",
+  "trackSystem": "slotted",
+  "status": "nominal-planning",
+  "runtime": {
+    "containsExecutableCode": false
+  },
+  "scope": {
+    "basis": "Initial documented selection of road pieces and track-mounted accessories.",
+    "availability": "Historical and current products are mixed; catalogue inclusion does not imply current availability.",
+    "excluded": [
+      "Carrera FIRST",
+      "Build ’n Race decorative structures",
+      "Unverified aftermarket borders"
+    ]
+  },
+  "defaults": {
+    "trackWidthMm": 114,
+    "laneSpacingMm": 60,
+    "status": "nominal",
+    "note": "Car scale is descriptive. Physical dimensions are millimetres. Centred slot offsets are a nominal model, not manufacturing tolerances."
+  },
+  "visualStyle": {
+    "basis": "Original schematic SVG interpretations of the cited product/catalogue illustrations; connector details are illustrative.",
+    "road": "#303236"
+  },
+  "sources": [
+    {
+      "id": "go-manufacturer",
+      "title": "Carrera GO!!! manufacturer accessories",
+      "url": "https://carrera-toys.com/de-eu/collections/landingpage-go-zubehor"
+    },
+    {
+      "id": "go-plan",
+      "title": "Carrera Zandvoort Park Circuit: manufacturer parts and lengths",
+      "url": "https://backend.carrera-toys.com/api/cms/download/352942"
+    },
+    {
+      "id": "go-catalogue",
+      "title": "Carrera 2013 international catalogue",
+      "url": "https://www.carreraclub.com/fileadmin/user_upload/downloads/Carrera_Catalogue_ROW_2013_screen.pdf",
+      "note": "Manufacturer catalogue archived by Carrera Club; GO special pieces, product photos and 61658 mixed-length retail pack."
+    },
+    {
+      "id": "go-measurements",
+      "title": "Joe’s Carrera GO!!!: original technical measurements",
+      "url": "https://www.go143.de/technische-daten-der-go/",
+      "note": "Independent measurements: 114 mm road width, 60 mm slot spacing, R1/R2 diameters. Slot offsets are centred nominally."
+    }
+  ],
+  "sourceIssues": [
+    {
+      "field": "Geometry basis",
+      "detail": "Lengths and identities use Carrera documents; width, spacing and R1/R2 road-edge diameters use independent published measurements. Exact mould tolerances are not established."
+    },
+    {
+      "field": "Special and elevated pieces",
+      "detail": "Crossovers, narrow sections, banking, loops, junctions and digital switches are reference-only; their actual paths and elevation are not replaced by straight/flat geometry."
+    },
+    {
+      "field": "R3",
+      "detail": "R3 identity/45-degree angle is published, but its road-edge diameter remains unverified in this pack; no buildable model is supplied."
+    }
+  ],
+  "pieces": [
+    {
+      "id": "carrera-go:61602",
+      "revision": 1,
+      "name": "Straight · 342 mm",
+      "manufacturerSku": "20061602",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61602.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 342,
+          "widthMm": 114,
+          "laneCount": 2,
+          "laneSpacingMm": 60
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 342 V 114 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            342,
+            114
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                27
+              ],
+              "end": [
+                342,
+                27
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    27
+                  ],
+                  "to": [
+                    342,
+                    27
+                  ]
+                }
+              ],
+              "lengthMm": 342,
+              "d": "M 0 27 H 342"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                87
+              ],
+              "end": [
+                342,
+                87
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    87
+                  ],
+                  "to": [
+                    342,
+                    87
+                  ]
+                }
+              ],
+              "lengthMm": 342,
+              "d": "M 0 87 H 342"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                57
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    27
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    87
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                342,
+                57
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    342,
+                    27
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    342,
+                    87
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 342
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          342,
+          114
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "lengthMm": 342,
+        "widthMm": 114
+      },
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Nominal centred slots at 27 mm and 87 mm. The 61658 retail box contains three 100 mm and three 114 mm sections."
+      ]
+    },
+    {
+      "id": "carrera-go:61656",
+      "revision": 1,
+      "name": "Straight · 171 mm",
+      "manufacturerSku": "20061656",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61656.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 171,
+          "widthMm": 114,
+          "laneCount": 2,
+          "laneSpacingMm": 60
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 171 V 114 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            171,
+            114
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                27
+              ],
+              "end": [
+                171,
+                27
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    27
+                  ],
+                  "to": [
+                    171,
+                    27
+                  ]
+                }
+              ],
+              "lengthMm": 171,
+              "d": "M 0 27 H 171"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                87
+              ],
+              "end": [
+                171,
+                87
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    87
+                  ],
+                  "to": [
+                    171,
+                    87
+                  ]
+                }
+              ],
+              "lengthMm": 171,
+              "d": "M 0 87 H 171"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                57
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    27
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    87
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                171,
+                57
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    171,
+                    27
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    171,
+                    87
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 171
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          171,
+          114
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "lengthMm": 171,
+        "widthMm": 114
+      },
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Nominal centred slots at 27 mm and 87 mm. The 61658 retail box contains three 100 mm and three 114 mm sections."
+      ]
+    },
+    {
+      "id": "carrera-go:61658-114",
+      "revision": 1,
+      "name": "Straight · 114 mm",
+      "manufacturerSku": "20061658",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61658-114.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 114,
+          "widthMm": 114,
+          "laneCount": 2,
+          "laneSpacingMm": 60
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 114 V 114 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            114,
+            114
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                27
+              ],
+              "end": [
+                114,
+                27
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    27
+                  ],
+                  "to": [
+                    114,
+                    27
+                  ]
+                }
+              ],
+              "lengthMm": 114,
+              "d": "M 0 27 H 114"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                87
+              ],
+              "end": [
+                114,
+                87
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    87
+                  ],
+                  "to": [
+                    114,
+                    87
+                  ]
+                }
+              ],
+              "lengthMm": 114,
+              "d": "M 0 87 H 114"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                57
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    27
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    87
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                114,
+                57
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    114,
+                    27
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    114,
+                    87
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 114
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          114,
+          114
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "lengthMm": 114,
+        "widthMm": 114
+      },
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Nominal centred slots at 27 mm and 87 mm. The 61658 retail box contains three 100 mm and three 114 mm sections."
+      ]
+    },
+    {
+      "id": "carrera-go:61658-100",
+      "revision": 1,
+      "name": "Straight · 100 mm",
+      "manufacturerSku": "20061658",
+      "category": "Straights",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61658-100.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "straight",
+        "parameters": {
+          "type": "straight",
+          "lengthMm": 100,
+          "widthMm": 114,
+          "laneCount": 2,
+          "laneSpacingMm": 60
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 0 H 100 V 114 H 0 Z",
+          "boundsMm": [
+            0,
+            0,
+            100,
+            114
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                27
+              ],
+              "end": [
+                100,
+                27
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    27
+                  ],
+                  "to": [
+                    100,
+                    27
+                  ]
+                }
+              ],
+              "lengthMm": 100,
+              "d": "M 0 27 H 100"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                87
+              ],
+              "end": [
+                100,
+                87
+              ],
+              "segments": [
+                {
+                  "type": "line",
+                  "from": [
+                    0,
+                    87
+                  ],
+                  "to": [
+                    100,
+                    87
+                  ]
+                }
+              ],
+              "lengthMm": 100,
+              "d": "M 0 87 H 100"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                57
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    27
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    87
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                100,
+                57
+              ],
+              "outwardAngleDeg": 0,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    100,
+                    27
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    100,
+                    87
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 100
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          100,
+          114
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "lengthMm": 100,
+        "widthMm": 114
+      },
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Nominal centred slots at 27 mm and 87 mm. The 61658 retail box contains three 100 mm and three 114 mm sections."
+      ]
+    },
+    {
+      "id": "carrera-go:61603",
+      "revision": 1,
+      "name": "R1 curve · 90°",
+      "manufacturerSku": "20061603",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61603.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 114,
+          "widthMm": 114,
+          "angleDeg": 90,
+          "laneCount": 2,
+          "laneSpacingMm": 60
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -228 A 228 228 0 0 1 228 0 L 114 0 A 114 114 0 0 0 0 -114 Z",
+          "boundsMm": [
+            0,
+            -228,
+            228,
+            228
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -141
+              ],
+              "end": [
+                141,
+                0
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 141,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 90
+                }
+              ],
+              "lengthMm": 221.4822820780804,
+              "d": "M 0 -141 A 141 141 0 0 1 141,0"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -201
+              ],
+              "end": [
+                201,
+                0
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 201,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 90
+                }
+              ],
+              "lengthMm": 315.7300616857742,
+              "d": "M 0 -201 A 201 201 0 0 1 201,0"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -171
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -141
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -201
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                171,
+                0
+              ],
+              "outwardAngleDeg": 90,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    141,
+                    0
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    201,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 268.6061718819273
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -228,
+          228,
+          228
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 114,
+        "outerRadiusMm": 228,
+        "angleDeg": 90
+      },
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Road radii from published independent diameter measurements. Slot positions are derived from 60 mm spacing."
+      ]
+    },
+    {
+      "id": "carrera-go:61611",
+      "revision": 1,
+      "name": "R1 curve · 45°",
+      "manufacturerSku": "20061611",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61611.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 114,
+          "widthMm": 114,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 60
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -228 A 228 228 0 0 1 161.220346 -161.220346 L 80.610173 -80.610173 A 114 114 0 0 0 0 -114 Z",
+          "boundsMm": [
+            0,
+            -228,
+            161.220346,
+            147.389827
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -141
+              ],
+              "end": [
+                99.702056,
+                -99.702056
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 141,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 110.7411410390402,
+              "d": "M 0 -141 A 141 141 0 0 1 99.702056,-99.702056"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -201
+              ],
+              "end": [
+                142.128463,
+                -142.128463
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 201,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 157.8650308428871,
+              "d": "M 0 -201 A 201 201 0 0 1 142.128463,-142.128463"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -171
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -141
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -201
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                120.91526,
+                -120.91526
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    99.702056,
+                    -99.702056
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    142.128463,
+                    -142.128463
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 134.30308594096365
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -228,
+          161.220346,
+          147.389827
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 114,
+        "outerRadiusMm": 228,
+        "angleDeg": 45
+      },
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Road radii from published independent diameter measurements. Slot positions are derived from 60 mm spacing."
+      ]
+    },
+    {
+      "id": "carrera-go:61617",
+      "revision": 1,
+      "name": "R2 curve · 45°",
+      "manufacturerSku": "20061617",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61617.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": {
+        "template": "curve",
+        "parameters": {
+          "type": "curve",
+          "innerRadiusMm": 228,
+          "widthMm": 114,
+          "angleDeg": 45,
+          "laneCount": 2,
+          "laneSpacingMm": 60
+        },
+        "derived": {
+          "outlineSvgPath": "M 0 -342 A 342 342 0 0 1 241.830519 -241.830519 L 161.220346 -161.220346 A 228 228 0 0 0 0 -228 Z",
+          "boundsMm": [
+            0,
+            -342,
+            241.830519,
+            180.779654
+          ],
+          "lanePaths": [
+            {
+              "id": "lane-1",
+              "start": [
+                0,
+                -255
+              ],
+              "end": [
+                180.312229,
+                -180.312229
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 255,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 200.2765316663493,
+              "d": "M 0 -255 A 255 255 0 0 1 180.312229,-180.312229"
+            },
+            {
+              "id": "lane-2",
+              "start": [
+                0,
+                -315
+              ],
+              "end": [
+                222.738636,
+                -222.738636
+              ],
+              "segments": [
+                {
+                  "type": "arc",
+                  "center": [
+                    0,
+                    0
+                  ],
+                  "radiusMm": 315,
+                  "startAngleDeg": -90,
+                  "sweepDeg": 45
+                }
+              ],
+              "lengthMm": 247.40042147019622,
+              "d": "M 0 -315 A 315 315 0 0 1 222.738636,-222.738636"
+            }
+          ],
+          "connectors": [
+            {
+              "id": "a",
+              "position": [
+                0,
+                -285
+              ],
+              "outwardAngleDeg": 180,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    0,
+                    -255
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    0,
+                    -315
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b",
+              "position": [
+                201.525433,
+                -201.525433
+              ],
+              "outwardAngleDeg": 45,
+              "lanes": [
+                {
+                  "pathId": "lane-1",
+                  "position": [
+                    180.312229,
+                    -180.312229
+                  ]
+                },
+                {
+                  "pathId": "lane-2",
+                  "position": [
+                    222.738636,
+                    -222.738636
+                  ]
+                }
+              ]
+            }
+          ],
+          "centrelineLengthMm": 223.83847656827274
+        },
+        "status": "nominal-published-envelope-derived-slots"
+      },
+      "preview": {
+        "status": "nominal-dimension-model",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -342,
+          241.830519,
+          180.779654
+        ],
+        "units": "mm"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": true,
+        "nominalLaneLength": true,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {
+        "innerRadiusMm": 228,
+        "outerRadiusMm": 342,
+        "angleDeg": 45
+      },
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "nominal-with-documented-assumptions",
+        "missing": [
+          "Connector outline, slot edge offsets and manufacturing tolerances"
+        ]
+      },
+      "notes": [
+        "Road radii from published independent diameter measurements. Slot positions are derived from 60 mm spacing."
+      ]
+    },
+    {
+      "id": "carrera-go:61609",
+      "revision": 1,
+      "name": "Analogue crossover",
+      "manufacturerSku": "20061609",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61609.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          228,
+          114
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference only. Routes, complete occupied envelope or connector arrangement remain unvalidated; SVG size is illustrative."
+      ]
+    },
+    {
+      "id": "carrera-go:61610",
+      "revision": 1,
+      "name": "Narrow section",
+      "manufacturerSku": "20061610",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61610.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          228,
+          114
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference only. Routes, complete occupied envelope or connector arrangement remain unvalidated; SVG size is illustrative."
+      ]
+    },
+    {
+      "id": "carrera-go:61616",
+      "revision": 1,
+      "name": "Junction",
+      "manufacturerSku": "20061616",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61616.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          342,
+          114
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference only. Routes, complete occupied envelope or connector arrangement remain unvalidated; SVG size is illustrative."
+      ]
+    },
+    {
+      "id": "carrera-go:61618",
+      "revision": 1,
+      "name": "Mechanical switch",
+      "manufacturerSku": "20061618",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61618.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          342,
+          114
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference only. Routes, complete occupied envelope or connector arrangement remain unvalidated; SVG size is illustrative."
+      ]
+    },
+    {
+      "id": "carrera-go:61530",
+      "revision": 1,
+      "name": "GO!!! connecting straight",
+      "manufacturerSku": "20061530",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61530.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          342,
+          149
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference only. Routes, complete occupied envelope or connector arrangement remain unvalidated; SVG size is illustrative."
+      ]
+    },
+    {
+      "id": "carrera-go:61647",
+      "revision": 1,
+      "name": "Chicane",
+      "manufacturerSku": "20061647",
+      "category": "Special track",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61647.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          228,
+          114
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference only. Routes, complete occupied envelope or connector arrangement remain unvalidated; SVG size is illustrative."
+      ]
+    },
+    {
+      "id": "carrera-go:61645",
+      "revision": 1,
+      "name": "R3 curve · 45°",
+      "manufacturerSku": "20061645",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61645.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -456,
+          322.440692,
+          214.169481
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference-only identification. Radius / banked projection is not a verified fit model."
+      ]
+    },
+    {
+      "id": "carrera-go:61612",
+      "revision": 1,
+      "name": "Banked R1 curve · 45°",
+      "manufacturerSku": "20061612",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61612.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -228,
+          161.220346,
+          147.389827
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference-only identification. Radius / banked projection is not a verified fit model."
+      ]
+    },
+    {
+      "id": "carrera-go:61646",
+      "revision": 1,
+      "name": "Banked R2 curve · 45°",
+      "manufacturerSku": "20061646",
+      "category": "Curves",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61646.svg",
+      "physicalTrackPieces": 1,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -342,
+          241.830519,
+          180.779654
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Reference-only identification. Radius / banked projection is not a verified fit model."
+      ]
+    },
+    {
+      "id": "carrera-go:61651",
+      "revision": 1,
+      "name": "Guardrail fence",
+      "manufacturerSku": "20061651",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61651.svg",
+      "physicalTrackPieces": 0,
+      "physicalAccessoryPieces": 1,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          240,
+          52
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Side-view identification. Installed plan footprint is unverified."
+      ]
+    },
+    {
+      "id": "carrera-go:61604",
+      "revision": 1,
+      "name": "Fly-over bridge",
+      "manufacturerSku": "20061604",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61604.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          0,
+          220,
+          112
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Schematic elevation; no road or support dimensions are asserted."
+      ]
+    },
+    {
+      "id": "carrera-go:61613",
+      "revision": 1,
+      "name": "Looping set",
+      "manufacturerSku": "20061613",
+      "category": "Accessories",
+      "kind": "piece",
+      "systems": [
+        "carrera-go"
+      ],
+      "asset": "assets/61613.svg",
+      "physicalTrackPieces": null,
+      "physicalAccessoryPieces": 0,
+      "geometry": null,
+      "preview": {
+        "status": "reference-only",
+        "representation": "top-view",
+        "bounds": [
+          0,
+          -10,
+          180,
+          140
+        ],
+        "units": "illustrative-coordinate-units"
+      },
+      "capabilities": {
+        "preview": true,
+        "nominalSnap": false,
+        "nominalLaneLength": false,
+        "nominalBorderFit": false,
+        "exactFit": false
+      },
+      "mirror": {
+        "mode": "reorient-same-piece",
+        "note": "Reorient the same road section."
+      },
+      "publishedDimensions": {},
+      "evidence": {
+        "sources": [
+          "go-manufacturer",
+          "go-plan",
+          "go-catalogue",
+          "go-measurements"
+        ],
+        "identity": "published",
+        "geometry": "unresolved",
+        "missing": [
+          "Validated footprint / slot connectivity; reference artwork supplies no calculated route"
+        ]
+      },
+      "notes": [
+        "Side-view illustration. Loop elevation and approach transitions cannot be inferred from a flat curve."
+      ]
+    }
+  ],
+  "products": [
+    {
+      "sku": "20061602",
+      "name": "Straight · 342 mm",
+      "contents": [
+        {
+          "pieceId": "carrera-go:61602",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "go-manufacturer",
+        "go-plan",
+        "go-catalogue",
+        "go-measurements"
+      ]
+    },
+    {
+      "sku": "20061656",
+      "name": "Straight · 171 mm",
+      "contents": [
+        {
+          "pieceId": "carrera-go:61656",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "go-manufacturer",
+        "go-plan",
+        "go-catalogue",
+        "go-measurements"
+      ]
+    },
+    {
+      "sku": "20061658",
+      "name": "Straights · 100 / 114 mm",
+      "contents": [
+        {
+          "pieceId": "carrera-go:61658-100",
+          "quantity": 3
+        },
+        {
+          "pieceId": "carrera-go:61658-114",
+          "quantity": 3
+        }
+      ],
+      "sourceIds": [
+        "go-plan",
+        "go-catalogue"
+      ]
+    },
+    {
+      "sku": "20061603",
+      "name": "R1 curve · 90°",
+      "contents": [
+        {
+          "pieceId": "carrera-go:61603",
+          "quantity": 2
+        }
+      ],
+      "sourceIds": [
+        "go-manufacturer",
+        "go-plan",
+        "go-catalogue",
+        "go-measurements"
+      ]
+    },
+    {
+      "sku": "20061611",
+      "name": "R1 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "carrera-go:61611",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "go-manufacturer",
+        "go-plan",
+        "go-catalogue",
+        "go-measurements"
+      ]
+    },
+    {
+      "sku": "20061617",
+      "name": "R2 curve · 45°",
+      "contents": [
+        {
+          "pieceId": "carrera-go:61617",
+          "quantity": 4
+        }
+      ],
+      "sourceIds": [
+        "go-manufacturer",
+        "go-plan",
+        "go-catalogue",
+        "go-measurements"
+      ]
+    }
+  ],
+  "outstanding": [
+    "Lengths and identities use Carrera documents; width, spacing and R1/R2 road-edge diameters use independent published measurements. Exact mould tolerances are not established.",
+    "Crossovers, narrow sections, banking, loops, junctions and digital switches are reference-only; their actual paths and elevation are not replaced by straight/flat geometry.",
+    "R3 identity/45-degree angle is published, but its road-edge diameter remains unverified in this pack; no buildable model is supplied."
+  ]
+}

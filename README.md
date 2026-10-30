@@ -8,9 +8,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.0 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.2 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.0/SlotForge-Track-Builder-v0.3.0-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.0)
+**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.2/SlotForge-Track-Builder-v0.3.2-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.2)
 
 ## Install and start
 
@@ -28,6 +28,8 @@ Create your own pieces with custom dimensions and **automatically generated matc
 Setup needs an internet connection the first time. It installs the small local helper automatically—you do not need to install Node.js or other developer tools yourself. After setup, the app works offline.
 
 **Next time:** use the **SlotForge Track Builder** desktop shortcut on Windows. On macOS/Linux, use **Start SlotForge** in the installed folder; the installer tells you where that folder is.
+
+If the browser does not open, Windows shows an error dialog with the local address. Launch details are saved in `data/launcher.log` inside your installed folder. macOS/Linux launchers print that location in the terminal. Run the latest installer again to repair an older shortcut; your saved data is kept.
 
 Windows installation has been tested. **The macOS and Linux installers are available for testing; they have not yet been tested on those systems.**
 
@@ -65,9 +67,26 @@ PDFs are generated inside the app. Choose **Portrait** or **Landscape**, then **
 
 ## Included track packs
 
-Carrera Evolution / Digital, Scalextric Sport / Digital, Policar, ScaleAuto Pro Track, Ninco Classic / N-Digital and SCX Universal / Classic / Advance.
+Ten built-in packs cover several model scales:
 
-Support varies by piece. Some special pieces have reference artwork only; **SCX is currently reference-only**. The app uses nominal or user-entered dimensions and does not check collisions, bridges or vertical clearance. The space guide is a visual planning aid.
+| Track system | Model scale | Support |
+| --- | --- | --- |
+| Carrera Evolution / Digital | 1:32 / 1:24 | Core roads and borders; selected specials |
+| Scalextric Sport / Digital | 1:32 | Core roads and borders; selected specials |
+| Policar | 1:32 | Core roads and borders; selected specials |
+| ScaleAuto Pro Track | 1:32 | Core roads and borders; selected specials |
+| Ninco Classic / N-Digital | 1:32 | Core roads and borders; selected specials |
+| SCX Universal / Classic / Advance | 1:32 | Reference artwork |
+| AFX Racing / Tomy | HO / 1:64 | Flat straights and curves; special-piece references |
+| Carrera GO!!! | 1:43 | Flat straights and R1/R2 curves; special-piece references |
+| Carrera Hybrid | 1:50 | Slotless reference artwork; separate left/right surfaces |
+| Fleischmann Auto-Rallye | 1:32 | Historic flat straights and three nested curve families |
+
+Every pack uses physical dimensions in **millimetres**. Model scale does not resize the pieces. Each system has a separate connector family. Modern Tomy/AFX is distinct from vintage Aurora A/FX, which is outside this first pack.
+
+Published dimensions, independent measurements and nominal assumptions are identified in the [pack catalogues](track-packs/index.html). Fleischmann slot spacing is a nominal 90 mm assumption. AFX uses owner-reported 34.925 mm spacing, not Tyco spacing. Hybrid has no guide slots: reference placement provides pictures, without snapping, lane lengths or slot animation.
+
+Support varies by piece. Some special pieces have reference artwork only; **SCX and Carrera Hybrid are currently reference-only**. The app uses nominal or user-entered dimensions and does not check collisions, bridges or vertical clearance. The space guide is a visual planning aid.
 
 ## SlotForge Timing
 

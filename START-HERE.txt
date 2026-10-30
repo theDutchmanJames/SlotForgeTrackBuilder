@@ -1,4 +1,4 @@
-SLOTFORGE TRACK BUILDER v0.3.0
+SLOTFORGE TRACK BUILDER v0.3.2
 
 INSTALL
 1. Extract the entire ZIP into a folder.
@@ -49,3 +49,17 @@ If it says saving failed, export your work as JSON before reloading.
 
 More installation, storage, recovery and developer details: installer/README.txt.
 Project and releases: https://github.com/theDutchmanJames/SlotForgeTrackBuilder
+
+ADDITIONAL TRACK SYSTEMS
+AFX Racing / Tomy (HO / 1:64), Carrera GO!!! (1:43), Carrera Hybrid
+(1:50, slotless references) and Fleischmann Auto-Rallye (1:32) are included.
+Choose them in the Track pack selector. Hybrid and unmeasured special pieces
+use reference placement only; no guide slots or lane lengths are invented.
+All physical dimensions remain millimetres, independent of model scale.
+Modern Tomy/AFX does not imply compatibility with vintage Aurora A/FX.
+
+WINDOWS STARTUP HELP
+The desktop shortcut should open your default browser without a terminal.
+If Windows cannot open the browser, the error dialog gives a local address
+you can open yourself. Startup details: data/launcher.log in the installed
+folder. Re-run the latest installer to repair a shortcut; data/ is kept.

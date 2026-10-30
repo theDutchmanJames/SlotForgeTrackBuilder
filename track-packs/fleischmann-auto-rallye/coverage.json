@@ -1,0 +1,28 @@
+{
+  "scope": {
+    "basis": "Initial documented selection of road pieces and track-mounted accessories.",
+    "availability": "Historical and current products are mixed; catalogue inclusion does not imply current availability.",
+    "excluded": [
+      "Later Monte Carlo additions",
+      "1:24 cars and electrical spares",
+      "Unmeasured aftermarket borders"
+    ]
+  },
+  "drawingCount": 15,
+  "productCount": 6,
+  "roadGeometryCount": 6,
+  "borderGeometryCount": 0,
+  "coveredProductSkus": [
+    "3100",
+    "3102",
+    "3104",
+    "3110",
+    "3111",
+    "3112"
+  ],
+  "unresolved": [
+    "The catalogue dimensions road edges, not slot centres. This nominal model assumes two centred slots 90 mm apart in the 180 mm road. Per-lane lengths remain estimates until independently measured.",
+    "This first selection follows the 1968–1969 catalogue. Later products, including 3123 lane crossover, 3124 hump, 3125 looping and 3154 banked bowl, are outside this pack.",
+    "Electrical connection housings, junction, chicane, banking and accessories remain reference-only; complete route and attachment geometry is unresolved."
+  ]
+}

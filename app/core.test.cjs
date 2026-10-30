@@ -79,7 +79,7 @@ test('Every bundled buildable definition survives the same import/export validat
  const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ctx={window:{}};
  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'catalogue.js'),'utf8'),ctx);let count=0;
  for(const pack of ctx.window.TRACK_PACKS)for(const raw of pack.pieces)if(raw.parameters){const d=F.validateDefinition(JSON.parse(JSON.stringify(raw)));assert.equal(d.geometry.outlineSvgPath,raw.geometry.outlineSvgPath);assert.equal(d.geometry.centrelineLengthMm,raw.geometry.centrelineLengthMm);assert.deepEqual(d.geometry.lanePaths.map(l=>l.lengthMm),Array.from(raw.geometry.lanePaths,l=>l.lengthMm));count++;}
- assert.equal(count,102);
+ assert.equal(count,125);
 });
 test('Preview guides stay on the exact arc, including reflected and reversed travel',()=>{
  for(const reflected of [false,true]){

@@ -1,7 +1,7 @@
 {
   "format": "slotforge.design-pack-index",
-  "date": "2026-10-29",
-  "note": "Design catalogue only. No application importer or installed plugin system yet.",
+  "date": "2026-10-30",
+  "note": "Built-in planning catalogues. Geometry, nominal assumptions and reference-only items are documented per piece.",
   "packs": [
     {
       "id": "slotforge.carrera-evolution-digital",
@@ -44,6 +44,34 @@
       "status": "first-design-draft-geometry-pending",
       "path": "scx/pack.json",
       "gallery": "scx/index.html"
+    },
+    {
+      "id": "slotforge.afx-racing",
+      "name": "AFX Racing / Tomy",
+      "status": "nominal-planning",
+      "path": "afx-racing/pack.json",
+      "gallery": "afx-racing/index.html"
+    },
+    {
+      "id": "slotforge.carrera-go",
+      "name": "Carrera GO!!!",
+      "status": "nominal-planning",
+      "path": "carrera-go/pack.json",
+      "gallery": "carrera-go/index.html"
+    },
+    {
+      "id": "slotforge.carrera-hybrid",
+      "name": "Carrera Hybrid",
+      "status": "reference-only",
+      "path": "carrera-hybrid/pack.json",
+      "gallery": "carrera-hybrid/index.html"
+    },
+    {
+      "id": "slotforge.fleischmann-auto-rallye",
+      "name": "Fleischmann Auto-Rallye",
+      "status": "nominal-planning",
+      "path": "fleischmann-auto-rallye/pack.json",
+      "gallery": "fleischmann-auto-rallye/index.html"
     }
   ],
   "remainingRequestedPacks": []

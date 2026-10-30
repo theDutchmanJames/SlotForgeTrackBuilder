@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "drawingCount": 17,
+  "nominalRoadModels": 10,
+  "referenceDrawings": 7,
+  "checks": [
+    "Unique piece IDs and existing SVG assets",
+    "Evidence references resolve",
+    "Re-derived nominal geometry matches stored geometry",
+    "Retail contents refer to existing pieces with positive whole quantities",
+    "Slotless references supply no slot model or reflection"
+  ],
+  "regressionCommand": "node --test app/additional-packs.test.cjs",
+  "limitations": [
+    "This pack models modern Tomy/AFX connectors. Vintage Aurora A/FX has different connectors and is excluded; no direct compatibility is claimed.",
+    "76.2 mm road width, 34.925 mm slot spacing and outer-edge radius convention use published owner observations. Centred edge offsets are derived; verify before a precision build.",
+    "Banked turns, hairpin, crossovers, chicane and terminal housing remain reference-only because their full routes or occupied outlines are not established."
+  ]
+}

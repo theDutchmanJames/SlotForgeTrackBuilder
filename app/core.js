@@ -147,6 +147,13 @@ function alternateRoutes(items,defs){
 // Trusted, generated markings for buildable starting-grid variants.
 // Reuse these in the canvas, print report and portable picture renderer.
 function surfaceMarkings(def,print=false){
+ const brand=def.family||'',q=def.parameters;
+ if(['slotforge.carrera-go','slotforge.fleischmann-auto-rallye'].includes(brand)&&['straight','curve'].includes(q.type)){
+  const line=y=>q.type==='straight'?`M 0 ${y} H ${q.lengthMm}`:`M 0 ${-(q.innerRadiusMm+y)} A ${q.innerRadiusMm+y} ${q.innerRadiusMm+y} 0 0 1 ${G.pt(q.innerRadiusMm+y,rad(q.angleDeg))}`;
+  const color=print?'#777':'#ddded7';let marks=`<g data-artwork="${brand.endsWith('carrera-go')?'go':'fleischmann'}-road">`;
+  for(const y of[3,q.widthMm-3])marks+=G.path(line(y),'none',color,1.2);
+  marks+=G.path(line(q.widthMm/2),'none',color,brand.endsWith('carrera-go')?1.8:2.3,`stroke-dasharray="${brand.endsWith('carrera-go')?'15 11':'22 15'}"`);return marks+'</g>';
+ }
  const p=def.parameters;if(p.type==='reference'){const label=Math.max(8,Math.min(p.widthMm/8,p.lengthMm/10)),image=def.referenceImage?`<image href="${G.attrs(def.referenceImage)}" width="${p.lengthMm}" height="${p.widthMm}" preserveAspectRatio="none"/>`:'';return image+`<path d="${def.geometry.outlineSvgPath}" fill="none" stroke="${print?'#555':'#d6b163'}" stroke-width="2" stroke-dasharray="8 5"/><text x="4" y="${label+3}" font-size="${label}" fill="${print?'#333':'#ffd38b'}" stroke="${print?'#fff':'#171c23'}" stroke-width="1" paint-order="stroke">REFERENCE</text>`;}if(p.type!=='straight')return '';
  const ninco=def.family.includes('ninco')&&def.sku==='10114',scalextric=def.family.includes('scalextric')&&def.sku==='C7018';
  if(ninco||scalextric){const width=ninco?180:156,length=ninco?200:175,stroke=print?'#555555':'#eeeee5',mark=ninco?48:42;let body=`<g data-artwork="${ninco?'ninco':'scalextric'}-start-grid" transform="scale(${p.lengthMm/length} ${p.widthMm/width})">`;for(const[x,y]of(ninco?[[35,45],[110,135]]:[[35,39],[105,117]]))body+=G.path(`M ${x} ${y-24} h ${mark} v 48 h ${-mark}`,'none',stroke,2);if(ninco)body+=G.path('M 0 90 H 200','none',stroke,2,'stroke-dasharray="24 17"');return body+'</g>';}
