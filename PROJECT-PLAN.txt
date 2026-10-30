@@ -136,3 +136,11 @@ startup logs and visible failure messages. Saved workspace files stay intact.
 Parallel straights and concentric matching curve edges use the Snap toggle,
 with a cyan alignment guide and Shift bypass. Rigid group dragging works even
 without open connectors. Side adjacency never becomes an electrical link.
+
+0.3.4 - reliability review
+Protect opened saved-design revisions and retain the baseline across autosave.
+Warn on unsaved changes, drain queued writes before shutdown and keep the helper
+running after failed autosave. Share editor/PNG/PDF artwork; retain imported
+connector families and explicit slot offsets when copying pieces. Repair stale
+partial locks, maximum-length import names, renamed pack labels and export retry.
+Layout v1 and Timing contract 1.0.0-draft.2 remain unchanged.

@@ -25,7 +25,7 @@ function createHandler(directory,options={}){
     try{
      let body;if(write){const chunks=[];let size=0;for await(const chunk of req){size+=chunk.length;if(size>require('./disk-store.cjs').MAX)throw Object.assign(Error('Import exceeds 50 MiB.'),{status:413});chunks.push(chunk);}try{body=JSON.parse(Buffer.concat(chunks).toString('utf8'));}catch{throw Object.assign(Error('Invalid JSON.'),{status:400});}}
      if(decoded==='/api/current'&&req.method==='GET')return json(200,await store.current());
-     if(decoded==='/api/current'&&req.method==='PUT')return json(200,await store.putCurrent(body.data,body.expectedRevision));
+     if(decoded==='/api/current'&&req.method==='PUT')return json(200,await store.putCurrent(body.data,body.expectedRevision,body.librarySource));
      if(decoded==='/api/packs'&&req.method==='GET')return json(200,await store.packs());
      if(decoded==='/api/packs'&&req.method==='PUT')return json(200,await store.putPacks(body.data,body.expectedRevision));
      if(decoded==='/api/designs'&&req.method==='GET')return json(200,await store.list());

@@ -1,4 +1,14 @@
-SlotForge Track Builder — editor iteration (v0.3.3)
+SlotForge Track Builder — editor iteration (v0.3.4)
+
+REVIEW AND RELIABILITY FIXES - v0.3.4
+Saved-track updates protect the version opened in your window. If another
+window saves a newer version, reopen it or save your edits as a new copy.
+The app warns before closing with unsaved changes and keeps the helper running
+if autosave fails. Storage can download a complete workspace backup.
+PNG exports retain the editor's road and border markings. Copy & adjust keeps
+imported connector families and uneven slot positions. Renamed custom packs
+update their piece labels. Interrupted write-lock and long-name transfer edge
+cases are repaired. See app/REVIEW.txt for the review and verification details.
 29 October 2026
 
 OPEN THE APP

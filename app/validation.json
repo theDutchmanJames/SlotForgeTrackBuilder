@@ -1,9 +1,9 @@
 {
-  "version": "0.3.3",
+  "version": "0.3.4",
   "date": "2026-10-30",
   "automated": {
-    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs installer/launcher.test.cjs",
-    "passed": 133,
+    "command": "node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs installer/launcher.test.cjs",
+    "passed": 148,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -88,11 +88,10 @@
     "screenshot": "custom-lane-changer-preview.png"
   },
   "notVerified": [
-    "Native print dialog and final PDF file",
-    "Browser download reaching the filesystem",
-    "Offline file:// execution",
-    "Mobile layout",
-    "SlotForge Timing import, which is not implemented"
+    "Native macOS and Linux installation/desktop launch",
+    "Complete mobile, browser and assistive technology matrix",
+    "Direct file:// workflow in this review",
+    "End-to-end import in the separate SlotForge Timing app"
   ],
   "limitations": [
     "Nominal geometry is not physical fit certification",
@@ -330,5 +329,37 @@
       "Side adjacency creates no electrical connection or dimensional change"
     ],
     "screenshot": "../dist/side-snapping-preview.png"
+  },
+  "review034": {
+    "report": "REVIEW.txt",
+    "newTests": 15,
+    "javascriptSyntaxFiles": 57,
+    "confirmedFixes": [
+      "Opened library revision baseline retained across list/get/autosave/reload; atomic stale update/delete rejection in disk and IndexedDB",
+      "Pending and failed autosave tracking, before-unload warning and shutdown queue drain",
+      "One editor/PNG/PDF piece-body renderer",
+      "Custom copy retains imported connector families, explicit slot positions and maximum-length names",
+      "Graceful recovery from abandoned partial write locks",
+      "Renamed custom packs synchronize member metadata",
+      "Export controls recover after failures",
+      "Explicit malformed connector/reflection metadata rejected",
+      "Maximum-length identity-collision names remain importable"
+    ],
+    "browser": [
+      "Isolated ports 8188/8189, no real user data touched",
+      "Two-window IndexedDB stale save rejected; new-copy recovery retains both records",
+      "Disk library save/reload/update; private source revision survives reload",
+      "Imported 3-slot curve copy and pack rename retain [20,75,155] mm offsets and club:imported family",
+      "Select-all, 36 borders, undo/redo, two-car preview",
+      "Actual PNG downloaded: 1600x941 RGBA, transparent corner",
+      "Actual PDF downloaded and rendered: one portrait A4 page, readable drawing/totals/parts",
+      "No captured console errors or warnings across three test tabs"
+    ],
+    "layoutEnvelope": 1,
+    "integrationContract": "1.0.0-draft.2",
+    "screenshots": [
+      "review-custom-measurements.png",
+      "review-stale-save.png"
+    ]
   }
 }

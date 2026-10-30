@@ -63,3 +63,14 @@ It is excluded from design.revision, track bounds, prepared physical geometry,
 route IDs, lane lengths, compatibility, parts lists and generated pictures.
 Timing may ignore workspace metadata. The contract remains 1.0.0-draft.2 and
 the main envelope remains slotforge.layout version 1.
+
+Builder v0.3.4 validation/rendering clarification (no contract revision)
+Explicit connector-family values must be nonempty identifier strings using
+letters, digits, underscore, hyphen, colon or dot (maximum 100 characters).
+Explicit mirror capability must be boolean. Omitted optional fields retain
+legacy defaults. Malformed declarations are rejected before derivation.
+PNG bodies now use Forge.drawBody, shared with the editor and printable drawing.
+Receiving runtimes must update core.js and integration.js together. This does not
+change lane geometry, route identities, Timing contract or the layout envelope.
+Editor library-save baselines are local storage metadata and are not exported
+as timing settings in slotforge.layout files.
