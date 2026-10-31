@@ -1,4 +1,4 @@
-SLOTFORGE CIRCUIT v0.3.9
+SLOTFORGE CIRCUIT v0.3.10
 
 Previously SlotForge Track Builder. Existing launchers, saved tracks and custom
 packs still work. For compatibility, the installed folder keeps the original

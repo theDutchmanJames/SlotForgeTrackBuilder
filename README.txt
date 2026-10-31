@@ -1,4 +1,4 @@
-SlotForge Circuit — editor iteration (v0.3.9)
+SlotForge Circuit — editor iteration (v0.3.10)
 
 Previously SlotForge Track Builder. Use SlotForge Circuit.html for the named
 file launcher; the previous HTML launcher remains a compatibility alias.

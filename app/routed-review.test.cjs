@@ -2,6 +2,19 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const source=name=>fs.readFileSync(path.join(__dirname,name),'utf8');
 const close=(a,b,eps=1e-5)=>assert.ok(Math.abs(a-b)<eps,`${a} != ${b}`);
 
+test('Plugins Browse pack opens Routed Tracks for regenerated routed packs',()=>{
+ const app=source('app.js'),start=app.indexOf('function renderPlugins()'),end=app.indexOf('function renderCustomLibrary()',start);
+ const element=()=>({children:[],append(...nodes){this.children.push(...nodes);},replaceChildren(){this.children=[];}});
+ for(const settings of[R.defaults,{...R.defaults,laneCount:4,constructionMode:'table'}]){
+  const host=element(),location={href:'http://127.0.0.1:8173/app/#plugins'},pack=R.pack(settings);
+  vm.runInNewContext(app.slice(start,end)+';renderPlugins();',{$:()=>host,document:{createElement:element},allPacks:()=>[pack],customLibrary:{packs:[]},location});
+  const browse=host.children[0].children[2].children[0];
+  assert.equal(browse.textContent,'Browse pack');browse.onclick();
+  const target=new URL(location.href,'http://127.0.0.1:8173/app/');
+  assert.equal(target.pathname,'/app/');assert.equal(target.hash,'#routed');
+ }
+});
+
 test('Regenerating catalogue defaults cannot alter placed imported template IDs',()=>{const routedPack=R.pack(R.settings()),old=F.validateDefinition(routedPack.pieces[0]),defs={[old.id]:old},routedState=R.workspace({settings:{...R.defaults,laneCount:3}}),sync=source('app.js').match(/function syncRoutedPack\(\)\{[^\n]+/)[0];vm.runInNewContext(sync+';syncRoutedPack();',{Object,F,defs,routedPack,routedState,populatePacks(){},catalogue(){}});assert.equal(defs[old.id],old);assert.equal(old.geometry.lanePaths.length,2);assert.equal(routedPack.pieces[0].geometry.lanePaths.length,3);});
 test('Identical routed catalogue sections share inventory identity without changing earlier dimensions',()=>{const app=source('app.js'),defs={},context={F,defs},code=['exportDefinition','routedCatalogueDefinition'].map(name=>app.match(new RegExp('function '+name+'\\([^\\n]+'))[0]).join('\n');vm.runInNewContext(code,context);const d=R.pack(R.settings()).pieces[0],a=context.routedCatalogueDefinition(d),b=context.routedCatalogueDefinition(d);assert.equal(a,b);assert.notEqual(a.id,d.id);const wider=R.pack(R.settings({...R.defaults,laneCount:3})).pieces[0],c=context.routedCatalogueDefinition(wider);assert.notEqual(c.id,a.id);assert.equal(a.geometry.lanePaths.length,2);assert.equal(c.geometry.lanePaths.length,3);assert.equal(Object.keys(defs).length,2);});
 test('Coincident straight and sampled straight surfaces are reported as overlapping',()=>{const s=R.settings(),a=R.definition(s,{type:'straight',lengthMm:1000},'a'),b=R.definition(s,{type:'routed-spline',controlPointsMm:[[0,0],[300,0],[700,0],[1000,0]]},'b'),defs={a,b},p=F.pose(a),q=F.join(F.pose(b),b,0,{...F.ports(p,defs)[0],angle:0});assert.ok(C.checks([p,q],defs,null).some(i=>i.code==='overlap'));const raw={format:'slotforge.layout',version:1,title:'Coincident representations',definitions:[a,b],pieces:[p,q]},m=CAD.build(raw,{table:false});assert.equal(m.paths.filter(p=>p.layer==='SLOT_CENTRES').length,2);assert.equal(m.paths.filter(p=>p.layer==='SURFACE_EDGES').length,1);assert.ok(m.messages.some(m=>m.includes('duplicate path')));});

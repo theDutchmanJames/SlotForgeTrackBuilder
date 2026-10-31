@@ -1,9 +1,9 @@
 {
-  "version": "0.3.9",
+  "version": "0.3.10",
   "date": "2026-10-31",
   "automated": {
     "command": "node --test app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
-    "passed": 281,
+    "passed": 282,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -52,7 +52,8 @@
       "Disk persistence across store restarts, atomic backups, stale-write conflicts, process locking, migration deduplication, malformed-file preservation, loopback session and same-origin API validation",
       "Routed slot-centred anchors, asymmetric verges, profile validation, reflow and immutable edits, exact closed lane lengths, overlap/table checks, material estimates, procedural artwork, PDF and conditional draft.3 round trips",
       "Flowing cubic normal offsets, adaptive sampled lengths, folds/self-crossings, asymmetric verges, reflected/reversed interpolation, common timing cross-sections, fixed-end bridges, material totals, conditional draft.4 and supplied example round trips; short PDF report pagination",
-      "Routed CAD construction contours, matching surface seam removal, slot/conductor offset widths, arc extrema and shallow bulge precision, SVG physical scale, DXF millimetres and Y-up coordinates, layer isolation, exact gaps, duplicates, mixed-layout exclusion and escaping"
+      "Routed CAD construction contours, matching surface seam removal, slot/conductor offset widths, arc extrema and shallow bulge precision, SVG physical scale, DXF millimetres and Y-up coordinates, layer isolation, exact gaps, duplicates, mixed-layout exclusion and escaping",
+      "Plugins Browse pack opens Routed Tracks for default and regenerated tabletop profiles"
     ]
   },
   "browser": {
