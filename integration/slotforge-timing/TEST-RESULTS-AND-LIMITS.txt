@@ -1,5 +1,9 @@
-CURRENT ROUTED EXTENSION - 31 October 2026 (v0.3.14)
-309 complete source tests passed. 91 tests in the rebuilt, unpacked runtime
+FreeForm, elevation, shaped tables and squeeze require the matching draft.8,
+draft.9 or draft.10 contract support. Layout envelope remains version 1.
+The standalone archive includes the shared runtime, regression tests and examples.
+
+CURRENT CIRCUIT EXTENSIONS - 1 November 2026 (v0.3.15)
+364 complete source tests passed. 143 tests in the rebuilt, unpacked runtime
 handoff passed, including 24 flowing-geometry regressions. All 15 existing
 Timing fixtures passed without changes to their expected results.
 The squeeze extension adds 13 regressions covering variable spacing, anchored

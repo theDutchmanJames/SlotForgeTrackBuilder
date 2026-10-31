@@ -1,7 +1,23 @@
 SlotForge Circuit - FreeForm plan
 Recorded: 31 October 2026
-Status: PARKED - concepts only; no implementation authorised by this plan.
-Resume only when the user asks to work on FreeForm Drawing.
+Resumed: 31 October 2026, following the user's request to return to this plan.
+Status: FIRST ITERATION RELEASED in v0.3.15.
+The implementation includes direct drawing/editing, group movement, point locks,
+reference-lane generation, loop checks, editable drafts, Track Library, Live
+Preview and PDF/PNG/SVG/DXF/Timing exports. See app/FREEFORM-TOOLS.txt.
+Local FreeForm squeeze is included. Advanced conversion remains later work.
+
+CURRENT BASELINE AND DIRECTION
+SlotForge Circuit v0.3.14 includes routed Bezier sections, tabletop routing,
+direct handle editing, closed-loop tools, PDF/SVG/DXF, and both plateau and
+Smooth apex squeezes. Reuse their geometry, rendering and export foundations.
+FreeForm adds a whole-circuit authoring model; the existing section tools are
+not a substitute for drawing and editing one continuous reference slot.
+
+The proposed first release delivers a complete loop workflow: draw, edit,
+generate lanes, check, save/reopen, animate and export. Local spacing comes
+after that baseline. The detailed design below records the intended behaviour and delivery order;
+app/FREEFORM-TOOLS.txt records the current controls and implementation limits.
 
 PURPOSE
 Offer FreeForm Drawing under Routed Tracks as an alternative to assembling
@@ -20,6 +36,9 @@ PROPOSED WORKFLOW
 
 DRAWING THE REFERENCE PATH
 - Click to place a point; click and drag to place a point with curve handles.
+  Default to assisted smooth points, with visible handles when selected.
+  Users can explicitly straighten a stretch; they should not need to understand
+  Bezier mathematics just to draw a usable bend.
 - Preview the next segment as the pointer moves.
 - Support straight segments and cubic Bezier curves: start/end anchors and
   two control handles. Curves can sweep, tighten, open out or form S-bends.
@@ -27,7 +46,10 @@ DRAWING THE REFERENCE PATH
   for users unfamiliar with Bezier editing; sharp direction changes are flagged.
 - Click the starting point or choose Close loop to finish. A coincident start
   and end is not sufficient: check the closing join's direction too.
-- Initial toolbar concept: Draw, Edit curve, Add point, Delete point, Close loop.
+- Initial toolbar: Draw, Edit points, Insert point, Delete point, Close loop,
+  Generate lanes. Escape cancels the current gesture; Space+drag pans.
+  Double-click finishes an open draft without pretending it is a closed track.
+  Do not place a duplicate final anchor when finishing.
 
 REFERENCE LANE AND LANE GENERATION - ACCEPTED CONCEPT
 The drawn path need not be Lane 1. In Generate lanes, offer:
@@ -53,10 +75,19 @@ drawn path and reruns checks. Numbered previews must make the resulting order
 unambiguous through S-bends, where inside/outside changes.
 The earlier inside/outside placement idea is superseded by reference-lane
 assignment and explicit numbering orientation.
-Before implementation, clarify whether Reverse lane numbering only relabels
-existing paths or also reverses the generation side; these have different
-effects when the reference lane is off-centre. Preserve stable lane identities
-and make any resulting reference-number change explicit in the UI.
+PROPOSED NUMBERING CONTROLS
+Separate two actions that would otherwise be confused:
+- Higher lane numbers: left/right of the drawing direction. This controls the
+  physical side of generated offsets. Preview the changed footprint before
+  applying it; the drawn reference slot stays fixed.
+- Reverse numbering: relabel the existing physical paths without moving them.
+  The reference-lane number becomes totalLanes + 1 - oldReferenceLaneNumber.
+  Update the numbering-side setting at the same time so regeneration retains
+  the same paths. Show the resulting reference-lane number immediately.
+
+Drawing direction is shown by an arrow. Racing direction is separate and can
+be reversed without moving slots, reversing numbering or changing lane IDs.
+Numbered labels in the lane preview make these operations visible.
 
 DIRECT CANVAS EDITING
 - Drag anchors and handles; all generated lanes remain linked and update live.
@@ -68,6 +99,8 @@ DIRECT CANVAS EDITING
 - Lock a point to protect completed parts of the design.
 - Preserve Undo/Redo and cancelable edits.
 - Place start/finish separately from the first drawing point.
+- Save and reopen unfinished/open drafts. Export a drawing of an open draft
+  with a clear status, but do not report it as a valid closed racing circuit.
 
 CHECKS AND FEEDBACK
 Show per-lane lengths while editing. Highlight:
@@ -86,6 +119,11 @@ stretch, with gradual transitions into and out of it. This requires separate
 checked lane paths, not constant offsets. Keep lanes linked to the design
 rather than enabling accidental independent lane movement.
 Transition editing, minimum separation and conductor checks need further design.
+The existing section Squeeze and Smooth apex tools provide useful mathematics,
+but FreeForm needs a selected stretch along the complete reference loop rather
+than a squeeze restarting at each internal curve boundary. A stretch may cross
+the closing seam. Keep its reference slot anchored by default, even when that
+slot is Lane 3, and validate all generated paths globally.
 
 SAVE, PREVIEW AND EXPORT
 - Save the complete editable circuit to Track Library, including anchors,
@@ -105,12 +143,88 @@ choice of which lane was drawn, explicit lane ordering, direct canvas editing,
 clear geometry checks, persistence, Undo/Redo and compatible exports.
 Defer local spacing variation and other advanced construction tools.
 
-OPEN DESIGN WORK BEFORE IMPLEMENTATION
-- Exact draw/edit gestures and smooth-handle behaviour, including loop closure.
-- Reverse-numbering versus generation-side semantics and stable lane IDs.
-- Representation, import compatibility and any required contract revisions.
-- Robust offset sampling and checks near hairpins, crossings and joins.
-- Relationship to existing section designs: conversion or a separate mode.
-- Non-rectangular table outlines are not specified by this plan.
+IMPLEMENTATION APPROACH - PROPOSED
+- Add a dedicated FreeForm mode under Routed Tracks. Start on a continuous
+  tabletop, with the existing rectangular table and construction profile.
+  Keep the familiar canvas, themes, zoom and pan. Do not require catalogue
+  pieces or show internal curve seams as separate boards.
+- Store the authoring path as ordered, stable anchor IDs, positions, incoming
+  and outgoing handle vectors, join modes and a closed/open flag. Persist
+  the circuit ID, reference-slot identity, lane identities, spacing, numbering
+  settings, construction profile and timing-line location with it.
+- Generated slot samples are derived data. Regenerate them from the saved
+  authoring path and settings; exporting only a picture or sampled paths
+  would lose the ability to reopen and edit the design.
+- Evaluate signed normal offsets directly from the drawn slot. The current
+  routed-spline definition assumes a bundle-centred reference, so it cannot
+  simply be reused unchanged when the drawn slot is an off-centre lane.
+  Do not approximate that shift by moving/scaling cubic control points.
+- Reuse the Bezier evaluator, sampling targets, slot-normal conductor edges
+  and geometry diagnostics where appropriate. Validate joins and crossings
+  over the complete loop, including the closing seam and different spans.
+  Individually valid curve segments do not prove a valid whole circuit.
+- Inserting a point splits the cubic without changing the curve. Smooth joins
+  require matching tangents. Show curvature jumps separately; aligned handles
+  alone do not guarantee continuous curvature or sensible offsets.
+- Retain an invalid drag as an editable preview with clear feedback. Cancel
+  restores its pre-drag state. Never silently clamp a bad hairpin into a
+  different design or overwrite the last good geometry with stale samples.
+- Lane identities must survive point insertion, harmless anchor-list rotation,
+  geometry edits and label-only reversal. The current Timing route hash uses
+  section membership, so feeding each editable span through it unchanged
+  would cause unnecessary remapping. Design a FreeForm-aware route identity
+  using the circuit and persistent lane IDs. Changes in lane topology must
+  still request an explicit mapping review in Timing.
+- Timing-line position must survive splitting its containing curve. It is
+  independent of the first anchor, and must be remapped deliberately if the
+  containing stretch is deleted. Do not silently move start/finish to zero.
+- Use a versioned authoring schema and an explicit integration-contract
+  extension. Reserve the actual next contract at implementation time.
+  Older readers must reject unsupported FreeForm data before normalizing it.
+- Treat the first release as a dedicated FreeForm design type. Automatic
+  conversion of arbitrary section layouts and mixing independent plastic or
+  routed pieces into the same FreeForm circuit are later work. Existing
+  designs continue to open in their current editor.
 
-No code changes, release or scheduling are requested by parking this plan.
+DELIVERY ORDER
+1. Reference-path model and canvas tools: smooth drawing, handles, point
+   insertion/deletion, loop closure, Undo/Redo and saved unfinished drafts.
+2. Lane generation and whole-loop checks: 1-8 lanes, reference-lane selection,
+   numbering/side semantics, numbered preview, lengths and table clearance.
+3. Complete workflow: Track Library, material estimates, Live Preview,
+   timing line/direction, PDF, SVG/DXF and the explicit Timing handoff.
+The first user-facing release should complete all three, rather than present
+an editable line that cannot be saved and used as a track.
+
+FIRST-ITERATION ACCEPTANCE EXAMPLES
+- Draw one slot on a table; make a closed, smooth oval and a more varied loop.
+- Generate six lanes with the drawn slot as Lane 3: offsets are exactly
+  -200, -100, 0, +100, +200, +300 mm at 100 mm spacing, subject to the
+  selected generation side. The drawn slot does not move.
+- Reverse numbering without moving any physical path. Explicitly flip the
+  generation side and show the changed footprint before applying it.
+- Drag a smooth anchor; linked lanes, lengths and feedback update together.
+- Insert a point without moving the drawing or changing lane identities.
+- Close a loop with an invalid tangent and show the exact failing join.
+- Make a hairpin whose inner offsets fold; highlight the failing lanes and
+  prevent a misleading usable-circuit export while preserving the draft.
+- Detect overlaps between distant spans, not only within each cubic.
+- Save/reopen the editable circuit, preserve timing references and Undo edits.
+- Match full-size SVG/DXF, PDF and Live Preview to the same generated paths.
+
+REMAINING DESIGN WORK
+- Validate automatic smooth-handle behaviour with a small interaction prototype,
+  especially during loop closure, after deleting a point and beside a straight.
+- Finalize the authoring schema, shared runtime interface, validation limits,
+  global intersection strategy and receiving-side contract revision.
+- Confirm how invalid in-progress drafts are presented in reports and JSON
+  without advertising usable racing routes or construction-ready geometry.
+- Non-rectangular tables, elevated crossings, local spacing, automatic section
+  conversion and manufacturing toolpaths remain outside the first iteration.
+
+Application code now implements the first iteration locally. No release has
+been published for FreeForm yet.
+
+2026-10-31 local iteration: shared height planning now covers catalogue/routed
+pieces and FreeForm anchors. Figure-eight crossings use deck thickness and
+required headroom. Full 3D views and ramp engineering remain deferred.

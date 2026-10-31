@@ -1,9 +1,17 @@
-SlotForge Circuit — editor iteration (v0.3.14)
+SlotForge Circuit — editor iteration (v0.3.15)
 
 Previously SlotForge Track Builder. Use SlotForge Circuit.html for the named
 file launcher; the previous HTML launcher remains a compatibility alias.
 Existing installations keep their SlotForgeTrackBuilder folder, saved workspace,
 storage keys and layout formats. No data migration is required.
+
+NEW IN v0.3.15
+FreeForm Drawing lets you draw one lane and generate the others around it.
+Use Points, Lanes, Table and Checks to find the controls; expandable tools
+use the same folders as Track Builder. New drawings start with one lane.
+L-shaped tables, smooth FreeForm squeeze and 2D heights/bridge checks are
+included. Save to the builder, then Save to Library to keep your circuit.
+See app/FREEFORM-TOOLS.txt and app/HEIGHTS-AND-BRIDGES.txt for details.
 
 ROUTED SECTION TYPES
 Choose Routing type when creating or editing a routed section: Individual piece

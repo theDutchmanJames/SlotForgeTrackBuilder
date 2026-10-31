@@ -10,7 +10,7 @@ function curveParameters(base,number=1){
 }
 function name(value,fallback='My track pack'){if(value===undefined)return fallback;if(typeof value!=='string'||!value.trim()||value.trim().length>100)throw Error('Pack names must be 1–100 characters.');return value.trim();}
 function definition(d){return{id:d.id,name:d.name,sku:d.sku,pack:d.pack,family:d.family,parameters:d.parameters,color:d.color,status:d.status,mirror:d.mirror,...(d.referenceImage?{referenceImage:d.referenceImage}:{}),...(d.catalogueFlip?{catalogueFlip:true}:{})};}
-function validatePiece(d){const clean=F.validateDefinition(d);if(d.catalogueFlip!==undefined&&typeof d.catalogueFlip!=='boolean')throw Error('Saved piece orientation must be true or false.');if(d.catalogueFlip&&!clean.mirror)throw Error('This saved piece does not support reflection.');return{...clean,...(d.catalogueFlip?{catalogueFlip:true}:{})};}
+function validatePiece(d){const clean=F.validateDefinition(d);if(clean.parameters.type==='freeform')throw Error('FreeForm circuits belong in Track Library. Open the layout JSON instead of importing it as a piece pack.');if(d.catalogueFlip!==undefined&&typeof d.catalogueFlip!=='boolean')throw Error('Saved piece orientation must be true or false.');if(d.catalogueFlip&&!clean.mirror)throw Error('This saved piece does not support reflection.');return{...clean,...(d.catalogueFlip?{catalogueFlip:true}:{})};}
 // Pack-only orientation hint. Layouts still serialize the actual placement.flip.
 function preferredFlip(d,mirror=false){return d.mirror!==false&&(!!d.catalogueFlip!==!!mirror);}
 function empty(){return{activePackId:'custom',packs:[{id:'custom',name:'Custom / unbranded',inLibrary:true,pieces:[]}]};}

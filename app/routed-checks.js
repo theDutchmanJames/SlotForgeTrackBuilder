@@ -27,15 +27,15 @@ function overlap(a,b,ba=polygonBounds(a),bb=polygonBounds(b)){
  return a.some((p,i)=>{const q=a[(i+1)%a.length],length=F.dist(p,q);if(!length)return false;const sign=area>0?1:-1,point=[(p[0]+q[0])/2-sign*(q[1]-p[1])*.05/length,(p[1]+q[1])/2+sign*(q[0]-p[0])*.05/length];return inside(point,b,bb)&&inside(point,a,ba);});
 }
 function checks(items,defs,table){
- const roads=items.filter(p=>defs[p.definitionId].parameters.routed),issues=[];
+ const free=items.find(p=>defs[p.definitionId].parameters.type==='freeform');if(free){const d=defs[free.definitionId];return F.FreeForm.check(d,table,free).map(i=>({...i,pieceIds:[free.id]}));}const roads=items.filter(p=>defs[p.definitionId].parameters.routed),issues=[];
  const warn=(code,message,ids=[])=>issues.push({code,message,pieceIds:ids});
  const tooTight=roads.filter(p=>F.Routed.minimumRadii(defs[p.definitionId]).some(r=>r!==null&&r<defs[p.definitionId].parameters.routed.minRadiusMm));
  if(tooTight.length)warn('radius',tooTight.length+' corner(s) are tighter than the chosen minimum slot radius.',tooTight.map(p=>p.id));
  const outlines=roads.map(p=>{const d=defs[p.definitionId],q=d.parameters,poly=F.outline(d).map(q=>F.point(q,p)),extrema=q.type==='curve'?[q.innerRadiusMm,q.innerRadiusMm+q.widthMm].flatMap(radiusMm=>arcExtrema({...d.geometry.lanePaths[0].segments[0],radiusMm},p)):poly;return{p,poly,extrema,b:F.bounds([p],defs)};});
  const tabletop=roads.filter(p=>defs[p.definitionId].parameters.routed.constructionMode==='table');
- if(table){const outside=outlines.filter(({extrema})=>extrema.some(([x,y])=>x<table.x-.1||y<table.y-.1||x>table.x+table.lengthMm+.1||y>table.y+table.widthMm+.1));if(outside.length)warn('table',outside.length+' piece outline(s) or routing path(s) extend beyond the '+(table.kind==='table'?'table.':'available-space guide.'),outside.map(v=>v.p.id));}
+ if(table){const outside=outlines.filter(({extrema,poly})=>extrema.some(p=>!F.Routed.Table.contains(table,p,.1))||!F.Routed.Table.fits(table,poly,true));if(outside.length)warn('table',outside.length+' piece outline(s) or routing path(s) extend beyond the '+(table.kind==='table'?'table.':'available-space guide.'),outside.map(v=>v.p.id));}
  if(table?.kind==='table'){
-  const close=[];for(const p of tabletop){const d=defs[p.definitionId],s=d.parameters.routed;for(const [index,clearance]of [[0,s.innerClearanceMm],[s.laneCount-1,s.outerClearanceMm]]){const segment=d.geometry.lanePaths[index].segments[0],points=segment.type==='polyline'?segment.points.map(q=>F.point(q,p)):segment.type==='line'?[segment.from,segment.to].map(q=>F.point(q,p)):arcExtrema(segment,p);if(points.some(([x,y])=>Math.min(x-table.x,y-table.y,table.x+table.lengthMm-x,table.y+table.widthMm-y)<clearance-.1)){close.push(p.id);break;}}}
+  const close=[];for(const p of tabletop){const d=defs[p.definitionId],s=d.parameters.routed;for(const [index,clearance]of [[0,s.innerClearanceMm],[s.laneCount-1,s.outerClearanceMm]]){const segment=d.geometry.lanePaths[index].segments[0],points=segment.type==='polyline'?segment.points.map(q=>F.point(q,p)):segment.type==='line'?[segment.from,segment.to].map(q=>F.point(q,p)):arcExtrema(segment,p);if(table.shape? !F.Routed.Table.fits(table,segment.type==='arc'?Array.from({length:Math.ceil(Math.abs(segment.sweepDeg))+1},(_,i)=>F.point([segment.center[0]+segment.radiusMm*Math.cos(F.rad(segment.startAngleDeg+segment.sweepDeg*i/Math.ceil(Math.abs(segment.sweepDeg)))),segment.center[1]+segment.radiusMm*Math.sin(F.rad(segment.startAngleDeg+segment.sweepDeg*i/Math.ceil(Math.abs(segment.sweepDeg))))],p)):points,false,clearance):points.some(q=>F.Routed.Table.clearance(table,q)<clearance-.1)){close.push(p.id);break;}}}
   if(close.length)warn('table-clearance',close.length+' tabletop section(s) are closer to the table boundary than their requested Lane 1 / last-lane edge clearances. These are table-edge guidelines, not separate piece outlines.',close);
  }else if(tabletop.length)warn('table-missing','Add a Wood / MDF table to check tabletop routing clearances against the board boundary. An available-space guide is not a physical table.',tabletop.map(p=>p.id));
  let pairs=0;for(let i=0;i<outlines.length;i++)for(let j=i+1;j<outlines.length;j++){const a=outlines[i],b=outlines[j];if(Math.min(a.b[0]+a.b[2],b.b[0]+b.b[2])-Math.max(a.b[0],b.b[0])<.05||Math.min(a.b[1]+a.b[3],b.b[1]+b.b[3])-Math.max(a.b[1],b.b[1])<.05)continue;if(overlap(a.poly,b.poly,a.b,b.b))pairs++;}
@@ -100,15 +100,23 @@ function closeLoopDraft(items,defs,replaceId=null){
  const connection=fittedConnection(a,b,defs[source.definitionId].parameters.routed,flip);
  return{...connection,...(replaceId&&defs[source.definitionId].parameters.squeeze?{squeeze:structuredClone(defs[source.definitionId].parameters.squeeze)}:{}),closeLoop:true,replaceId,originalStamp:closureStamp(items,defs)};
 }
+function connectionPlacement(items,defs,connection,d,previous=null){
+ const p={...(previous||F.pose(d)),...connection.pose,definitionId:d.id},targets=connection.targets.map(t=>items.find(p=>p.id===t.pieceId));
+ if(previous?.elevation||targets.some(p=>p?.elevation)||connection.targets.some(t=>t.heightMm)){
+  const base=F.Elevation.settings(previous?.elevation,d.parameters.routed.boardThicknessMm),settings=targets.filter(Boolean).map(p=>F.Elevation.settings(p.elevation,defs[p.definitionId].parameters.routed?.boardThicknessMm||10));
+  p.elevation={...base,startMm:connection.targets[0].heightMm||0,endMm:connection.targets[1].heightMm||0,clearanceMm:Math.max(base.clearanceMm,...settings.map(s=>s.clearanceMm))};
+ }
+ return p;
+}
 function applyClosure(items,defs,connection,definition){
  if(!connection.closeLoop||closureStamp(items,defs)!==connection.originalStamp)throw Error('The layout changed while the closing preview was open. Close it and try again.');
  const d=F.validateDefinition(definition),nextDefs={...defs,[d.id]:d};
  if(!d.parameters.routed||d.parameters.type!=='routed-spline')throw Error('Closing a loop requires a routed flowing section.');
- const old=items.find(p=>p.id===connection.replaceId),p={...(old||F.pose(d)),...connection.pose,definitionId:d.id},ports=F.ports(p,nextDefs);
+ const old=items.find(p=>p.id===connection.replaceId),p=connectionPlacement(items,defs,connection,d,old),ports=F.ports(p,nextDefs);
  for(let i=0;i<2;i++){const target=connection.targets[i];if(F.dist(ports[i].position,target.position)>.1||Math.abs(Math.abs(F.wrap(ports[i].angle-target.angle))-180)>.1||!F.compatible(ports[i],target)||!F.slotsMatch(ports[i],target,.1))throw Error('The closing curve must match both fixed ends and every slot.');}
  const next=connection.replaceId?items.map(v=>v.id===connection.replaceId?p:v):[...items,p],roads=next.filter(v=>nextDefs[v.definitionId].parameters.routed),net=F.connections(roads,nextDefs);
  if(net.open.length||net.ambiguous.size)throw Error('This curve does not form an unambiguous closed loop. Adjust its handles or the layout.');
  return{items:next,definitions:nextDefs,selectId:p.id};
 }
-return{reflow,checks,overlap,bridgeDraft,closeLoopDraft,applyClosure};
+return{connectionPlacement,reflow,checks,overlap,bridgeDraft,closeLoopDraft,applyClosure};
 });

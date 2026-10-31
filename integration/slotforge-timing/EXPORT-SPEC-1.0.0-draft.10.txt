@@ -1,0 +1,52 @@
+SlotForge integration draft.10 — shaped bases and FreeForm squeeze
+Included in v0.3.15, 1 November 2026. Layout envelope remains version 1.
+
+Negotiation
+Use draft.10 when workspace.spaceGuide.shape exists or any FreeForm anchor
+has squeeze metadata. Otherwise retain draft.9 for heights, draft.8 for plain
+FreeForm, and earlier contracts for their corresponding existing features.
+Reject explicitly unknown versions before normalizing. Older compatible
+layouts remain supported. Units remain millimetres; no conversion is added.
+
+Shaped base
+workspace.spaceGuide keeps its x, y, lengthMm, widthMm, kind and locked fields.
+An optional shape is {type:"l", corner:"top-right", cutoutLengthMm:1000,
+cutoutWidthMm:800}. The four allowed corners are top-left, top-right,
+bottom-left and bottom-right. Omitted shape means the existing rectangle.
+The outer dimensions define the bounding rectangle. The named corner loses
+the specified horizontal and vertical dimensions. Cut-outs and remaining
+legs must each measure at least 10 mm. Unknown shape fields/types are rejected.
+Coordinates are world XY with Y down. table-shape.js regenerates the six
+polygon vertices; the cut-out participates in clearance checks and the
+physical design revision. PDF/pictures/CAD use this polygon, not its box.
+
+FreeForm squeeze
+An optional node.squeeze applies to the node's outgoing cubic span:
+{version:1, spacingMm:80, domain:[0,1]}. It requires at least two lanes.
+spacingMm must be no greater than the normal spacing and must accommodate
+the conductor footprint. The drawn reference slot remains fixed. Each lane's
+signed offset is its lane-index difference times spacing, respecting side.
+
+The shared spline runtime's version-2 smooth-apex profile governs spacing
+over reference-slot arc length. Full domain [0,1] starts/ends at normal
+spacing and reaches the minimum at the midpoint, with smooth derivatives.
+Inserting an anchor splits domain at its reference arc-length fraction, so
+it does not introduce another pinch. Domain is finite, increasing, inside
+[0,1], and at least 1e-8 wide. It is internal span mapping, not Bezier t.
+Splitting also preserves height interpolation. Invalid domains, unknown
+fields and unsupported squeeze versions are rejected. Resetting only part
+of a split squeeze can cause a join discontinuity; checks block racing and
+construction geometry until corrected. The editable draft remains saveable.
+
+Runtime and receiving side
+Copy table-shape.js, freeform.js, routed-spline.js, routed.js, elevation.js,
+core.js and integration.js together with their existing dependencies.
+Use importLayout()/prepare() to regenerate geometry; never trust cached paths.
+Stable physical lane IDs and ordinary timing-line/route rules are unchanged.
+Draft.9 height rules remain applicable. Calculated lengths remain plan-view.
+The profile shapes animation only; sensor crossings still determine results.
+
+Tests: app/freeform-shapes.test.cjs covers both additions, strict validation,
+CAD/JSON round trips, design revision, lane identities and split preservation.
+Example: routed-examples/l-table-with-squeeze.slotforge.json.
+No SlotForge Timing repository changes are included.

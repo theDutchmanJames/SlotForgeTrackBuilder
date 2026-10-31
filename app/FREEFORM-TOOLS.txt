@@ -1,0 +1,131 @@
+FreeForm Drawing - first iteration (v0.3.15)
+
+Open FreeForm Drawing directly from the main menu. New drawings start with
+one lane. Existing drawings retain their saved lane count. The editor keeps
+your draft when switching between editor pages; save before reloading or
+opening the separate Track Packs catalogue. Save & use in builder asks before
+replacing another track. Cancel leaves the builder unchanged.
+
+SIDEBAR NAVIGATION
+Points: select a point, then adjust its shape, position, height or squeeze.
+Lanes: choose how many lanes to generate and where your drawn lane belongs.
+Table: set the base shape, with routing dimensions and bridge clearance
+under expandable sections.
+Checks: review geometry messages and lane lengths. The status button at
+the bottom opens Checks and stays visible while the panel scrolls.
+Use Left/Right arrow keys on the tabs to move between them.
+Expandable tools use the same bordered folders as the Track Builder
+catalogue. Click a folder heading, or press Enter/Space on it, to open or
+close it. More than one folder can stay open.
+
+DRAW AND EDIT
+Click to add automatically smoothed anchors. Click and drag to set a point's
+direction handles. Click the first point, or Close loop, to finish the loop.
+You can also start with an oval and reshape it.
+
+Edit points: drag anchors or their coloured handles. Shift-click selects
+several anchors; drag a selected anchor to move them together. Ctrl/Cmd+A
+selects all anchors. Locked anchors cannot be moved or deleted.
+
+Insert point: click near the blue reference slot to split a curve without
+changing its shape. The Points tab offers exact positions, handle offsets,
+linked handles, Smooth point, Straighten next stretch, Delete and Lock.
+Straightening a stretch can create direction changes at its neighbours;
+align or smooth the adjacent handles when the checks identify such a join.
+
+Undo/Redo works inside the editor. Escape cancels a drag, or leaves drawing
+mode. Space+drag or middle-button drag pans; the wheel zooms. Fit table & track
+brings the full design back into view.
+
+GENERATE LANES
+Set Total lanes (1-8), Your drawn lane (for example Lane 3), slot-centre
+spacing and the side toward which higher numbers increase. Choose Apply lane settings. The blue reference slot stays exactly where it was drawn.
+Left/right follows the blue drawing-direction arrow, not racing direction.
+Reverse numbering changes labels and reference-lane number without moving
+the physical paths. Racing direction remains the builder's separate setting.
+
+TABLE AND CONSTRUCTION
+Table & construction edits a rectangular or L-shaped table, edge-clearance guidelines,
+preferred radius, board, slot, braid/tape dimensions and material allowance.
+For an L shape, set the outer length/width, select the removed corner, then
+enter its horizontal and vertical dimensions. Checks use the actual cut-out.
+The same controls are available in the builder through Table / Space guide.
+Its settings belong to this circuit. Existing routed sections keep their own
+editor and construction profiles.
+
+CHECKS AND SAVING
+Open drafts and invalid geometry remain editable and can be saved to the
+builder. Save & use in builder applies the work; then Save to Library keeps
+a named design. The normal Open / JSON workflow restores editable anchors,
+handles and lane settings. Use Edit FreeForm above the builder canvas or in
+its left panel to continue.
+
+Only a valid closed loop supplies lap routes and Live Preview. Folds, slot /
+conductor crossings without sufficient height clearance, and abrupt tangent
+joins block racing routes and invalid
+construction geometry. Radius, table fit and table-edge clearances are shown
+as planning feedback. Curvature jumps can be flagged even when directions
+match. These checks do not simulate vehicle clearance or structural strength.
+
+Start/finish is independent of the first anchor. Inserting a point preserves
+its location. Deleting a stretch containing the timing reference clears it
+with a message; set start/finish again in the builder. Changing physical lane
+topology requires mapping review in Timing. Pure numbering reversal retains
+physical lane identities and does not itself request remapping.
+
+EXPORTS
+Use the existing PDF, PNG, SVG/DXF and SlotForge buttons. CAD exports retain
+the millimetre scale and table outline, with closed continuous slot paths for
+a closed loop. Open valid drafts keep open ends; invalid CAD is blocked.
+Reports describe unfinished geometry without claiming usable racing lengths.
+SlotForge Timing needs the draft.8 shared runtime including freeform.js and
+elevation.js; designs with assigned heights require draft.9. Shaped tables
+or FreeForm squeezes require draft.10 and the table-shape.js runtime.
+
+LIMITS OF THIS ITERATION
+One FreeForm circuit per design, on a rectangular or L-shaped tabletop, up to 96 anchors.
+There are no independent catalogue pieces inside that FreeForm design. It
+saves to Track Library rather than a piece pack. Each cubic's local controls
+must remain within the existing 10,000 mm sampling limit; large overall tables
+can use multiple spans. A sampling budget limits overly complex drafts.
+Arbitrary polygonal table outlines, 3D views and ramp engineering, automatic conversion of existing section layouts, CNC
+toolpaths and board-cutting plans are later work.
+
+HEIGHTS AND FIGURE EIGHTS
+Choose an anchor in the selector above Lanes, then open Heights & bridges (useful
+when two anchors overlap), enter Selected anchor height, and press Set height.
+You can also select several anchors and set their heights together. Keep the
+lower passage at zero and raise anchors on the upper passage. Deck thickness
+and required clearance determine whether a crossing passes the check.
+For example, a 150 mm upper surface over a 0 mm lower surface with a 12 mm
+deck leaves 138 mm headroom on a level crossing. A ramp may have less headroom
+at the edges of the crossing. Lengths remain plan-view values.
+
+Heights interpolate linearly in each Bezier span's parameter. Adding an
+anchor with Insert point preserves that height function. Changing points or
+handles still changes the plan and can affect clearance. The controls do not
+design a physically smooth ramp, choose supports, or check car-body clearance.
+CAD remains a 2D projection; separate bridge construction must be designed.
+There is no global bypass for unsafe crossings. Folds remain invalid at any
+height. See HEIGHTS-AND-BRIDGES.txt for ordinary track-piece height controls.
+
+FREEFORM SQUEEZE
+Generate at least two lanes. Select the anchor at the start of the stretch,
+then open Lane squeeze, set Tightest slot spacing and choose Squeeze next
+stretch. It works on straights and curves. Spacing eases from the normal value
+to the chosen minimum at the middle and back to normal at the end. The drawn
+reference slot stays fixed. Existing routed sections still use Squeeze in
+their section editor; Smooth midpoint / apex works on a straight too.
+
+Insert point preserves an existing squeeze rather than creating two pinches.
+Its split parts keep ranges of the original squeeze. Resetting just one part
+can leave unequal spacing at their join; reset all squeezes or update the
+neighbouring stretches together. Reducing to one lane requires resetting all
+squeezes first. Geometry checks still reject folds and conductor collisions.
+
+REVIEW REFINEMENTS (1 November 2026)
+Far-away placed circuits use a local editing origin, shown above the anchor
+selector when needed. Saving retains their world position, lane identities,
+table and timing reference. Arrow-key nudges keep anchor focus. Failed edits
+do not alter Undo/Redo history. Single-lane table checks respect the larger
+of the first/last-lane edge-clearance requests.

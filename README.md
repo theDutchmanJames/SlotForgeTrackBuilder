@@ -6,15 +6,49 @@ Previously called SlotForge Track Builder. The new name joins SlotForge Timing
 and SlotForge Paddock in the SlotForge app family. Existing tracks and custom
 packs remain compatible; no data migration is needed.
 
-### Design it. Build it. Race it.
+### Table shapes and FreeForm (v0.3.15)
+
+The main menu starts with **Track Builder → Routed Wood → FreeForm Drawing**.
+FreeForm now has its own full-page editor. New drawings start with **one lane**;
+you can generate more later. Existing saved drawings retain their lane settings.
+
+In **Table / Space guide**, choose **L shape**, set the outer dimensions, then
+choose which corner to remove and its horizontal/vertical size. FreeForm has
+the same options in the **Table** tab. The cut-out is included in
+fit checks, saved designs and PDF/SVG/DXF output.
+
+**Squeeze** works on routed straights and bends. For FreeForm, select the
+starting point of a stretch in **Points**, open **Squeeze next stretch**,
+enter the tightest spacing and click **Apply squeeze**. Lanes narrow gradually toward the middle
+and return to normal spacing at the ends. Shaped tables and FreeForm squeezes
+require **1.0.0-draft.10** in the SlotForge Timing integration.
+
+### Heights and bridges (v0.3.15)
+
+All track types now have height planning in the 2D builder. Select a piece,
+then use **Heights & bridges** in the right panel to set its start/end surface
+heights, deck thickness and required headroom. Joined ends must have matching
+heights. Reference pieces use approximate display footprints.
+
+For a FreeForm figure eight, use **FreeForm Drawing → Points → Height & bridge** and
+raise the anchors on the upper passage. The anchor selector lets you choose
+points even when they overlap. Sufficient headroom allows the crossing;
+folded slots and insufficient clearance still need fixing.
+
+Heights are saved with the design. Lengths and CAD remain **plan-view** values;
+the app does not engineer ramps, check supports or provide a 3D view.
+[Height controls and limitations](app/HEIGHTS-AND-BRIDGES.txt).
+SlotForge Timing needs integration contract **1.0.0-draft.9** for height designs.
+
+## Design it. Build it. Race it.
 
 Plan your next slot-car circuit before building it for real. Choose track pieces, snap them together and see how the layout fits your available space.
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.14 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.15 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.14/SlotForge-Circuit-v0.3.14-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.14)
+**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.15/SlotForge-Circuit-v0.3.15-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.15)
 
 ## Install and start
 
@@ -41,7 +75,23 @@ continue using your saved workspace.
 
 **Routed tools:** select a routed pack, then open **Routed tools** beside the **Sections** heading on the left. Setup, loop-closing actions and display options open in a compact menu, leaving more room for the section catalogue. Click outside the menu or press Escape to close it. **＋ Section**, search and mirroring stay visible.
 
-**Routed wood tracks:** open **Routed Tracks** in the header, or select **Routed wood** in the builder. Start with the example, set your lane and braid/tape dimensions, then add or edit straights, circular corners and flowing curves with draggable handles. Corner radii are measured at the innermost slot. Add a table guide and lock it while building. The app checks the 2D layout and estimates slot and conductor lengths; the PDF includes the table, construction profile and design-section list. Choose **Load flowing example** to try S-bends, or select two routed sections with open ends and choose **Bridge selected ends**. **Fill closing gap** automatically connects the two ends of a routed layout. Alternatively, select a section at either open end and use **Reshape to close**. Both offer an adjustable preview, keep the other sections in place, and support Undo. Radius feedback highlights tight slots. CNC output and true-size cutting templates are planned later. Flowing exports require **draft.4** support in SlotForge Timing; circular/straight routed layouts keep draft.3 and ordinary layouts keep draft.2.
+**Routed wood tracks:** open **Routed Wood** in the header, or select **Routed wood** in the builder. Start with the example, set your lane and braid/tape dimensions, then add or edit straights, circular corners and flowing curves with draggable handles. Corner radii are measured at the innermost slot. Add a table guide and lock it while building. The app checks the 2D layout and estimates slot and conductor lengths; the PDF includes the table, construction profile and design-section list. Choose **Load flowing example** to try S-bends, or select two routed sections with open ends and choose **Bridge selected ends**. **Fill closing gap** automatically connects the two ends of a routed layout. Alternatively, select a section at either open end and use **Reshape to close**. Both offer an adjustable preview, keep the other sections in place, and support Undo. Radius feedback highlights tight slots. CNC output and true-size cutting templates are planned later. Flowing exports require **draft.4** support in SlotForge Timing; circular/straight routed layouts keep draft.3 and ordinary layouts keep draft.2.
+
+**FreeForm Drawing:** open **FreeForm Drawing** to draw one
+continuous slot on a table. Click to place smooth points, drag their handles,
+and close the loop. Choose which lane you drew—even **Lane 3**—then generate
+the other lanes around it. Insert points without changing the curve,
+Shift-click to move several anchors, lock finished points, and use Undo/Redo.
+Save the result to the builder, then **Save to Library**. **Edit FreeForm**
+reopens the editable design. Valid closed loops support Live Preview and the
+usual exports; unfinished drafts can be saved and continued later. Timing
+imports require **draft.8** support. New drawings start with one lane; saved drawings keep their lane count.
+Select a point and use **Points → Squeeze next stretch → Apply squeeze** for
+a smooth convergence on a straight or curve. The drawn lane stays fixed.
+Use the **Points**, **Lanes**, **Table** and **Checks** tabs to find each tool.
+Advanced tools expand in the same folders as the Track Builder catalogue.
+The track status and errors stay visible at the bottom of the panel.
+See [FreeForm controls and limits](app/FREEFORM-TOOLS.txt).
 
 **Choose how you build:** every routed section has a **Routing type** selector.
 Choose **Individual piece** for a separate wood section with its own outline,
@@ -66,7 +116,7 @@ the **draft.6** contract, until you explicitly switch their shape.
 
 **Reusable routed sections:** choose a named track pack in the section editor,
 then **Save to pack** or **Save & add to layout**. Find your saved sets on the
-Routed Tracks page and in the Track Pack Library. Circular-to-flowing conversion
+Routed Wood page and in the Track Pack Library. Circular-to-flowing conversion
 keeps the chosen angle, lane order and clearances on their original sides.
 
 **SVG / DXF construction exports:** choose **SVG / DXF** in the builder, or use the Export page to choose a saved library track. Export routed slot centrelines, slot edges, braid/tape edges, track surface contours and the table as separate layers. SVG defaults to full size; choose **Compact page** or a fixed scale for a smaller Illustrator document. The dialog shows how much to enlarge it again (for example, 1:10 → 1000%). DXF always uses full-size millimetres and retains native circular arcs. A 100 mm scale-check bar is optional. Configure cutters and depths in your CAD/CAM software. [Export details](app/CAD-EXPORTS.txt).
@@ -101,7 +151,7 @@ Your imported tracks and packs are added to the library. Existing work is kept. 
 ## What can I do with it?
 
 - **Build a layout:** drag, snap, rotate, mirror, duplicate and select groups of pieces. Side magnets align parallel straights and matching nested curves for wider layouts; hold Shift while dragging to bypass snapping.
-- **Check your available space:** create a rectangle with exact dimensions, then move, resize or lock it.
+- **Check your available space:** create a rectangle or L-shaped base with exact dimensions, then move, resize or lock it.
 - **Plan with reference pieces:** Carrera Hybrid roads snap directly into visual layouts. For other references, enable approximate snapping and choose a straight or curved planning shape. PDF/PNG exports and parts counts work even when slot lengths are unknown.
 - **Plan the physical build:** see piece counts, borders, footprint and calculated lane lengths for supported closed circuits.
 - **Create your own packs:** add custom straights, matching curves, borders and lane changers with generated artwork.
@@ -196,11 +246,11 @@ The app uses plain HTML, CSS and JavaScript. PDF generation uses bundled jsPDF a
 Run the source tests with a current Node.js runtime:
 
 ```sh
-node --test app/routed-squeeze.test.cjs app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs
+node --test app/freeform-review.test.cjs app/freeform-editor.test.cjs app/freeform-shapes.test.cjs app/elevation.test.cjs app/freeform.test.cjs app/routed-squeeze.test.cjs app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs
 node integration/slotforge-timing/check-fixtures.cjs
 ```
 
-The current source was checked with **309 passing automated tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
+The current source was checked with **330 passing automated tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
 
 Found a rough edge or have an idea for a new piece? [Open an issue](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) with the track system, piece details and a small example layout where possible.
 

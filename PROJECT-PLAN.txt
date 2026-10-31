@@ -1,11 +1,14 @@
 SlotForge Circuit — conceptual project plan
 Updated: 31 October 2026
 
-PARKED CONCEPT: FREEFORM DRAWING
+FREEFORM DRAWING - FIRST ITERATION IMPLEMENTED LOCALLY
 See FREEFORM-PLAN.txt for the complete FreeForm plan: whole-circuit Bezier
 drawing, generating lanes around a user-selected reference lane, direct canvas
-editing, checks, exports and a later local-spacing tool. Parked at the user's
-request on 31 October 2026. Do not implement until the user resumes this work.
+editing, checks, exports and a later local-spacing tool. Resumed at the user's
+request on 31 October 2026 after v0.3.14. The updated first-iteration proposal
+covers draw/edit, reference-lane generation, numbering, persistence and export;
+FreeForm now has a dedicated editor and shared geometry runtime. See
+app/FREEFORM-TOOLS.txt for current controls and limits; no release yet.
 The implementation notes below include historical milestones; the README and
 release notes describe the currently shipped app.
 
@@ -217,3 +220,16 @@ and check clearances against the table rather than imaginary piece borders.
 Preserve old piece-mode geometry, show useful fold diagnostics, clear stale
 measurements, and export the table boundary without artificial piece cut lines.
 Tabletop integration uses draft.5; older layout types retain their contracts.
+
+Local development: shared 2D height and bridge-clearance controls implemented
+for all packs and FreeForm anchors. Integration draft.9, layout v1 retained.
+See app/HEIGHTS-AND-BRIDGES.txt for controls and limits.
+
+1 November 2026 - shaped tables and FreeForm page (local, unreleased)
+Added configurable L-shaped bases with all four cut-out corners, persistent
+outline, fit/clearance checks and PDF/CAD geometry. FreeForm has its own page
+after Routed Wood; new drawings start with one lane. Per-stretch FreeForm
+squeezes work on straights and bends and preserve the drawn reference slot.
+Splitting a squeezed span retains its profile. Integration draft.10 covers
+shaped bases and per-anchor outgoing squeeze metadata. Layout envelope is v1.
+Arbitrary polygonal bases remain future work.

@@ -26,7 +26,7 @@ def collect_files():
             source.append(file)
     handoff = [root / name for name in (
         'LICENSE', 'THIRD-PARTY-NOTICES.txt',
-        'app/integration.js', 'app/core.js', 'app/geometry.js', 'app/routed.js',
+        'app/table-shape.js', 'app/freeform-review.test.cjs', 'app/freeform-shapes.test.cjs', 'app/elevation.js', 'app/elevation.test.cjs', 'app/freeform.js', 'app/freeform.test.cjs', 'app/design-library.js', 'app/integration.js', 'app/core.js', 'app/geometry.js', 'app/routed.js',
         'app/routed-checks.js', 'app/routed.test.cjs', 'app/track-exports.js',
         'app/routed-spline.js', 'app/routed-spline.test.cjs', 'app/routed-squeeze.test.cjs', 'app/track-drawing.js', 'app/cad-export.js',
         'app/integration.test.cjs', 'app/integration-fixtures.cjs',

@@ -1,0 +1,85 @@
+SlotForge Circuit integration - 1.0.0-draft.8
+Whole-circuit FreeForm Drawing - included in v0.3.15
+
+CONTRACT
+slotforge.layout remains version 1. A serialized FreeForm definition (used or
+unused) requires draft.8. Existing definition types retain their earlier
+contracts. Reject unknown contracts and parameter types before normalizing.
+The updated core.js requires freeform.js even for ordinary layouts; copy the
+shared modules together, including elevation.js. No receiving-side Timing repository is changed here.
+
+AUTHORING PARAMETERS
+parameters.type = "freeform"
+parameters.routed = the existing routed profile, with constructionMode "table"
+parameters.widthMm / laneOffsetsMm = derived normal bundle width / offsets,
+validated against that profile. They do not locate the drawn reference slot.
+parameters.freeform = {
+ version: 1, id: persistentCircuitId, closed: boolean,
+ laneCount: integer 1..8, referenceLane: integer 1..laneCount,
+ side: 1 or -1, laneIds: [persistentLaneId, ...],
+ nodes: [{id: persistentAnchorId, p: [x,y],
+          in: [dx,dy], out: [dx,dy], mode: "auto"|"smooth"|"manual",
+          locked: boolean}, ...]
+}
+Coordinates and offsets are millimetres. IDs are distinct within their lane /
+anchor arrays. Points/vectors are finite and bounded to +/-50,000 mm, with
+up to 96 anchors. Unknown authoring fields/versions and conflicting derived
+widths, offsets or lane counts are rejected. Do not discard unsupported data.
+
+A span from anchor A to B is the cubic [A.p, A.p+A.out, B.p+B.in, B.p].
+For a closed loop, the last span returns to the first anchor. Saved handles
+are authoritative: do not regenerate them from mode on import. Auto smoothing
+is an editor action, not a hidden import normalization.
+
+GEOMETRY
+For zero-based lane i, offset along the reference unit normal is:
+ side * (i + 1 - referenceLane) * laneSpacingMm.
+Positive normal is [-dy,dx] along the drawing direction; the UI identifies it
+as the right side of that direction in the builder's positive-Y-down coordinates. This is independent of racing direction.
+The assigned reference slot remains unchanged, including off-centre lanes.
+Do not move/scale cubic controls to approximate an offset reference curve.
+
+freeform.js evaluates spans with the existing adaptive normal-offset sampler
+(0.025 mm chord-error target), then concatenates the samples into one polyline
+per lane. Distances, reference fractions, headings and signed curvature use
+those generated paths. Conductor edges follow the actual slot normals.
+Validation covers span folds, self-intersections, conductor-footprint crossings
+over distant spans, and tangent compatibility at all joins including closure.
+Preferred radius, curvature jumps and table clearance are planning feedback.
+
+Drafts deliberately preserve editable source even when geometry is invalid.
+geometry.valid=false means no lanePaths may be advertised as usable routes;
+the reference drawing and diagnostic issues remain available. Valid open paths
+have samples and lengths, but geometry.closed=false and no racing loop.
+Invalid CAD is blocked. Valid open CAD retains open ends and status notes.
+
+ROUTES AND IDENTITY
+A design contains one FreeForm placement and no independent track pieces.
+Its generated lanes use the existing polyline route type. Each route has one
+whole-circuit section, rather than changing membership when anchors are split.
+Route ID = "route-" + SHA256(canonical(["freeform", circuitId, laneId])).
+Route-mapping revision uses sorted route IDs, so relabelling lane numbers does
+not force remapping. Adding/removing physical lane identities still does.
+Do not replace these IDs with hashes of regenerated samples or anchor order.
+
+Reverse numbering reverses laneIds, changes referenceLane to N+1-referenceLane
+and negates side. The physical curves remain unchanged. A generation-side edit
+is separate. The editor retains lane IDs for surviving reference-relative
+offset roles when regenerating the set.
+
+TIMING
+Existing timing.startFinish uses the single placement ID and a fraction along
+the complete reference path. Each slot polyline's referenceFractions converts
+that position to its own distance. Racing reversal retains the existing
+atTravel/travelPlan convention. Point insertion maps a timing mark through the
+exact cubic split; deleting its containing stretch clears it explicitly.
+
+The editable model is embedded in definitions, not stored only in a picture
+or preparedGeometry. Always regenerate geometry from validated authoring data.
+Libraries, JSON, workspace transfer and disk storage use the same envelope.
+The standalone handoff includes freeform.js and freeform.test.cjs, together
+with the existing runtime and design-library.js needed by its tests.
+
+HEIGHT EXTENSION
+Assigned heights use 1.0.0-draft.9; see its specification. No draft.8 field is
+repurposed. Plain FreeForm circuits without heights continue to emit draft.8.

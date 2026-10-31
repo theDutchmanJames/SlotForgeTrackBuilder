@@ -1,4 +1,4 @@
-(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../track-packs/tools/geometry.cjs'),require('./routed-spline.js'));else root.RoutedTracks=factory(root.Geometry,root.RoutedSpline);})(typeof globalThis!=='undefined'?globalThis:this,function(G,S){
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../track-packs/tools/geometry.cjs'),require('./routed-spline.js'),require('./table-shape.js'));else root.RoutedTracks=factory(root.Geometry,root.RoutedSpline,root.TableShape);})(typeof globalThis!=='undefined'?globalThis:this,function(G,S,T){
 'use strict';
 const ID='slotforge.routed',FAMILY='slotforge.routed.v1';
 const defaults={laneCount:2,laneSpacingMm:100,innerClearanceMm:100,outerClearanceMm:100,slotWidthMm:3.2,slotDepthMm:8,conductor:'braid',conductorWidthMm:6,conductorGapMm:1,conductorThicknessMm:.5,adhesiveThicknessMm:.1,recessDepthMm:.8,boardThicknessMm:12,minRadiusMm:250,allowancePct:10};
@@ -34,7 +34,7 @@ function pack(s){s=settings(s);const base=Math.max(300,s.innerClearanceMm+50);re
 function draw(d,print=false,mode='surface'){
  const p=d.parameters,s=p.routed,g=d.geometry;
  let body=G.path(g.outlineSvgPath,s.constructionMode==='table'?'transparent':print?'#f4f1e9':mode==='surface'?d.color:'transparent',s.constructionMode==='table'?'none':print?'#777':mode==='surface'?'#847052':'none',.8);
- if(p.type===S.TYPE){for(const [i,lane]of g.lanePaths.entries()){if(mode!=='slots'||print)for(const d of g.conductors[i])body+=G.path(d,'none',print?'#a8a8a0':s.conductor==='braid'?'#b8b9ad':'#b77844',s.conductorWidthMm);body+=G.path(lane.d,'none',print?'#262626':'#272522',s.slotWidthMm);}return body;}
+ if(p.type==='freeform')return (typeof module==='object'&&module.exports?require('./freeform.js'):globalThis.FreeForm).draw(d,print,mode);if(p.type===S.TYPE){for(const [i,lane]of g.lanePaths.entries()){if(mode!=='slots'||print)for(const d of g.conductors[i])body+=G.path(d,'none',print?'#a8a8a0':s.conductor==='braid'?'#b8b9ad':'#b77844',s.conductorWidthMm);body+=G.path(lane.d,'none',print?'#262626':'#272522',s.slotWidthMm);}return body;}
  const centerPath=offset=>p.type==='straight'?`M 0 ${offset} H ${p.lengthMm}`:`M 0 ${-(p.innerRadiusMm+offset)} A ${p.innerRadiusMm+offset} ${p.innerRadiusMm+offset} 0 0 1 ${G.pt(p.innerRadiusMm+offset,p.angleDeg*Math.PI/180)}`;
  for(const offset of p.laneOffsetsMm){
   if(mode!=='slots'||print){const delta=s.slotWidthMm/2+s.conductorGapMm+s.conductorWidthMm/2;for(const sign of[-1,1])body+=G.path(centerPath(offset+sign*delta),'none',print?'#a8a8a0':s.conductor==='braid'?'#b8b9ad':'#b77844',s.conductorWidthMm);}
@@ -51,11 +51,11 @@ function materials(items,defs){
  return{sections:routed.length,tableRoutingSections,slotMm,braidMm,tapeMm,orderBraidMm,orderTapeMm,sectionAreaMm2:areaMm2,localLaneTotals:[...lanes].map(([label,lengthMm])=>({label,lengthMm}))};
 }
 function tableBounds(bounds,g){if(!g||g.kind!=='table')return bounds;const x=Math.min(bounds[0],g.x),y=Math.min(bounds[1],g.y);return[x,y,Math.max(bounds[0]+bounds[2],g.x+g.lengthMm)-x,Math.max(bounds[1]+bounds[3],g.y+g.widthMm)-y];}
-function drawTable(g,print=false){return g?.kind==='table'?`<g data-table="routed"><rect x="${g.x}" y="${g.y}" width="${g.lengthMm}" height="${g.widthMm}" fill="${print?'#fcfaf5':'#dbc8a6'}" stroke="${print?'#aaa':'#a38c66'}" stroke-width="2"/><text x="${g.x+15}" y="${g.y+32}" font-size="20" fill="#655945">Table · ${g.lengthMm} × ${g.widthMm} mm</text></g>`:'';}
+function drawTable(g,print=false){return g?.kind==='table'?`<g data-table="routed"><path d="${T.path(g)}" fill="${print?'#fcfaf5':'#dbc8a6'}" stroke="${print?'#aaa':'#a38c66'}" stroke-width="2"/><text x="${g.x+15}" y="${g.y+32}" font-size="20" fill="#655945">Table · ${T.description(g)}</text></g>`:'';}
 function shapeOf(p){return p.type===S.TYPE?{type:S.TYPE,controlPointsMm:p.controlPointsMm.map(v=>v.slice()),...(p.squeeze!==undefined?{squeeze:structuredClone(p.squeeze)}:{})}:p.type==='straight'?{type:'straight',lengthMm:p.lengthMm}:{type:'curve',slotRadiusMm:p.innerRadiusMm+S.clearances(p.routed).first,angleDeg:p.angleDeg};}
-function minimumRadii(d){return d.parameters.type===S.TYPE?d.geometry.minRadiiMm:d.parameters.type==='curve'?d.geometry.lanePaths.map(l=>l.segments[0].radiusMm):d.geometry.lanePaths.map(()=>null);}
+function minimumRadii(d){return [S.TYPE,'freeform'].includes(d.parameters.type)?d.geometry.minRadiiMm:d.parameters.type==='curve'?d.geometry.lanePaths.map(l=>l.segments[0].radiusMm):d.geometry.lanePaths.map(()=>null);}
 // Circles number lanes from inside out. A negative reference turn plus the
 // opposite placement reflection preserves those lane and edge assignments.
 function flowingFromCurve(s,shape,flip=false){s=settings(s);parameters(s,shape);const radius=shape.slotRadiusMm+(s.laneCount-1)*s.laneSpacingMm/2,a=shape.angleDeg*Math.PI/180,k=4/3*Math.tan(a/4),end=[radius*Math.sin(a),-radius*(1-Math.cos(a))],next={type:S.TYPE,controlPointsMm:[[0,0],[radius*k,0],[end[0]-radius*k*Math.cos(a),end[1]+radius*k*Math.sin(a)],end]};parameters(s,next);return{shape:next,flip:!flip};}
-return{Spline:S,ID,FAMILY,defaults,limits,settings,workspace,width,parameters,validateParameters,geometry,definition,pack,draw,materials,tableBounds,drawTable,shapeOf,minimumRadii,flowingFromCurve};
+return{Table:T,Spline:S,ID,FAMILY,defaults,limits,settings,workspace,width,parameters,validateParameters,geometry,definition,pack,draw,materials,tableBounds,drawTable,shapeOf,minimumRadii,flowingFromCurve};
 });

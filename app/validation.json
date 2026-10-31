@@ -1,9 +1,9 @@
 {
-  "version": "0.3.14",
-  "date": "2026-10-31",
+  "version": "0.3.15",
+  "date": "2026-11-01",
   "automated": {
-    "command": "node --test app/routed-squeeze.test.cjs app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
-    "passed": 309,
+    "command": "node --test app/freeform-review.test.cjs app/freeform-editor.test.cjs app/freeform-shapes.test.cjs app/elevation.test.cjs app/freeform.test.cjs app/routed-squeeze.test.cjs app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
+    "passed": 364,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -811,5 +811,116 @@
       "Smooth-apex exports require draft.7 in Timing; receiving repository was not changed"
     ],
     "standaloneHandoffTestsPassed": 91
+  },
+  "freeformReview": {
+    "date": "2026-10-31",
+    "status": "Included in v0.3.15",
+    "sourceTestsPassed": 330,
+    "standaloneHandoffTestsPassed": 111,
+    "integrationFixturesPassed": 15,
+    "newRegressionTests": 21,
+    "browserChecks": [
+      "Created and closed a reference loop from direct canvas clicks",
+      "Generated six lanes with the drawn slot assigned Lane 3",
+      "Reversed numbering while retaining the drawn physical slot",
+      "Inserted a point without changing displayed lengths",
+      "Locked and unlocked an anchor",
+      "Moved two Shift-selected anchors as a group and restored them with Undo",
+      "Saved to the builder, reloaded disk data and reopened editable anchors",
+      "Saved to Track Library and opened the stored design in the FreeForm editor",
+      "Set a timing line and observed both Live Preview cars move on the generated routes",
+      "Generated a one-page PDF and SVG/DXF files with six closed slot paths",
+      "Verified clean browser error logs"
+    ],
+    "screenshot": "freeform-preview.png",
+    "limits": [
+      "One FreeForm circuit per design, on a rectangular tabletop, up to 96 anchors",
+      "Global geometry is sampled with the existing 0.025 mm chord-error target",
+      "Local FreeForm squeeze spans, irregular tables, elevated crossings and automatic section conversion are deferred",
+      "Timing needs draft.8 and freeform.js; no Timing repository changes made"
+    ]
+  },
+  "heightReview": {
+    "status": "Included in v0.3.15",
+    "scope": [
+      "Shared placement start/end surface heights, deck thickness and clearance across all packs",
+      "FreeForm anchor heights and figure-eight bridge clearance",
+      "Height-aware joins, sampled footprint overlaps and border height inheritance",
+      "Strict metadata validation, Undo, disk reload, library and export round trips",
+      "Draft.9 integration extension; existing layout envelope remains version 1"
+    ],
+    "automated": {
+      "sourceTests": 343,
+      "handoffTests": 123,
+      "legacyIntegrationFixtures": 15
+    },
+    "browser": [
+      "Raised a manufactured piece: mismatched join warnings and no closed route",
+      "Raised one figure-eight anchor to 150 mm: valid circuit and Live Preview",
+      "Lowered bridge to 30 mm: rejected clearance; Undo restores valid circuit",
+      "Saved and reloaded figure eight: 150 mm anchor retained",
+      "Anchor selector accesses coincident crossing anchors",
+      "No warning/error console messages during the inspected workflow"
+    ],
+    "screenshot": "app/height-bridge-preview.png",
+    "limits": [
+      "2D plan-view lengths; no ramp length correction or full 3D view",
+      "No ramp engineering, support or car-body clearance validation",
+      "Reference footprints are approximate; bridge geometry in CAD is XY only",
+      "Manual paint order remains independent of heights"
+    ]
+  },
+  "tableShapesAndFreeform": {
+    "status": "Included in v0.3.15",
+    "contract": "1.0.0-draft.10",
+    "regressionTests": 11,
+    "verified": [
+      "Four L cut-out corners, strict dimension validation, resizing and locked movement",
+      "Concave table fit and edge clearance; actual polygon in CAD and JSON",
+      "One-lane defaults with existing lane count preserved",
+      "Straight and curved squeeze, reference lane invariant, numbering reversal and split-domain preservation",
+      "Browser: separate FreeForm page and menu order, one-lane start, four-lane saved/reloaded drawing, 80 mm squeeze, L table, proportional cut-out scaling, draft retained across editor pages and replacement prompt"
+    ],
+    "screenshot": "freeform-shapes-preview.png",
+    "handoffTestsPassed": 134,
+    "legacyFixturesPassed": 15
+  },
+  "review20261101": {
+    "status": "Included in v0.3.15",
+    "baseline": "c1fd163 (v0.3.14) plus all uncommitted FreeForm, height, table-shape and menu work",
+    "report": "REVIEW-2026-11-01.txt",
+    "newRegressionTests": 10,
+    "sourceTestsPassed": 364,
+    "browser": [
+      "Rejected spacing edit preserves Redo and previous model",
+      "Moved/rotated/reflected FreeForm edit and save preserves 37% timing line, design identity and table",
+      "Persisted world slot positions differ by less than 0.000000001 mm in regression layout",
+      "Repeated keyboard nudges retain anchor focus and undo",
+      "No captured browser console warnings or errors"
+    ],
+    "notVerified": [
+      "Native Illustrator/Fusion imports in this review; CAD serializers unchanged",
+      "Native macOS/Linux interaction",
+      "Separate SlotForge Timing importer"
+    ],
+    "handoffTestsPassed": 143,
+    "legacyFixturesPassed": 15,
+    "screenshot": "freeform-review-preview.png"
+  },
+  "release0315": {
+    "date": "2026-11-01",
+    "sourceTestsPassed": 364,
+    "handoffTestsPassed": 143,
+    "integrationFixturesPassed": 15,
+    "browser": [
+      "FreeForm sidebar tabs, native collapsible folders and nested handles in light/dark themes",
+      "Keyboard activation, point locks, heights, Undo/Redo, squeeze validation and visible errors",
+      "L-shaped table settings, save to builder and reopen",
+      "No captured console warnings/errors"
+    ],
+    "limitations": [
+      "No new native macOS/Linux installation audit",
+      "No separate SlotForge Timing importer audit"
+    ]
   }
 }

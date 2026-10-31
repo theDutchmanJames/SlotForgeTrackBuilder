@@ -1,0 +1,96 @@
+SlotForge Circuit — review of unreleased changes
+1 November 2026
+
+Scope
+Reviewed the changes after c1fd163 (v0.3.14): FreeForm model/editor, shared
+height planning, L-shaped tables, squeezes, menu changes, import/export,
+integration negotiation, libraries and packaging. Existing unrelated local
+work was retained. No GitHub push or release is part of this review.
+
+Fixed findings
+
+1. Single-lane table clearance [medium]
+   FreeForm checked only first-lane clearance when lane 1 was also the last
+   lane. A 10 mm first clearance hid a 200 mm last clearance requirement.
+   Both requirements now apply; the larger one governs this single slot.
+
+2. World coordinates revalidated as local anchors [medium]
+   Routed checks rebuilt a placed FreeForm model in world coordinates.
+   Moving it beyond 50,000 mm made valid layouts throw during checks/CAD.
+   Checks now transform sampled points and diagnostic locations directly.
+   They do not recreate or mutate the local authoring model.
+
+3. Editing translated/rotated/reflected designs [medium]
+   The same world/local mix-up prevented opening far-away FreeForm designs.
+   The editor now chooses a local editing origin when necessary and retains
+   the corresponding placement on Save. It displays that origin to users.
+   Table coordinates, lane identities and timing markers stay in place.
+   Out-of-range new drawing clicks are rejected before mutating the model;
+   unsupported editing extents produce a controlled message.
+
+4. Elevated gap and closure sections [medium]
+   Newly generated gap sections started at zero height. Closing a chain at
+   100 mm therefore failed even though its XY endpoints matched. Both gap
+   filling and reshaping now inherit their fixed endpoint heights. Existing
+   deck settings are retained on reshapes; new sections use their board
+   thickness, and clearance respects the adjoining sections' requirements.
+
+5. Magnetic ends ignored height [medium]
+   A section could snap to a different-height end that the connection graph
+   correctly refused. Endpoint snapping/automatic attachment now use the
+   same 0.15 mm height tolerance as connection detection. Side alignment
+   remains a plan-view positioning operation.
+
+6. Failed edits consumed undo/redo history [medium]
+   The FreeForm action wrapper recorded history before geometry validation
+   during rendering. Invalid spacing restored the model but discarded Redo.
+   History is now committed only after the edit validates and renders.
+   Restored snapshots also restore the drawing/editing mode.
+
+7. Proportional L-table resizing [medium]
+   At minimum size, separate cut-out clamping could alter the table's shape
+   while Shift requested proportional resizing. The minimum scale now
+   accounts for both cut-out dimensions and both remaining legs, preserving
+   the outline's proportions while keeping every dimension at least 10 mm.
+
+8. Conflicting imported FreeForm definitions [medium]
+   The merge signature omitted reflection permissions and colour. An
+   imported definition could silently reuse an older conflicting version.
+   Both fields now participate in the conflict check, preserving the import.
+
+9. Keyboard anchor editing [low]
+   Re-rendering after an arrow-key nudge removed the focused SVG element;
+   repeated key presses stopped moving the point. Focus is restored to the
+   new anchor element. The selector and selected anchor are kept coherent,
+   and nudges respect the coordinate limit. Cancelled failed drag updates
+   restore the prior snapshot.
+
+Verification
+364 source tests passed, including 10 new regression tests across
+freeform-review.test.cjs and freeform-editor.test.cjs. Syntax checks and
+git diff --check passed (Git reports ordinary LF/CRLF normalization notices).
+The extracted standalone handoff passed 143 tests and 15 legacy integration
+fixtures. Development source/handoff ZIPs also passed archive CRC checks.
+
+Isolated browser workspace on port 60405, separate disk-data directory:
+- Rejected 50 mm normal spacing with an existing 80 mm squeeze retained
+  Redo. Redo restored the preceding 100 mm anchor-height edit correctly.
+- Imported a moved/rotated/reflected squeezed circuit, opened the editor,
+  and saved it back. The persisted slot positions shifted by at most
+  2.06e-11 mm in sampled comparisons. Table, design ID and 37% timing marker
+  were retained. The saved layout also passed CAD generation.
+- Repeated arrow-key nudges retained anchor focus; Undo restored both moves.
+- No captured browser warnings or errors.
+
+The shared contract remains draft.10 for shaped tables/FreeForm squeezes,
+draft.9 for height designs and the existing earlier contracts otherwise.
+These fixes do not introduce a new serialized feature or layout version.
+
+Limits
+This was not a new native Illustrator/Fusion import audit or a native
+macOS/Linux UI audit. CAD serializers were not changed. Receiving-side
+SlotForge Timing behavior was not tested in its separate repository.
+Clearance and geometry remain sampled planning checks, not construction
+certification; lengths remain plan-view values. Arbitrary polygon tables,
+3D ramp engineering and multiple mixed FreeForm circuits remain outside
+the implemented feature set.

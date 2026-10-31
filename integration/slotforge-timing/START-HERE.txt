@@ -1,10 +1,10 @@
-SlotForge Timing integration handoff — smooth apex extension (v0.3.14)
-31 October 2026
+SlotForge Timing integration handoff — FreeForm, heights and shaped tables (v0.3.15)
+1 November 2026
 
 CURRENT CONTRACT
 slotforge.layout envelope: version 1 (unchanged)
-integration.contractVersion: draft.7 for smooth-apex squeezes; otherwise draft.6 for legacy squeezes, draft.5 for tabletop routing, draft.4 for flowing curves, draft.3 for circular/straight routed, draft.2 otherwise
-Supported imports: draft.7, draft.6, draft.5, draft.4, draft.3, draft.2, draft.1, and documented legacy/unversioned v1.
+integration.contractVersion: draft.10 for shaped tables/FreeForm squeezes; draft.9 for heights; draft.8 for FreeForm; otherwise draft.7 for smooth-apex squeezes; otherwise draft.6 for legacy squeezes, draft.5 for tabletop routing, draft.4 for flowing curves, draft.3 for circular/straight routed, draft.2 otherwise
+Supported imports: draft.10, draft.9, draft.8, draft.7, draft.6, draft.5, draft.4, draft.3, draft.2, draft.1, and documented legacy/unversioned v1.
 Explicit unknown versions and unsupported units are rejected before normalization.
 The app is now named SlotForge Circuit. New exports use that producer.name;
 older SlotForge Track Builder exports retain full compatibility. The rename
@@ -22,6 +22,8 @@ Read EXPORT-SPEC-1.0.0-draft.5.txt for per-section tabletop routing. Use the
 supplied current runtime; earlier briefs describe historical contracts.
 Read EXPORT-SPEC-1.0.0-draft.6.txt before importing squeezed routed lanes.
 Read EXPORT-SPEC-1.0.0-draft.7.txt for Smooth apex and version-2 squeeze parameters.
+Read EXPORT-SPEC-1.0.0-draft.8.txt for whole-circuit FreeForm Drawing.
+core.js now also requires freeform.js. Copy the shared runtime modules together.
 Squeezed packs use custom-pack v2; saved libraries containing them use v3.
 3. EXPORT-SPEC-1.0.0-draft.1.txt — base geometry, identity, timing and profile rules.
 4. EXPORT-SPEC-1.0.0-draft.2.txt — extension and version negotiation rules.
@@ -29,7 +31,7 @@ Squeezed packs use custom-pack v2; saved libraries containing them use v3.
 6. TEST-RESULTS-AND-LIMITS.txt — current verification and limitations.
 
 RUN FROM THE HANDOFF ARCHIVE ROOT (modern Node; no npm install)
- node --test app/integration.test.cjs app/editor-features.test.cjs app/routed.test.cjs app/routed-spline.test.cjs app/routed-squeeze.test.cjs
+ node --test app/freeform-review.test.cjs app/freeform-shapes.test.cjs app/elevation.test.cjs app/integration.test.cjs app/editor-features.test.cjs app/routed.test.cjs app/routed-spline.test.cjs app/routed-squeeze.test.cjs app/freeform.test.cjs
  node integration/slotforge-timing/check-fixtures.cjs
 All tests and all 15 legacy fixture cases should pass.
 The catalogue and custom-packs module are included for these tests; Timing's
@@ -79,3 +81,11 @@ The default filenames use the current producer version plus -development.
 Use --version only when preparing a deliberate release. Existing output files
 are refused unless --force is supplied. The source ZIP contains installation
 instructions; the standalone handoff contains these integration instructions.
+
+Included in v0.3.15: height-aware designs require 1.0.0-draft.9. Read
+EXPORT-SPEC-1.0.0-draft.9.txt and include app/elevation.js with the shared
+runtime. Figure-eight-with-bridge example is in routed-examples.
+
+Included in v0.3.15: shaped tables and FreeForm squeezes require draft.10.
+Read EXPORT-SPEC-1.0.0-draft.10.txt. Copy app/table-shape.js alongside the
+shared runtime; routed.js now requires it even for rectangular tables.

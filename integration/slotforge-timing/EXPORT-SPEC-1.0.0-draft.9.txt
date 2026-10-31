@@ -1,0 +1,53 @@
+SlotForge Circuit integration - 1.0.0-draft.9
+Surface heights and 2D clearance planning - included in v0.3.15
+
+slotforge.layout stays version 1. Designs containing any placement elevation,
+or FreeForm elevation/anchor heights (even zero or unused definitions), emit
+contract 1.0.0-draft.9. Legacy designs without heights keep earlier contracts.
+Update the shared runtime together: core.js, elevation.js, freeform.js,
+routed.js, routed-spline.js, integration.js and the existing dependencies.
+Do not silently strip height settings in an older receiving runtime.
+
+Ordinary placement: optional pieces[i].elevation = {
+ version: 1, startMm: number, endMm: number,
+ thicknessMm: number, clearanceMm: number
+}
+Heights are finite -5000..5000 mm; deck thickness 0.1..500 mm;
+required clearance 0..1000 mm. All fields are required when present.
+Null, unknown keys and unsupported versions are rejected before normalization.
+Omission means zero surface heights, 10 mm estimated deck thickness for
+manufactured pieces (routed boardThicknessMm for routed pieces), 50 mm clearance.
+Start/end refer to the local connector A/B orientation, unchanged by XY
+rotation/reflection. Height interpolates along the straight/curve fraction,
+or cubic parameter for a flowing routed section. No physical 3D deformation
+of catalogue geometry is claimed. Plan lengths do not change.
+
+FreeForm: optional parameters.freeform.elevation has the same five fields,
+but startMm=endMm=0 are required. Actual surface heights are stored as optional
+nodes[i].heightMm, with the same -5000..5000 range and default zero.
+Omitted FreeForm elevation uses routed board thickness and 50 mm clearance.
+Do not put placement elevation on a FreeForm circuit; that is rejected.
+Heights interpolate linearly in the local Bezier parameter. Exact splitting
+interpolates the new node height and preserves the original height function.
+Automatic XY smoothing does not overwrite saved heights. Reverse numbering
+and XY reflection retain heights. Assigned heights participate in design
+revision; they do not redefine physical route IDs.
+
+A projected FreeForm crossing is allowed only if the interpolated height
+gap minus upper deck thickness meets required clearance at the footprint
+crossings. The same pair of passages cannot swap upper/lower order in one
+crossing region. Local offset folds are never bypassed. Check budget failures
+remain explicit. FreeForm routes are still continuous 2D polylines in their
+existing sequence; crossing is not a lane junction or a lap event.
+Ordinary endpoints at different heights do not connect in the route graph.
+Ordinary footprint-overlap warnings are advisory and do not invent connections.
+
+PREPARED GEOMETRY / OUTPUT
+Regenerate from validated source; never trust supplied cached geometry.
+Prepared route geometry and reported lengths remain XY plan-view values.
+There is no height-corrected length or 3D vehicle animation in this contract.
+Heights are available in source placements/FreeForm nodes. Compatibility
+messages describe height-planning limitations and crossing/join warnings.
+SVG/DXF remain XY-only, PDF describes heights, and all JSON/workspace/library
+flows preserve them. No CNC toolpath, support plan or ramp engineering is implied.
+Example: routed-examples/figure-eight-with-bridge.slotforge.json.

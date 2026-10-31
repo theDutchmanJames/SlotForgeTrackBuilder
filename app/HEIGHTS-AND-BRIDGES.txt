@@ -1,0 +1,55 @@
+Heights and bridges - 2D planning (v0.3.15)
+
+TRACK PIECES: ANY PACK
+Select a piece, then find Heights & bridges in the builder's right panel.
+Set Start surface and End surface in mm relative to the table reference level.
+Use the same value for a level bridge. Apply heights affects every selected
+piece separately; it does not automatically distribute a ramp across a group.
+Start/end follow the piece's local A/B direction, not the racing direction.
+Selected magnetic endpoints are labelled A/B with heights on the canvas.
+Reset heights removes the placement's height settings and returns it to zero.
+Undo restores changes. New borders inherit their road's endpoint heights.
+
+The default manufactured deck thickness (10 mm) is an editable estimate.
+Routed pieces default to board thickness. Enter actual physical thickness.
+Required clearance defaults to 50 mm; choose it for your cars and installation.
+A 100 mm upper surface and 12 mm upper deck above a zero-height lower surface
+leave 88 mm headroom. The upper deck, not the lower deck, is subtracted.
+
+FREEFORM
+In FreeForm Drawing, select points in the drawing or with Selected point.
+Open Points > Height & bridge, then Apply height. You can set several selected
+anchors together. Heights are stored on anchors and interpolate in the cubic
+parameter between them. Insert point preserves that interpolation; drawing a
+new endpoint inherits the previous endpoint's height. Locks also protect height.
+Set deck thickness and required clearance under Table > Bridge clearance.
+Raised crossing paths retain their original lane identity and route order.
+They never switch or join lanes just because they cross in the XY drawing.
+
+CHECKS
+Ordinary piece footprints are sampled into surface strips. Clearance is
+checked across their overlapping area, including ramp height differences.
+Shared edges alone are not overlaps. Adjoining magnetic ends must match
+height within the normal connection tolerance before joining circuit routes.
+FreeForm checks intersecting slot/conductor footprints against interpolated
+heights; successful bridge regions get green markers. Folds remain invalid.
+These are planning checks, not manufacturing approval. A complex layout can
+exceed the check budget; an explicit incomplete-check warning is then shown.
+Reference art uses its display bounding box, so clearance is approximate.
+Individual piece cut-outs, cars, support structures, bank angles and bridge
+ramps' physical curvature are not simulated. Surface thickness is vertical.
+
+SAVING AND EXPORT
+Library, JSON, disk and workspace backups retain assigned heights.
+PDF reports include heights and clearance notes. SlotForge JSON uses the
+version-1 layout envelope with integration contract 1.0.0-draft.9.
+Heights do not change plan-view lengths, footprints or slot geometry. They do
+not shorten the plan of a tilted plastic piece or add the length of ramps.
+SVG/DXF remain XY projections with a warning for height plans: overlapping
+bridge paths must not be routed into one flat board. No 3D CAD is generated.
+The existing manual Layer order controls still control which artwork paints
+on top; height markers and checks do not automatically reorder piece artwork.
+
+Gap filling and closing sections inherit the two fixed endpoint heights.
+They interpolate between those heights; this is still a planning ramp, not
+ramp construction engineering. End magnets only connect matching heights.
