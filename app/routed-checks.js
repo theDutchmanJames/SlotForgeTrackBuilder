@@ -55,5 +55,60 @@ function bridgeDraft(items,defs,selectedIds){
  const {a,b,length}=pairs[0],angle=F.rad(a.angle),dx=b.position[0]-a.position[0],dy=b.position[1]-a.position[1],end=[dx*Math.cos(angle)+dy*Math.sin(angle),-dx*Math.sin(angle)+dy*Math.cos(angle)],h=length/3,exit=F.rad(b.angle+180-a.angle);
  return{settings:defs[roads[0].definitionId].parameters.routed,controlPointsMm:[[0,0],[h,0],[end[0]-h*Math.cos(exit),end[1]-h*Math.sin(exit)],end],pose:{x:a.position[0],y:a.position[1],angle:a.angle,flip:false},targets:[a,b]};
 }
-return{reflow,checks,overlap,bridgeDraft};
+// Closing a circuit only changes the new/replacement section. In particular,
+// do not use reflow here: that would move the far end we are trying to reach.
+function closureStamp(items,defs){return JSON.stringify([items,items.map(p=>defs[p.definitionId].parameters)]);}
+function openRoutedChain(items,defs){
+ const roads=items.filter(p=>{const g=defs[p.definitionId].geometry;return(g?.planningConnectors||g?.connectors)?.length;});
+ if(roads.some(p=>!defs[p.definitionId].parameters.routed))throw Error('Close loop is only available for a layout made of routed wood sections.');
+ if(roads.length<2)throw Error('Add at least two connected routed sections before closing the loop.');
+ const net=F.connections(roads,defs);
+ if(net.ambiguous.size)throw Error('Resolve overlapping or ambiguous connections before closing the loop.');
+ if(!net.open.length)throw Error('This routed layout already has no open ends.');
+ if(net.open.length!==2)throw Error('Close loop needs one connected routed track with exactly two open ends. Connect the other gaps first.');
+ const visited=new Set(),queue=[roads[0].id];while(queue.length){const id=queue.shift();if(visited.has(id))continue;visited.add(id);for(const port of net.all.filter(p=>p.pieceId===id)){const link=net.links.get(id+':'+port.index);if(link)queue.push(link.pieceId);}}
+ if(visited.size!==roads.length)throw Error('Close loop needs one connected routed track. Separate circuits cannot be closed together.');
+ return{roads,net};
+}
+function fittedConnection(a,b,settings,flip){
+ if(!F.compatible(a,b))throw Error('The two ends must have matching slot spacing and lane count.');
+ const length=F.dist(a.position,b.position);if(length<1)throw Error('These ends are too close for a connecting curve. Adjust their position or direction first.');
+ const angle=F.rad(a.angle),sign=flip?-1:1,dx=b.position[0]-a.position[0],dy=b.position[1]-a.position[1],end=[dx*Math.cos(angle)+dy*Math.sin(angle),sign*(-dx*Math.sin(angle)+dy*Math.cos(angle))],exit=F.rad(F.wrap(b.angle+180-a.angle)*sign);
+ const points=(u,v)=>[[0,0],[length*u,0],[end[0]-length*v*Math.cos(exit),end[1]-length*v*Math.sin(exit)],end];
+ // Try a bounded set of handle lengths. Prefer the user's minimum radius;
+ // if it cannot be met, keep the valid candidate with the gentlest tight bend.
+ let best=null,score=-Infinity;
+ for(const [u,v]of [[1/3,1/3],[.5,.5],[.2,.2],[.65,.65],[.85,.85],[.2,.5],[.5,.2],[.35,.65],[.65,.35]]){
+  const c=points(u,v);try{const d=F.Routed.definition(settings,{type:'routed-spline',controlPointsMm:c}),r=Math.min(...d.geometry.minRadiiMm.map(v=>v===null?Infinity:v));if(r>score){best=c;score=r;}if(r>=settings.minRadiusMm)break;}catch{/* The preview explains any remaining invalid geometry. */}
+ }
+ return{settings,controlPointsMm:best||points(1/3,1/3),pose:{x:a.position[0],y:a.position[1],angle:F.wrap(a.angle),flip},targets:[a,b]};
+}
+function closeLoopDraft(items,defs,replaceId=null){
+ const {roads,net}=openRoutedChain(items,defs);let a,b,source,flip;
+ if(replaceId){
+  source=roads.find(p=>p.id===replaceId);if(!source)throw Error('Select one routed section at an open end to reshape.');
+  const free=net.open.find(p=>p.pieceId===replaceId);if(!free)throw Error('Select a section at either open end. An interior section cannot close this gap without moving the rest of the track.');
+  const other=net.open.find(p=>p.pieceId!==replaceId),linked=net.links.get(replaceId+':'+(1-free.index));
+  if(!other||!linked)throw Error('The selected section must have one connected end and one open end.');
+  [a,b]=free.index===0?[other,linked]:[linked,other];
+  flip=!!source.flip!==(defs[source.definitionId].parameters.type==='curve');
+ }else{
+  if(items.length>=500)throw Error('The layout already has 500 pieces. Reshape an end section instead.');
+  [a,b]=net.open;source=roads.find(p=>p.id===a.pieceId);
+  flip=Boolean((source.flip?1:0)^(defs[source.definitionId].parameters.type==='curve'?1:0)^(a.index===0?1:0));
+ }
+ const connection=fittedConnection(a,b,defs[source.definitionId].parameters.routed,flip);
+ return{...connection,closeLoop:true,replaceId,originalStamp:closureStamp(items,defs)};
+}
+function applyClosure(items,defs,connection,definition){
+ if(!connection.closeLoop||closureStamp(items,defs)!==connection.originalStamp)throw Error('The layout changed while the closing preview was open. Close it and try again.');
+ const d=F.validateDefinition(definition),nextDefs={...defs,[d.id]:d};
+ if(!d.parameters.routed||d.parameters.type!=='routed-spline')throw Error('Closing a loop requires a routed flowing section.');
+ const old=items.find(p=>p.id===connection.replaceId),p={...(old||F.pose(d)),...connection.pose,definitionId:d.id},ports=F.ports(p,nextDefs);
+ for(let i=0;i<2;i++){const target=connection.targets[i];if(F.dist(ports[i].position,target.position)>.1||Math.abs(Math.abs(F.wrap(ports[i].angle-target.angle))-180)>.1||!F.compatible(ports[i],target)||!F.slotsMatch(ports[i],target,.1))throw Error('The closing curve must match both fixed ends and every slot.');}
+ const next=connection.replaceId?items.map(v=>v.id===connection.replaceId?p:v):[...items,p],roads=next.filter(v=>nextDefs[v.definitionId].parameters.routed),net=F.connections(roads,nextDefs);
+ if(net.open.length||net.ambiguous.size)throw Error('This curve does not form an unambiguous closed loop. Adjust its handles or the layout.');
+ return{items:next,definitions:nextDefs,selectId:p.id};
+}
+return{reflow,checks,overlap,bridgeDraft,closeLoopDraft,applyClosure};
 });

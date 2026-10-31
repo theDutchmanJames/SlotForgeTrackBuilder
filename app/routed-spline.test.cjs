@@ -25,6 +25,48 @@ test('Timing lines use the same cross-section on every offset lane, including re
 test('A curve traversed through its second port exports correct timing offsets and interpolation',()=>{const m=flowing(),old=m.items[3],c=m.defs[old.definitionId].parameters.controlPointsMm,end=c[3],points=c.slice().reverse().map(p=>[p[0]-end[0],p[1]-end[1]]),d=F.validateDefinition(R.definition(m.s,{type:S.TYPE,controlPointsMm:points},'routed:reversed')),origin=F.point(end,old),piece={...old,definitionId:d.id,x:origin[0],y:origin[1]},items=m.items.map(p=>p.id===old.id?piece:p),defs={...m.defs,[d.id]:d},net=I.network(items,defs),fraction=.37;assert.equal(net.closed,true);assert.ok(net.routes.every(r=>r.sections.find(s=>s.pieceId===piece.id).reverse));const line=S.crossSection(d.parameters,d.geometry,fraction).map(p=>F.point(p,piece));for(const [i,offset]of I.offsets(net,{pieceId:piece.id,fraction}).entries()){const p=F.at(net.routes[i],offset.offsetMm),a=line[0],b=line[1];assert.ok(Math.abs((p.x-a[0])*(b[1]-a[1])-(p.y-a[1])*(b[0]-a[0]))/F.dist(a,b)<.05);}});
 test('Preferred radius warnings and material totals include flowing slots',()=>{const m=flowing({minRadiusMm:1000}),issues=C.checks(m.items,m.defs,null),totals=R.materials(m.items,m.defs),net=I.network(m.items,m.defs);assert.ok(issues.some(i=>i.code==='radius'));close(totals.slotMm,net.routes.reduce((n,r)=>n+r.lengthMm,0),1e-7);close(totals.orderBraidMm,totals.slotMm*2*1.1,1e-7);assert.ok(totals.sectionAreaMm2>0);});
 test('Gap bridge matches both fixed ends and restores a closed circuit without moving existing sections',()=>{const m=flowing(),missing=m.items[0],items=m.items.slice(1),before=structuredClone(items),connection=C.bridgeDraft(items,m.defs,[m.items[1].id,m.items.at(-1).id]),d=F.validateDefinition(R.definition(connection.settings,{type:S.TYPE,controlPointsMm:connection.controlPointsMm},'routed:bridge')),p={...F.pose(d),...connection.pose},defs={...m.defs,[d.id]:d};assert.deepEqual(items,before);assert.equal(I.network([...items,p],defs).closed,true);assert.ok(F.dist(F.ports(p,defs)[0].position,connection.targets[0].position)<1e-7);assert.throws(()=>C.bridgeDraft(items,m.defs,[]),/Select two/);assert.equal(missing.definitionId,'routed:flow');});
+
+function closeDraft(m,replaceId=null){const connection=C.closeLoopDraft(m.items,m.defs,replaceId),d=R.definition(connection.settings,{type:S.TYPE,controlPointsMm:connection.controlPointsMm},'routed:closed');return{connection,d,result:C.applyClosure(m.items,m.defs,connection,d)};}
+test('Fill closing gap finds the ends automatically and preserves every existing pose',()=>{
+ for(const constructionMode of['sections','table'])for(const mirrored of[false,true]){
+  const m=flowing({constructionMode,laneCount:4,laneSpacingMm:90,innerClearanceMm:50,outerClearanceMm:200});m.items=m.items.slice(1);
+  if(mirrored)m.items=m.items.map(p=>({...p,y:-p.y,angle:-p.angle,flip:!p.flip}));
+  const before=structuredClone(m),{result}=closeDraft(m);
+  assert.deepEqual(m,before);assert.deepEqual(result.items.slice(0,-1),m.items);assert.equal(I.network(result.items,result.definitions).closed,true);assert.equal(result.items.length,m.items.length+1);
+  assert.deepEqual(I.prepare({format:'slotforge.layout',version:1,title:'Closed',pieces:result.items,definitions:Object.values(result.definitions)}).track.laneCount,4);
+ }
+});
+test('Reshape either end of a routed chain closes it without moving other sections or changing lane order',()=>{
+ for(const constructionMode of['sections','table'])for(const mirrored of[false,true])for(const end of[0,5])for(const which of['modified','neighbour']){
+  const m=flowing({constructionMode,innerClearanceMm:50,outerClearanceMm:200});
+  // Shorten a straight transition at a terminal end of an otherwise closed loop.
+  const source=m.items[end],old=m.defs[source.definitionId],shape=old.parameters.type==='curve'?{type:'curve',slotRadiusMm:300,angleDeg:70}:{type:S.TYPE,controlPointsMm:old.parameters.controlPointsMm.map(p=>[p[0]*.9,p[1]])},d=R.definition(m.s,shape,'routed:short');
+  m.defs[d.id]=d;m.items[end]=F.join({...source,definitionId:d.id},d,0,{...F.ports(source,m.defs)[0],angle:F.wrap(F.ports(source,m.defs)[0].angle+180)});
+  if(mirrored)m.items=m.items.map(p=>({...p,y:-p.y,angle:-p.angle,flip:!p.flip}));
+  const selected=m.items[which==='modified'?end:(end+1)%m.items.length],before=structuredClone(m),net=F.connections(m.items,m.defs),anchored=[0,1].find(i=>net.links.has(selected.id+':'+i)),oldSlots=F.ports(selected,m.defs)[anchored].lanes,{result}=closeDraft(m,selected.id),changed=result.items.find(p=>p.id===selected.id);
+  assert.deepEqual(m,before);assert.equal(result.items.length,m.items.length);assert.equal(I.network(result.items,result.definitions).closed,true);
+  for(const p of m.items)if(p.id!==selected.id)assert.deepEqual(result.items.find(v=>v.id===p.id),p);
+  F.ports(changed,result.definitions)[anchored].lanes.forEach((point,i)=>close(F.dist(point,oldSlots[i]),0,.001));
+  assert.equal(result.definitions[old.id],old);assert.equal(result.definitions[changed.definitionId].parameters.routed.innerClearanceMm,50);
+ }
+});
+test('Close loop rejects closed, disconnected, ambiguous, manufactured and interior selections',()=>{
+ const m=flowing();assert.throws(()=>C.closeLoopDraft(m.items,m.defs),/already/);
+ m.items=m.items.slice(1);assert.throws(()=>C.closeLoopDraft(m.items,m.defs,m.items[2].id),/interior/);
+ assert.throws(()=>C.closeLoopDraft(m.items.slice(1),m.defs,'missing'),/Select one/);
+ const duplicate={...m.items[1],id:'duplicate'};assert.throws(()=>C.closeLoopDraft([...m.items,duplicate],m.defs),/ambiguous/);
+ const extra=flowing(),isolated=extra.items.map(p=>({...p,id:'extra-'+p.id,x:p.x+10000}));assert.throws(()=>C.closeLoopDraft([...m.items,...isolated],m.defs),/Separate circuits/);
+ assert.throws(()=>C.closeLoopDraft(m.items.slice(0,1),m.defs),/at least two/);
+ const plastic={...m.defs[m.items[0].definitionId],parameters:{...m.defs[m.items[0].definitionId].parameters,routed:undefined}};assert.throws(()=>C.closeLoopDraft(m.items,{...m.defs,[plastic.id]:plastic}),/only available/);
+ const planning={...plastic,geometry:{...plastic.geometry,planningConnectors:plastic.geometry.connectors,connectors:[]}};assert.throws(()=>C.closeLoopDraft(m.items,{...m.defs,[planning.id]:planning}),/only available/);
+ const moved=m.items.map((p,i)=>i===2?{...p,x:p.x+123}:p);assert.throws(()=>C.closeLoopDraft(moved,m.defs),/exactly two/);
+});
+test('Closure rejects stale layouts and edited endpoints without mutating the original',()=>{
+ const m=flowing();m.items=m.items.slice(1);const {connection,d}=closeDraft(m),before=structuredClone(m);
+ assert.throws(()=>C.applyClosure(m.items.map((p,i)=>i? p:{...p,x:p.x+10}),m.defs,connection,d),/layout changed/);
+ const modified=structuredClone(d);modified.parameters.controlPointsMm[3][0]+=20;modified.parameters.controlPointsMm[2][0]+=20;const changed=R.definition(modified.parameters.routed,R.shapeOf(modified.parameters),'changed');
+ assert.throws(()=>C.applyClosure(m.items,m.defs,connection,changed),/match both/);assert.deepEqual(m,before);
+});
 test('Editing a flowing shape reflows connected sections and keeps the old definition for undo',()=>{const m=flowing(),before=structuredClone(m),piece=m.items[0],points=structuredClone(m.defs[piece.definitionId].parameters.controlPointsMm);points[1][1]+=50;const d=F.validateDefinition(R.definition(m.s,{type:S.TYPE,controlPointsMm:points},'routed:changed')),result=C.reflow(m.items,m.defs,new Map([[piece.id,d]]),piece.id);assert.deepEqual(m,before);assert.equal(result.definitions['routed:flow'],m.defs['routed:flow']);assert.ok(result.items.some((p,i)=>p.x!==m.items[i].x||p.y!==m.items[i].y||p.angle!==m.items[i].angle));});
 test('Flowing JSON round-trips use draft.4 while preserving draft.3 and ordinary contracts',()=>{const m=flowing(),out=I.prepare(raw(m)),again=I.prepare(JSON.parse(JSON.stringify(out)));assert.equal(out.version,1);assert.equal(out.integration.contractVersion,'1.0.0-draft.4');assert.deepEqual(again,out);assert.ok(out.preparedGeometry.routes.some(r=>r.segments.some(s=>s.type==='polyline')));assert.ok(I.picture(out).svg.includes('Table')===false);assert.match(D.pdfDiagram(out).svg,/stroke-width="3.2"/);assert.deepEqual(X.build(out).routed,R.materials(m.items,m.defs));});
 test('The shared flowing example preserves design identity, timing offsets and reverse direction',()=>{const example=require('../integration/slotforge-timing/routed-examples/closed-flowing-track.slotforge.json'),out=I.prepare(example,I.importLayout(example).state);assert.deepEqual(out,example);assert.equal(out.track.laneCount,3);assert.equal(out.integration.contractVersion,I.FLOWING_CONTRACT);assert.equal(out.timing.direction,-1);assert.equal(out.timing.startFinishOffsets.length,3);});

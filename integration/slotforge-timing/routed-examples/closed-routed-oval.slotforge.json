@@ -194,7 +194,7 @@
   },
   "producer": {
     "name": "SlotForge Circuit",
-    "version": "0.3.10"
+    "version": "0.3.11"
   },
   "integration": {
     "target": "SlotForge Timing",

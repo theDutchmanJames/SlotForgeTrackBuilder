@@ -1,9 +1,9 @@
 {
-  "version": "0.3.10",
+  "version": "0.3.11",
   "date": "2026-10-31",
   "automated": {
     "command": "node --test app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
-    "passed": 282,
+    "passed": 290,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -724,6 +724,33 @@
     "limits": [
       "Native imports checked with the reported circular layout; not every CAD application or every possible layout.",
       "Compact SVG changes physical canvas size, not geometry complexity."
+    ]
+  },
+  "routedLoopClosingReview": {
+    "date": "2026-10-31",
+    "status": "Included in v0.3.11",
+    "sourceTestsPassed": 290,
+    "integrationFixturesPassed": 15,
+    "scope": [
+      "Automatic fill of a single routed closing gap",
+      "Reshape either terminal section with fixed endpoints and preserved lane order",
+      "Mirrored individual-piece and tabletop layouts with asymmetric clearances",
+      "Reject manufactured, disconnected, ambiguous, closed or stale layouts",
+      "Save to pack without changing the layout; failed disk writes do not apply closure",
+      "Fixed endpoint editor with editable tangent handle lengths"
+    ],
+    "browser": [
+      "Isolated disk workspace: fill gap saves a reusable section and closes circuit",
+      "Cancel leaves gap open",
+      "Reshape terminal section closes circuit without adding a section",
+      "Undo and redo restore open and closed states",
+      "Reload retains completed layout; final fixed-end help text inspected"
+    ],
+    "screenshot": "routed-close-loop-preview.png",
+    "limits": [
+      "A single cubic cannot close every gap; invalid folds remain blocked",
+      "Preferred minimum radius is advisory; table fit and other-section overlaps remain planning checks",
+      "Interior sections are not reshaped to close a distant gap; other placements stay fixed"
     ]
   }
 }

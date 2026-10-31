@@ -1,6 +1,6 @@
-CURRENT ROUTED EXTENSION - 31 October 2026 (v0.3.9)
-281 complete source tests passed. 68 tests in the rebuilt, unpacked runtime
-handoff passed, including 20 flowing-geometry regressions. All 15 existing
+CURRENT ROUTED EXTENSION - 31 October 2026 (v0.3.11)
+290 complete source tests passed. 72 tests in the rebuilt, unpacked runtime
+handoff passed, including 24 flowing-geometry regressions. All 15 existing
 Timing fixtures passed without changes to their expected results.
 Browser checks and limitations are recorded in app/validation.json in the
 source tree. Read draft.4 for flowing curves and draft.5 for tabletop routing and updated

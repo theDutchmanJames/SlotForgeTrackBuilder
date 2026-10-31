@@ -109,10 +109,30 @@ be converted to an editable flowing approximation with the same endpoints and
 tangents. Its radius is no longer constant. Use several joined flowing sections
 for more complicated shapes; each section currently has one cubic reference.
 
-Bridge gap: select two routed sections with compatible open ends, then choose
-Bridge gap. The editor fits a connecting curve and fixes its endpoints and
+Bridge selected ends: select two routed sections with compatible open ends.
+The editor fits a connecting curve and fixes its endpoints and
 tangent directions. Drag the round handles along those directions to tune the
 bend. Existing sections stay in place. Invalid folds cannot be applied.
+
+CLOSE A ROUTED LOOP
+In the builder, select the Routed wood pack or your own routed pack.
+- Fill closing gap finds the two open ends of a single connected routed track.
+  Review the proposed flowing section, choose a pack, then Save & close loop.
+- Reshape to close changes an existing section instead. Select a section at
+  either open end, review the proposed curve, then Reshape & close loop.
+  Interior sections cannot close a distant gap while keeping the rest fixed.
+Both tools preserve all other section positions. Endpoints and directions are
+locked in the preview; the handles remain adjustable. Cancel changes nothing,
+and Undo restores the layout. Reshaping keeps the placed section's identity
+and lane order, without overwriting its reusable pack definition. Save to pack
+can keep a reusable copy without applying the change to the layout.
+The fitter tries several handle lengths, prefers the requested minimum slot
+radius, and rejects folded/self-crossing geometry. Some layouts cannot be
+closed with one valid flowing section: adjust the handles or the layout.
+Check table fit, overlap warnings and minimum-radius advice after applying.
+Automatic closure requires exactly two open ends and a connected layout of
+routed wood sections. For several gaps, Bridge selected ends remains available.
+Manufactured track is never stretched by these tools.
 
 Every slot and conductor is a normal offset of the middle reference path.
 Tight parts of slots highlight red against the configured preferred minimum.
