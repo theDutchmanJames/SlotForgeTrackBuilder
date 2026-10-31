@@ -1,4 +1,4 @@
-CURRENT ROUTED EXTENSION - 31 October 2026 (v0.3.11)
+CURRENT ROUTED EXTENSION - 31 October 2026 (v0.3.12)
 290 complete source tests passed. 72 tests in the rebuilt, unpacked runtime
 handoff passed, including 24 flowing-geometry regressions. All 15 existing
 Timing fixtures passed without changes to their expected results.

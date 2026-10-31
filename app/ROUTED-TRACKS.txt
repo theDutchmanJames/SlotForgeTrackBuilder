@@ -116,6 +116,10 @@ bend. Existing sections stay in place. Invalid folds cannot be applied.
 
 CLOSE A ROUTED LOOP
 In the builder, select the Routed wood pack or your own routed pack.
+Open Routed tools beside the Sections heading for setup, closing tools and
+the display selector. This menu overlays the catalogue instead of reducing
+its height. Click outside it or press Escape to dismiss it. The + Section
+button, search and section list remain directly accessible in the sidebar.
 - Fill closing gap finds the two open ends of a single connected routed track.
   Review the proposed flowing section, choose a pack, then Save & close loop.
 - Reshape to close changes an existing section instead. Select a section at

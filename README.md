@@ -12,9 +12,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.11 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.12 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.11/SlotForge-Circuit-v0.3.11-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.11)
+**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.12/SlotForge-Circuit-v0.3.12-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.12)
 
 ## Install and start
 
@@ -38,6 +38,8 @@ and data folders retain their original `SlotForgeTrackBuilder` name so updates
 continue using your saved workspace.
 
 **Appearance:** open **Settings → App Theme** in the top-right corner. Choose from eight themes matching SlotForge Timing, or choose **Custom** and set your own background, panels, text, quiet text, lines and accent colours. Changes appear immediately and are remembered in this browser. You can start a custom palette from any preset, and it stays available when you try other themes. The header also keeps the quick **Light / Dark** switch. Track artwork keeps its physical colours and PDF reports stay printer-friendly.
+
+**Routed tools:** select a routed pack, then open **Routed tools** beside the **Sections** heading on the left. Setup, loop-closing actions and display options open in a compact menu, leaving more room for the section catalogue. Click outside the menu or press Escape to close it. **＋ Section**, search and mirroring stay visible.
 
 **Routed wood tracks:** open **Routed Tracks** in the header, or select **Routed wood** in the builder. Start with the example, set your lane and braid/tape dimensions, then add or edit straights, circular corners and flowing curves with draggable handles. Corner radii are measured at the innermost slot. Add a table guide and lock it while building. The app checks the 2D layout and estimates slot and conductor lengths; the PDF includes the table, construction profile and design-section list. Choose **Load flowing example** to try S-bends, or select two routed sections with open ends and choose **Bridge selected ends**. **Fill closing gap** automatically connects the two ends of a routed layout. Alternatively, select a section at either open end and use **Reshape to close**. Both offer an adjustable preview, keep the other sections in place, and support Undo. Radius feedback highlights tight slots. CNC output and true-size cutting templates are planned later. Flowing exports require **draft.4** support in SlotForge Timing; circular/straight routed layouts keep draft.3 and ordinary layouts keep draft.2.
 

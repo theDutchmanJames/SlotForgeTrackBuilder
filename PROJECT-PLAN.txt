@@ -1,5 +1,13 @@
 SlotForge Circuit — conceptual project plan
-Updated: 29 October 2026
+Updated: 31 October 2026
+
+PARKED CONCEPT: FREEFORM DRAWING
+See FREEFORM-PLAN.txt for the complete FreeForm plan: whole-circuit Bezier
+drawing, generating lanes around a user-selected reference lane, direct canvas
+editing, checks, exports and a later local-spacing tool. Parked at the user's
+request on 31 October 2026. Do not implement until the user resumes this work.
+The implementation notes below include historical milestones; the README and
+release notes describe the currently shipped app.
 
 STATUS AND SCOPE
 The user authorised a first app iteration on 29 October 2026.

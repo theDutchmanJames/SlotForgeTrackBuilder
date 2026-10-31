@@ -12,7 +12,7 @@ def collect_files():
     source = [root / name for name in (
         'SlotForge Circuit.html', 'SlotForge Track Builder.html', 'index.html', 'START-HERE.txt',
         'Create Windows shortcut.vbs', 'README.txt', 'README.md',
-        'PROJECT-PLAN.txt', 'LICENSE', 'THIRD-PARTY-NOTICES.txt',
+        'PROJECT-PLAN.txt', 'FREEFORM-PLAN.txt', 'LICENSE', 'THIRD-PARTY-NOTICES.txt',
         'Install Windows.cmd', 'Install macOS.command', 'Install Linux.sh')]
     for folder in ('app', 'designs', 'track-packs', 'integration', 'installer', 'docs'):
         for file in (root / folder).rglob('*'):

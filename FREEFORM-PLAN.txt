@@ -1,0 +1,116 @@
+SlotForge Circuit - FreeForm plan
+Recorded: 31 October 2026
+Status: PARKED - concepts only; no implementation authorised by this plan.
+Resume only when the user asks to work on FreeForm Drawing.
+
+PURPOSE
+Offer FreeForm Drawing under Routed Tracks as an alternative to assembling
+sections. Draw and edit a whole routed circuit on a table, then generate its
+lanes. The user experiences one continuous circuit, although internally it can
+consist of connected curve segments. Keep existing section-based tools.
+This is for routed wood; manufactured track keeps its fixed physical geometry.
+
+PROPOSED WORKFLOW
+1. Set table dimensions or use an existing table guide.
+2. Enter FreeForm Drawing and draw a reference slot centreline.
+3. Close the reference path, then choose lane count, reference lane number,
+   spacing and numbering orientation. Preview all generated lanes.
+4. Edit points and handles directly on the canvas; linked lanes update together.
+5. Review geometry checks, save to Track Library, preview and export.
+
+DRAWING THE REFERENCE PATH
+- Click to place a point; click and drag to place a point with curve handles.
+- Preview the next segment as the pointer moves.
+- Support straight segments and cubic Bezier curves: start/end anchors and
+  two control handles. Curves can sweep, tighten, open out or form S-bends.
+- Favour smooth joins. A Smooth point option can generate sensible handles
+  for users unfamiliar with Bezier editing; sharp direction changes are flagged.
+- Click the starting point or choose Close loop to finish. A coincident start
+  and end is not sufficient: check the closing join's direction too.
+- Initial toolbar concept: Draw, Edit curve, Add point, Delete point, Close loop.
+
+REFERENCE LANE AND LANE GENERATION - ACCEPTED CONCEPT
+The drawn path need not be Lane 1. In Generate lanes, offer:
+- Total lanes.
+- Drawn path becomes: Lane 1 through the chosen total.
+- Slot-centre spacing in millimetres.
+- Reverse lane numbering, with numbered labels on the live preview.
+- Display: slots only, or slots and braid/conductors.
+
+Keep the drawn reference path exactly where the user put it. Generate the
+remaining lanes on the appropriate sides, using normal offsets, not scaled
+copies. Example: six lanes, drawn path assigned Lane 3, spacing 100 mm:
+  Lane 1: -200 mm
+  Lane 2: -100 mm
+  Lane 3:    0 mm (drawn reference)
+  Lane 4: +100 mm
+  Lane 5: +200 mm
+  Lane 6: +300 mm
+General rule: signed offset = (lane number - reference lane number) * spacing,
+with orientation determining which physical side is positive.
+Changing reference lane assignment regenerates offsets around the unchanged
+drawn path and reruns checks. Numbered previews must make the resulting order
+unambiguous through S-bends, where inside/outside changes.
+The earlier inside/outside placement idea is superseded by reference-lane
+assignment and explicit numbering orientation.
+Before implementation, clarify whether Reverse lane numbering only relabels
+existing paths or also reverses the generation side; these have different
+effects when the reference lane is off-centre. Preserve stable lane identities
+and make any resulting reference-number change explicit in the UI.
+
+DIRECT CANVAS EDITING
+- Drag anchors and handles; all generated lanes remain linked and update live.
+- Smooth join: align neighbouring handles to avoid sudden direction changes.
+- Straighten segment.
+- Insert a point without changing the existing curve shape.
+- Delete a point with a predictable preview of the changed shape.
+- Move multiple selected points together.
+- Lock a point to protect completed parts of the design.
+- Preserve Undo/Redo and cancelable edits.
+- Place start/finish separately from the first drawing point.
+
+CHECKS AND FEEDBACK
+Show per-lane lengths while editing. Highlight:
+- Slot/conductor pinching, folds and self-intersections.
+- Corners tighter than the preferred minimum slot radius.
+- Paths outside the table and insufficient table-edge clearance.
+- An open loop or abrupt direction changes at joins.
+Do not silently generate unusable inner offsets in a tight hairpin.
+Preferred radius advice is distinct from invalid geometry. Table clearances,
+vehicle clearance and construction feasibility are not guaranteed by a
+smooth-looking path or a successful offset calculation.
+
+LOCAL SPACING - LATER ITERATION
+An explicit Local spacing tool could narrow/widen spacing through a selected
+stretch, with gradual transitions into and out of it. This requires separate
+checked lane paths, not constant offsets. Keep lanes linked to the design
+rather than enabling accidental independent lane movement.
+Transition editing, minimum separation and conductor checks need further design.
+
+SAVE, PREVIEW AND EXPORT
+- Save the complete editable circuit to Track Library, including anchors,
+  handles, reference-lane assignment, lane ordering and construction settings.
+- Support Live Preview and the shared animation profile on generated slots.
+- PDF: table, layout, lane lengths and construction/material information.
+- SVG/DXF: accurate lane and conductor geometry with the existing scale rules.
+- SlotForge Timing: export usable continuous lane routes, stable identities,
+  start/finish offsets and driving direction. Verify receiving-side support;
+  do not assume existing contracts accept a new editable FreeForm definition.
+- Internal connected segments may reuse existing geometry infrastructure,
+  but section boundaries should not dominate the drawing workflow.
+
+SUGGESTED FIRST ITERATION
+One closed reference path, straight/Bezier segments, constant lane spacing,
+choice of which lane was drawn, explicit lane ordering, direct canvas editing,
+clear geometry checks, persistence, Undo/Redo and compatible exports.
+Defer local spacing variation and other advanced construction tools.
+
+OPEN DESIGN WORK BEFORE IMPLEMENTATION
+- Exact draw/edit gestures and smooth-handle behaviour, including loop closure.
+- Reverse-numbering versus generation-side semantics and stable lane IDs.
+- Representation, import compatibility and any required contract revisions.
+- Robust offset sampling and checks near hairpins, crossings and joins.
+- Relationship to existing section designs: conversion or a separate mode.
+- Non-rectangular table outlines are not specified by this plan.
+
+No code changes, release or scheduling are requested by parking this plan.

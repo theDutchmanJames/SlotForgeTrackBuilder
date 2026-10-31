@@ -1,6 +1,6 @@
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./core.js'));else root.SlotForgeIntegration=factory(root.Forge);})(typeof globalThis!=='undefined'?globalThis:this,function(F){
 'use strict';
-const VERSION='0.3.11',CONTRACT='1.0.0-draft.2',ROUTED_CONTRACT='1.0.0-draft.3',FLOWING_CONTRACT='1.0.0-draft.4',TABLETOP_CONTRACT='1.0.0-draft.5';
+const VERSION='0.3.12',CONTRACT='1.0.0-draft.2',ROUTED_CONTRACT='1.0.0-draft.3',FLOWING_CONTRACT='1.0.0-draft.4',TABLETOP_CONTRACT='1.0.0-draft.5';
 const compare=(a,b)=>a<b?-1:a>b?1:0;
 function canonical(v){if(Array.isArray(v))return '['+v.map(canonical).join(',')+']';if(v&&typeof v==='object')return '{'+Object.keys(v).filter(k=>v[k]!==undefined).sort().map(k=>JSON.stringify(k)+':'+canonical(v[k])).join(',')+'}';return JSON.stringify(v);}
 // Synchronous SHA-256 keeps offline browser autosave and Node exports identical.

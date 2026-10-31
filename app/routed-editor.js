@@ -10,6 +10,11 @@ function init(h){
  const reshapeButton=document.createElement('button');reshapeButton.id='routed-close-reshape';reshapeButton.type='button';reshapeButton.className='btn small';reshapeButton.textContent='Reshape to close…';reshapeButton.title='Select one routed section at either open end';bridgeButton.after(reshapeButton);
  const closeHelp=document.createElement('p');closeHelp.className='fine routed-close-help';closeHelp.textContent='Close one remaining gap, or select an end section to reshape. Both options preview the curve before applying.';reshapeButton.after(closeHelp);
  const selectedBridge=document.createElement('button');selectedBridge.id='routed-bridge-selected';selectedBridge.type='button';selectedBridge.className='btn small';selectedBridge.textContent='Bridge selected ends…';selectedBridge.title='Join two selected routed sections, even when other gaps remain';closeHelp.after(selectedBridge);
+ const tools=$('routed-controls');
+ const heading=document.querySelector('.catalogue-panel .panel-heading');heading.insertBefore(tools,$('custom'));
+ tools.addEventListener('click',e=>{if(e.target.closest('button:not(:disabled)'))tools.open=false;});
+ document.addEventListener('click',e=>{if(tools.open&&!tools.contains(e.target))tools.open=false;});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&tools.open){tools.open=false;tools.querySelector('summary').focus();e.preventDefault();e.stopPropagation();}},true);
  const read=()=>{const f=$('routed-profile-form').elements;return R.settings(Object.fromEntries([...fields.map(([key])=>[key,f[key].value.trim()===''?NaN:Number(f[key].value)]),['conductor',f.conductor.value],['constructionMode',f.constructionMode.value]]));};
  function profilePreview(){try{const s=read();$('routed-width').textContent=R.width(s).toFixed(1)+(s.constructionMode==='table'?' mm slot/conductor footprint · continuous table':' mm piece width');$('routed-profile-error').textContent='';const r=Math.max(300,s.innerClearanceMm+50),d=R.definition(s,{type:'curve',slotRadiusMm:r,angleDeg:90});$('routed-profile-preview').innerHTML=G.svg(R.draw(d),d.geometry.boundsMm,'Routed profile preview');}catch(e){$('routed-profile-error').textContent=e.message;}}
  function fill(){const s=h.get().routed.settings,f=$('routed-profile-form').elements;for(const[key]of fields)f[key].value=s[key];f.conductor.value=s.conductor;f.constructionMode.value=s.constructionMode||'sections';profilePreview();}
@@ -17,6 +22,8 @@ function init(h){
   const model=h.get(),has=model.items.some(p=>model.defs[p.definitionId].parameters.routed),chosen=$('pack').value===R.ID||h.packs().some(p=>p.id===$('pack').value&&p.pieces.length&&p.pieces.every(d=>d.parameters.routed));
   $('custom').textContent=chosen?'＋ Section':'＋ Custom';catalogueFoot.textContent=chosen?'Click a section to add it. End magnets align matching slot bundles. Select one section to edit its dimensions.':plasticFoot;bridgeButton.disabled=!has;reshapeButton.disabled=model.selectedIds.size!==1||!model.items.some(p=>model.selectedIds.has(p.id)&&model.defs[p.definitionId].parameters.routed);$('routed-controls').hidden=!chosen;$('routed-display').value=model.routed.display;
   const p=model.items.find(p=>p.id===model.selected),single=model.selectedIds.size===1;
+  heading.querySelector('h2').textContent=chosen?'Sections':'Track pieces';
+  if(!chosen)tools.open=false;
   selectedBridge.disabled=model.selectedIds.size!==2||model.items.filter(p=>model.selectedIds.has(p.id)&&model.defs[p.definitionId].parameters.routed).length!==2;
   $('edit-routed-section').hidden=!single||!p||!model.defs[p.definitionId].parameters.routed;
   if(p&&single&&model.defs[p.definitionId].parameters.routed){$('custom-from').hidden=true;$('add-borders').disabled=true;}
