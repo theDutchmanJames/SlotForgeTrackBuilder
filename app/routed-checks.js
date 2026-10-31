@@ -98,7 +98,7 @@ function closeLoopDraft(items,defs,replaceId=null){
   flip=Boolean((source.flip?1:0)^(defs[source.definitionId].parameters.type==='curve'?1:0)^(a.index===0?1:0));
  }
  const connection=fittedConnection(a,b,defs[source.definitionId].parameters.routed,flip);
- return{...connection,closeLoop:true,replaceId,originalStamp:closureStamp(items,defs)};
+ return{...connection,...(replaceId&&defs[source.definitionId].parameters.squeeze?{squeeze:structuredClone(defs[source.definitionId].parameters.squeeze)}:{}),closeLoop:true,replaceId,originalStamp:closureStamp(items,defs)};
 }
 function applyClosure(items,defs,connection,definition){
  if(!connection.closeLoop||closureStamp(items,defs)!==connection.originalStamp)throw Error('The layout changed while the closing preview was open. Close it and try again.');

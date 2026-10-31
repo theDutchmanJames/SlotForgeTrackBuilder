@@ -1,9 +1,9 @@
 {
-  "version": "0.3.12",
+  "version": "0.3.13",
   "date": "2026-10-31",
   "automated": {
-    "command": "node --test app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
-    "passed": 290,
+    "command": "node --test app/routed-squeeze.test.cjs app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
+    "passed": 303,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -766,5 +766,29 @@
       "Search and switching between routed and manufactured packs work"
     ],
     "screenshot": "routed-sidebar-preview.png"
+  },
+  "routedSqueezeReview": {
+    "date": "2026-10-31",
+    "status": "Included in v0.3.13",
+    "sourceTestsPassed": 303,
+    "integrationFixturesPassed": 15,
+    "newRegressionTests": 13,
+    "browserChecks": [
+      "Circular corner converts with lane order and handedness retained",
+      "100 to 80 mm squeeze, 300 mm transitions and Lane 1 anchor",
+      "Save to pack, reload and use in builder retain settings",
+      "Track Pack Library lists version 3 saved library",
+      "Invalid transition disables Update and displays limit",
+      "Reset and Undo restore the expected geometry",
+      "Disk reload retains the squeezed section",
+      "Sticky preview remains visible beside squeeze controls"
+    ],
+    "screenshot": "routed-squeeze-preview.png",
+    "limits": [
+      "Squeezed circular corners use the existing cubic approximation",
+      "Slot spacing is measured along the reference normal; vehicle clearance is not simulated",
+      "SlotForge Timing needs draft.6 support; no receiving-repository changes made"
+    ],
+    "standaloneHandoffTestsPassed": 85
   }
 }

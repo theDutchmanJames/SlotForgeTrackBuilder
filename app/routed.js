@@ -17,14 +17,14 @@ function settings(raw=defaults){
 function workspace(raw){if(raw==null)return{settings:settings(),display:'surface'};if(typeof raw!=='object'||Array.isArray(raw)||!['surface','conductors','slots'].includes(raw.display??'surface'))throw Error('Invalid routed workspace.');return{settings:settings(raw.settings),display:raw.display??'surface'};}
 function width(s){const edges=S.clearances(s);return(s.laneCount-1)*s.laneSpacingMm+edges.first+edges.last;}
 function parameters(s,shape={type:'straight',lengthMm:1000}){
- s=settings(s);if(!shape||!['straight','curve',S.TYPE].includes(shape.type))throw Error('Choose a routed straight, circular corner or flowing curve.');
+ s=settings(s);if(shape?.squeeze!==undefined&&shape.type!==S.TYPE)throw Error('Squeeze requires a flowing routed section.');if(!shape||!['straight','curve',S.TYPE].includes(shape.type))throw Error('Choose a routed straight, circular corner or flowing curve.');
  const p={type:shape.type,widthMm:width(s),laneOffsetsMm:Array.from({length:s.laneCount},(_,i)=>S.clearances(s).first+i*s.laneSpacingMm),routed:s};
- if(shape.type===S.TYPE){p.controlPointsMm=S.curve(shape.controlPointsMm);S.validate(p);return p;}if(shape.type==='straight')p.lengthMm=shape.lengthMm;else{if(!Number.isFinite(shape.slotRadiusMm)||shape.slotRadiusMm<=S.clearances(s).first)throw Error(s.constructionMode==='table'?'The innermost slot radius must leave room for its slot and conductor.':'The innermost slot radius must exceed the inner clearance.');p.innerRadiusMm=shape.slotRadiusMm-S.clearances(s).first;p.angleDeg=shape.angleDeg;}
+ if(shape.type===S.TYPE){p.controlPointsMm=S.curve(shape.controlPointsMm);if(shape.squeeze!==undefined)p.squeeze=S.squeezeSettings(shape.squeeze,s);S.validate(p);return p;}if(shape.type==='straight')p.lengthMm=shape.lengthMm;else{if(!Number.isFinite(shape.slotRadiusMm)||shape.slotRadiusMm<=S.clearances(s).first)throw Error(s.constructionMode==='table'?'The innermost slot radius must leave room for its slot and conductor.':'The innermost slot radius must exceed the inner clearance.');p.innerRadiusMm=shape.slotRadiusMm-S.clearances(s).first;p.angleDeg=shape.angleDeg;}
  G.derive(p);if((p.lengthMm||p.innerRadiusMm)>10000||p.widthMm>10000)throw Error('Routed dimensions must not exceed 10,000 mm.');return p;
 }
 function validateParameters(p){
- const s=settings(p.routed);if(!['straight','curve',S.TYPE].includes(p.type)||p.laneChange)throw Error('Routed sections support straight, circular and flowing through-slots.');
- const expected=parameters(s,p.type===S.TYPE?{type:S.TYPE,controlPointsMm:p.controlPointsMm}:p.type==='straight'?{type:'straight',lengthMm:p.lengthMm}:{type:'curve',slotRadiusMm:p.innerRadiusMm+S.clearances(s).first,angleDeg:p.angleDeg});
+ const s=settings(p.routed);if(p.squeeze!==undefined&&p.type!==S.TYPE)throw Error('Squeeze requires a flowing routed section.');if(!['straight','curve',S.TYPE].includes(p.type)||p.laneChange)throw Error('Routed sections support straight, circular and flowing through-slots.');
+ const expected=parameters(s,p.type===S.TYPE?{type:S.TYPE,controlPointsMm:p.controlPointsMm,...(p.squeeze!==undefined?{squeeze:p.squeeze}:{})}:p.type==='straight'?{type:'straight',lengthMm:p.lengthMm}:{type:'curve',slotRadiusMm:p.innerRadiusMm+S.clearances(s).first,angleDeg:p.angleDeg});
  const offsets=G.resolve(p).laneOffsetsMm;
  if(Math.abs(expected.widthMm-p.widthMm)>1e-6||offsets.length!==expected.laneOffsetsMm.length||offsets.some((v,i)=>Math.abs(v-expected.laneOffsetsMm[i])>1e-6))throw Error('Routed profile disagrees with the surface width or slot offsets.');return s;
 }
@@ -44,7 +44,7 @@ function draw(d,print=false,mode='surface'){
 }
 function materials(items,defs){
  const routed=items.filter(p=>defs[p.definitionId].parameters.routed),lanes=new Map();let tableRoutingSections=0,slotMm=0,braidMm=0,tapeMm=0,orderBraidMm=0,orderTapeMm=0,areaMm2=0;
- for(const item of routed){const d=defs[item.definitionId],p=d.parameters,s=p.routed,total=d.geometry.lanePaths.reduce((n,l)=>n+l.lengthMm,0);slotMm+=total;const metal=2*total,order=metal*(1+s.allowancePct/100);if(s.conductor==='braid'){braidMm+=metal;orderBraidMm+=order;}else{tapeMm+=metal;orderTapeMm+=order;}
+ for(const item of routed){const d=defs[item.definitionId],p=d.parameters,s=p.routed,total=d.geometry.lanePaths.reduce((n,l)=>n+l.lengthMm,0);slotMm+=total;const metal=d.geometry.conductorLengthMm??2*total,order=metal*(1+s.allowancePct/100);if(s.conductor==='braid'){braidMm+=metal;orderBraidMm+=order;}else{tapeMm+=metal;orderTapeMm+=order;}
   if(s.constructionMode==='table')tableRoutingSections++;else areaMm2+=p.type===S.TYPE?d.geometry.surfaceAreaMm2:p.type==='straight'?p.lengthMm*p.widthMm:Math.PI*p.angleDeg/360*((p.innerRadiusMm+p.widthMm)**2-p.innerRadiusMm**2);
   for(const [i,l]of d.geometry.lanePaths.entries()){const k='Section lane '+(i+1);lanes.set(k,(lanes.get(k)||0)+l.lengthMm);}
  }
@@ -52,7 +52,7 @@ function materials(items,defs){
 }
 function tableBounds(bounds,g){if(!g||g.kind!=='table')return bounds;const x=Math.min(bounds[0],g.x),y=Math.min(bounds[1],g.y);return[x,y,Math.max(bounds[0]+bounds[2],g.x+g.lengthMm)-x,Math.max(bounds[1]+bounds[3],g.y+g.widthMm)-y];}
 function drawTable(g,print=false){return g?.kind==='table'?`<g data-table="routed"><rect x="${g.x}" y="${g.y}" width="${g.lengthMm}" height="${g.widthMm}" fill="${print?'#fcfaf5':'#dbc8a6'}" stroke="${print?'#aaa':'#a38c66'}" stroke-width="2"/><text x="${g.x+15}" y="${g.y+32}" font-size="20" fill="#655945">Table · ${g.lengthMm} × ${g.widthMm} mm</text></g>`:'';}
-function shapeOf(p){return p.type===S.TYPE?{type:S.TYPE,controlPointsMm:p.controlPointsMm.map(v=>v.slice())}:p.type==='straight'?{type:'straight',lengthMm:p.lengthMm}:{type:'curve',slotRadiusMm:p.innerRadiusMm+S.clearances(p.routed).first,angleDeg:p.angleDeg};}
+function shapeOf(p){return p.type===S.TYPE?{type:S.TYPE,controlPointsMm:p.controlPointsMm.map(v=>v.slice()),...(p.squeeze!==undefined?{squeeze:structuredClone(p.squeeze)}:{})}:p.type==='straight'?{type:'straight',lengthMm:p.lengthMm}:{type:'curve',slotRadiusMm:p.innerRadiusMm+S.clearances(p.routed).first,angleDeg:p.angleDeg};}
 function minimumRadii(d){return d.parameters.type===S.TYPE?d.geometry.minRadiiMm:d.parameters.type==='curve'?d.geometry.lanePaths.map(l=>l.segments[0].radiusMm):d.geometry.lanePaths.map(()=>null);}
 // Circles number lanes from inside out. A negative reference turn plus the
 // opposite placement reflection preserves those lane and edge assignments.

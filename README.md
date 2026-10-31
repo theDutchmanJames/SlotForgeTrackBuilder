@@ -12,9 +12,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.12 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.13 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.12/SlotForge-Circuit-v0.3.12-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.12)
+**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.13/SlotForge-Circuit-v0.3.13-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.13)
 
 ## Install and start
 
@@ -51,6 +51,15 @@ do not block valid curves. Actual slot or conductor folds are still rejected.
 Set a default in **Routed profile**, then override it for any new or edited
 section. Existing sections keep their own settings. Tabletop exports require
 **draft.5** support in SlotForge Timing; earlier layout types keep their contracts.
+
+**Lane squeeze:** select a routed section and choose **Squeeze…** in the Selection
+panel, or enable it while creating a section. Narrow the lanes inside a corner
+(for example **100 → 80 → 100 mm**), set a smooth transition length and choose
+which lane—or the bundle centre—stays in place. Both ends keep their normal
+spacing. The preview, lane lengths, materials and exports follow the new paths.
+Use **Reset squeeze** to return to uniform spacing. Circular corners become
+editable flowing approximations. Check car clearance separately. Squeezed
+exports need **draft.6** support in SlotForge Timing.
 
 **Reusable routed sections:** choose a named track pack in the section editor,
 then **Save to pack** or **Save & add to layout**. Find your saved sets on the
@@ -184,11 +193,11 @@ The app uses plain HTML, CSS and JavaScript. PDF generation uses bundled jsPDF a
 Run the source tests with a current Node.js runtime:
 
 ```sh
-node --test app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs
+node --test app/routed-squeeze.test.cjs app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs
 node integration/slotforge-timing/check-fixtures.cjs
 ```
 
-The current source was checked with **170 passing automated tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
+The current source was checked with **303 passing automated tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
 
 Found a rough edge or have an idea for a new piece? [Open an issue](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) with the track system, piece details and a small example layout where possible.
 

@@ -11,6 +11,25 @@ Save to pack keeps a reusable definition without placing it. Save & add to
 layout does both. Saved routed packs appear on the Routed Tracks page, in the
 builder catalogue, under Custom Track and in the Track Pack Library. They use
 the same persistent storage and pack import/export as other custom packs.
+
+LANE SQUEEZE
+Select a routed section with at least two lanes, then choose Squeeze in the
+Selection panel. You can also enable Lane squeeze when creating a section.
+Enter the narrower spacing (for example 80 mm in a 100 mm layout), the length
+of each smooth transition, and whether the bundle centre or a specific lane
+stays fixed. Both ends retain normal spacing, so existing joins still match.
+The maximum transition length is half the reference-path length. A longer
+transition makes the narrowing gentler; short transitions can create tight
+bends even on a straight. Red radius feedback is advisory; folds, crossings
+and overlapping conductor footprints block creation. Check car clearance.
+
+Circular corners convert to editable flowing approximations when squeezed.
+Reset squeeze restores uniform spacing along that flowing path. Undo can
+restore the original section after applying a change. Save to pack keeps the
+settings and matching artwork for reuse. Lengths, materials, PDF, SVG and DXF
+follow the generated geometry. Squeezed Timing exports require draft.6 support;
+older Timing runtimes must not import them as uniform lanes. Saved packs with
+squeezes require the new pack version 2 (custom-library backups version 3).
 The gallery reads installed disk storage rather than relying on a browser copy.
 
 Use Add track piece to this pack to create another section in a routed pack.

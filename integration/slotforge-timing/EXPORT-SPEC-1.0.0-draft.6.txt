@@ -1,0 +1,73 @@
+SlotForge Circuit layout integration - 1.0.0-draft.6
+Routed lane squeeze - 31 October 2026 (v0.3.13)
+
+VERSION NEGOTIATION
+The slotforge.layout envelope remains version 1. Any serialized definition
+with parameters.squeeze requires contract 1.0.0-draft.6, including unused
+definitions. This takes precedence over tabletop draft.5. Layouts without a
+squeeze keep their existing contracts. Earlier contracts remain accepted.
+An older receiver must reject draft.6, not discard squeeze metadata and
+regenerate uniform lanes. Update the shared runtime before accepting it.
+
+PARAMETERS
+Optional parameters.squeeze is permitted only on routed-spline definitions:
+ {"version":1,"spacingMm":80,"transitionMm":300,"anchorLane":"centre"}
+anchorLane is "centre" or a one-based integer lane number. All four fields
+are required; unknown fields, unsupported versions and malformed values fail.
+Two to eight lanes are supported. spacingMm cannot exceed the normal profile
+laneSpacingMm and must exceed twice the slot/conductor half-width. Each
+transition must be 10..10000 mm and no longer than half the reference length.
+The profile, widthMm and laneOffsetsMm continue to describe normal spacing
+at the endpoints. Never infer interior slot geometry from those offsets alone.
+
+GEOMETRY
+The cubic reference path is unchanged. Let s be reference arc length, L its
+total length, T the transition length, and u=min(1,s/T,(L-s)/T).
+The squeeze weight is w=10*u^3-15*u^4+6*u^5. For zero-based lane i:
+ d_i(s) = (i-(N-1)/2)*normalSpacing
+          + (i-anchor)*(squeezedSpacing-normalSpacing)*w
+ anchor = (N-1)/2 for centre, otherwise anchorLane-1.
+The slot is referencePosition(s) + referenceUnitNormal(s)*d_i(s).
+Spacing is measured across the reference normal; it is not a shortest-distance
+guarantee between varying curves. Both first and second derivatives of the
+taper vanish at entry, exit and the constant-spacing region. This preserves
+normal connector positions, slot directions and endpoint curvature.
+
+Slot edges, conductors and piece clearances follow each generated slot's own
+unit normal. Conductor widths must not be offset along the reference normal
+inside transitions. Slot curvatures/headings include the spacing derivatives.
+Use routed-spline.js for validation and regeneration: it performs dense fold
+checks plus adaptive sampling (0.025 mm chord-error target), self-intersection
+and inter-lane conductor-footprint checks. Preferred minimum radius remains
+advisory, while folds/overlapping conductors are invalid. Vehicle/body clearance
+is not simulated. Tabletop clearances retain the draft.5 board-edge meaning.
+
+ROUTES AND EXPORTS
+No new route-segment type is introduced. Actual slot paths, distances,
+headings, curvatures and referenceFractions are serialized as polylines.
+Timing fractions, reverse travel and stable route identity retain draft.4
+semantics. The geometry supplies conductorLengthMm for material estimates.
+SVG/DXF edges use RoutedSpline.edgePoints; timing lines use crossSection.
+Rebuild from definitions rather than trusting preparedGeometry.
+
+EDITOR AND STORAGE
+Enabling squeeze on a circle converts it to the existing cubic approximation,
+preserving endpoint positions, lane order, clearances and physical handedness.
+It is no longer an exact circle. Reset removes squeeze but keeps that flowing
+reference path. A straight converts to a collinear cubic. Saved pack artwork,
+mirroring, layout copies and profile edits preserve squeeze parameters.
+Profile changes incompatible with the squeeze fail rather than discarding it.
+Reshape to close retains the squeeze, with the usual preview validation.
+
+Custom pack JSON containing a squeeze uses slotforge.custom-pack version 2.
+The saved custom-library envelope uses version 3 when any pack has a squeeze.
+Older non-squeezed packs/libraries retain versions 1/2 respectively. This makes
+older Circuit versions reject unsupported packs rather than flattening them.
+These pack/library versions are separate from slotforge.layout version 1.
+
+VALIDATION
+Run app/routed-squeeze.test.cjs as well as existing routed/integration tests.
+The regression examples cover spacing, selected-lane anchoring, reflection,
+normal conductor widths, independently calculated lengths/radii, malformed
+metadata, unsafe ramps, reset, pack/disk serialization, CAD and closed routes.
+SlotForge Timing has not been changed by this implementation.

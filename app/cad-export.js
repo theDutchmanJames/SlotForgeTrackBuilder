@@ -10,8 +10,7 @@ function options(raw={}){if(!raw||typeof raw!=='object'||Array.isArray(raw))thro
 function edge(d,offset){
  const p=d.parameters;if(p.type==='straight')return{points:[[0,offset],[p.lengthMm,offset]],bulges:[0,0]};
  if(p.type==='curve'){const r=p.innerRadiusMm+offset;return{points:[F.G.pt(r,0),F.G.pt(r,F.rad(p.angleDeg))],bulges:[Math.tan(F.rad(p.angleDeg)/4),0]};}
- const s=p.routed,delta=offset-p.laneOffsetsMm[0]-(s.laneCount-1)*s.laneSpacingMm/2;
- const points=d.geometry.parametersT.map(t=>S.offset(S.evaluate(p.controlPointsMm,t),delta));return{points,bulges:points.map(()=>0)};
+ const points=S.edgePoints(p,d.geometry,offset);return{points,bulges:points.map(()=>0)};
 }
 function reverse(path){const n=path.points.length;return{...path,points:path.points.slice().reverse(),bulges:path.points.map((_,i)=>!path.closed&&i===n-1?0:-path.bulges[(n-2-i+n)%n])};}
 function signature(path){return path.layer+'|'+path.points.map((p,i)=>p.map(number).join(',')+':'+bulgeNumber(path.bulges[i])).join(';')+'|'+!!path.closed;}

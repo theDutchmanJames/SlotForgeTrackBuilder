@@ -1,10 +1,10 @@
-SlotForge Timing integration handoff — routed extension (v0.3.9)
+SlotForge Timing integration handoff — routed squeeze extension (v0.3.13)
 31 October 2026
 
 CURRENT CONTRACT
 slotforge.layout envelope: version 1 (unchanged)
-integration.contractVersion: draft.5 for tabletop routing; otherwise draft.4 for flowing curves, draft.3 for circular/straight routed, draft.2 otherwise
-Supported imports: draft.5, draft.4, draft.3, draft.2, draft.1, and documented legacy/unversioned v1.
+integration.contractVersion: draft.6 for squeezed lanes; otherwise draft.5 for tabletop routing, draft.4 for flowing curves, draft.3 for circular/straight routed, draft.2 otherwise
+Supported imports: draft.6, draft.5, draft.4, draft.3, draft.2, draft.1, and documented legacy/unversioned v1.
 Explicit unknown versions and unsupported units are rejected before normalization.
 The app is now named SlotForge Circuit. New exports use that producer.name;
 older SlotForge Track Builder exports retain full compatibility. The rename
@@ -20,13 +20,15 @@ READ IN THIS ORDER
 Read EXPORT-SPEC-1.0.0-draft.3.txt and EXPORT-SPEC-1.0.0-draft.4.txt for routed support.
 Read EXPORT-SPEC-1.0.0-draft.5.txt for per-section tabletop routing. Use the
 supplied current runtime; earlier briefs describe historical contracts.
+Read EXPORT-SPEC-1.0.0-draft.6.txt before importing squeezed routed lanes.
+Squeezed packs use custom-pack v2; saved libraries containing them use v3.
 3. EXPORT-SPEC-1.0.0-draft.1.txt — base geometry, identity, timing and profile rules.
 4. EXPORT-SPEC-1.0.0-draft.2.txt — extension and version negotiation rules.
 5. DEPENDENCIES-AND-LICENSING.txt — runtime dependencies and reuse information.
 6. TEST-RESULTS-AND-LIMITS.txt — current verification and limitations.
 
 RUN FROM THE HANDOFF ARCHIVE ROOT (modern Node; no npm install)
- node --test app/integration.test.cjs app/editor-features.test.cjs app/routed.test.cjs app/routed-spline.test.cjs
+ node --test app/integration.test.cjs app/editor-features.test.cjs app/routed.test.cjs app/routed-spline.test.cjs app/routed-squeeze.test.cjs
  node integration/slotforge-timing/check-fixtures.cjs
 All tests and all 15 legacy fixture cases should pass.
 The catalogue and custom-packs module are included for these tests; Timing's

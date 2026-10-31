@@ -28,7 +28,7 @@ def collect_files():
         'LICENSE', 'THIRD-PARTY-NOTICES.txt',
         'app/integration.js', 'app/core.js', 'app/geometry.js', 'app/routed.js',
         'app/routed-checks.js', 'app/routed.test.cjs', 'app/track-exports.js',
-        'app/routed-spline.js', 'app/routed-spline.test.cjs', 'app/track-drawing.js',
+        'app/routed-spline.js', 'app/routed-spline.test.cjs', 'app/routed-squeeze.test.cjs', 'app/track-drawing.js', 'app/cad-export.js',
         'app/integration.test.cjs', 'app/integration-fixtures.cjs',
         'app/catalogue.js', 'app/custom-packs.js', 'app/editor-features.test.cjs',
         'track-packs/tools/geometry.cjs',

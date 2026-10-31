@@ -21,3 +21,8 @@ body[data-routed-catalogue="true"] .catalogue-panel .panel-heading{margin-bottom
 body[data-routed-catalogue="true"] .catalogue-panel>.field{margin-bottom:8px}
 body[data-routed-catalogue="true"] .catalogue-panel>.panel-foot{margin:6px 0 8px}
 body[data-routed-catalogue="true"] .catalogue-panel .piece-list{flex:1 0 160px}
+.routed-squeeze{border:1px solid var(--line);border-radius:8px;margin:18px 0;padding:12px;min-width:0}
+.routed-squeeze legend{font-weight:700;padding:0 6px}
+.routed-squeeze .form-grid{margin-top:12px}
+#routed-section-dialog .dialog-heading{position:sticky;top:-25px;background:var(--panel);z-index:3;padding:8px 0}
+@media(min-width:901px){#routed-section-dialog .custom-preview{position:sticky;top:50px;align-self:start}}
