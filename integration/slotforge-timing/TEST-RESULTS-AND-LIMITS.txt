@@ -1,11 +1,15 @@
-CURRENT ROUTED EXTENSION - 31 October 2026 (v0.3.13)
-303 complete source tests passed. 85 tests in the rebuilt, unpacked runtime
+CURRENT ROUTED EXTENSION - 31 October 2026 (v0.3.14)
+309 complete source tests passed. 91 tests in the rebuilt, unpacked runtime
 handoff passed, including 24 flowing-geometry regressions. All 15 existing
 Timing fixtures passed without changes to their expected results.
 The squeeze extension adds 13 regressions covering variable spacing, anchored
 lanes, slot-normal conductor boundaries, independent lengths/radii, unsafe
 transitions, reflection, reset, storage round trips, CAD and closed-loop timing.
 Read draft.6 for squeeze geometry and version negotiation.
+Six smooth-apex regressions cover continuous arc-length-based narrowing,
+mirrored 180-degree joins, independent lengths/radii, anchor/conductor/CAD
+geometry, persistence, legacy preservation and strict version-2 metadata.
+Read draft.7 before accepting smooth-apex layouts in Timing.
 Browser checks and limitations are recorded in app/validation.json in the
 source tree. Read draft.4 for flowing curves and draft.5 for tabletop routing and updated
 runtime dependencies. Native SlotForge Timing receiving UI is not tested or

@@ -60,16 +60,18 @@ function derive(p){
  for(const port of g.connectors)port.lanes=lanePaths.map(l=>({pathId:l.id,position:port.id==='a'?l.start:l.end}));
  if(cache.size>=32)cache.delete(cache.keys().next().value);cache.set(key,g);return g;
 }
-// The squeeze is defined along reference arc length. Quintic ramps have zero
-// first and second derivatives at both ends, preserving connector tangents.
+// Both squeeze profiles use reference arc length, with zero first and second
+// derivatives at the section ends. Legacy ramps retain their exact behaviour.
 function squeezeSettings(raw,s){
- if(!raw||typeof raw!=='object'||Array.isArray(raw)||raw.version!==1||Object.keys(raw).some(k=>!['version','spacingMm','transitionMm','anchorLane'].includes(k)))throw Error('Unsupported or malformed routed squeeze settings.');
+ if(!raw||typeof raw!=='object'||Array.isArray(raw)||![1,2].includes(raw.version))throw Error('Unsupported or malformed routed squeeze settings.');
+ const apex=raw.version===2,keys=apex?['version','shape','spacingMm','anchorLane']:['version','spacingMm','transitionMm','anchorLane'];
+ if(Object.keys(raw).some(k=>!keys.includes(k))||apex&&raw.shape!=='apex')throw Error('Unsupported or malformed routed squeeze settings.');
  if(s.laneCount<2)throw Error('Squeeze needs at least two lanes.');
  const metal=s.slotWidthMm/2+s.conductorGapMm+s.conductorWidthMm;
  if(!Number.isFinite(raw.spacingMm)||raw.spacingMm<=2*metal||raw.spacingMm>s.laneSpacingMm)throw Error('Squeezed spacing must leave room between conductors and must not exceed the normal slot spacing.');
- if(!Number.isFinite(raw.transitionMm)||raw.transitionMm<10||raw.transitionMm>10000)throw Error('Squeeze transition length must be between 10 and 10,000 mm.');
+ if(!apex&&(!Number.isFinite(raw.transitionMm)||raw.transitionMm<10||raw.transitionMm>10000))throw Error('Squeeze transition length must be between 10 and 10,000 mm.');
  if(raw.anchorLane!=='centre'&&(!Number.isInteger(raw.anchorLane)||raw.anchorLane<1||raw.anchorLane>s.laneCount))throw Error('Choose the bundle centre or an existing lane as the squeeze anchor.');
- return{version:1,spacingMm:raw.spacingMm,transitionMm:raw.transitionMm,anchorLane:raw.anchorLane};
+ return apex?{version:2,shape:'apex',spacingMm:raw.spacingMm,anchorLane:raw.anchorLane}:{version:1,spacingMm:raw.spacingMm,transitionMm:raw.transitionMm,anchorLane:raw.anchorLane};
 }
 function arcMeasure(c){
  const n=2048,values=[0],speed=t=>evaluate(c,t).speed;
@@ -78,10 +80,18 @@ function arcMeasure(c){
  return{length:values[n],at(t){const i=Math.min(n-1,Math.floor(t*n));return values[i]+integrate(i/n,t);},parameter(s){let a=0,b=1;for(let i=0;i<40;i++){const m=(a+b)/2;if(this.at(m)<s)a=m;else b=m;}return(a+b)/2;}};
 }
 function squeezed(p){
- const c=curve(p.controlPointsMm),s=p.routed,z=squeezeSettings(p.squeeze,s),arc=arcMeasure(c),L=arc.length,T=z.transitionMm,edges=clearances(s),span=(s.laneCount-1)*s.laneSpacingMm;
+ const c=curve(p.controlPointsMm),s=p.routed,z=squeezeSettings(p.squeeze,s),arc=arcMeasure(c),L=arc.length,apex=z.version===2,T=apex?L/2:z.transitionMm,edges=clearances(s),span=(s.laneCount-1)*s.laneSpacingMm;
  if(2*T>L+1e-6)throw Error('Each squeeze transition must be no longer than half this section ('+(L/2).toFixed(1)+' mm). Use a shorter transition or a longer section.');
  const anchor=z.anchorLane==='centre'?(s.laneCount-1)/2:z.anchorLane-1,metal=s.slotWidthMm/2+s.conductorGapMm+s.conductorWidthMm;
- function ramp(at){const end=at>L/2,x=Math.max(0,Math.min(1,(end?L-at:at)/T));return{w:x*x*x*(10+x*(-15+6*x)),d:(end?-1:1)*30*x*x*(1-x)*(1-x)/T,dd:60*x*(1-x)*(1-2*x)/(T*T)};}
+ function ramp(at){
+  if(apex){
+   // One continuous bell, not two short ramps joined to a plateau.
+   // w = 64*u^3*(1-u)^3; w(0)=w(1)=0 and w(1/2)=1.
+   const u=Math.max(0,Math.min(1,at/L)),v=1-u;
+   return{w:64*u**3*v**3,d:192*u*u*v*v*(1-2*u)/L,dd:384*u*v*(1-5*u+5*u*u)/(L*L)};
+  }
+  const end=at>L/2,x=Math.max(0,Math.min(1,(end?L-at:at)/T));return{w:x*x*x*(10+x*(-15+6*x)),d:(end?-1:1)*30*x*x*(1-x)*(1-x)/T,dd:60*x*(1-x)*(1-2*x)/(T*T)};
+ }
  const memo=new Map();
  function at(t){
   if(memo.has(t))return memo.get(t);const q=evaluate(c,t),r=ramp(arc.at(t)),tangent=[q.normal[1],-q.normal[0]];
@@ -89,7 +99,7 @@ function squeezed(p){
    if(A<=.002)throw Error('A squeezed slot folds inside this bend. Widen the curve or reduce the squeeze.');
    const v=[A*tangent[0]+B*q.normal[0],A*tangent[1]+B*q.normal[1]],speed=Math.hypot(...v),a=-q.curvatureDerivative*d-2*q.curvature*ds,b=q.curvature*A+dss,k=(A*b-B*a)/speed**3;
    const lane={p:offset(q,d),normal:[-v[1]/speed,v[0]/speed],heading:deg(Math.atan2(v[1],v[0])),curvature:k};
-   for(const edge of[-(i===0?edges.first:metal),i===s.laneCount-1?edges.last:metal])if(1-edge*k<=.002)throw Error('A squeezed conductor or piece edge folds in the transition. Lengthen the transition, reduce the squeeze, or shorten the piece clearance.');
+   for(const edge of[-(i===0?edges.first:metal),i===s.laneCount-1?edges.last:metal])if(1-edge*k<=.002)throw Error(apex?'A squeezed conductor or piece edge folds. Use a longer or wider section, reduce the squeeze, or shorten the piece clearance.':'A squeezed conductor or piece edge folds in the transition. Lengthen the transition, reduce the squeeze, or shorten the piece clearance.');
    return lane;
   });
   const points=[offset(lanes[0],-edges.first),offset(lanes.at(-1),edges.last),...lanes.flatMap(l=>[-metal,0,metal].map(d=>offset(l,d)))],result={t,q,lanes,points};memo.set(t,result);return result;
@@ -100,7 +110,7 @@ function squeezed(p){
  function split(a,b,depth){const checks=[.25,.5,.75].map(f=>at(a.t+(b.t-a.t)*f));let error=0,turn=0;
   for(let j=0;j<a.points.length;j++)for(let k=0;k<3;k++){const f=(k+1)/4;error=Math.max(error,distance(checks[k].points[j],a.points[j].map((v,i)=>v+(b.points[j][i]-v)*f)));}
   for(let j=0;j<s.laneCount;j++)for(const q of checks)turn=Math.max(turn,Math.abs(Math.atan2(Math.sin(rad(q.lanes[j].heading-a.lanes[j].heading)),Math.cos(rad(q.lanes[j].heading-a.lanes[j].heading)))));
-  if(b.t-a.t>1/32||error>EPS||turn>rad(1)){if(!depth)throw Error('This squeeze is too abrupt to sample. Lengthen its transitions.');split(a,checks[1],depth-1);split(checks[1],b,depth-1);}else qs.push(b);
+  if(b.t-a.t>1/32||error>EPS||turn>rad(1)){if(!depth)throw Error('This squeeze is too abrupt to sample. Use a longer or gentler section.');split(a,checks[1],depth-1);split(checks[1],b,depth-1);}else qs.push(b);
  }
  const breaks=[0,arc.parameter(T),arc.parameter(L-T),1].sort((a,b)=>a-b).filter((t,i,a)=>!i||t-a[i-1]>1e-10);for(let i=1;i<breaks.length;i++)split(at(breaks[i-1]),at(breaks[i]),14);
  if(qs.length>4097)throw Error('Use a longer, gentler squeeze or shorter routed sections.');
@@ -108,9 +118,9 @@ function squeezed(p){
  qs.forEach(q=>q.lanes.forEach((l,i)=>minCurvatures[i]=Math.max(minCurvatures[i],Math.abs(l.curvature))));
  const reference=polyline(qs.map(v=>v.q),0),fractions=reference.distancesMm.map(d=>d/reference.lengthMm),lanePaths=Array.from({length:s.laneCount},(_,i)=>{const ls=qs.map(v=>v.lanes[i]),segment={...line(ls.map(v=>v.p),ls.map(v=>v.heading),ls.map(v=>v.curvature)),referenceFractions:fractions};if(!simple(segment.points,false))throw Error('A squeezed slot crosses itself. Open up the curve.');return{id:'lane-'+(i+1),start:segment.points[0],end:segment.points.at(-1),segments:[segment],lengthMm:segment.lengthMm,d:path(segment.points)};});
  const surfaceFirst=qs.map(v=>offset(v.lanes[0],-edges.first)),surfaceLast=qs.map(v=>offset(v.lanes.at(-1),edges.last)),outline=surfaceFirst.concat(surfaceLast.slice().reverse());
- if(!simple(outline,true))throw Error('The squeezed surface crosses itself. Lengthen the transition or reduce the squeeze.');
+ if(!simple(outline,true))throw Error('The squeezed surface crosses itself. Widen the curve or reduce the squeeze.');
  const ribbons=lanePaths.map((_,i)=>{const sides=[-metal,metal].map(d=>qs.map(v=>offset(v.lanes[i],d)));return sides[0].concat(sides[1].reverse());});
- for(let i=0;i<ribbons.length;i++){const a=ribbons[i];if(!simple(a,true))throw Error('A squeezed conductor footprint overlaps itself. Lengthen the transition or widen the curve.');for(let j=0;j<i;j++){const b=ribbons[j];for(let x=0;x<a.length;x++)for(let y=0;y<b.length;y++)if(intersects(a[x],a[(x+1)%a.length],b[y],b[(y+1)%b.length]))throw Error('Conductors of adjacent squeezed lanes overlap. Increase spacing or lengthen the transition.');}}
+ for(let i=0;i<ribbons.length;i++){const a=ribbons[i];if(!simple(a,true))throw Error('A squeezed conductor footprint overlaps itself. Widen the curve or reduce the squeeze.');for(let j=0;j<i;j++){const b=ribbons[j];for(let x=0;x<a.length;x++)for(let y=0;y<b.length;y++)if(intersects(a[x],a[(x+1)%a.length],b[y],b[(y+1)%b.length]))throw Error('Conductors of adjacent squeezed lanes overlap. Increase spacing or use a longer, gentler section.');}}
  const delta=s.slotWidthMm/2+s.conductorGapMm+s.conductorWidthMm/2;let conductorLengthMm=0;
  const conductors=lanePaths.map((_,i)=>[-delta,delta].map(d=>{const points=qs.map(v=>offset(v.lanes[i],d));for(let j=1;j<points.length;j++)conductorLengthMm+=distance(points[j-1],points[j]);return path(points);}));
  const xs=outline.map(p=>p[0]),ys=outline.map(p=>p[1]);let area=0;for(let i=0;i<outline.length;i++){const a=outline[i],b=outline[(i+1)%outline.length];area+=a[0]*b[1]-b[0]*a[1];}

@@ -1,0 +1,58 @@
+SlotForge Circuit layout integration - 1.0.0-draft.7
+Smooth apex squeeze - 31 October 2026 (v0.3.14)
+
+The slotforge.layout envelope remains version 1. A definition containing a
+version-2 squeeze requires draft.7, including unused definitions. This takes
+precedence over draft.6. Legacy version-1 squeezes retain draft.6 and their
+exact existing geometry; no saved section is automatically converted.
+
+PARAMETERS
+ parameters.squeeze = {
+   "version": 2,
+   "shape": "apex",
+   "spacingMm": 80,
+   "anchorLane": "centre"
+ }
+All four fields are required. anchorLane also accepts a one-based lane number.
+transitionMm is not allowed: this profile always spans the complete section.
+Unknown shapes, fields and versions are rejected. Spacing and anchor limits
+are unchanged from draft.6. Version 1 keeps its existing transitionMm schema.
+
+GEOMETRY
+Let u = reference arc length / total reference arc length, clamped to [0,1].
+Replace the draft.6 taper weight with one continuous symmetric bell:
+ w(u) = 64*u^3*(1-u)^3
+ dw/ds = 192*u^2*(1-u)^2*(1-2*u) / L
+ d2w/ds2 = 384*u*(1-u)*(1-5*u+5*u^2) / L^2
+Use the same per-lane offset equation and true slot-normal conductor boundaries
+as draft.6. The weight increases strictly from entry to midpoint, then decreases
+strictly to exit. It is 1 only at the midpoint, with no narrow plateau. The first
+and second derivatives vanish at both endpoints, preserving connector geometry
+and endpoint curvature. At the midpoint, the weight's second derivative is
+nonzero; do not substitute two half-length legacy transition ramps.
+
+The apex means the reference arc-length midpoint of this individual section.
+It does not detect a racing apex or combine several selected sections. Physical
+slot spacing is measured along the reference normal as in draft.6. A cubic
+converted from a circular corner remains an approximation of that circle.
+
+Slot lengths, curvatures, material quantities, geometry checks, PDF, SVG/DXF,
+timing positions and reversed route animation all use the generated paths.
+There is no new route-segment type. Existing adaptive sampling and fold,
+self-intersection and conductor-overlap checks remain in force.
+
+COMPATIBILITY AND EDITOR
+New squeezes default to Smooth apex. Existing squeezes open as Hold narrow
+spacing. The user can explicitly switch between them without changing the
+reference path, anchor or spacing. Reset removes the squeeze metadata.
+
+Custom-pack v2 and custom-library v3 envelopes remain unchanged. The previous
+strict squeeze validator rejects version 2 instead of silently flattening it.
+Timing must explicitly accept draft.7 and use the updated shared runtime.
+Earlier contracts and legacy imported layouts remain supported. No Timing
+repository changes are included here.
+
+Tests in app/routed-squeeze.test.cjs cover monotonic arc-length-based narrowing,
+the unique midpoint minimum, derivative continuity, mirrored 180-degree joins,
+independent lengths/radii, anchor/conductor geometry, CAD, persistence, strict
+metadata and legacy contract preservation.

@@ -1,9 +1,9 @@
 {
-  "version": "0.3.13",
+  "version": "0.3.14",
   "date": "2026-10-31",
   "automated": {
     "command": "node --test app/routed-squeeze.test.cjs app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
-    "passed": 303,
+    "passed": 309,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -790,5 +790,26 @@
       "SlotForge Timing needs draft.6 support; no receiving-repository changes made"
     ],
     "standaloneHandoffTestsPassed": 85
+  },
+  "routedApexReview": {
+    "date": "2026-10-31",
+    "status": "Included in v0.3.14",
+    "sourceTestsPassed": 309,
+    "integrationFixturesPassed": 15,
+    "newRegressionTests": 6,
+    "browserChecks": [
+      "180-degree four-lane hairpin defaults to Smooth apex for a new squeeze",
+      "Minimum 80 mm spacing at the midpoint, with 100 mm at both ends",
+      "Switching from an invalid legacy transition to Smooth apex hides and disables the transition input",
+      "Saved pack retains Smooth apex after reload",
+      "Existing saved squeeze remains Hold narrow spacing with its original 300 mm transition",
+      "Preview stays visible beside the shape selector"
+    ],
+    "screenshot": "routed-apex-preview.png",
+    "limits": [
+      "Apex is the reference arc-length midpoint of one section, not a detected racing apex across multiple sections",
+      "Smooth-apex exports require draft.7 in Timing; receiving repository was not changed"
+    ],
+    "standaloneHandoffTestsPassed": 91
   }
 }

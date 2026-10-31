@@ -12,9 +12,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.13 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.14 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.13/SlotForge-Circuit-v0.3.13-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.13)
+**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.14/SlotForge-Circuit-v0.3.14-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.14)
 
 ## Install and start
 
@@ -54,12 +54,15 @@ section. Existing sections keep their own settings. Tabletop exports require
 
 **Lane squeeze:** select a routed section and choose **Squeeze…** in the Selection
 panel, or enable it while creating a section. Narrow the lanes inside a corner
-(for example **100 → 80 → 100 mm**), set a smooth transition length and choose
-which lane—or the bundle centre—stays in place. Both ends keep their normal
+(for example **100 → 80 → 100 mm**). Choose **Smooth apex** to gradually narrow
+through the whole section, with the smallest spacing only at its midpoint.
+Choose which lane—or the bundle centre—stays in place. Both ends keep their normal
 spacing. The preview, lane lengths, materials and exports follow the new paths.
 Use **Reset squeeze** to return to uniform spacing. Circular corners become
 editable flowing approximations. Check car clearance separately. Squeezed
-exports need **draft.6** support in SlotForge Timing.
+exports need **draft.7** support in SlotForge Timing for Smooth apex. Existing
+squeezes keep **Hold narrow spacing**, with adjustable transition lengths and
+the **draft.6** contract, until you explicitly switch their shape.
 
 **Reusable routed sections:** choose a named track pack in the section editor,
 then **Save to pack** or **Save & add to layout**. Find your saved sets on the
@@ -197,7 +200,7 @@ node --test app/routed-squeeze.test.cjs app/tabletop-routing.test.cjs app/routed
 node integration/slotforge-timing/check-fixtures.cjs
 ```
 
-The current source was checked with **303 passing automated tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
+The current source was checked with **309 passing automated tests and 15 passing integration fixtures**. See [validation details](app/validation.json) for the scope and limitations. Rebuild the complete ZIP with Python 3 using `python app/package-share.py`.
 
 Found a rough edge or have an idea for a new piece? [Open an issue](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/issues) with the track system, piece details and a small example layout where possible.
 

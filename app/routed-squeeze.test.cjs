@@ -29,3 +29,42 @@ test('Closed-loop routes, timing offsets and reverse animation use the squeezed 
 test('Tabletop squeeze keeps footprint clearances separate from board-edge guidelines',()=>{const d=section({},null,{constructionMode:'table',innerClearanceMm:500,outerClearanceMm:600}),g=d.geometry;near(F.dist(g.sampledOutline[0],g.lanePaths[0].start),8.6);assert.equal(I.prepare(raw(d)).integration.contractVersion,I.SQUEEZE_CONTRACT);const material=R.materials(raw(d).pieces,{[d.id]:d});near(material.sectionAreaMm2,0);near(material.braidMm,g.conductorLengthMm);assert.ok(C.checks(raw(d).pieces,{[d.id]:d},null).some(i=>i.code==='table-missing'));});
 test('A zero-strength squeeze reproduces a curved section, and old shapes keep old contracts',()=>{const s=R.settings({...R.defaults,laneCount:4,innerClearanceMm:50,outerClearanceMm:75}),points=S.preset('bend',s),d=section({spacingMm:100},points),base=R.definition(s,{type:S.TYPE,controlPointsMm:points});for(let i=0;i<4;i++)near(d.geometry.lanePaths[i].lengthMm,base.geometry.lanePaths[i].lengthMm,.025);assert.equal(I.prepare(raw(base)).integration.contractVersion,I.FLOWING_CONTRACT);assert.equal(CP.exportPack({name:'Old pack',pieces:[base]}).version,1);});
 test('All lanes at the supported eight-lane limit can anchor an S-bend squeeze',()=>{const s=R.settings({...R.defaults,laneCount:8,laneSpacingMm:100,innerClearanceMm:50,outerClearanceMm:75}),points=S.preset('s-bend',s);for(const anchorLane of[1,4,8]){const d=section({anchorLane,transitionMm:600},points,s);assert.equal(d.geometry.lanePaths.length,8);assert.ok(d.geometry.lanePaths.every(l=>Number.isFinite(l.lengthMm)));}});
+
+function apexSection(shape=null,profile={},anchorLane='centre'){
+ const s=R.settings({...R.defaults,laneCount:4,innerClearanceMm:50,outerClearanceMm:75,...profile});
+ return F.validateDefinition(R.definition(s,{type:S.TYPE,controlPointsMm:shape||[[0,0],[100,0],[300,0],[1200,0]],squeeze:{version:2,shape:'apex',spacingMm:80,anchorLane}},'routed:apex'));
+}
+test('Smooth apex narrows over the whole physical section, with no plateau or endpoint kink',()=>{
+ const d=apexSection(),g=d.geometry,first=g.lanePaths[0].segments[0],second=g.lanePaths[1].segments[0];let last=100,foundApex=false;
+ for(let j=0;j<first.points.length;j++){const x=first.points[j][0],u=x/1200,spacing=F.dist(first.points[j],second.points[j]);near(spacing,100-20*(4*u*(1-u))**3);if(x<=600+1e-6)assert.ok(spacing<=last+1e-6);else assert.ok(spacing>=last-1e-6);last=spacing;if(Math.abs(x-600)<1e-6){near(spacing,80);foundApex=true;}else assert.ok(spacing>80);}
+ assert.ok(foundApex);for(const lane of g.lanePaths){const seg=lane.segments[0];near(seg.headingsDeg[0],0);near(seg.headingsDeg.at(-1),0);near(seg.curvaturesPerMm[0],0);near(seg.curvaturesPerMm.at(-1),0);}
+});
+test('A 180-degree hairpin retains its joins and is narrowest at the apex under either reflection',()=>{
+ const s=R.settings({...R.defaults,laneCount:4,innerClearanceMm:50,outerClearanceMm:75}),circle=R.definition(s,{type:'curve',slotRadiusMm:400,angleDeg:180},'routed:circle');
+ for(const flip of[false,true]){const converted=R.flowingFromCurve(s,R.shapeOf(circle.parameters),flip),d=apexSection(converted.shape.controlPointsMm),old={...F.pose(circle),flip},next={...F.pose(d),flip:converted.flip};
+  const a=F.ports(old,{[circle.id]:circle}),b=F.ports(next,{[d.id]:d}),dx=a[0].position[0]-b[0].position[0],dy=a[0].position[1]-b[0].position[1];next.x+=dx;next.y+=dy;
+  const ports=F.ports(next,{[d.id]:d});for(let k=0;k<2;k++){near(F.dist(a[k].position,ports[k].position),0);for(let i=0;i<4;i++)near(F.dist(a[k].lanes[i],ports[k].lanes[i]),0);}
+  const pts=d.geometry.lanePaths.map(l=>l.segments[0].points),index=d.geometry.parametersT.findIndex(t=>Math.abs(t-.5)<1e-8);assert.ok(index>=0);for(let i=0;i<3;i++)near(F.dist(pts[i][index],pts[i+1][index]),80);
+ }
+});
+test('Smooth apex lengths and curvature agree with an independent dense bell profile',()=>{
+ const d=apexSection();for(let lane=0;lane<4;lane++){let last=null,length=0,max=0;const change=(lane-1.5)*-20;
+  for(let i=0;i<=24000;i++){const x=i/20,u=x/1200,pt=[x,-150+lane*100+change*(4*u*(1-u))**3],dy=change*192*u*u*(1-u)**2*(1-2*u)/1200,ddy=change*384*u*(1-u)*(1-5*u+5*u*u)/1200**2;if(last)length+=F.dist(last,pt);last=pt;max=Math.max(max,Math.abs(ddy)/(1+dy*dy)**1.5);}
+  near(d.geometry.lanePaths[lane].lengthMm,length,.025);near(d.geometry.minRadiiMm[lane],1/max,.1);
+ }
+});
+test('Smooth apex preserves anchoring, slot-normal conductor widths and sampled CAD paths',()=>{
+ const s=R.settings({...R.defaults,laneCount:4,innerClearanceMm:50,outerClearanceMm:75}),d=apexSection(S.preset('bend',s),s,3),p=d.parameters,g=d.geometry,seg=g.lanePaths[2].segments[0];
+ g.parametersT.forEach((t,j)=>near(F.dist(seg.points[j],S.offset(S.evaluate(p.controlPointsMm,t),50)),0));
+ const a=S.edgePoints(p,g,p.laneOffsetsMm[0]+2.6),b=S.edgePoints(p,g,p.laneOffsetsMm[0]+8.6);a.forEach((pt,i)=>near(F.dist(pt,b[i]),6));
+ const cad=CAD.build(raw(d),{table:false});cad.paths.filter(p=>p.layer==='SLOT_CENTRES').forEach((path,i)=>assert.deepEqual(path.points,g.lanePaths[i].segments[0].points));
+});
+test('Smooth apex round trips through layouts and packs, and negotiates draft.7 without changing legacy squeezes',()=>{
+ const d=apexSection(),out=I.prepare(raw(d));assert.equal(out.integration.contractVersion,'1.0.0-draft.7');assert.deepEqual(I.importLayout(out).definitions[d.id].geometry,d.geometry);
+ const saved=CP.addRouted(CP.empty(),d,{packId:'new',packName:'Smooth corners'}),pack=CP.exportPack(saved.pack),again=CP.importPack(pack,CP.empty());assert.deepEqual(again.pieces[0].parameters.squeeze,d.parameters.squeeze);
+ const legacy=section();assert.equal(I.prepare(raw(legacy)).integration.contractVersion,'1.0.0-draft.6');assert.equal(legacy.parameters.squeeze.version,1);
+ const reset=R.shapeOf(d.parameters);delete reset.squeeze;const plain=R.definition(d.parameters.routed,reset);plain.geometry.lanePaths.forEach(l=>near(l.lengthMm,1200));
+});
+test('Smooth apex rejects unsupported shapes and ambiguous transition metadata',()=>{
+ const d=apexSection();for(const change of[{shape:'unknown'},{shape:undefined},{transitionMm:200},{version:3},{spacingMm:10},{anchorLane:5}]){const bad=structuredClone(d);Object.assign(bad.parameters.squeeze,change);assert.throws(()=>F.validateDefinition(bad));}
+});
