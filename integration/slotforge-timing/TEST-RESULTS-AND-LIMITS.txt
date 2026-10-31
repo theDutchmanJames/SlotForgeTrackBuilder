@@ -1,3 +1,30 @@
+CURRENT ROUTED EXTENSION - 31 October 2026 (v0.3.9)
+281 complete source tests passed. 68 tests in the rebuilt, unpacked runtime
+handoff passed, including 20 flowing-geometry regressions. All 15 existing
+Timing fixtures passed without changes to their expected results.
+Browser checks and limitations are recorded in app/validation.json in the
+source tree. Read draft.4 for flowing curves and draft.5 for tabletop routing and updated
+runtime dependencies. Native SlotForge Timing receiving UI is not tested or
+modified here. The older verification notes below are historical.
+See app/ROUTED-REVIEW.txt in the source archive for the follow-up repair list,
+browser checks, independent CAD audits, packaging checks and verification limits.
+The additional Circuit rename regression checks that earlier Track Builder
+producer metadata retains design identity, route geometry and timing.
+Tabletop regressions cover per-section choice, real table-edge clearances,
+retained slot/conductor restrictions, stable connected slot geometry, correct
+CAD layers, contract negotiation and stale measurement feedback. Browser tests
+verified the routing-type switch and persistence after reloading. Independently
+audited DXF and visually checked PDF downloads contain the correct tabletop
+geometry and explanatory profile, without invented individual board cuts.
+The follow-up tabletop review adds seven regressions for physical-table
+revisions, unused-definition contract negotiation, guide/table distinction,
+advisory clearances, arc extrema, mixed CAD end caps and invalid circular
+previews. See app/TABLETOP-REVIEW.txt in the source archive.
+Reusable routed-pack and conversion regressions cover angle/lane/edge
+preservation, left/right and piece/tabletop conversion, save-only versus save
+and place, failed writes, repeated submits, pack orientation round trips and
+the disk-backed pack gallery. See app/ROUTED-TRACKS.txt for the workflow.
+
 Builder 0.2.2 verification — 29 October 2026
 
 SOURCE: 70 tests, zero failures.

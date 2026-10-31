@@ -1,4 +1,4 @@
-SlotForge Track Builder — bundled PDF dependencies
+SlotForge Circuit — bundled PDF dependencies
 
 jsPDF 4.2.1: https://github.com/parallax/jsPDF/tree/v4.2.1
 License: MIT. Full notice: app/vendor/jspdf-LICENSE.txt.

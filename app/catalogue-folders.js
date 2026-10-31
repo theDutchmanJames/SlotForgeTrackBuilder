@@ -6,7 +6,7 @@ function category(d){const p=d.parameters||{},name=d.name||'',cat=d.category||''
  if(/passive crossover|analogue crossover|fixed lane crossover/i.test(name))return 'Extras';
  if(p.laneChange||/digital|oXigen|advance|lane chang|pit[- ]lane|pit stop|control unit|black box|check lane|multistart|single-lane adapter unit/i.test(text))return 'Digital pieces';
  if(/power|timing|lap counter|trackside|adapter|converter/i.test(text))return 'Extras';
- if(p.type==='curve'||/curve|corner|hairpin|\bR\d+\b/i.test(name)||cat==='Curves')return 'Corners';
+ if(p.type==='routed-spline'||p.type==='curve'||/curve|corner|hairpin|\bR\d+\b/i.test(name)||cat==='Curves')return 'Corners';
  if(p.type==='straight'||/straight/i.test(name)||cat==='Straights')return 'Straights';
  return 'Extras';
 }

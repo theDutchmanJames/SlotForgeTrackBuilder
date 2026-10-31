@@ -1,32 +1,43 @@
-SlotForge Timing integration handoff — Builder 0.2.2
-29 October 2026
+SlotForge Timing integration handoff — routed extension (v0.3.9)
+31 October 2026
 
 CURRENT CONTRACT
 slotforge.layout envelope: version 1 (unchanged)
-integration.contractVersion: 1.0.0-draft.2 (new reference-picture template)
-Supported imports: draft.2, draft.1, and documented legacy/unversioned v1.
+integration.contractVersion: draft.5 for tabletop routing; otherwise draft.4 for flowing curves, draft.3 for circular/straight routed, draft.2 otherwise
+Supported imports: draft.5, draft.4, draft.3, draft.2, draft.1, and documented legacy/unversioned v1.
 Explicit unknown versions and unsupported units are rejected before normalization.
+The app is now named SlotForge Circuit. New exports use that producer.name;
+older SlotForge Track Builder exports retain full compatibility. The rename
+does not change the layout envelope, integration contracts or route identity.
+Reusable routed packs may include catalogueFlip as an editor-only preferred
+reflection. Layouts already serialize explicit placement flips; no new route
+geometry or integration-contract revision is introduced by pack saving or
+the circular-to-flowing conversion fix.
 
 READ IN THIS ORDER
 1. CODEX-BRIEF-v0.2.2.txt — pasteable implementation brief for Timing.
 2. TIMING-IMPORTER-CHANGES.txt — receiving-side workflow and invariants.
+Read EXPORT-SPEC-1.0.0-draft.3.txt and EXPORT-SPEC-1.0.0-draft.4.txt for routed support.
+Read EXPORT-SPEC-1.0.0-draft.5.txt for per-section tabletop routing. Use the
+supplied current runtime; earlier briefs describe historical contracts.
 3. EXPORT-SPEC-1.0.0-draft.1.txt — base geometry, identity, timing and profile rules.
 4. EXPORT-SPEC-1.0.0-draft.2.txt — extension and version negotiation rules.
 5. DEPENDENCIES-AND-LICENSING.txt — runtime dependencies and reuse information.
 6. TEST-RESULTS-AND-LIMITS.txt — current verification and limitations.
 
 RUN FROM THE HANDOFF ARCHIVE ROOT (modern Node; no npm install)
- node --test app/integration.test.cjs app/editor-features.test.cjs
+ node --test app/integration.test.cjs app/editor-features.test.cjs app/routed.test.cjs app/routed-spline.test.cjs
  node integration/slotforge-timing/check-fixtures.cjs
-Expected: 26 tests, 15 fixture cases, no failures.
+All tests and all 15 legacy fixture cases should pass.
 The catalogue and custom-packs module are included for these tests; Timing's
-layout runtime needs only integration.js, core.js and the geometry module.
+layout runtime needs integration.js, core.js, routed.js, routed-spline.js and
+the geometry module. Update them together, even for non-routed layouts.
 
 SOURCE ARCHIVE
-The source ZIP also contains the complete Builder, six track catalogues,
+The source ZIP also contains the complete Builder, ten manufacturer catalogues and Routed wood,
 named custom packs, matching curves, reference placement and all app tests.
  node --test app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/server.test.cjs
-Expected: 70 tests, no failures.
+Run the complete source test command recorded in app/validation.json.
  node app/serve.cjs
 Open http://127.0.0.1:8173/app/ . Keep an already-running server if it serves
 this directory. The localhost origin is recommended for autosave and images.
@@ -37,8 +48,17 @@ MODULE ENTRY POINTS
  const regenerated = I.prepare(parsedJSON, imported.state);
 Enforce the 5 MiB external JSON limit before parsing. Derived geometry and
 cached summaries are untrusted; regenerate them through the runtime.
+Large portable exports may omit preparedGeometry. Embedded definitions are
+sufficient: importLayout()/prepare() regenerate the slot paths and timing data.
 
 EXAMPLES
+routed-examples/closed-tabletop-track.slotforge.json is a compact draft.5
+four-lane tabletop circuit. It omits derived geometry intentionally; the
+runtime regenerates it from its definitions during import.
+routed-examples/closed-flowing-track.slotforge.json is a draft.4 three-lane
+flowing circuit with normal-offset paths, a timing cross-section and reversal.
+routed-examples/closed-routed-oval.slotforge.json is a complete draft.3 routed
+circuit with construction profile, table, lane geometry and timing line.
 v1-fixtures/ contains the 15 existing compatibility/rejection cases, including
 2/4/8 lanes, reflected/reversed routes, timing offsets and identity revisions.
 v2-examples/closed-with-reference.slotforge.json is a draft.2 closed circuit
@@ -49,3 +69,10 @@ Historical v0.1.3, v0.2.0 and v0.2.1 notes/fixtures remain where useful. Current
 instructions in this file and CODEX-BRIEF-v0.2.2.txt supersede older handoffs.
 No SlotForge Timing repository changes were made. The contract remains a draft
 until Timing explicitly adopts and tests it.
+
+BUILDING ARCHIVES FROM THE COMPLETE SOURCE TREE
+ python integration/slotforge-timing/package.py --output-dir tmp/packages
+The default filenames use the current producer version plus -development.
+Use --version only when preparing a deliberate release. Existing output files
+are refused unless --force is supplied. The source ZIP contains installation
+instructions; the standalone handoff contains these integration instructions.

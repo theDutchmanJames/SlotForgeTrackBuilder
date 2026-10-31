@@ -1,0 +1,51 @@
+Piece/tabletop routing review - 31 October 2026 (unreleased)
+
+Reviewed the recent routing-type extension, section editor, table checks,
+construction exports, saved metadata and shared Timing integration runtime.
+
+FIXED
+1. Physical table changes did not affect design.revision. Tabletop layouts now
+   include board position and dimensions in the revision hash. Locking the table
+   remains an editor preference. Lane routes, timing and design identity remain
+   unchanged when only the board changes.
+2. Contract negotiation considered only placed pieces. It now considers every
+   serialized definition, including unused tabletop/flowing definitions, so an
+   export cannot advertise an older contract than its contents require.
+3. An available-space guide was accepted as a physical routing table. Guides
+   still check the available area, but only Wood / MDF tables provide tabletop
+   board-edge checks. A guide cannot suppress the missing-table warning.
+4. Tabletop clearance guidelines could reject a profile when smaller than its
+   conductor footprint. These requested clearances are now advisory independently
+   of the footprint. Actual slot/conductor dimensions, spacing and folding
+   restrictions remain enforced. Individual-piece verge rules are unchanged.
+5. Rotated circular footprint checks could miss the true conductor/wood edge
+   extrema between sampled vertices. Table/guide fit now checks analytic arc
+   extrema, including rotated, translated and mirrored sections.
+6. A piece joined to a nearly identical tabletop footprint could lose its
+   closing CAD edge. Seam removal now applies only between individual pieces;
+   tabletop routing never removes a physical piece's end cap.
+7. An invalid circular section could keep displaying its previous valid SVG.
+   Invalid non-flowing previews now clear that artwork, retain the error and
+   disable placement. Returning to valid settings restores the preview.
+
+VERIFICATION
+264 complete source tests passed, including seven new regression cases.
+67 tests passed from a newly packaged and unpacked Timing runtime handoff.
+All 15 existing integration fixtures passed.
+The draft.5 tabletop example was regenerated with the corrected revision hash.
+Archive CRCs, syntax and whitespace checks passed.
+
+Browser checks used isolated local storage. The invalid circular preview cleared
+and recovered when routing type changed; guide/table distinction displayed the
+correct warning. No captured browser warnings or errors were present.
+An independent ezdxf audit verified that the mixed-routing DXF contains one
+closed four-vertex piece contour, millimetre units, zero errors and zero repairs.
+
+The layout envelope remains v1 and integration contract draft.5 is unchanged.
+Earlier piece-mode contracts and physical geometry remain supported. A
+pre-review draft.5 layout may receive a corrected design revision on import or
+re-export; its design ID and lane identity remain intact.
+
+This was a source, regression and local browser review. It does not certify
+physical construction, CNC toolpaths or every native CAD/CAM application.
+No installed personal workspace or SlotForge Timing repository was changed.

@@ -1,6 +1,6 @@
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./core.js'));else root.SlotForgeIntegration=factory(root.Forge);})(typeof globalThis!=='undefined'?globalThis:this,function(F){
 'use strict';
-const VERSION='0.3.8',CONTRACT='1.0.0-draft.2';
+const VERSION='0.3.9',CONTRACT='1.0.0-draft.2',ROUTED_CONTRACT='1.0.0-draft.3',FLOWING_CONTRACT='1.0.0-draft.4',TABLETOP_CONTRACT='1.0.0-draft.5';
 const compare=(a,b)=>a<b?-1:a>b?1:0;
 function canonical(v){if(Array.isArray(v))return '['+v.map(canonical).join(',')+']';if(v&&typeof v==='object')return '{'+Object.keys(v).filter(k=>v[k]!==undefined).sort().map(k=>JSON.stringify(k)+':'+canonical(v[k])).join(',')+'}';return JSON.stringify(v);}
 // Synchronous SHA-256 keeps offline browser autosave and Node exports identical.
@@ -21,7 +21,7 @@ function validateEnvelope(raw){
  if(!meta||typeof meta!=='object'||Array.isArray(meta))throw Error('Invalid integration metadata: expected an object.');
  if(Object.hasOwn(meta,'contractVersion')){
   if(typeof meta.contractVersion!=='string'||!meta.contractVersion.trim())throw Error('Invalid integration contract version: expected a non-empty string.');
-  if(![CONTRACT,'1.0.0-draft.1'].includes(meta.contractVersion))throw Error('Unsupported integration contract version. Supported version: '+CONTRACT+'.');
+  if(![CONTRACT,ROUTED_CONTRACT,FLOWING_CONTRACT,TABLETOP_CONTRACT,'1.0.0-draft.1'].includes(meta.contractVersion))throw Error('Unsupported integration contract version. Supported versions: 1.0.0-draft.1, '+CONTRACT+' and '+ROUTED_CONTRACT+', '+FLOWING_CONTRACT+', '+TABLETOP_CONTRACT+'.');
  }
  for(const key of ['target','status','profilePurpose','image'])if(Object.hasOwn(meta,key)&&(typeof meta[key]!=='string'||!meta[key].trim()||meta[key].length>200))throw Error('Invalid integration metadata: '+key+' must be a non-empty string of at most 200 characters.');
 }
@@ -42,13 +42,13 @@ function network(pieces,defs){
  net.mappingRevision=net.closed?hash(canonical(net.routes.map(r=>r.id))):null;return net;
 }
 function reconcile(state,net){const next=structuredClone(state);if(net.mappingRevision){if(next.routeMappingRevision&&next.routeMappingRevision!==net.mappingRevision)next.requiresLaneRemap=true;next.routeMappingRevision=net.mappingRevision;next.routeLabels=Object.fromEntries(net.routes.filter(r=>Object.hasOwn(next.routeLabels,r.id)).map(r=>[r.id,next.routeLabels[r.id]]));}return next;}
-function offsets(net,startFinish){if(!net.closed||!startFinish)return[];return net.routes.flatMap(r=>{const s=r.sections.find(s=>s.pieceId===startFinish.pieceId);return s?[{routeId:r.id,offsetMm:(s.startMm+(s.reverse?1-startFinish.fraction:startFinish.fraction)*s.lengthMm)%r.lengthMm}]:[];});}
+function offsets(net,startFinish){if(!net.closed||!startFinish)return[];return net.routes.flatMap(r=>{const s=r.sections.find(s=>s.pieceId===startFinish.pieceId);return s?[{routeId:r.id,offsetMm:(s.startMm+(r.segments[r.sections.indexOf(s)]?.type==='polyline'?F.Routed.Spline.distanceAtFraction(r.segments[r.sections.indexOf(s)],s.reverse?1-startFinish.fraction:startFinish.fraction):(s.reverse?1-startFinish.fraction:startFinish.fraction)*s.lengthMm))%r.lengthMm}]:[];});}
 function atTravel(route,distance,offset=0,direction=1){const q=F.at(route,offset+direction*distance);return{...q,heading:q.heading+(direction===-1?180:0),curvature:q.curvature*direction};}
 function travelPlan(route,profile,offset=0,direction=1){
  // Reversing a speed lookup would reverse braking too. Plan on travel geometry.
  const sections=[],segments=[];let total=0;
  const order=direction===1?route.sections.map((s,i)=>i):route.sections.map((s,i)=>i).reverse();
- for(const i of order){const s=route.sections[i],old=route.segments[i],seg=structuredClone(old);if(direction===-1){if(seg.type==='line')[seg.from,seg.to]=[seg.to,seg.from];else{seg.startAngleDeg+=seg.sweepDeg;seg.sweepDeg=-seg.sweepDeg;}}sections.push({...s,startMm:total});segments.push(seg);total+=s.lengthMm;}
+ for(const i of order){const s=route.sections[i],old=route.segments[i],seg=structuredClone(old);if(direction===-1){if(seg.type==='line')[seg.from,seg.to]=[seg.to,seg.from];else if(seg.type==='polyline'){seg.points.reverse();seg.distancesMm=seg.distancesMm.slice().reverse().map(d=>seg.lengthMm-d);seg.referenceFractions=seg.referenceFractions.slice().reverse().map(v=>1-v);seg.headingsDeg=seg.headingsDeg.reverse().map(a=>a+180);seg.curvaturesPerMm=seg.curvaturesPerMm.reverse().map(k=>-k);}else{seg.startAngleDeg+=seg.sweepDeg;seg.sweepDeg=-seg.sweepDeg;}}sections.push({...s,startMm:total});segments.push(seg);total+=s.lengthMm;}
  const speed=F.speedPlan({...route,sections,segments},profile);return d=>speed(d+direction*offset);
 }
 function compatibility(pieces,defs,net,startFinish){
@@ -61,6 +61,7 @@ function compatibility(pieces,defs,net,startFinish){
  if(con.ambiguous.size)add('ambiguous-connections','error','More than one road matches a connector.');
  if(roads.length&&!net.closed&&!con.open.length&&components===1&&!con.ambiguous.size)add('unsupported-route-geometry','error',net.reason);
  if(pieces.some(p=>defs[p.definitionId].parameters.type==='reference'))add('reference-artwork','warning','Reference pictures have approximate display sizes and no slot routes. They count in inventory, but not slot lengths or slot-circuit closure. Optional planning magnets only align estimated surfaces.');
+ if(pieces.some(p=>defs[p.definitionId].parameters.routed))add('routed-runtime','warning',pieces.some(p=>defs[p.definitionId].parameters.routed?.constructionMode==='table')?'Tabletop routing uses integration contract 1.0.0-draft.5. Timing needs the tabletop-aware runtime; wood clearances apply to the table boundary.':pieces.some(p=>defs[p.definitionId].parameters.type==='routed-spline')?'Flowing curves use integration contract 1.0.0-draft.4. Timing needs the flowing-curve runtime; normal offsets use adaptive sampled geometry.':'Routed layouts use integration contract 1.0.0-draft.3. Timing needs the routed-aware shared runtime; lengths follow user-entered geometry.');
  if(pieces.some(p=>defs[p.definitionId].parameters.laneChange))add('lane-changing-branches','warning','Branches are drawn and preserved; Live Tracker follows through routes. Digital switching and pit tracking are unsupported.');
  add('elevation-order-unavailable','warning','This is a flat drawing. Elevation, bridges and crossing order are not modelled.');
  if(!roads.some(p=>p.id===startFinish?.pieceId)||offsets(net,startFinish).length!==net.routes.length)add('start-finish-unset','warning','Set or confirm a timing line before Live Tracker playback in Timing.');
@@ -70,10 +71,11 @@ function definition(d){return{id:d.id,name:d.name,sku:d.sku,pack:d.pack,family:d
 function prepare(raw,state,withGeometry=true){
  const incoming=readState(raw),clean=F.validateLayout(raw),pieces=clean.pieces,defs=clean.definitions,net=network(pieces,defs),s=reconcile(state||incoming,net);
  const timing={version:1,direction:s.direction,directionConvention:'canonical-route-distance',startFinish:s.startFinish,routeLabels:s.routeLabels,routeMappingRevision:s.routeMappingRevision,requiresLaneRemap:s.requiresLaneRemap,startFinishOffsets:offsets(net,s.startFinish)};
- const model={format:'slotforge.layout',version:1,title:clean.title,pieces,definitions:Object.values(defs).sort((a,b)=>compare(a.id,b.id)).map(definition),profile:clean.profile,units:'mm',precision:'Nominal or user-entered dimensions; not verified mould measurements.',timing};
+ const model={format:'slotforge.layout',version:1,title:clean.title,pieces,definitions:Object.values(defs).sort((a,b)=>compare(a.id,b.id)).map(definition),profile:clean.profile,units:'mm',precision:pieces.some(p=>defs[p.definitionId].parameters.type==='routed-spline')?'User-entered geometry; flowing normal offsets use adaptive samples (0.025 mm target); not verified construction measurements.':'Nominal or user-entered dimensions; not verified mould measurements.',timing};
  // Array order controls surface paint order, so it participates in the design revision.
- const revision=hash(canonical({designId:s.designId,...model}));
- const result={...model,...(clean.workspace?{workspace:clean.workspace}:{}),design:{id:s.designId,revision},producer:{name:'SlotForge Track Builder',version:VERSION},integration:{target:'SlotForge Timing',contractVersion:CONTRACT,status:'draft-for-coordination',profilePurpose:'illustrative-animation',image:'optional-separate-png'},compatibility:compatibility(pieces,defs,net,s.startFinish),track:{laneCount:net.closed?net.routes.length:null,slotCountsInDrawing:[...new Set(pieces.map(p=>defs[p.definitionId].geometry.lanePaths.length).filter(Boolean))].sort((a,b)=>a-b),validClosedRouteCount:net.routes.length,lanes:net.routes.map((r,i)=>({id:r.id,label:s.routeLabels[r.id]||'Lane '+(i+1),lengthMm:r.lengthMm}))}};
+ const tabletop=pieces.some(p=>defs[p.definitionId].parameters.routed?.constructionMode==='table'),guide=clean.workspace?.spaceGuide,physicalTable=guide?.kind==='table'?{x:guide.x,y:guide.y,lengthMm:guide.lengthMm,widthMm:guide.widthMm}:null;
+ const revision=hash(canonical({designId:s.designId,...model,...(tabletop?{table:physicalTable}:{})}));
+ const result={...model,...(clean.workspace?{workspace:clean.workspace}:{}),design:{id:s.designId,revision},producer:{name:'SlotForge Circuit',version:VERSION},integration:{target:'SlotForge Timing',contractVersion:(clean.workspace?.routed?.settings.constructionMode==='table'||model.definitions.some(d=>d.parameters.routed?.constructionMode==='table'))?TABLETOP_CONTRACT:model.definitions.some(d=>d.parameters.type==='routed-spline')?FLOWING_CONTRACT:model.definitions.some(d=>d.parameters.routed)?ROUTED_CONTRACT:CONTRACT,status:'draft-for-coordination',profilePurpose:'illustrative-animation',image:'optional-separate-png'},compatibility:compatibility(pieces,defs,net,s.startFinish),track:{laneCount:net.closed?net.routes.length:null,slotCountsInDrawing:[...new Set(pieces.map(p=>defs[p.definitionId].geometry.lanePaths.length).filter(Boolean))].sort((a,b)=>a-b),validClosedRouteCount:net.routes.length,lanes:net.routes.map((r,i)=>({id:r.id,label:s.routeLabels[r.id]||'Lane '+(i+1),lengthMm:r.lengthMm}))}};
  if(withGeometry)result.preparedGeometry={closed:net.closed,boundsMm:F.bounds(pieces,defs),surfaces:pieces.map(p=>({pieceId:p.id,outline:defs[p.definitionId].geometry.outlineSvgPath,transform:{x:p.x,y:p.y,angleDeg:p.angle,reflectY:p.flip},kind:defs[p.definitionId].parameters.type})),routes:net.routes.map(r=>({id:r.id,lengthMm:r.lengthMm,segments:r.segments,sections:r.sections})),alternateRoutes:F.alternateRoutes(pieces,defs)};
  return result;
 }
@@ -82,9 +84,9 @@ function picture(raw,{borders=true,maxDimension=1600,padding=24}={}){
  validateEnvelope(raw);
  const clean=F.validateLayout(raw),defs=clean.definitions,pieces=clean.pieces.filter(p=>borders||!defs[p.definitionId].parameters.type.endsWith('border'));
  if(!pieces.length)throw Error('Add pieces before exporting a track picture.');
- const limit=Math.floor(Math.max(64,Math.min(2048,Number.isFinite(maxDimension)?maxDimension:1600))),pad=Math.max(4,Math.min(64,(limit-1)/2,Number.isFinite(padding)?padding:24)),b=F.bounds(pieces,defs),scale=(limit-2*pad)/Math.max(b[2],b[3],1),width=Math.min(limit,Math.max(1,Math.ceil(b[2]*scale+2*pad))),height=Math.min(limit,Math.max(1,Math.ceil(b[3]*scale+2*pad)));
- let body='';for(const p of pieces){const d=defs[p.definitionId];body+=`<g transform="translate(${p.x} ${p.y}) rotate(${p.angle}) scale(1 ${p.flip?-1:1})">${F.drawBody(d)}</g>`;}
+ const limit=Math.floor(Math.max(64,Math.min(2048,Number.isFinite(maxDimension)?maxDimension:1600))),pad=Math.max(4,Math.min(64,(limit-1)/2,Number.isFinite(padding)?padding:24)),table=pieces.some(p=>defs[p.definitionId].parameters.routed)?clean.workspace?.spaceGuide:null,b=F.Routed.tableBounds(F.bounds(pieces,defs),table),scale=(limit-2*pad)/Math.max(b[2],b[3],1),width=Math.min(limit,Math.max(1,Math.ceil(b[2]*scale+2*pad))),height=Math.min(limit,Math.max(1,Math.ceil(b[3]*scale+2*pad)));
+ let body=F.Routed.drawTable(table);for(const p of pieces){const d=defs[p.definitionId];body+=`<g transform="translate(${p.x} ${p.y}) rotate(${p.angle}) scale(1 ${p.flip?-1:1})">${F.drawBody(d)}</g>`;}
  return{width,height,svg:`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="${b[0]-pad/scale} ${b[1]-pad/scale} ${width/scale} ${height/scale}">${body}</svg>`};
 }
-return{VERSION,CONTRACT,canonical,hash,newState,readState,network,reconcile,offsets,atTravel,travelPlan,compatibility,prepare,importLayout,picture};
+return{VERSION,CONTRACT,ROUTED_CONTRACT,FLOWING_CONTRACT,TABLETOP_CONTRACT,canonical,hash,newState,readState,network,reconcile,offsets,atTravel,travelPlan,compatibility,prepare,importLayout,picture};
 });

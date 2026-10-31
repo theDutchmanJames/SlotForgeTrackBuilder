@@ -1,3 +1,7 @@
+CURRENT SOURCE: the app is now SlotForge Circuit. Read START-HERE.txt and the
+draft.3, draft.4 and draft.5 extensions before this historical base brief.
+draft.5 adds per-section tabletop routing; use the current shared runtime.
+
 Implement the SlotForge Track Builder integration in SlotForge Timing using
 the attached SlotForge-Timing-integration-v0.2.2-handoff.zip. The full Builder
 source is also supplied separately for reference. Work in the Timing repository;

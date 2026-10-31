@@ -1,3 +1,8 @@
+CURRENT EXTENSIONS: read draft.3/draft.4 for routed and flowing paths, and
+draft.5 for per-section tabletop routing. The current handoff runtime includes
+all supported versions. The receiving interface must adopt these deliberately.
+The workflow below is the historical base contract and remains applicable.
+
 SlotForge Timing: review these Builder 0.2.2 changes before coding against them.
 The proposed contract is 1.0.0-draft.2; envelope remains slotforge.layout v1.
 

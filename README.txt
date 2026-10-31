@@ -1,4 +1,32 @@
-SlotForge Track Builder — editor iteration (v0.3.8)
+SlotForge Circuit — editor iteration (v0.3.9)
+
+Previously SlotForge Track Builder. Use SlotForge Circuit.html for the named
+file launcher; the previous HTML launcher remains a compatibility alias.
+Existing installations keep their SlotForgeTrackBuilder folder, saved workspace,
+storage keys and layout formats. No data migration is required.
+
+ROUTED SECTION TYPES
+Choose Routing type when creating or editing a routed section: Individual piece
+or Tabletop routing. Individual pieces have their own wood outline; tabletop
+sections are slots in one continuous table. Tabletop clearances apply to the
+table boundary and do not create imaginary borders around each section.
+The profile sets a default, but every section can override it. Actual slot and
+conductor folds remain invalid; the preferred minimum radius is advisory.
+Tabletop SVG/DXF exports omit individual piece contours. Their JSON uses the
+explicit draft.5 integration contract; older layout types keep their contracts.
+
+ROUTED TRACKS
+Open Routed Tracks in the header. Load the example or create a new layout.
+Set lanes, slot spacing, verges, board and braid/tape dimensions. Add editable
+straights and circular corners; corner radius is measured at the innermost
+slot. Set the rectangular table size, move it, then lock it. Calculated lane
+lengths, live preview, material estimates, 2D checks and PDF reports work with
+your routed design. Save it in Track Library as usual. See app/ROUTED-TRACKS.txt.
+Flowing curves now have draggable handles, presets, direction locks and radius
+feedback. Bridge gap connects two selected open ends. CNC and full-size cutting
+templates are planned later. Flowing Timing exports require draft.4; circular
+routed layouts retain draft.3 and ordinary tracks draft.2. No Timing app changes
+are included here.
 
 APPEARANCE
 Open Settings > App Theme in the top-right corner. Choose Dark, Light,
@@ -48,8 +76,8 @@ OPEN THE APP
 Recommended: run your platform installer; see START-HERE.txt. The installed
 launcher enables automatic disk storage. The historical notes below describe
 previous browser-only versions where relevant.
-Double-click SlotForge Track Builder.html in a current desktop browser.
-The SlotForge Track Builder shortcut uses the custom icon on this Windows PC.
+Double-click SlotForge Circuit.html in a current desktop browser.
+The SlotForge Circuit shortcut uses the custom icon on this Windows PC.
 Keep the supporting app, designs and track-packs folders alongside the launcher.
 index.html and app/index.html remain compatible entry points.
 No install, account, build step or Internet connection is required.
@@ -283,7 +311,7 @@ section with its own pack selector.
 Integration contract remains 1.0.0-draft.2 and layout envelope remains version 1.
 
 NAMED LAUNCHER, ICON AND AVAILABLE-SPACE GUIDE — v0.2.5 (30 October 2026)
-SlotForge Track Builder.html is the named file launcher. The root Windows
+SlotForge Circuit.html is the named file launcher. The root Windows
 shortcut points to that launcher and app/icon.ico. Browser tabs use icon.svg;
 the icon reuses the red-and-white track symbol from the app header. Windows
 normally gives HTML files the browser's icon, so use the shortcut for the custom
@@ -382,3 +410,10 @@ Hold Shift while dragging to bypass snapping. Curves must share the same road
 edge radius; the app never stretches a piece to force it to fit. Reference
 pictures and borders do not act as magnetic road sides. Side alignment does
 not create electrical connections or change the calculated lane geometry.
+
+ROUTED SVG / DXF EXPORTS
+Choose SVG / DXF in the builder, or choose a saved library design on Export.
+Select layers for slots, conductor edges, the track footprint and the table.
+SVG is full-size in mm; DXF declares mm. The optional reference bar is 100 mm.
+Matching surface seams are removed. Set tools and depths in CAD/CAM.
+See app/CAD-EXPORTS.txt. No additional installation is needed.

@@ -1,9 +1,9 @@
 {
-  "version": "0.3.8",
-  "date": "2026-10-30",
+  "version": "0.3.9",
+  "date": "2026-10-31",
   "automated": {
-    "command": "node --test app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
-    "passed": 175,
+    "command": "node --test app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
+    "passed": 281,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -40,7 +40,7 @@
       "Strict original units and integration-contract metadata validation; both public entry points and explicit-state bypass regression",
       "Circuit inside/outside border placement on straights, mirrored and reversed pieces, open chains and separate loops",
       "Named custom pack migration, ownership, selected export, atomic import and library limits",
-      "R1–R8 adjacent curve edge radii and persistent family settings",
+      "R1â€“R8 adjacent curve edge radii and persistent family settings",
       "All four buildable starting-grid variants retain artwork in regenerated pictures",
       "Reference picture serialization, transforms, image validation, inventory isolation, missing connectors and stable road route IDs",
       "Alphabetical catalogue folders, natural radius ordering and descending straight lengths, without modifying catalogue definitions",
@@ -49,7 +49,10 @@
       "Selected export snapshot isolation, independent totals and inventory, missing/incompatible library rejection, reference and empty exports",
       "Space guide validation, movement and proportional resizing limits, locked no-ops, layout/library/export persistence, isolation from timing and track metrics",
       "Direct PDF A4 orientation, immutable selected source, Unicode embedding, paginated parts tables and printable drawing",
-      "Disk persistence across store restarts, atomic backups, stale-write conflicts, process locking, migration deduplication, malformed-file preservation, loopback session and same-origin API validation"
+      "Disk persistence across store restarts, atomic backups, stale-write conflicts, process locking, migration deduplication, malformed-file preservation, loopback session and same-origin API validation",
+      "Routed slot-centred anchors, asymmetric verges, profile validation, reflow and immutable edits, exact closed lane lengths, overlap/table checks, material estimates, procedural artwork, PDF and conditional draft.3 round trips",
+      "Flowing cubic normal offsets, adaptive sampled lengths, folds/self-crossings, asymmetric verges, reflected/reversed interpolation, common timing cross-sections, fixed-end bridges, material totals, conditional draft.4 and supplied example round trips; short PDF report pagination",
+      "Routed CAD construction contours, matching surface seam removal, slot/conductor offset widths, arc extrema and shallow bulge precision, SVG physical scale, DXF millimetres and Y-up coordinates, layer isolation, exact gaps, duplicates, mixed-layout exclusion and escaping"
     ]
   },
   "browser": {
@@ -435,5 +438,291 @@
     "layoutEnvelope": 1,
     "integrationContract": "1.0.0-draft.2",
     "version": "0.3.8"
+  },
+  "unreleasedFeature": "Routed Tracks - SVG / DXF construction export",
+  "routedTracks": {
+    "status": "unreleased",
+    "notes": "ROUTED-TRACKS.txt",
+    "newTests": 16,
+    "legacyTimingFixturesPassed": 15,
+    "layoutEnvelope": 1,
+    "routedIntegrationContract": "1.0.0-draft.3",
+    "ordinaryIntegrationContract": "1.0.0-draft.2",
+    "browserVerified": [
+      "Routed example closes and live preview runs",
+      "Updating all sections to 3 lanes / 90 mm spacing retains closure and recalculates all lane lengths",
+      "Radius edit updates artwork, reflows connected sections and reports a closing gap; undo restores closure",
+      "New left corner displays slot radii 450 / 540 / 630 mm; adding and undoing works",
+      "Profile, table and slots-only display survive reload and Track Library reopening",
+      "Table dimension edit, drag and lock work",
+      "Routed catalogue reselected on import and reload",
+      "Actual portrait A4 PDF downloaded, rendered and visually reviewed: slot drawing, table, lengths, construction profile, material totals and paginated inventory"
+    ],
+    "screenshots": [
+      "routed-tracks-preview.png",
+      "routed-section-editor-preview.png"
+    ],
+    "limitations": [
+      "Circular corners and straights only; no freeform/compound curves, CNC, or full-size routing templates",
+      "One rectangular table; 2D checks do not validate cars, structures, overpasses or heights",
+      "Material surface area sums design sections before overlap deductions; sections are not physical board stock",
+      "Two cars animate using the existing preview, including layouts with more lanes",
+      "Native Timing importer needs explicit draft.3 support and updated shared runtime; no receiving-app changes made",
+      "Visual testing used isolated localhost storage, not the real installed workspace or file URL"
+    ]
+  },
+  "flowingTracks": {
+    "status": "unreleased",
+    "notes": "ROUTED-TRACKS.txt",
+    "newTests": 17,
+    "handoffTestsPassed": 57,
+    "legacyTimingFixturesPassed": 15,
+    "layoutEnvelope": 1,
+    "flowingIntegrationContract": "1.0.0-draft.4",
+    "circularRoutedContract": "1.0.0-draft.3",
+    "ordinaryIntegrationContract": "1.0.0-draft.2",
+    "browserVerified": [
+      "Load flowing example produces a closed circuit",
+      "Drag a direction handle with tangent locks: geometry and lane lengths update, applying retains circuit closure",
+      "Delete a flowing section and bridge the two selected neighbouring open ends: original sections stay in place and closure is restored",
+      "Apply 3 lanes / 90 mm spacing to all flowing sections: closure and all lane lengths remain valid",
+      "Preferred 600 mm radius produces warnings and red slot segments in the editor",
+      "Saved flowing geometry survives reload and reopening from Track Library",
+      "Timing line at 27 percent follows a normal cross-section of the flowing section",
+      "Browser PDF exporter reports one portrait page after pagination refinement; same export pipeline rendered from saved browser snapshot and visually checked",
+      "Live preview runs on the flowing circuit; no captured browser warnings or errors"
+    ],
+    "screenshots": [
+      "flowing-routed-tracks-preview.png",
+      "flowing-curve-editor-preview.png"
+    ],
+    "limitations": [
+      "One cubic reference per flowing section; join sections for longer compound shapes",
+      "Direction locks provide tangent continuity; curvature may change at joins",
+      "Normal offsets, lengths, radii and collision checks use numerical samples (0.025 mm adaptive drawing/interpolation target), not manufacturing certification",
+      "One rectangular table; irregular boards, CNC and full-size templates remain later milestones",
+      "Timing must explicitly adopt draft.4 and update routed-spline.js with the shared runtime",
+      "UI verification used isolated localhost storage; real installed workspace and native macOS/Linux were not changed"
+    ]
+  },
+  "cadExports": {
+    "status": "unreleased",
+    "notes": "CAD-EXPORTS.txt",
+    "newTests": 19,
+    "legacyTimingFixturesPassed": 15,
+    "browserVerified": [
+      "Modular-only layouts disable the CAD export card with an explanation",
+      "Routed builder displays the SVG / DXF shortcut",
+      "Live layer preview updates path counts, table bounds, conductor boundaries and the 100 mm scale check",
+      "SVG and DXF download handlers display success and path counts",
+      "Deselecting every available geometry layer disables both downloads; reselecting slots restores export",
+      "A saved Workshop CAD layout exports while the current builder is an empty Untitled circuit",
+      "No captured browser warnings or errors"
+    ],
+    "independentVerified": [
+      "ezdxf reads circular and flowing AutoCAD 2000 DXF files with units=4",
+      "Both DXF audits report zero errors and zero repairs",
+      "DXF entity counts match the CAD model (21 circular, 28 flowing with all available layers)",
+      "DXF extents agree with the expected Y-up coordinate convention",
+      "lxml parses both SVG files and physical mm dimensions match their viewBox dimensions"
+    ],
+    "screenshot": "cad-export-preview.png",
+    "runtimeDependenciesAdded": 0,
+    "layoutAndTimingContractsUnchanged": true,
+    "limitations": [
+      "Routed geometry only; mixed modular/reference pieces are excluded explicitly",
+      "Surface overlap and verge steps are retained as separate contours, not boolean-unioned",
+      "No tool compensation, cut depths, machine programs or tiled PDF templates",
+      "Flowing geometry retains the existing 0.025 mm adaptive sampling target; coordinates serialize to six decimals and arc bulges to twelve",
+      "Endpoint join tolerance is 0.00001 mm; larger CAD gaps remain open",
+      "One million input vertices per layer selection",
+      "Independent parser verification does not establish compatibility with every native CAD/CAM application",
+      "UI tests used isolated localhost storage and did not change the installed workspace"
+    ]
+  },
+  "routedReview": {
+    "status": "unreleased",
+    "date": "2026-10-31",
+    "notes": "ROUTED-REVIEW.txt",
+    "sourceTestsPassed": 241,
+    "newRegressionTests": 14,
+    "standaloneHandoffTestsPassed": 59,
+    "legacyTimingFixturesPassed": 15,
+    "browserVerified": [
+      "Exact numeric input remains stable; tangent rotation preserves handle length",
+      "Imported template dimensions survive new-section profile changes",
+      "Matching new catalogue sections combine inventory quantities",
+      "500-piece limit preserves unsaved section name and measurements",
+      "Eight-lane stress layout round-trips compact JSON; full output 13232023 bytes, compact 8269 bytes",
+      "Drag release refreshes diagnostics; undo restores closure and working live preview",
+      "CAD layer dialog previews and downloads DXF; actual 11-entity browser download passes ezdxf audit",
+      "No captured warnings or errors"
+    ],
+    "independentVerified": [
+      "Circular and flowing SVG/DXF size, units, path counts and extents",
+      "DXF audits report no errors or repairs",
+      "Source and handoff archive CRCs, entry points, dependencies and exclusions",
+      "Unpacked handoff runtime tests and compatibility fixtures"
+    ],
+    "performance": {
+      "scenario": "250 joined flowing sections, one local planning-check measurement",
+      "beforeMs": 2851,
+      "afterMs": 247.8,
+      "deferredDuringDrag": true
+    },
+    "screenshot": "routed-review-preview.png",
+    "limitations": [
+      "Planning geometry and 2D checks do not certify construction",
+      "Native CAD/CAM and native macOS/Linux UI were not tested",
+      "SlotForge Timing receiving UI remains outside this repository",
+      "Real installed workspace was not changed"
+    ]
+  },
+  "circuitRename": {
+    "status": "unreleased",
+    "displayName": "SlotForge Circuit",
+    "previousName": "SlotForge Track Builder",
+    "sourceTestsPassed": 242,
+    "legacyTimingFixturesPassed": 15,
+    "compatibility": [
+      "Existing installed folder, browser keys and local-server health identifier retained",
+      "Previous named HTML launcher retained as an alias",
+      "Design identity, revisions, lane routes and timing remain stable when importing earlier producer metadata",
+      "Published repository URLs, historical release notes and older compatibility fixtures retained"
+    ],
+    "browserVerified": [
+      "App title and header show SlotForge Circuit",
+      "Track Pack Library title and header show Circuit branding"
+    ],
+    "screenshot": "circuit-branding-preview.png"
+  },
+  "tabletopRouting": {
+    "status": "unreleased",
+    "date": "2026-10-31",
+    "sourceTestsPassed": 257,
+    "newTests": 15,
+    "sharedRuntimeTestsPassed": 62,
+    "legacyTimingFixturesPassed": 15,
+    "notes": "ROUTED-TRACKS.txt",
+    "integrationSpecification": "../integration/slotforge-timing/EXPORT-SPEC-1.0.0-draft.5.txt",
+    "browserVerified": [
+      "Routing type is available on each new and edited routed section",
+      "Four-lane 100 mm spacing, 150/200 mm clearances: piece-edge fold rejects the piece while identical tabletop slots remain valid",
+      "Invalid feedback clears stale measurements and identifies the limiting edge",
+      "Per-definition mode persists after placing and reloading",
+      "CAD disables individual-piece contours for tabletop-only source; downloaded DXF contains four slot paths and the table rectangle",
+      "Downloaded PDF fits one portrait page and distinguishes continuous table routing from individual boards",
+      "Downloaded JSON retains the per-section type and draft.5 contract; full round trip identical",
+      "Compact closed four-lane tabletop example imports with a table, lane lengths and no planning issues",
+      "No captured browser warnings or errors"
+    ],
+    "independentVerified": [
+      "ezdxf: actual downloaded tabletop DXF has mm units, five entities, no errors or repairs",
+      "pypdf: actual downloaded PDF contains the tabletop profile and board explanation; no false individual-piece board-area estimate",
+      "Poppler: rendered PDF inspected for legible text, fitting drawing and parts list"
+    ],
+    "screenshots": [
+      "tabletop-routing-preview.png",
+      "tabletop-board-preview.png"
+    ],
+    "limitations": [
+      "Table edge checks support the current rectangular table and are advisory",
+      "Geometry remains a numerical 2D planning aid; vehicle clearance, heights and construction need separate checking",
+      "Timing receiving UI must explicitly adopt draft.5; no receiving-repository changes were made",
+      "Existing profiles without a routing type keep individual-piece behaviour",
+      "UI checks used isolated localhost storage; personal installed data was not changed"
+    ]
+  },
+  "routedPackAndConversion": {
+    "status": "unreleased",
+    "date": "2026-10-31",
+    "sourceTestsPassed": 276,
+    "newRegressionTests": 12,
+    "standaloneRuntimeTestsPassed": 68,
+    "legacyTimingFixturesPassed": 15,
+    "notes": "ROUTED-TRACKS.txt",
+    "fixes": [
+      "Save routed sections to named reusable packs, with separate save-only and save-and-place actions",
+      "Retain pack orientation through storage, export/import, catalogue pictures and placement",
+      "Convert circular corners through either control without swapping physical lane clearances or changing the angle",
+      "Read installed disk-backed packs on the Track Pack Library page",
+      "Publish saved sections only after storage succeeds; prevent repeated submits and handle edits during pending saves",
+      "Create additional routed sections inside a saved pack using that pack's profile"
+    ],
+    "browserVerified": [
+      "Four lanes, 90 mm spacing, 600 mm innermost radius, 45 degrees right, 50/200 mm edge clearances: conversion preserves angle, lane order and physical clearances",
+      "Save-only creates a named pack without adding a layout placement; reload retains the pack",
+      "Track Pack Library reads the saved pack from isolated disk storage",
+      "Adding a second section inherits the saved pack profile and supports save-and-place",
+      "Reusing the converted corner preserves its matching icon and physical orientation",
+      "No captured browser warning/error logs"
+    ],
+    "independentVerified": [
+      "Actual browser workspace contains both saved pack members and a reflected corner placement; serialized layouts omit the pack-only orientation hint",
+      "Saved pack export/import retains its preferred orientation"
+    ],
+    "screenshot": "routed-pack-conversion-preview.png",
+    "limits": [
+      "Circular-to-flowing conversion uses a cubic approximation: endpoints and tangents match, while interior curvature and lengths are approximate",
+      "Existing numerical 2D planning and rectangular-table limitations remain",
+      "Browser checks used isolated localhost data; personal installed data and the Timing repository were not changed"
+    ]
+  },
+  "tabletopCodeReview": {
+    "status": "unreleased",
+    "date": "2026-10-31",
+    "notes": "TABLETOP-REVIEW.txt",
+    "sourceTestsPassed": 264,
+    "newRegressionTests": 7,
+    "standaloneRuntimeTestsPassed": 67,
+    "legacyTimingFixturesPassed": 15,
+    "fixes": [
+      "Physical table position/dimensions participate in tabletop design revisions; lock state stays an editor preference",
+      "Integration contracts cover all serialized definitions, including unused tabletop and flowing definitions",
+      "Available-space guides cannot replace physical routing tables",
+      "Tabletop edge guidelines no longer incorrectly constrain conductor footprint dimensions",
+      "Table fit checks include analytic circular extrema under rotation, translation and reflection",
+      "Mixed piece/tabletop CAD joins retain physical piece end caps",
+      "Invalid circular sections clear stale artwork and recover when settings become valid"
+    ],
+    "browserVerified": [
+      "Circular tabletop radius 100 mm previews normally; switching to an invalid individual piece clears its SVG and disables placement; switching back restores it",
+      "An available-space guide produces a missing physical table warning",
+      "No captured browser warning/error logs"
+    ],
+    "independentVerified": [
+      "ezdxf: mixed routing output has a closed four-vertex surface contour, mm units, zero errors and repairs"
+    ],
+    "screenshot": "tabletop-code-review-preview.png",
+    "limits": [
+      "The existing numerical 2D planning and rectangular-table limits remain",
+      "Native CAD/CAM, CNC toolpaths and the Timing receiving UI were not tested",
+      "Real installed personal data was not modified"
+    ]
+  },
+  "cadImportCompatibilityReview": {
+    "date": "2026-10-31",
+    "sourceTests": 281,
+    "cadTests": 25,
+    "findings": [
+      "Original reported drawing: 33 paths, 306 vertices; small files, not excessive geometry.",
+      "Missing standard DXF symbol tables triggered Illustrator memory error.",
+      "Missing layer Normal plot-style references prevented Fusion DXF insertion."
+    ],
+    "changes": [
+      "Complete standard tables, model/paper layouts and plot-style dictionary references.",
+      "Optional compact or fixed-scale SVG, explicit restore percentage and scaled filename; DXF remains 1:1."
+    ],
+    "verification": [
+      "App-generated corrected DXF imported into Autodesk Fusion and Adobe Illustrator 2021.",
+      "ezdxf audit: zero errors and repairs; all original 33 paths and 306 vertices/bulges preserved exactly.",
+      "Full-size and 1:10 SVG retain identical path data/viewBox; compact physical page is 361 x 163.5 mm.",
+      "Isolated browser: compact/fixed scale display, successful downloads, DXF remains 1:1, empty layer selection and recovery.",
+      "Compact 1:10 SVG opened and visually checked in Adobe Illustrator 2021."
+    ],
+    "limits": [
+      "Native imports checked with the reported circular layout; not every CAD application or every possible layout.",
+      "Compact SVG changes physical canvas size, not geometry complexity."
+    ]
   }
 }

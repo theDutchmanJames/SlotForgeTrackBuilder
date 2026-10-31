@@ -8,7 +8,7 @@ import zipfile
 root = Path(__file__).resolve().parents[1]
 version = re.search(r"VERSION='([^']+)'", (root / 'app/integration.js').read_text(encoding='utf-8')).group(1)
 files = [root / name for name in (
-    'SlotForge Track Builder.html', 'index.html', 'START-HERE.txt',
+    'SlotForge Circuit.html', 'SlotForge Track Builder.html', 'index.html', 'START-HERE.txt',
     'Create Windows shortcut.vbs', 'README.txt', 'PROJECT-PLAN.txt', 'LICENSE', 'THIRD-PARTY-NOTICES.txt', 'Install Windows.cmd', 'Install macOS.command', 'Install Linux.sh')]
 for folder in ('app', 'designs', 'track-packs', 'integration', 'installer'):
     for file in (root / folder).rglob('*'):
@@ -27,8 +27,8 @@ for folder in ('app', 'designs', 'track-packs', 'integration', 'installer'):
 files = sorted(set(files))
 dist = root / 'dist'
 dist.mkdir(exist_ok=True)
-output = dist / f'SlotForge-Track-Builder-v{version}-complete.zip'
-prefix = 'SlotForge Track Builder/'
+output = dist / f'SlotForge-Circuit-v{version}-complete.zip'
+prefix = 'SlotForge Circuit/'
 manifest = {file.relative_to(root).as_posix(): hashlib.sha256(file.read_bytes()).hexdigest() for file in files}
 with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
     for file in files:

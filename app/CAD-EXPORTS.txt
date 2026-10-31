@@ -1,0 +1,110 @@
+SVG / DXF routed construction exports (v0.3.9)
+31 October 2026
+
+USING THE EXPORT
+In Track Builder, choose SVG / DXF beside Export to PDF. Or open Export,
+choose the current track or a saved Track Library design, then choose
+Export SVG / DXF. The dialog captures that design; it does not change the
+builder or its saved library record. Choose layers and download either format.
+
+Both formats contain routed sections only. Modular/reference pieces in a
+mixed design are excluded explicitly. A layout without routed sections keeps
+its existing PDF/PNG/JSON/CSV exports; construction export is unavailable.
+
+LAYERS
+SLOT_CENTRES: the guide-slot centre paths.
+SLOT_EDGES: the two actual slot boundaries, using the entered slot width.
+BRAID_EDGES / TAPE_EDGES: boundaries on both sides of each slot, using the
+entered gap and conductor width. Recess allowance is not added automatically.
+SURFACE_EDGES: individual-piece outlines including their verges. Tabletop
+routing sections have no separate piece outlines and are excluded from this
+layer; use TABLE for the continuous board boundary. Slots and conductor paths
+still follow their exact entered geometry in either routing type.
+TABLE: the wood/MDF table rectangle, when defined.
+TIMING_LINE: the timing cross-section, when set on a routed section.
+SCALE_CHECK: a 100 mm line with end ticks, on its own reference layer.
+
+Matching continuous paths are joined, with duplicate paths removed. Surface
+seams between fully matching section ends are removed. Open ends are retained.
+Only individual-piece joins remove matching surface end caps. Joining a piece
+to tabletop routing retains that piece's closing cut contour.
+Unequal verges retain their unmatched surface caps, and overlapping footprints
+are NOT boolean-unioned. Geometry notes report steps, overlaps and junctions.
+Surface contours describe a design footprint; virtual sections are not physical
+board partitions. Slot and conductor boundary paths have no artificial end caps.
+
+COORDINATES AND SCALE
+SVG defaults to full size, with physical width/height in mm matching the numeric
+viewBox dimensions: one drawing unit is one mm. It retains the builder's world
+coordinates and positive-Y-down convention. A 5 mm full-size page margin surrounds
+the selected geometry.
+Named SVG groups also appear as layers in Inkscape. There are no raster images.
+
+For a smaller Illustrator document, choose SVG page scale. Compact page chooses
+a standard scale that fits within 400 x 225 mm; fixed 1:5, 1:10, 1:20, 1:50 and
+1:100 options are also available. Only physical page dimensions change. All path
+coordinates and the viewBox remain intact, and width/height use the same factor.
+The dialog, SVG metadata and filename identify the scale. Enlarge a 1:10 drawing
+to 1000% (multiply both dimensions by 10), or 1:50 to 5000%, to restore full size.
+The 100 mm reference bar measures 10 mm at 1:10 and 2 mm at 1:50. Screen zoom is
+independent of drawing scale. Compact mode does not reduce path/vertex counts.
+
+DXF uses AutoCAD 2000 / AC1015 ASCII format, LWPOLYLINE entities, named layers
+and $INSUNITS=4 (mm), with metric measurement and decimal units. It retains
+builder X and the original zero point; CAD Y = minus builder Y. This keeps the
+drawing visually aligned in a conventional Y-up CAD view. Use Zoom Extents / Fit
+if a receiving application initially shows a different area of the drawing.
+DXF always remains 1:1 regardless of the SVG scale selection. Standard symbol
+tables, model/paper layouts and Normal plot-style references are included for
+strict importers. Missing tables caused an Illustrator memory warning, and
+missing layer plot-style references prevented Fusion's DXF insertion. These
+were document-structure problems, not excessive geometry or insufficient RAM.
+
+Circular geometry retains native arc bulges, including rotation/reflection.
+Flowing normal offsets retain the editor's adaptive sample points (0.025 mm
+drawing/interpolation target). They are not scaled cubics or fitted splines.
+Coordinates serialize to six decimal places; dimensionless arc bulges retain
+twelve decimal places to preserve shallow arcs. Endpoint joining uses 0.00001 mm;
+larger gaps are left open even if the editor's broader connector tolerance
+considers the circuit connected. No geometry is stretched to close those gaps.
+
+Set receiving software to mm and use the optional 100 mm bar to check scale.
+SVG is full size unless a smaller page scale is explicitly chosen. The existing
+PDF remains a fitted planning report;
+tiled 1:1 PDF routing templates are a separate future feature.
+
+CAD / CAM
+These exports are flat geometry, not machine programs. Set tools, cut depths,
+passes, feeds and compensation in CAD/CAM. Entered conductor width is not a
+complete braid-recess machining specification. Construction dimensions are
+user supplied; numerical sampling and 2D checks do not certify physical fit.
+Layer choices are limited to one million input vertices per export. Reduce
+layers or split a very large design if this limit is reached.
+
+VERIFICATION
+ node --test app/cad-export.test.cjs
+Regression checks cover closed contours, seam removal, open gaps, actual
+widths/offsets, reflection, rotation, arc extents, physical SVG size, DXF units,
+layer choices, duplicate paths, mixed layouts, input rejection and escaping.
+Independent QA used ezdxf to read and audit circular and flowing exports:
+both passed with zero structural errors and zero automatic repairs.
+This was parser verification, not a test in every native CAD/CAM application.
+The compatibility follow-up also reproduced the reported native import errors.
+After repair, the reported 33-path / 306-vertex DXF imported into Autodesk Fusion
+and Adobe Illustrator 2021. The compact 1:10 SVG opened correctly in Illustrator.
+The corrected DXF preserved every original vertex, bulge and layer; independent
+audit again found zero errors/repairs. Full-size and compact SVG path data and
+viewBox are identical. These checks do not cover every layout or CAD application.
+No runtime dependency or build/install step is added to the app.
+The SlotForge layout envelope and Timing contracts are unchanged by CAD export.
+
+Review fixes: coincident straight and sampled-straight paths now deduplicate.
+Only wholly collinear sampled paths are simplified; flowing samples are kept.
+If a layer selection exceeds the vertex budget, the dialog remains available
+so fewer layers can be selected. See ROUTED-REVIEW.txt for verification details.
+
+FORMAT REFERENCES
+SVG coordinates/units: https://www.w3.org/TR/SVG/latest/coords.html
+DXF LWPOLYLINE: https://help.autodesk.com/cloudhelp/2017/ENU/AutoCAD-DXF/files/GUID-748FC305-F3F2-4F74-825A-61F04D757A50.htm
+DXF bulges: https://help.autodesk.com/cloudhelp/2016/ENU/AutoCAD-DXF/files/GUID-0741E831-599E-4CBF-91E1-8ADBCFD6556D.htm
+DXF header units: https://help.autodesk.com/cloudhelp/2021/ENU/AutoCAD-DXF/files/GUID-A85E8E67-27CD-4C59-BE61-4DC9FADBE74A.htm

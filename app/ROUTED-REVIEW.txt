@@ -1,0 +1,80 @@
+Routed Tracks and CAD export review - 31 October 2026
+Local unreleased source; published version remains 0.3.8.
+
+SCOPE
+Reviewed the routed profile, circular and flowing geometry, curve editor,
+canvas interaction, planning checks, materials/parts lists, persistence and
+portable exports, PDF integration, CAD output and standalone Timing packaging.
+The complete source suite was also run, including existing modular, reference,
+storage, server, theme and launcher regressions.
+
+REPAIRS
+1. Public spline geometry and forward route arrays could expose cached mutable
+   data. Callers now receive independent arrays; validation uses a private cache.
+2. Refreshing routed catalogue defaults could overwrite an imported definition
+   using a template ID. Existing placed definitions now remain immutable.
+3. Preview reads rewrote exact handle inputs during typing. Normalization now
+   happens on committed changes, preserving the active edit.
+4. Rotating a tangent could collapse its handle by projection. Rotation now
+   preserves handle length. Mirrored arrow keys follow screen directions.
+5. Cancelled curve drags or losing window focus could retain partial changes.
+   Both restore the values from before the gesture.
+6. Coincident straight and sampled-straight boundaries escaped overlap checks
+   and produced duplicate CAD passes. Both representations are now detected;
+   wholly collinear sampled paths simplify before duplicate elimination.
+7. Expensive overlap checks ran during every canvas drag. They now wait for
+   release, then refresh after interaction state is cleared. Bounding-box edge
+   filtering and duplicate hashing also reduce the checking cost.
+8. A full 500-piece layout could discard an unsaved section form when placement
+   failed. The form now stays open with its measurements and a clear message.
+   Rejected catalogue additions also avoid registering unused definitions.
+9. Repeated identical routed catalogue sections received separate inventory
+   identities. Matching definitions now reuse identity and combine quantities;
+   editing a placed section still creates a separate definition.
+10. A large JSON export could exceed the app's own 5 MiB import limit. Portable
+    export now omits regenerable preparedGeometry when needed. Definitions,
+    placement, profile, identity and timing remain intact. If even source data
+    exceeds the limit, export fails clearly without discarding current work.
+11. CAD's default vertex-budget failure prevented opening the layer selector.
+    Metadata discovery now avoids building the default drawing, so users can
+    open the dialog and select fewer layers.
+12. The integration packager still targeted old release filenames and omitted
+    parts of the current source. It now packages complete development archives,
+    preserves executable script modes, checks CRCs and refuses accidental
+    overwrite. Explicit version and output-directory options are available.
+
+VERIFICATION
+241 source tests passed; zero failures. This includes 14 new regression tests
+from this review. All 15 legacy Timing fixtures passed.
+59 tests plus the 15 fixtures passed from a newly built and unpacked standalone
+Timing handoff. Source archive entry points, dependencies, exclusions and CRCs
+were checked. Existing published release archives were not replaced.
+
+Browser checks used isolated localhost storage, preserving personal workspaces:
+- Typing an exact handle coordinate stays stable; direction changes retain
+  handle length.
+- Changing new-section defaults retains imported template dimensions.
+- Matching catalogue additions combine quantities.
+- A failed addition at 500 pieces keeps its name and 1234 mm measurement.
+- A closed eight-lane stress layout imports and exports compact JSON. Its
+  13,232,023-byte expanded export becomes 8,269 bytes without derived geometry.
+- Dragging updates overlap/open-end diagnostics on release. Undo restores
+  closure and live preview can run again.
+- CAD layer selection, preview and an actual DXF download work. Captured
+  browser warning/error logs were empty.
+
+Independent ezdxf audits of circular and flowing DXF exports found zero errors
+and zero repairs; units, entity counts and extents matched the CAD model. SVG
+files parsed successfully and retained physical mm sizes. The downloaded
+eight-lane browser DXF was audited separately.
+
+A local 250-section flowing-layout benchmark dropped from about 2.85 seconds
+to 0.25 seconds for planning checks. This is one measurement on this machine,
+not a guaranteed performance target.
+
+LIMITS
+Numerical sampling and 2D checks remain planning aids, not manufacturing or
+structural certification. Native CAD/CAM applications, native Linux/macOS UI,
+and the SlotForge Timing receiving interface were not exercised. Timing must
+explicitly adopt the draft.4 shared runtime for flowing curves. The layout
+envelope and contract versions were not changed by these repairs.

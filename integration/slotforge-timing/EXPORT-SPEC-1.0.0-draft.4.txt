@@ -1,0 +1,80 @@
+SlotForge layout integration - 1.0.0-draft.4
+Flowing routed curves - 31 October 2026
+
+VERSION NEGOTIATION
+The slotforge.layout envelope remains version 1. Piece-mode layouts containing
+parameters.type = routed-spline declare draft.4. Tabletop layouts use draft.5.
+Piece-mode circular/straight routed
+layouts retain draft.3; ordinary track layouts retain draft.2. Existing draft.1
+and documented unversioned v1 inputs remain supported. Reject unknown versions
+and unsupported units before normalization. Do not silently flatten or downgrade
+flowing curves for an older importer.
+
+RUNTIME DEPENDENCIES
+Update integration.js, core.js, routed.js, routed-spline.js and the geometry
+module together. Browser order: geometry.js, routed-spline.js, routed.js,
+core.js, integration.js. Node retains the relative paths in this handoff.
+routed-spline.js is required by routed.js even for ordinary layouts.
+
+DEFINITIONS
+parameters.type: routed-spline
+parameters.controlPointsMm: [[0,0], [handle1X,handle1Y], [handle2X,handle2Y],
+                            [endX,endY]]
+parameters.routed: the validated draft.3 construction profile
+parameters.widthMm and laneOffsetsMm: as in draft.3, agreeing with the profile.
+
+The cubic describes the middle of the slot bundle. The start stays at local
+[0,0]; coordinates are mm and positive Y points down. Lane i lies on the cubic's
+unit normal at -(laneCount-1)*laneSpacingMm/2 + i*laneSpacingMm. Surface edges
+extend by the respective verges beyond the outermost slots. Slots/conductors
+are normal offsets, not scaled copies or independently edited cubics.
+
+Derived geometry and caches are untrusted: regenerate from these parameters.
+preparedGeometry is optional in portable JSON. Builder may omit it when expanded
+samples would exceed the 5 MiB import limit. Use importLayout()/prepare() to
+regenerate it; do not require callers to supply derived routes. The source
+definitions, identity, timing configuration and profile remain unchanged.
+Validation rejects malformed controls, stationary paths, local offset folds
+and sampled surface/slot self-intersections. Preferred minimum radius remains
+a user-configurable warning. Numerical checks are planning aids, not machining
+or structural certification.
+
+PREPARED ROUTE SEGMENT
+A flowing section contributes one segment:
+ type: polyline
+ points: ordered [x,y] positions in world mm
+ distancesMm: cumulative distances, starting at 0 and ending at lengthMm
+ headingsDeg: tangent direction in world degrees at each point
+ curvaturesPerMm: signed curvature at each point
+ referenceFractions: normalized middle-path arc distance at each point
+ lengthMm: sampled slot arc length
+ samplingTargetMm: 0.025
+All point arrays have the same length. Positions are adaptively sampled true
+normal offsets. Lengths are numerical chord sums; the target is an adaptive
+drawing/interpolation error target, not a manufacturing accuracy guarantee.
+Line and arc segments remain unchanged. Each section still corresponds to one
+route segment. Use the shared at()/atTravel()/travelPlan() functions to avoid
+treating samples as sharp corners or reversing the braking profile.
+
+REFLECTION AND REVERSAL
+The runtime transforms every point, tangent and signed curvature. Reverse
+traversal reverses point order, cumulative distances and reference fractions,
+adds 180 degrees to headings and negates curvature. Route IDs, revisions,
+remapping detection and race-lane mapping rules remain unchanged.
+
+TIMING LINE
+A flowing section's timing fraction identifies normalized arc distance on its
+middle reference path. Each slot reaches that same normal cross-section at a
+different local distance. offsets() interpolates referenceFractions against
+distancesMm and handles reversed entries. Do not substitute fraction times
+lane length for flowing sections. Linear/circular timing fractions are unchanged.
+Hardware sensor crossings remain authoritative. The profile only estimates
+animation between crossings and cannot award laps or modify race results.
+
+VERIFY
+ node --test app/routed-spline.test.cjs app/routed.test.cjs
+ node integration/slotforge-timing/check-fixtures.cjs
+routed-examples/closed-flowing-track.slotforge.json contains a three-lane closed
+example, rectangular table, timing fraction and reverse driving direction.
+The receiving application must explicitly adopt draft.4; this implementation
+does not modify the SlotForge Timing repository.

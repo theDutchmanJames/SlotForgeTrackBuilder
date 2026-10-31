@@ -1,0 +1,50 @@
+SlotForge layout integration - 1.0.0-draft.3
+Routed wood geometry extension - 31 October 2026
+
+The slotforge.layout envelope remains version 1. Existing non-routed exports
+still declare 1.0.0-draft.2. A layout with any definition.parameters.routed
+declares 1.0.0-draft.3. Readers must explicitly support this contract, or reject
+the layout without silently dropping its routed profile.
+
+RUNTIME
+Update app/integration.js, app/core.js, app/routed.js and the geometry module
+together. Node core.js now requires routed.js even for non-routed layouts.
+Browser loading order: geometry.js, routed.js, core.js, integration.js.
+All older draft.2, draft.1 and documented legacy/unversioned v1 inputs remain
+supported by the updated runtime. Unknown versions/units remain rejected.
+
+DEFINITION
+parameters.type remains straight or curve, with real millimetre width,
+length/innerRadius/angle and explicit laneOffsetsMm. parameters.routed contains
+laneCount, laneSpacingMm, innerClearanceMm, outerClearanceMm, slotWidthMm,
+slotDepthMm, conductor (braid/tape), conductorWidthMm, conductorGapMm,
+conductorThicknessMm, adhesiveThicknessMm, recessDepthMm, boardThicknessMm,
+minRadiusMm and allowancePct. These values are validated and normalized.
+They must agree with the surface width and lane offsets in parameters.
+
+Routed connector anchor positions are the midpoint between the two outermost
+slot centres (or the sole slot for one lane). A surface midpoint is insufficient
+when verges are unequal. Port compatibility compares actual slot bundles and
+direction, allowing different verge widths when slots match. The shared runtime
+regenerates this geometry; do not infer routes from an SVG or image.
+
+Prepared routes continue to use existing line and arc segment forms. Lane
+lengths follow guide-slot centre lines. IDs, design revisions, timing offsets,
+reversal, remapping and authoritative sensor-crossing rules are unchanged.
+
+WORKSPACE
+workspace.routed = {settings: <validated routed profile>, display: surface |
+conductors | slots}. This is Builder editor state, not timing configuration.
+workspace.spaceGuide may add kind: table. Its x/y/lengthMm/widthMm/locked
+semantics are unchanged. Table and editor display choices do not alter routes.
+
+RECEIVING-SIDE TASK
+Explicitly accept draft.3, deploy the four runtime files together, validate via
+importLayout()/prepare(), and preview the calculated routed lane lengths.
+Keep normal measured-length/database-identity preservation and lane mapping.
+No Timing repository changes are made by this Builder implementation.
+
+VERIFY
+ node --test app/routed.test.cjs
+ node integration/slotforge-timing/check-fixtures.cjs
+A complete routed example is in routed-examples/closed-routed-oval.slotforge.json.

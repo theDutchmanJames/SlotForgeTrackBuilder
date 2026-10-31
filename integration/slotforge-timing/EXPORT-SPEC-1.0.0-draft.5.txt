@@ -1,0 +1,85 @@
+SlotForge Circuit layout integration - 1.0.0-draft.5
+Per-section tabletop routing - 31 October 2026 (unreleased)
+
+VERSION NEGOTIATION
+The slotforge.layout envelope stays at version 1. An export declares draft.5
+if any routed definition or the workspace routed defaults use tabletop routing.
+Piece-mode flowing layouts keep draft.4; piece-mode circular/straight layouts
+keep draft.3; ordinary layouts keep draft.2. All earlier supported contracts
+remain accepted. Reject unknown contracts before normalizing geometry.
+Negotiate against all serialized definitions, including unused definitions,
+as well as workspace defaults; checking only placed pieces is insufficient.
+
+PROFILE FIELD
+parameters.routed.constructionMode: optional "table" or "sections".
+Absent means Individual piece, preserving the original geometry and hashes.
+Explicit "sections" normalizes to absence. Unsupported values are rejected.
+Each definition stores its own choice. workspace.routed.settings uses the same
+optional field as the default for newly created sections. A section may override
+that default. Changing defaults does not rewrite existing definitions unless
+the user explicitly selects the update-all workflow.
+
+INDIVIDUAL PIECE
+Geometry is unchanged. innerClearanceMm and outerClearanceMm are wood verges
+outside the first/last slots. Their normal offsets must not pinch, fold or
+self-intersect. Such failures block creation. minRadiusMm is an independent
+advisory radius setting; it is not the geometric folding threshold.
+
+TABLETOP ROUTING
+The slots belong to one continuous table, not separate pieces of wood.
+innerClearanceMm and outerClearanceMm are minimum requested distances from
+the first/last slot centres to the actual rectangular table boundary. They do
+not become normal-offset borders around each section and do not restrict a
+curve's internal imaginary verge. Missing-table and table-clearance checks are
+planning warnings. Actual slot/conductor folding and self-crossing remain
+invalid. The same distinction applies to straight, circular and flowing paths.
+An available-space guide is not a table and cannot supply physical board-edge
+checks. Tabletop requested clearances may be smaller than the actual conductor
+footprint; the footprint itself must still fit on the board.
+
+For deterministic selection, bounds and routing-overlap checks, tabletop
+geometry uses the actual slot/conductor footprint:
+ metalHalfWidth = slotWidthMm / 2 + conductorGapMm + conductorWidthMm
+ widthMm = (laneCount - 1) * laneSpacingMm + 2 * metalHalfWidth
+ laneOffsetsMm[i] = metalHalfWidth + i * laneSpacingMm
+For circular sections, innerRadiusMm is the first slot radius minus
+metalHalfWidth. For flowing sections, the cubic still describes the middle of
+the slot bundle, using the same true normal-offset slots as draft.4. The
+sampling/validation envelope ends at the outermost conductor boundaries.
+No new route-segment type is introduced. Through-route and timing-line rules
+from draft.3/draft.4 remain unchanged.
+
+DRAWING, MATERIALS AND CAD
+Use the updated shared drawing runtime: tabletop sections render slots and
+conductors without individual wood fills. The table is drawn separately.
+Their generated outline is a routing footprint, not a board cutting contour.
+Tabletop sections do not contribute to individual-piece board-area estimates.
+Slot and conductor quantities still include every routed lane.
+SVG/DXF omit SURFACE_EDGES for tabletop sections and use TABLE for the actual
+board boundary, when present. Mixed piece/tabletop layouts retain separate
+piece contours where appropriate. No cutter compensation or toolpaths are added.
+
+RUNTIME AND IDENTITY
+Update integration.js, core.js, routed.js, routed-spline.js and the geometry
+module together. Regenerate untrusted derived geometry with importLayout() and
+prepare(). A validated design/route identity, sensor-authoritative timing and
+user-confirmed lane mapping still follow the base contract. Changing routing
+type is an explicit design edit; pose reflow preserves connected slot bundles.
+For layouts with placed tabletop sections, design.revision also includes the
+physical table's x/y position and length/width. A board resize, move or removal
+changes that revision without changing route identity or timing. Lock state and
+other editor preferences are excluded. Pre-review draft.5 files may receive a
+corrected revision once when regenerated; retain their design and lane IDs.
+The receiving Timing application must deliberately adopt draft.5. This change
+does not modify the SlotForge Timing repository or its receiving interface.
+
+VERIFY
+ node --test app/integration.test.cjs app/editor-features.test.cjs app/routed.test.cjs app/routed-spline.test.cjs
+ node integration/slotforge-timing/check-fixtures.cjs
+The complete source additionally contains app/tabletop-routing.test.cjs for
+per-definition choice, table-edge checks, CAD output and editor feedback.
+routed-examples/closed-tabletop-track.slotforge.json is a closed four-lane
+example with 100 mm spacing, 150/200 mm board-edge clearances and a rectangular
+table. Its 45-degree flowing sections have valid slots but would fold their
+imaginary individual-piece verges. The compact JSON omits derived geometry,
+which the shared runtime regenerates during import.

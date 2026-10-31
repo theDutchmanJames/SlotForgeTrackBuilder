@@ -1,4 +1,8 @@
-SLOTFORGE TRACK BUILDER v0.3.8
+SLOTFORGE CIRCUIT v0.3.9
+
+Previously SlotForge Track Builder. Existing launchers, saved tracks and custom
+packs still work. For compatibility, the installed folder keeps the original
+SlotForgeTrackBuilder name; no data migration is needed.
 
 INSTALL
 1. Extract the entire ZIP into a folder.
@@ -13,7 +17,7 @@ you do not need to install Node.js or developer tools. Afterwards it works offli
 Windows setup is tested. Native macOS/Linux testing is still pending.
 
 OPEN IT AGAIN
-Windows: use the SlotForge Track Builder desktop shortcut.
+Windows: use the SlotForge Circuit desktop shortcut.
 macOS/Linux: open Start SlotForge in the installed folder. Setup prints its location.
 Use the installed launcher for disk saving. Opening the HTML directly uses browser
 storage instead; the footer clearly shows the current storage mode.

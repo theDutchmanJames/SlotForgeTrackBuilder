@@ -1,6 +1,10 @@
-<p align="center"><img src="app/icon.svg" width="88" height="88" alt="SlotForge Track Builder icon"></p>
+<p align="center"><img src="app/icon.svg" width="88" height="88" alt="SlotForge Circuit icon"></p>
 
-# SlotForge Track Builder
+# SlotForge Circuit
+
+Previously called SlotForge Track Builder. The new name joins SlotForge Timing
+and SlotForge Paddock in the SlotForge app family. Existing tracks and custom
+packs remain compatible; no data migration is needed.
 
 ### Design it. Build it. Race it.
 
@@ -8,9 +12,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.8 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.9 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Track Builder](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.8/SlotForge-Track-Builder-v0.3.8-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.8)
+**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.9/SlotForge-Circuit-v0.3.9-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.9)
 
 ## Install and start
 
@@ -27,9 +31,31 @@ Create your own pieces with custom dimensions and **automatically generated matc
 
 Setup needs an internet connection the first time. It installs the small local helper automatically—you do not need to install Node.js or other developer tools yourself. After setup, the app works offline.
 
-**Next time:** use the **SlotForge Track Builder** desktop shortcut on Windows. On macOS/Linux, use **Start SlotForge** in the installed folder; the installer tells you where that folder is.
+**Next time:** use the **SlotForge Circuit** desktop shortcut on Windows. On macOS/Linux, use **Start SlotForge** in the installed folder; the installer tells you where that folder is.
+
+An existing **SlotForge Track Builder** shortcut still works. The installation
+and data folders retain their original `SlotForgeTrackBuilder` name so updates
+continue using your saved workspace.
 
 **Appearance:** open **Settings → App Theme** in the top-right corner. Choose from eight themes matching SlotForge Timing, or choose **Custom** and set your own background, panels, text, quiet text, lines and accent colours. Changes appear immediately and are remembered in this browser. You can start a custom palette from any preset, and it stays available when you try other themes. The header also keeps the quick **Light / Dark** switch. Track artwork keeps its physical colours and PDF reports stay printer-friendly.
+
+**Routed wood tracks:** open **Routed Tracks** in the header, or select **Routed wood** in the builder. Start with the example, set your lane and braid/tape dimensions, then add or edit straights, circular corners and flowing curves with draggable handles. Corner radii are measured at the innermost slot. Add a table guide and lock it while building. The app checks the 2D layout and estimates slot and conductor lengths; the PDF includes the table, construction profile and design-section list. Choose **Load flowing example** to try S-bends, or select two routed sections with open ends and choose **Bridge gap**. Radius feedback highlights tight slots. CNC output and true-size cutting templates are planned later. Flowing exports require **draft.4** support in SlotForge Timing; circular/straight routed layouts keep draft.3 and ordinary layouts keep draft.2.
+
+**Choose how you build:** every routed section has a **Routing type** selector.
+Choose **Individual piece** for a separate wood section with its own outline,
+or **Tabletop routing** for slots cut into one continuous board. In tabletop
+mode, edge clearances apply to the table boundary, so imaginary piece borders
+do not block valid curves. Actual slot or conductor folds are still rejected.
+Set a default in **Routed profile**, then override it for any new or edited
+section. Existing sections keep their own settings. Tabletop exports require
+**draft.5** support in SlotForge Timing; earlier layout types keep their contracts.
+
+**Reusable routed sections:** choose a named track pack in the section editor,
+then **Save to pack** or **Save & add to layout**. Find your saved sets on the
+Routed Tracks page and in the Track Pack Library. Circular-to-flowing conversion
+keeps the chosen angle, lane order and clearances on their original sides.
+
+**SVG / DXF construction exports:** choose **SVG / DXF** in the builder, or use the Export page to choose a saved library track. Export routed slot centrelines, slot edges, braid/tape edges, track surface contours and the table as separate layers. SVG defaults to full size; choose **Compact page** or a fixed scale for a smaller Illustrator document. The dialog shows how much to enlarge it again (for example, 1:10 → 1000%). DXF always uses full-size millimetres and retains native circular arcs. A 100 mm scale-check bar is optional. Configure cutters and depths in your CAD/CAM software. [Export details](app/CAD-EXPORTS.txt).
 
 If the browser does not open, Windows shows an error dialog with the local address. Launch details are saved in `data/launcher.log` inside your installed folder. macOS/Linux launchers print that location in the terminal. Run the latest installer again to repair an older shortcut; your saved data is kept.
 
@@ -126,7 +152,7 @@ If the button reads **Storage: browser**, you opened the HTML directly. There is
 
 ## License
 
-SlotForge Track Builder uses the [SlotForge Source-Available License 1.0](LICENSE).
+SlotForge Circuit uses the [SlotForge Source-Available License 1.0](LICENSE).
 
 - **Free to use**, including personal, club and internal business use.
 - **Free to study, modify and share**, with the license and notices retained.

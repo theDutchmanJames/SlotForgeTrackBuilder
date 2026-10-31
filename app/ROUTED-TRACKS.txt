@@ -1,0 +1,145 @@
+Routed Tracks - flowing-curve iteration (v0.3.9)
+31 October 2026
+
+Open Routed Tracks in the header, or choose Routed wood in the builder's
+track-pack selector. A procedural entry is also in the Track Pack Library.
+Load routed example to try a closed circuit, or start a new routed layout.
+
+SAVE REUSABLE ROUTED SECTIONS
+Create routed section now offers a destination pack, or a name for a new pack.
+Save to pack keeps a reusable definition without placing it. Save & add to
+layout does both. Saved routed packs appear on the Routed Tracks page, in the
+builder catalogue, under Custom Track and in the Track Pack Library. They use
+the same persistent storage and pack import/export as other custom packs.
+The gallery reads installed disk storage rather than relying on a browser copy.
+
+Use Add track piece to this pack to create another section in a routed pack.
+New sections inherit that pack's routed profile; Copy & adjust starts from a
+saved definition. Editing a placed section updates its layout instance only;
+Save to pack can separately keep a reusable copy. Existing definitions stay
+immutable. Storage errors keep the section form open, and pending writes lock
+the form against accidental edits or duplicate submissions.
+
+CIRCULAR TO FLOWING CONVERSION
+Both Convert to flowing curve and choosing Flowing curve from a circular
+corner preserve its angle, physical handedness, lane order, endpoint positions
+and the first/last clearances on their original sides. The editor identifies
+the result as Custom / converted curve instead of substituting a 90-degree
+preset. A cubic approximates the arc; sampled lengths and minimum curvature
+radii may differ slightly, with larger approximation differences at wide angles.
+Keep the circular section when its exact circular geometry is required.
+
+Saved packs retain an optional catalogueFlip boolean for their preferred icon
+and insertion orientation. Mirror new pieces reflects relative to that saved
+orientation. This is an editor-only pack hint: layout files contain explicit
+placement flips and use the existing geometry and integration contracts.
+
+The routed profile controls 1-8 lanes, slot spacing, two independent verges,
+slot width/depth, board thickness, braid/tape width and gap, conductor and
+adhesive thickness, braid recess, preferred minimum radius and waste allowance.
+These are user-entered planning values, not construction standards.
+
+PIECE OR TABLETOP ROUTING
+Every new or edited section has a Routing type selector. Choose Individual
+piece for a separate board section, or Tabletop routing for slots cut into one
+continuous table. The Routed profile sets the default; each section stores its
+own choice. Existing sections keep Individual piece behaviour until changed.
+
+For Individual piece, the edge clearances define its wood outline. That outline
+must not pinch or fold, even if the slots themselves are still evenly spaced.
+For Tabletop routing, those clearances apply to the actual table boundary.
+Imaginary individual-piece verges do not block the curve. Slots and conductors
+must still remain valid. Add a Wood / MDF table to check board-edge clearances.
+The preferred minimum slot radius is advisory in both cases.
+An available-space guide is not a physical routing table. Choose Wood / MDF
+table to enable board-edge checks. Tabletop clearance guidelines do not need
+to contain the conductor footprint; actual slot/conductor fit is checked
+separately. Individual pieces still require verges containing their conductors.
+
+Invalid curve feedback identifies the failing lane-side edge and clears stale
+radius/length values. A red fallback line is the middle reference path only.
+The editor displays the profile used by that section, which may differ from
+the defaults for new sections.
+
+Straights use length. Circular corners use innermost SLOT radius, angle and
+left/right direction. Slot radii increase by lane spacing. Artwork is generated
+from the same geometry used for snapping, measured lengths and preview.
+New section definitions are immutable; editing creates a replacement definition
+so undo and saved designs retain their original dimensions. Profile changes can
+apply to new sections only or explicitly update all routed sections in a layout.
+Connected sections reflow from their old connection graph. A changed curve can
+leave a closing gap; the editor reports that rather than silently stretching it.
+
+The three editor display modes are complete surface, slots/conductors, and
+slots only. Exports retain individual-piece surfaces; tabletop sections show
+their slots and conductors on the separately drawn table. Optional tables use
+the existing available-space guide: choose Wood / MDF table, set its size,
+drag or resize it while unlocked, then lock it for building. One rectangular
+table is supported. Table and routed profile data save with the design.
+
+Planning checks cover chosen minimum radius, open/ambiguous ends, sampled 2D
+surface overlap, table containment including verges, surface-edge steps at
+joins and proud conductors. Unequal verges can step at a join even when slots
+align; equal verges avoid this. The checks do not certify construction, car
+clearance, banking or heights. Flowing sections can be joined into compound shapes. CNC output is
+future work. The PDF is a fitted planning report, not a 1:1 cutting template.
+
+Materials include total slot length and braid/tape on both sides of each slot,
+plus the chosen allowance. Section surface area sums sections without overlap
+deductions. Section counts are design elements, not physical MDF board counts.
+Closed circuits retain actual per-lane routes and the normal live preview.
+
+INTEGRATION
+Non-routed layouts keep integration contract 1.0.0-draft.2. Circular/straight
+routed layouts use draft.3; flowing curves use draft.4. Envelope stays version 1.
+Timing must update its shared runtime, including routed-spline.js, and explicitly
+support draft.4 for flowing imports. Read the draft.3 and draft.4 specifications
+in integration/slotforge-timing. No Timing repository files were changed.
+
+FLOWING CURVES
+Choose Load flowing example to try a closed S-bend circuit. In a routed section
+editor, choose Flowing curve / S-bend. Drag the two round direction handles or
+the square endpoint. Arrow keys move a focused handle 1 mm; Shift moves 10 mm.
+Exact coordinates are available in the expandable control. Start stays at the
+local origin. Keep start and end directions lets you change the bend while
+retaining tangent joins. Uncheck it to change their directions freely.
+
+Presets: sweeping bend, S-bend and straight transition. A circular corner can
+be converted to an editable flowing approximation with the same endpoints and
+tangents. Its radius is no longer constant. Use several joined flowing sections
+for more complicated shapes; each section currently has one cubic reference.
+
+Bridge gap: select two routed sections with compatible open ends, then choose
+Bridge gap. The editor fits a connecting curve and fixes its endpoints and
+tangent directions. Drag the round handles along those directions to tune the
+bend. Existing sections stay in place. Invalid folds cannot be applied.
+
+Every slot and conductor is a normal offset of the middle reference path.
+Tight parts of slots highlight red against the configured preferred minimum.
+Stationary paths, local offset folds and sampled self-intersections are rejected.
+Artwork, per-lane lengths, preview, materials, PDFs and saved layouts use the
+same adaptive samples (0.025 mm drawing/interpolation target). Lengths and
+minimum radii are numerical planning estimates, not machining certification.
+
+Timing-line position on a flowing section uses normalized middle-path arc
+distance. Each lane offset reaches the same drawn cross-section, including
+reflected/reversed sections. JSON exports retain points, tangent headings and
+signed curvature. Sensor-based lap counting remains authoritative.
+
+SVG / DXF CONSTRUCTION DRAWINGS
+The builder and Export page now offer layered routed geometry in mm. Matching
+surface seams are removed; slots and conductor edges follow their actual
+offsets. Choose table, timing and scale-reference layers when useful. These
+exports are geometry for a vector editor or CAD/CAM, not machine toolpaths.
+See CAD-EXPORTS.txt for scale, coordinates, joining and format details.
+
+REVIEWED EDITING AND EXPORT BEHAVIOUR
+Changing defaults applies to new sections unless update-all is selected.
+Existing imported sections keep their definitions, including template IDs.
+Matching catalogue sections combine in the parts list; editing one section
+still gives it a separate definition. Cancelled handle drags restore the
+previous values. Planning checks refresh after a canvas drag is released.
+Large JSON downloads may omit derived slot samples to stay within the import
+limit; the embedded definitions regenerate those samples when reopened.
+See ROUTED-REVIEW.txt for regression results and remaining verification limits.
+See TABLETOP-REVIEW.txt for the follow-up routing-type review and repairs.

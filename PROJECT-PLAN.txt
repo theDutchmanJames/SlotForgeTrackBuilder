@@ -1,4 +1,4 @@
-SlotForge Track Builder — conceptual project plan
+SlotForge Circuit — conceptual project plan
 Updated: 29 October 2026
 
 STATUS AND SCOPE
@@ -176,3 +176,36 @@ other themes and show contrast feedback. The header retains quick Light/Dark
 controls and gains a Settings link on every gallery. Preferences are per browser
 and separate from track geometry. Theme import/migration and portable-link
 validation have five focused tests; all 175 tests and 15 Timing fixtures pass.
+
+Routed Tracks (unreleased)
+Procedural routed straights/circular corners with shared construction profile,
+slot-centred snapping, real lane routes, mutable editor sections backed by
+immutable definitions, reflow and undo. Rectangular table, display modes,
+material estimates and 2D diagnostics. PDF reports include routed construction
+details; counts represent design sections rather than MDF boards. Routed exports
+use draft.3; all existing non-routed exports retain draft.2. Freeform geometry,
+banking, CNC and tiled true-size construction templates remain future work.
+
+ROUTED FLOWING CURVES - UNRELEASED
+Implemented cubic reference sections with normal-offset slots/conductors,
+adaptive sampled paths, draggable handles and exact coordinates, tangent
+locks, circular conversion, presets and a fixed-end gap bridge. Radius feedback,
+fold/self-intersection validation, lengths, live preview, materials, library,
+PDF and conditional draft.4 Timing export share the same geometry. Irregular
+tables, board cutting plans, 1:1 templates and machining exports remain later
+milestones.
+
+ROUTED CAD EXPORT - UNRELEASED
+Implemented full-size SVG and millimetre DXF with named layers, continuous
+slot/surface contours, matching seam removal, normal-offset edges, table,
+timing reference and optional 100 mm scale check. Current and saved library
+tracks use captured snapshots. Native circular arcs are retained; flowing
+curves use existing samples. CAD/CAM toolpaths and tiled PDF templates remain
+future milestones. See app/CAD-EXPORTS.txt.
+31 October 2026 - per-section routing type completed (unreleased)
+Create/edit a routed section as Individual piece or Tabletop routing, with a
+default in Routed profile. Tabletop sections validate actual slots/conductors
+and check clearances against the table rather than imaginary piece borders.
+Preserve old piece-mode geometry, show useful fold diagnostics, clear stale
+measurements, and export the table boundary without artificial piece cut lines.
+Tabletop integration uses draft.5; older layout types retain their contracts.

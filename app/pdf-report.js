@@ -16,30 +16,38 @@ function create(raw,diagram,{orientation='portrait',date=new Date().toLocaleDate
  function newPage(){doc.addPage('a4',orientation);text('SLOTFORGE  /  TRACK REPORT',margin,16,8,true,muted);doc.setDrawColor(218,223,228);doc.line(margin,20,W-margin,20);y=28;}
  function ensure(height){if(y+height>bottom)newPage();}
  function paragraph(value,size=9,color=muted){const lines=wrapped(value,size,width),step=size*.352778*1.45;for(const line of lines){ensure(step);text(line,margin,y+step*.8,size,false,color);y+=step;}y+=3;}
- text('SLOTFORGE  /  TRACK BUILDER',margin,15,8,true,muted);text(String(date),W-margin-doc.getTextWidth(String(date)),15,8,false,muted);
+ text('SLOTFORGE  /  CIRCUIT',margin,15,8,true,muted);text(String(date),W-margin-doc.getTextWidth(String(date)),15,8,false,muted);
  doc.setDrawColor(229,72,77);doc.setLineWidth(.8);doc.line(margin,20,margin+19,20);y=28;
  const titleLines=wrapped(model.title||'Untitled circuit',23,width);for(const line of titleLines){text(line,margin,y,23,true);y+=10;}y+=2;
- const metrics=[['TRACK CENTRELINE',s.planning?(s.roads?metres(s.length)+' + unknown':'Not calculated'):metres(s.length)],['PLACED PIECES',String(model.pieces.length)],['FOOTPRINT WITH BORDERS',Math.ceil(s.bounds[2])+' × '+Math.ceil(s.bounds[3])+' mm']];
+ const metrics=[['TRACK CENTRELINE',s.planning?(s.roads?metres(s.length)+' + unknown':'Not calculated'):metres(s.length)],['PLACED PIECES',String(model.pieces.length)],['FOOTPRINT WITH BORDERS',Math.ceil(s.bounds[2]-1e-6)+' × '+Math.ceil(s.bounds[3]-1e-6)+' mm']];
  metrics.forEach(([label,value],i)=>{const x=margin+i*width/3;text(label,x,y,7.5,true,muted);text(value,x,y+8,13,true);});y+=15;
  text(s.planning?(s.roads+s.planning)+' road pieces ('+s.planning+' approximate)  /  '+s.borders+' borders  /  '+(s.references-s.planning)+' other references':s.roads+' road pieces  /  '+s.borders+' borders  /  '+s.references+' references',margin,y,8,false,muted);y+=6;
- const maxImageHeight=orientation==='portrait'?102:65,scale=Math.min(width/diagram.width,maxImageHeight/diagram.height),iw=diagram.width*scale,ih=diagram.height*scale;
+ const maxImageHeight=orientation==='portrait'?(model.routed.sections?90:102):65,scale=Math.min(width/diagram.width,maxImageHeight/diagram.height),iw=diagram.width*scale,ih=diagram.height*scale;
  ensure(ih+9);doc.addImage(diagram.data,'JPEG',margin+(width-iw)/2,y,iw,ih,undefined,'FAST');y+=ih+5;
  text('Layout overview - fitted to page, not a 1:1 template.',margin,y,7.5,false,muted);y+=8;
  if(network.closed){const lanes=model.layout.track.lanes;paragraph(lanes.map((lane,i)=>(lane.label||'Lane '+(i+1))+': '+metres(lane.lengthMm)).join('   |   '),9,body);}
  else paragraph(s.planning?'Approximate visual layout: guide slots and lap lengths are not calculated.':'Per-lane circuit lengths unavailable: '+network.reason,9,body);
+ if(model.routed.sections){
+  const r=model.routed;paragraph('Routed wood: '+r.sections+' design sections. Total guide-slot length: '+metres(r.slotMm)+'. Estimated braid: '+metres(r.orderBraidMm)+'; copper tape: '+metres(r.orderTapeMm)+' (both sides, including the specified allowance).',9,body);
+  const table=model.layout.workspace?.spaceGuide;if(table?.kind==='table')paragraph('Table: '+table.lengthMm+' × '+table.widthMm+' mm. '+(r.tableRoutingSections?'Tabletop routing uses the continuous table; sections are slot paths, not separate boards. ':'')+(r.tableRoutingSections===r.sections?'':'Individual-piece surface area: '+(r.sectionAreaMm2/1000000).toFixed(2)+' m², summed before overlap deductions. ')+'This is not a board cutting or stock nesting plan.',8);
+  const profiles=[...new Set(model.pieces.filter(p=>model.definitions[p.definitionId].parameters.routed).map(p=>{const v=model.definitions[p.definitionId].parameters.routed;return(v.constructionMode==='table'?'Tabletop routing; ':'Individual piece; ')+v.laneCount+' lanes / '+v.laneSpacingMm+' mm spacing; slot '+v.slotWidthMm+' × '+v.slotDepthMm+' mm; '+v.conductor+' '+v.conductorWidthMm+' mm wide; recess '+(v.conductor==='braid'?v.recessDepthMm:0)+' mm; board '+v.boardThicknessMm+' mm';}))];
+  for(const p of profiles)paragraph('Construction profile: '+p,8);
+ }
+ const hasFlowing=model.pieces.some(p=>model.definitions[p.definitionId].parameters.type==='routed-spline');
  const hasSwitches=model.pieces.some(p=>model.definitions[p.definitionId].parameters.laneChange);
- paragraph((s.planning?'Planning dimensions are estimates. Magnetic alignment does not validate physical fit. ':'Calculated nominal or user-entered dimensions. ')+'Footprint includes placed borders; overlaps and vertical clearance are not checked.'+(hasSwitches?' Lane changers use straight-through routes for these totals.':''),8);
+ paragraph((s.planning?'Planning dimensions are estimates. Magnetic alignment does not validate physical fit. ':'Calculated nominal or user-entered dimensions. ')+(model.routed.sections?'Footprint includes piece verges or tabletop slot/conductor geometry; 2D checks do not verify vehicle clearance or bridge heights.':'Footprint includes placed borders; overlaps and vertical clearance are not checked.')+(hasFlowing?' Flowing curves use numerically sampled paths.':'')+(hasSwitches?' Lane changers use straight-through routes for these totals.':''),8);
 
  // Whole rows move together; each continuation page repeats the column headings.
  const fractions=[.16,.34,.24,.08,.18],columns=fractions.map(v=>v*width),xs=[margin];for(let i=0;i<columns.length-1;i++)xs.push(xs[i]+columns[i]);
- function tableHeading(continued=false){text('Parts list'+(continued?' - continued':''),margin,y+5,13,true);y+=10;doc.setFillColor(243,245,247);doc.rect(margin,y,width,12,'F');const labels=['Product code','Piece','Track pack','Qty','Length / piece'];labels.forEach((label,i)=>{font(8,true,muted);doc.text(doc.splitTextToSize(label,columns[i]-4),xs[i]+2,y+4.5);});y+=14;}
+ function tableHeading(continued=false){text((model.routed.sections?'Sections and parts list':'Parts list')+(continued?' - continued':''),margin,y+5,13,true);y+=10;doc.setFillColor(243,245,247);doc.rect(margin,y,width,12,'F');const labels=['Product code','Piece','Track pack','Qty','Length / piece'];labels.forEach((label,i)=>{font(8,true,muted);doc.text(doc.splitTextToSize(label,columns[i]-4),xs[i]+2,y+4.5);});y+=14;}
  const rowLines=({d,count})=>{const length=d.parameters.type==='reference'?'Unknown':d.parameters.type.endsWith('border')?'Border':d.geometry.centrelineLengthMm.toFixed(1)+' mm';return[d.sku||'Custom',d.name,d.pack,String(count),length].map((v,i)=>wrapped(v,8.5,columns[i]-4));};
  const rows=inventory.map(rowLines);const rowHeight=lines=>Math.max(...lines.map(l=>l.length))*4.2+5;
  ensure(24+rowHeight(rows[0]));tableHeading();
- for(const cells of rows){const h=rowHeight(cells);if(y+h>bottom){newPage();tableHeading(true);}for(let c=0;c<cells.length;c++){font(8.5);doc.text(cells[c],xs[c]+2,y+4,{lineHeightFactor:1.4});}doc.setDrawColor(223,227,231);doc.setLineWidth(.2);doc.line(margin,y+h,W-margin,y+h);y+=h;}
- y+=6;paragraph('Quantities count placed pieces, not retail multipacks.'+(s.references?' Reference pictures have approximate display sizes and unknown lengths; an image may show an assembly.':''),8);
- const pages=doc.getNumberOfPages();for(let i=1;i<=pages;i++){doc.setPage(i);doc.setDrawColor(220,225,230);doc.line(margin,H-14,W-margin,H-14);text('SlotForge Track Builder  /  Planning reference',margin,H-9,7.5,false,muted);text(i+' / '+pages,W-margin-12,H-9,7.5,false,muted);}
- doc.setProperties({title:model.title,subject:'Track layout, nominal lengths and parts list',creator:'SlotForge Track Builder',author:'SlotForge Track Builder'});
+ const notice=(model.routed.sections?'Routed quantities count editable design sections, not physical boards. Other quantities count placed pieces, not retail multipacks.':'Quantities count placed pieces, not retail multipacks.')+(s.references?' Reference pictures have approximate display sizes and unknown lengths; an image may show an assembly.':'');
+ for(const [index,cells]of rows.entries()){const h=rowHeight(cells),tail=index===rows.length-1?6+wrapped(notice,8,width).length*8*.352778*1.45+3:0;if(y+h+tail>bottom){newPage();tableHeading(true);}for(let c=0;c<cells.length;c++){font(8.5);doc.text(cells[c],xs[c]+2,y+4,{lineHeightFactor:1.4});}doc.setDrawColor(223,227,231);doc.setLineWidth(.2);doc.line(margin,y+h,W-margin,y+h);y+=h;}
+ y+=6;paragraph(notice,8);
+ const pages=doc.getNumberOfPages();for(let i=1;i<=pages;i++){doc.setPage(i);doc.setDrawColor(220,225,230);doc.line(margin,H-14,W-margin,H-14);text('SlotForge Circuit  /  Planning reference',margin,H-9,7.5,false,muted);text(i+' / '+pages,W-margin-12,H-9,7.5,false,muted);}
+ doc.setProperties({title:model.title,subject:'Track layout, nominal lengths and parts list',creator:'SlotForge Circuit',author:'SlotForge Circuit'});
  return{bytes:doc.output('arraybuffer'),pages,orientation,title:model.title};
 }
 return{create};
