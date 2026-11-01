@@ -6,6 +6,12 @@ Previously called SlotForge Track Builder. The new name joins SlotForge Timing
 and SlotForge Paddock in the SlotForge app family. Existing tracks and custom
 packs remain compatible; no data migration is needed.
 
+### Reliability update (v0.3.16)
+
+This update protects unsaved FreeForm drawings when switching tracks, checks lane counts before generating lanes, prevents stale Save dialog responses, fixes unknown lengths in exports, and preserves empty custom packs when restoring a workspace backup.
+
+**One browser app for Windows, macOS and Linux.** The installer stores the app and its local helper on your computer. A shortcut starts that helper and opens Circuit in your browser. Your track designs and custom packs are saved to local files. The operating-system names below refer to the installer and launcher; the editor runs in your browser on all three.
+
 ### Table shapes and FreeForm (v0.3.15)
 
 The main menu starts with **Track Builder → Routed Wood → FreeForm Drawing**.
@@ -46,9 +52,9 @@ Plan your next slot-car circuit before building it for real. Choose track pieces
 
 Create your own pieces with custom dimensions and **automatically generated matching icons and artwork**. Keep them together in reusable track packs, and export your layout and car-animation profile for integration with [SlotForge Timing](https://github.com/theDutchmanJames/SlotForgeTiming).
 
-**Version 0.3.15 · Runs in your browser · Saves files on your computer · No account needed**
+**Version 0.3.16 · Runs in your browser · Saves files on your computer · No account needed**
 
-**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.15/SlotForge-Circuit-v0.3.15-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.15)
+**[Download SlotForge Circuit](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/download/v0.3.16/SlotForge-Circuit-v0.3.16-complete.zip)** · [Release notes](https://github.com/theDutchmanJames/SlotForgeTrackBuilder/releases/tag/v0.3.16)
 
 ## Install and start
 

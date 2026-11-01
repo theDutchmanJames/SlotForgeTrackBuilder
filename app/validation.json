@@ -1,9 +1,9 @@
 {
-  "version": "0.3.15",
+  "version": "0.3.16",
   "date": "2026-11-01",
   "automated": {
     "command": "node --test app/freeform-review.test.cjs app/freeform-editor.test.cjs app/freeform-shapes.test.cjs app/elevation.test.cjs app/freeform.test.cjs app/routed-squeeze.test.cjs app/tabletop-routing.test.cjs app/routed-review.test.cjs app/cad-export.test.cjs app/routed-spline.test.cjs app/routed.test.cjs app/theme-model.test.cjs app/core.test.cjs app/integration.test.cjs app/custom-packs.test.cjs app/editor-features.test.cjs app/library.test.cjs app/track-exports.test.cjs app/space-guide.test.cjs app/pdf-report.test.cjs app/server.test.cjs app/disk-store.test.cjs app/disk-api.test.cjs app/additional-packs.test.cjs app/side-snap.test.cjs app/local-workspace.test.cjs app/review-regressions.test.cjs app/reference-planning.test.cjs app/reference-artwork.test.cjs app/reference-editor.test.cjs installer/launcher.test.cjs",
-    "passed": 364,
+    "passed": 370,
     "failed": 0,
     "scope": [
       "Closed circuit and per-lane lengths",
@@ -40,7 +40,7 @@
       "Strict original units and integration-contract metadata validation; both public entry points and explicit-state bypass regression",
       "Circuit inside/outside border placement on straights, mirrored and reversed pieces, open chains and separate loops",
       "Named custom pack migration, ownership, selected export, atomic import and library limits",
-      "R1â€“R8 adjacent curve edge radii and persistent family settings",
+      "R1\u00e2\u20ac\u201cR8 adjacent curve edge radii and persistent family settings",
       "All four buildable starting-grid variants retain artwork in regenerated pictures",
       "Reference picture serialization, transforms, image validation, inventory isolation, missing connectors and stable road route IDs",
       "Alphabetical catalogue folders, natural radius ordering and descending straight lengths, without modifying catalogue definitions",
@@ -922,5 +922,34 @@
       "No new native macOS/Linux installation audit",
       "No separate SlotForge Timing importer audit"
     ]
+  },
+  "fullReview0315": {
+    "date": "2026-11-01",
+    "report": "REVIEW-v0.3.15.txt",
+    "baselineTestsPassed": 364,
+    "sourceTestsPassed": 370,
+    "newRegressionTests": 6,
+    "handoffTestsPassed": 144,
+    "integrationFixturesPassed": 15,
+    "trackPackValidatorScriptsPassed": 7,
+    "browser": [
+      "FreeForm excessive lane count rejected without changing model",
+      "Clean draft refresh and dirty draft preservation after builder changes",
+      "Disk-backed Track Library save and reload",
+      "Direct portrait PDF download; visually inspected after rendering",
+      "No captured browser console warnings/errors"
+    ],
+    "limitations": [
+      "No fresh native macOS/Linux installation",
+      "No fresh Illustrator/Fusion import",
+      "No separate SlotForge Timing importer audit"
+    ]
+  },
+  "release0316": {
+    "date": "2026-11-01",
+    "sourceTestsPassed": 370,
+    "handoffTestsPassed": 144,
+    "integrationFixturesPassed": 15,
+    "review": "REVIEW-v0.3.15.txt"
   }
 }

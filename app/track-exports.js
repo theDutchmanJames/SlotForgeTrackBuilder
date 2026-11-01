@@ -12,6 +12,7 @@ function portableJSON(raw,maxBytes=5*1024*1024){
  if(bytes>maxBytes)throw Error('Layout JSON exceeds the import size limit, even without generated geometry. Reduce embedded artwork or use Storage to download a full workspace backup.');
  return{text,bytes,geometryIncluded};
 }
-function csv(model){const quote=s=>'"'+String(s).replaceAll('"','""')+'"',safe=s=>/^(?:\s*[=+@-]|[\t\r\n])/.test(String(s))?"'"+s:s;const rows=[['Piece','Product code','Pack','Quantity','Type','Centreline mm per piece','Measurement basis'],...model.inventory.map(({d,count})=>[safe(d.name),safe(d.sku||''),safe(d.pack),count,d.parameters.type,d.parameters.type==='reference'?'':d.geometry.centrelineLengthMm,d.status])];return '\uFEFF'+rows.map(r=>r.map(quote).join(',')).join('\r\n');}
-return{build,resolveSource,filename,csv,portableJSON};
+function pieceLength(d){return d.parameters.type==='reference'||d.parameters.type==='freeform'&&!d.geometry.valid?null:d.geometry.centrelineLengthMm;}
+function csv(model){const quote=s=>'"'+String(s).replaceAll('"','""')+'"',safe=s=>/^(?:\s*[=+@-]|[\t\r\n])/.test(String(s))?"'"+s:s;const rows=[['Piece','Product code','Pack','Quantity','Type','Centreline mm per piece','Measurement basis'],...model.inventory.map(({d,count})=>[safe(d.name),safe(d.sku||''),safe(d.pack),count,d.parameters.type,pieceLength(d)??'',d.status])];return '\uFEFF'+rows.map(r=>r.map(quote).join(',')).join('\r\n');}
+return{build,resolveSource,filename,csv,portableJSON,pieceLength};
 });

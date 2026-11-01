@@ -50,3 +50,14 @@ test('Import merging cannot replace incoming FreeForm reflection permissions wit
  const s=settings(2),a=F.validateDefinition(FF.definition(FF.oval(s),s)),b=F.validateDefinition({...a,mirror:false,color:'#123456'}),p=F.pose(b),result=F.mergeDefinitions({[b.id]:b},[p],{[a.id]:a});
  assert.notEqual(result.pieces[0].definitionId,a.id);assert.equal(result.definitions[result.pieces[0].definitionId].mirror,false);assert.equal(result.definitions[result.pieces[0].definitionId].color,'#123456');assert.equal(a.mirror,true);
 });
+
+test('FreeForm lane limits are checked before allocating generated lane IDs',()=>{
+ const model=FF.empty(2),before=structuredClone(model);
+ for(const count of[0,-1,1.5,9,NaN,Infinity,Number.MAX_SAFE_INTEGER]){
+  assert.throws(()=>FF.empty(count),/between 1 and 8 lanes/);
+  assert.throws(()=>FF.configure(model,count,1,1),/between 1 and 8 lanes/);
+ }
+ for(const reference of[0,3,1.5,NaN])assert.throws(()=>FF.configure(model,2,reference,1),/drawn lane/);
+ assert.throws(()=>FF.configure(model,2,1,0),/left or right/);
+ assert.deepEqual(model,before);
+});

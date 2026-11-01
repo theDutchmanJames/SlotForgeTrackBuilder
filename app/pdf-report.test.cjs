@@ -24,3 +24,13 @@ test('Print drawing uses regenerated geometry and ignores the editor-only space 
  const raw=fixture(),a=D.pdfDiagram(raw);raw.workspace={spaceGuide:{x:-999,y:100,lengthMm:10000,widthMm:10000,locked:true}};assert.deepEqual(D.pdfDiagram(raw),a);assert.ok(Math.max(a.width,a.height)<=2401);assert.match(a.svg,/#f0f0ed/);assert.match(a.svg,/scale\(1/);assert.match(a.svg,/REFERENCE/);assert.doesNotMatch(a.svg,/onload=/);assert.deepEqual(I.prepare(raw).track.lanes,I.prepare(fixture()).track.lanes);
 });
 test('Height-aware PDF exports preserve the source and paginate bridge notes',()=>{const raw=structuredClone(require('../integration/slotforge-timing/routed-examples/figure-eight-with-bridge.slotforge.json')),before=structuredClone(raw),result=P.create(raw,diagram);assert.ok(result.pages>=1);assert.deepEqual(raw,before);const out=I.prepare(raw);assert.equal(out.integration.contractVersion,I.ELEVATION_CONTRACT);assert.equal(out.track.laneCount,2);});
+
+test('Invalid FreeForm PDF inventory labels unavailable lengths instead of zero millimetres',()=>{
+ const F=require('./core.js'),vm=require('node:vm'),ActualPDF=require('./vendor/jspdf.umd.min.js').jsPDF,texts=[];
+ const sandbox={module:{exports:{}},require:name=>name==='./vendor/jspdf.umd.min.js'?{jsPDF:function(options){const doc=new ActualPDF(options),write=doc.text;doc.text=function(text,...args){texts.push(...[text].flat(Infinity));return write.call(this,text,...args);};return doc;}}:require(name)};
+ vm.runInNewContext(fs.readFileSync(require.resolve('./pdf-report.js'),'utf8'),sandbox);
+ const s=F.Routed.settings({laneCount:1,constructionMode:'table'});let m=F.FreeForm.empty();for(const p of[[300,300],[1400,1300],[300,1300],[1400,300]])m=F.FreeForm.append(m,p);
+ const d=F.FreeForm.definition(F.FreeForm.close(m),s);assert.equal(d.geometry.valid,false);
+ sandbox.module.exports.create({format:'slotforge.layout',version:1,title:'Invalid draft',definitions:[d],pieces:[F.pose(d)]},diagram);
+ assert.ok(texts.filter(t=>t==='Not calculated').length>=2);assert.ok(!texts.includes('0.0 mm'));
+});

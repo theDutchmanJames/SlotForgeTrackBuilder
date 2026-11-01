@@ -23,3 +23,11 @@ test('Empty tracks have no fabricated lengths or inventory and reference rows ha
  const raw=fixture();raw.pieces=raw.pieces.filter(p=>raw.definitions.find(d=>d.id===p.definitionId).parameters.type==='reference');const reference=X.build(raw);assert.equal(reference.summary.length,0);assert.equal(reference.summary.roads,0);assert.equal(reference.summary.references,1);assert.match(X.csv(reference),/"reference","",/);
  raw.pieces=[];const empty=X.build(raw);assert.equal(empty.inventory.length,0);assert.equal(empty.summary.length,0);assert.equal(empty.network.closed,false);
 });
+
+test('Invalid FreeForm inventories keep quantities but do not claim zero-length track',()=>{
+ const F=require('./core.js'),FF=F.FreeForm,s=F.Routed.settings({laneCount:1,constructionMode:'table'});
+ let m=FF.empty();for(const p of[[300,300],[1400,1300],[300,1300],[1400,300]])m=FF.append(m,p);m=FF.close(m);
+ const d=FF.definition(m,s),raw={format:'slotforge.layout',version:1,title:'Crossed draft',definitions:[d],pieces:[F.pose(d)]},model=X.build(raw);
+ assert.equal(model.summary.invalidFreeform,true);assert.equal(model.inventory[0].count,1);assert.equal(X.pieceLength(model.inventory[0].d),null);assert.match(X.csv(model),/"freeform","",/);
+ const valid=FF.definition(FF.oval(s),s);assert.ok(X.pieceLength(valid)>0);
+});

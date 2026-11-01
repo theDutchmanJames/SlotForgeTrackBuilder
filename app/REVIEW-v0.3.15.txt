@@ -1,0 +1,78 @@
+SlotForge Circuit - full application review
+1 November 2026 - review of v0.3.15 (c658847)
+
+Scope
+Reviewed the current application, including the modular and routed editors,
+FreeForm authoring and lane generation, squeeze geometry, height/bridge checks,
+table shapes, snapping and transforms, persistence and workspace transfers,
+custom packs and catalogue validation, PDF/CSV/SVG/DXF exports, Timing contracts,
+themes, local-server boundaries, installer/launcher code and packaging inputs.
+The working tree was clean at the start. No GitHub push or release was requested.
+
+Fixed findings
+
+1. Unbounded allocation before FreeForm lane validation [medium]
+   empty() and configure() allocated lane IDs before enforcing the 1-8 lane
+   limit. A manually entered huge count could allocate excessively or fail with
+   a low-level RangeError. Validate count, reference lane and side before any
+   generation. Invalid edits preserve the existing model and Undo history.
+
+2. Stale FreeForm session after builder changes [medium]
+   Returning to an already-open editor reused the old circuit even when another
+   track had been opened or the builder had changed. A clean editor now reloads
+   from the current builder. Dirty drafts remain intact, with an explicit notice
+   explaining how to keep them or cancel and open the current track. Existing
+   confirmation still protects replacement of a different builder layout.
+
+3. Late Save dialog responses [low]
+   A cancelled storage lookup could finish after reopening Save to Library and
+   overwrite the newer dialog's state or error text. Requests are now scoped to
+   their opening generation, and closed dialogs ignore responses. The existing
+   in-progress-save cancellation protection was verified and retained.
+
+4. Misleading zero lengths for invalid FreeForm drafts [medium]
+   CSV and PDF inventory rows reported 0 mm when invalid geometry had no usable
+   calculated length. A shared export length helper now distinguishes unknown
+   from zero. CSV leaves the numeric cell empty; PDF says Not calculated. Piece
+   counts are retained. The PDF export dialog also identifies invalid drafts and
+   correctly labels a valid FreeForm reference-slot length.
+
+5. Empty custom packs lost during workspace restore [medium]
+   Workspace import skipped packs with no pieces, dropping user-defined names
+   and curve-family settings. Restore now keeps these packs and their library
+   visibility, while content deduplication prevents copies on repeated import.
+   Current destination workspace data remains protected by the existing merge,
+   validation, capacity limits and atomic-write behavior.
+
+Small UI corrections
+- Updated FreeForm height guidance to Points > Height & bridge.
+- Added a padded, readable notice for preserved drafts when the builder changes.
+
+Verification
+- Original baseline: 364/364 application and installer tests passed.
+- Updated regression suite: 370/370 tests passed, including six new regressions.
+- Isolated Timing handoff inventory: 144/144 tests passed.
+- Integration compatibility fixtures: 15/15 passed.
+- All seven track-pack validator scripts passed, covering all ten brands/packs;
+  the six original pack scripts report 51 checks in total. These validate
+  catalogue/model consistency, not manufacturer dimensions.
+- Source packaging inventory resolved successfully; isolated handoff copied and
+  tested without relying on files outside its package. Published ZIPs untouched.
+- Browser checks in an isolated disk workspace on port 60407: huge lane-count
+  rejection; four-lane creation; clean editor refresh; dirty-draft preservation;
+  Save to Track Library and reload persistence; browser PDF download; no captured
+  browser warnings/errors.
+- Actual downloaded PDF rendered with Poppler and visually inspected: one A4
+  portrait page, readable layout, lane lengths, material totals and inventory.
+- PDF regression also intercepts the actual PDF writer's text to confirm both
+  summary and inventory display Not calculated for invalid FreeForm geometry.
+- git diff --check clean. Temporary test work is under tmp/ and is not shipped.
+
+Limits
+This is a source, automated-test and targeted Windows/browser review, not a
+claim of defect-free software. No fresh native macOS/Linux installation or
+Illustrator/Fusion import was performed. Launcher behavior for those platforms
+and CAD geometry are covered by automated checks. The separate SlotForge Timing
+repository/importer was not changed or exercised. Physical measurements,
+clearances and manufacturing suitability require real-world verification.
+The user's installed app and saved workspace were not modified.

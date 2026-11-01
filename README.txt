@@ -1,9 +1,18 @@
-SlotForge Circuit — editor iteration (v0.3.15)
+SlotForge Circuit — editor iteration (v0.3.16)
 
 Previously SlotForge Track Builder. Use SlotForge Circuit.html for the named
 file launcher; the previous HTML launcher remains a compatibility alias.
 Existing installations keep their SlotForgeTrackBuilder folder, saved workspace,
 storage keys and layout formats. No data migration is required.
+
+NEW IN v0.3.16
+Safer FreeForm editing, bounded lane generation, reliable Save dialogs,
+clearer unknown lengths in exports, and empty custom packs kept on restore.
+
+Circuit runs in your browser on Windows, macOS and Linux. The installer
+places the app and local helper on disk; the launcher opens your browser.
+Installed workspaces are saved in local files. Direct HTML use relies on
+browser storage instead.
 
 NEW IN v0.3.15
 FreeForm Drawing lets you draw one lane and generate the others around it.

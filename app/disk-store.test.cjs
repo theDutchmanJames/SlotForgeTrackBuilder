@@ -18,3 +18,12 @@ test('Autosave retains the editor library baseline through restart without leaki
 test('Workspace import preserves a maximum-length name when identity collisions require a new copy',async t=>{const s=await store(t),raw={...await fixture(),title:'X'.repeat(100)};await s.putDesign(raw,null);const changed={...raw,title:'Y'.repeat(100)};await s.importBundle({format:'slotforge.workspace-transfer',version:1,current:null,designs:[changed],customLibrary:CP.serialize(CP.empty())});const rows=await s.list();assert.equal(rows.length,2);assert.equal(rows.find(r=>r.id!==raw.design.id).layout.title,'Y'.repeat(89)+' (imported)');});
 test('A partial lock left by an interrupted writer recovers after a safety grace period',async t=>{const s=await store(t),file=path.join(s.directory,'.write-lock');await fs.writeFile(file,'{"pid":');const old=new Date(Date.now()-60000);await fs.utimes(file,old,old);assert.ok((await s.putCurrent(await fixture(),null)).revision);});
 test('A fresh partial lock is retained while its writer may still be starting',async t=>{const s=await store(t),file=path.join(s.directory,'.write-lock');await fs.writeFile(file,'');await assert.rejects(s.lock(),e=>e.status===409);assert.equal(await fs.readFile(file,'utf8'),'');});
+
+test('Workspace restore preserves empty named packs and their curve settings',async t=>{
+ const source=CP.empty();source.packs.push({id:'custom-pack-empty',name:'Future routed set',inLibrary:false,pieces:[],curveFamily:{type:'curve',innerRadiusMm:200,widthMm:200,angleDeg:45,laneCount:2,laneSpacingMm:100}});
+ const s=await store(t),bundle={format:'slotforge.workspace-transfer',version:1,current:null,designs:[],customLibrary:CP.serialize(source)};
+ assert.equal((await s.importBundle(bundle)).packsAdded,1);
+ const restored=CP.read((await s.packs()).data).packs.find(p=>p.name==='Future routed set');
+ assert.ok(restored);assert.equal(restored.pieces.length,0);assert.equal(restored.inLibrary,false);assert.deepEqual(restored.curveFamily,source.packs[1].curveFamily);
+ assert.equal((await s.importBundle(bundle)).packsAdded,0);
+});

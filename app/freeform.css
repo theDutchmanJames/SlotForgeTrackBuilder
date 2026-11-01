@@ -2,6 +2,7 @@
 #freeform-dialog{width:100%;height:calc(100dvh - 100px);min-height:520px;padding:0;overflow:hidden;display:flex;flex-direction:column;border:0}
 .ff-header{position:relative;display:flex;align-items:center;gap:12px;padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--line)}
 .ff-header>div{flex:1}.ff-header h2{margin:0;font-size:20px}.ff-header p{margin:4px 0 0;color:var(--muted);font-size:11px}
+#ff-context-note{margin:0;padding:10px 18px;font-size:12px;border-bottom:1px solid var(--line)}
 .ff-toolbar{padding:9px 14px;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line)}.ff-toolbar .btn{font-size:11px}.ff-toolbar [aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
 .ff-body{display:grid;grid-template-columns:330px minmax(200px,1fr);flex:1;min-height:0}
 .ff-settings{display:flex;flex-direction:column;min-height:0;min-width:0;border-right:1px solid var(--line);background:var(--panel)}
